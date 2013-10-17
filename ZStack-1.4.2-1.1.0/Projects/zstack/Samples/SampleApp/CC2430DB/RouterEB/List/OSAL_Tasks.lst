@@ -1,0 +1,850 @@
+##############################################################################
+#                                                                            #
+# IAR 8051 C/C++ Compiler V7.20H/W32                   24/Jan/2013  14:47:46 #
+# Copyright 2004-2006 IAR Systems. All rights reserved.                      #
+#                                                                            #
+#    Core               =  plain                                             #
+#    Code model         =  banked                                            #
+#    Data model         =  large                                             #
+#    Calling convention =  xdata reentrant                                   #
+#    Constant location  =  data                                              #
+#    Dptr setup         =  1,16                                              #
+#    Source file        =  D:\Texas Instruments\ZStack-1.4.2-1.1.0\Component #
+#                          s\osal\common\OSAL_Tasks.c                        #
+#    Command line       =  -f E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç #
+#                          ¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006 #
+#                          -´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp #
+#                          les\SampleApp\CC2430DB\..\..\..\Tools\CC2430DB\f8 #
+#                          wRouter.cfg (-DCPU32MHZ -DFORCE_MAC_NEAR          #
+#                          -DROOT=__near_func -DMAC_CFG_APP_PENDING_QUEUE=TR #
+#                          UE -DRTR_NWK -DBLINK_LEDS "-DCONST=const __code"  #
+#                          -DGENERIC=__generic) -f                           #
+#                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª· #
+#                          ¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006-´® #
+#                          ¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples #
+#                          \SampleApp\CC2430DB\..\..\..\Tools\CC2430DB\f8wCo #
+#                          nfig.cfg (-DSECURE=0 -DDEFAULT_CHANLIST=0x0000080 #
+#                          0 -DZDAPP_CONFIG_PAN_ID=0xFFFF                    #
+#                          -DNWK_START_DELAY=100 -DEXTENDED_JOINING_RANDOM_M #
+#                          ASK=0x007F -DBEACON_REQUEST_DELAY=100             #
+#                          -DBEACON_REQ_DELAY_MASK=0x00FF                    #
+#                          -DROUTE_EXPIRY_TIME=30 -DAPSC_ACK_WAIT_DURATION_P #
+#                          OLLED=3000 -DNWK_INDIRECT_MSG_TIMEOUT=7           #
+#                          -DMAX_RREQ_ENTRIES=10 -DAPSC_MAX_FRAME_RETRIES=3  #
+#                          -DNWK_MAX_DATA_RETRIES=2                          #
+#                          -DMAX_POLL_FAILURE_RETRIES=2 -DMAX_BCAST=9        #
+#                          -DAPS_MAX_GROUPS=16 -DMAX_RTG_ENTRIES=20          #
+#                          -DNWK_MAX_BINDING_ENTRIES=10                      #
+#                          -DMAX_BINDING_CLUSTER_IDS=5                       #
+#                          "-DDEFAULT_KEY={0x01, 0x03, 0x05, 0x07, 0x09,     #
+#                          0x0B, 0x0D, 0x0F, 0x00, 0x02, 0x04, 0x06, 0x08,   #
+#                          0x0A, 0x0C, 0x0D}" -DRFD_RCVC_ALWAYS_ON=FALSE     #
+#                          -DPOLL_RATE=1000 -DQUEUED_POLL_RATE=100           #
+#                          -DRESPONSE_POLL_RATE=100 -DREJOIN_POLL_RATE=440   #
+#                          -DTOP_BOOT_PAGES=0) -I "D:\Program Files\IAR      #
+#                          Systems\Embedded Workbench 4.05 Evaluation        #
+#                          version\8051\inc\" -I "D:\Program Files\IAR       #
+#                          Systems\Embedded Workbench 4.05 Evaluation        #
+#                          version\8051\inc\clib\" -I                        #
+#                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª· #
+#                          ¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006-´® #
+#                          ¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples #
+#                          \SampleApp\CC2430DB\ -I                           #
+#                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª· #
+#                          ¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006-´® #
+#                          ¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples #
+#                          \SampleApp\CC2430DB\..\Source\ -I                 #
+#                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª· #
+#                          ¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006-´® #
+#                          ¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples #
+#                          \SampleApp\CC2430DB\..\..\..\ZMain\TI2430DB\ -I   #
+#                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª· #
+#                          ¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006-´® #
+#                          ¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples #
+#                          \SampleApp\CC2430DB\..\..\..\..\..\Components\mt\ #
+#                           -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂ #
+#                          ç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee200 #
+#                          6-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Sam #
+#                          ples\SampleApp\CC2430DB\..\..\..\..\..\Components #
+#                          \hal\include\ -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª· #
+#                          ¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2 #
+#                          006\ZigBee2006-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projec #
+#                          ts\zstack\Samples\SampleApp\CC2430DB\..\..\..\..\ #
+#                          ..\Components\hal\target\CC2430EB\ -I             #
+#                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª· #
+#                          ¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006-´® #
+#                          ¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples #
+#                          \SampleApp\CC2430DB\..\..\..\..\..\Components\osa #
+#                          l\mcu\ccsoc\ -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢ #
+#                          ×ÊÁÏ\ÎÞÏßÍøÂç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee20 #
+#                          06\ZigBee2006-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Project #
+#                          s\zstack\Samples\SampleApp\CC2430DB\..\..\..\..\. #
+#                          .\Components\osal\include\ -I                     #
+#                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª· #
+#                          ¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006-´® #
+#                          ¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples #
+#                          \SampleApp\CC2430DB\..\..\..\..\..\Components\sta #
+#                          ck\af\ -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\Î #
+#                          ÞÏßÍøÂç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\Zig #
+#                          Bee2006-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zsta #
+#                          ck\Samples\SampleApp\CC2430DB\..\..\..\..\..\Comp #
+#                          onents\stack\nwk\ -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC243 #
+#                          0¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\Zig #
+#                          Bee2006\ZigBee2006-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Pr #
+#                          ojects\zstack\Samples\SampleApp\CC2430DB\..\..\.. #
+#                          \..\..\Components\stack\sec\ -I                   #
+#                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª· #
+#                          ¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006-´® #
+#                          ¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples #
+#                          \SampleApp\CC2430DB\..\..\..\..\..\Components\sta #
+#                          ck\sys\ -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ #
+#                          ÎÞÏßÍøÂç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\Zi #
+#                          gBee2006-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zst #
+#                          ack\Samples\SampleApp\CC2430DB\..\..\..\..\..\Com #
+#                          ponents\stack\zdo\ -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC24 #
+#                          30¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\Zi #
+#                          gBee2006\ZigBee2006-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\P #
+#                          rojects\zstack\Samples\SampleApp\CC2430DB\..\..\. #
+#                          .\..\..\Components\zmac\f8w\ -I                   #
+#                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª· #
+#                          ¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006-´® #
+#                          ¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples #
+#                          \SampleApp\CC2430DB\..\..\..\..\..\Components\zma #
+#                          c\ -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍ #
+#                          øÂç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2 #
+#                          006-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\S #
+#                          amples\SampleApp\CC2430DB\..\..\..\..\..\Componen #
+#                          ts\services\saddr\ -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC24 #
+#                          30¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\Zi #
+#                          gBee2006\ZigBee2006-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\P #
+#                          rojects\zstack\Samples\SampleApp\CC2430DB\..\..\. #
+#                          .\..\..\Components\services\sdata\ -I             #
+#                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª· #
+#                          ¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006-´® #
+#                          ¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples #
+#                          \SampleApp\CC2430DB\..\..\..\..\..\Components\mac #
+#                          \include\ -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁ #
+#                          Ï\ÎÞÏßÍøÂç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ #
+#                          ZigBee2006-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\z #
+#                          stack\Samples\SampleApp\CC2430DB\..\..\..\..\..\C #
+#                          omponents\mac\high_level\ -I                      #
+#                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª· #
+#                          ¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006-´® #
+#                          ¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples #
+#                          \SampleApp\CC2430DB\..\..\..\..\..\Components\mac #
+#                          \low_level\srf03\ -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC243 #
+#                          0¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\Zig #
+#                          Bee2006\ZigBee2006-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Pr #
+#                          ojects\zstack\Samples\SampleApp\CC2430DB\..\..\.. #
+#                          \..\..\Components\mac\low_level\srf03\single_chip #
+#                          \ -D CC2430EB -D ZTOOL_P1 -D MT_TASK -lC          #
+#                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª· #
+#                          ¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006-´® #
+#                          ¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples #
+#                          \SampleApp\CC2430DB\RouterEB\List\ -lA            #
+#                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª· #
+#                          ¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006-´® #
+#                          ¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples #
+#                          \SampleApp\CC2430DB\RouterEB\List\                #
+#                          --diag_suppress Pe001,Pa010 --diag_remark pe550   #
+#                          -o E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç #
+#                          ¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006 #
+#                          -´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp #
+#                          les\SampleApp\CC2430DB\RouterEB\Obj\ -e           #
+#                          --require_prototypes -z9 --no_code_motion         #
+#                          --debug --core=plain --dptr=16,1                  #
+#                          --data_model=large --code_model=banked            #
+#                          --calling_convention=xdata_reentrant              #
+#                          --place_constants=data --nr_virtual_regs 8        #
+#                          "D:\Texas Instruments\ZStack-1.4.2-1.1.0\Componen #
+#                          ts\osal\common\OSAL_Tasks.c"                      #
+#    List file          =  E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª· #
+#                          ¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006-´® #
+#                          ¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples #
+#                          \SampleApp\CC2430DB\RouterEB\List\OSAL_Tasks.lst  #
+#    Object file        =  E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª· #
+#                          ¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006-´® #
+#                          ¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples #
+#                          \SampleApp\CC2430DB\RouterEB\Obj\OSAL_Tasks.r51   #
+#                                                                            #
+#                                                                            #
+##############################################################################
+
+D:\Texas Instruments\ZStack-1.4.2-1.1.0\Components\osal\common\OSAL_Tasks.c
+      1          /*********************************************************************
+      2              Filename:       OSAL_Tasks.c
+      3              Revised:        $Date: 2006-04-06 08:19:08 -0700 (Thu, 06 Apr 2006) $
+      4              Revision:       $Revision: 10396 $
+      5          
+      6              Description:
+      7          
+      8                 This file contains the OSAL Task definition and manipulation
+      9                 functions.
+     10          
+     11              Notes:
+     12          
+     13              Copyright (c) 2006 by Texas Instruments, Inc.
+     14              All Rights Reserved.  Permission to use, reproduce, copy, prepare
+     15              derivative works, modify, distribute, perform, display or sell this
+     16              software and/or its documentation for any purpose is prohibited
+     17              without the express written consent of Texas Instruments, Inc.
+     18          *********************************************************************/
+     19          
+     20          
+     21          /*********************************************************************
+     22           * INCLUDES
+     23           */
+     24          #include "ZComDef.h"
+     25          #include "OSAL.h"
+     26          #include "OSAL_Tasks.h"
+     27          #include "OSAL_Custom.h"
+     28          
+     29          
+     30           /*********************************************************************
+     31           * MACROS
+     32           */
+     33          
+     34          /*********************************************************************
+     35           * CONSTANTS
+     36           */
+     37          
+     38          
+     39          /*********************************************************************
+     40           * TYPEDEFS
+     41           */
+     42          
+     43          /*********************************************************************
+     44           * GLOBAL VARIABLES
+     45           */
+     46          
+     47          // ÈÎÎñ¿ØÖÆ
+
+   \                                 In segment XDATA_Z, align 1, keep-with-next
+   \   000000                REQUIRE __INIT_XDATA_Z
+     48          osalTaskRec_t *tasksHead;
+   \                     tasksHead:
+   \   000000                DS 2
+     49          
+
+   \                                 In segment XDATA_Z, align 1, keep-with-next
+   \   000000                REQUIRE __INIT_XDATA_Z
+     50          osalTaskRec_t *activeTask;
+   \                     activeTask:
+   \   000000                DS 2
+     51          
+
+   \                                 In segment XDATA_Z, align 1, keep-with-next
+   \   000000                REQUIRE __INIT_XDATA_Z
+     52          byte taskIDs;
+   \                     taskIDs:
+   \   000000                DS 1
+     53          
+     54          /*********************************************************************
+     55           * EXTERNAL VARIABLES
+     56           */
+     57          
+     58          /*********************************************************************
+     59           * EXTERNAL FUNCTIONS
+     60           */
+     61          
+     62           /*********************************************************************
+     63           * LOCAL VARIABLES
+     64           */
+     65          
+     66          /*********************************************************************
+     67           * LOCAL FUNCTION PROTOTYPES
+     68           */
+     69          
+     70          /*********************************************************************
+     71           * FUNCTIONS
+     72           *********************************************************************/
+     73          
+     74          /*********************************************************************
+     75           * @fn      osalTaskInit
+     76           *
+     77           * @brief   ³õÊ¼»¯ÈÎÎñÏµÍ³
+     78           *
+     79           * @param   none
+     80           *
+     81           * @return
+     82           */
+
+   \                                 In segment BANKED_CODE, align 1, keep-with-next
+     83          void osalTaskInit( void )
+   \                     osalTaskInit:
+     84          {
+   \   000000   C082         PUSH    DPL
+   \   000002   C083         PUSH    DPH
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 0
+     85            tasksHead = (osalTaskRec_t *)NULL;
+   \   000004   90....       MOV     DPTR,#tasksHead
+   \   000007   E4           CLR     A
+   \   000008   F0           MOVX    @DPTR,A
+   \   000009   A3           INC     DPTR
+   \   00000A   F0           MOVX    @DPTR,A
+     86            activeTask = (osalTaskRec_t *)NULL;
+   \   00000B   90....       MOV     DPTR,#activeTask
+   \   00000E   F0           MOVX    @DPTR,A
+   \   00000F   A3           INC     DPTR
+   \   000010   F0           MOVX    @DPTR,A
+     87            taskIDs = 0;
+   \   000011   90....       MOV     DPTR,#taskIDs
+   \   000014   F0           MOVX    @DPTR,A
+     88          }
+   \   000015                REQUIRE ?Subroutine3
+   \   000015                ; // Fall through to label ?Subroutine3
+
+   \                                 In segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine3:
+   \   000000   D083         POP     DPH
+   \   000002   D082         POP     DPL
+   \   000004   02....       LJMP    ?BRET
+     89          
+     90          /***************************************************************************
+     91           * @fn      osalTaskAdd
+     92           *
+     93           * @brief   Ìí¼ÓÒ»¸öÈÎÎñµ½ÈÎÎñÁÐ±í. ±£³ÖÈÎÎñ¶ÓÁÐµÄÓÅÏÈ¼¶.
+     94           *
+     95           * @param   none
+     96           *
+     97           * @return
+     98           */
+
+   \                                 In segment BANKED_CODE, align 1, keep-with-next
+     99          void osalTaskAdd( pTaskInitFn pfnInit,
+   \                     osalTaskAdd:
+    100                            pTaskEventHandlerFn pfnEventProcessor,
+    101                            byte taskPriority)
+    102          {
+   \   000000   74F1         MOV     A,#-0xf
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 15
+   \   000005                ; Auto size: 3
+   \   000005   74FD         MOV     A,#-0x3
+   \   000007   12....       LCALL   ?ALLOC_XSTACK8
+   \   00000A   85..82       MOV     DPL,?XSP + 0
+   \   00000D   85..83       MOV     DPH,?XSP + 1
+   \   000010   E9           MOV     A,R1
+   \   000011   F0           MOVX    @DPTR,A
+   \   000012   A3           INC     DPTR
+   \   000013   EA           MOV     A,R2
+   \   000014   F0           MOVX    @DPTR,A
+   \   000015   A3           INC     DPTR
+   \   000016   EB           MOV     A,R3
+   \   000017   F0           MOVX    @DPTR,A
+   \   000018   EC           MOV     A,R4
+   \   000019   FE           MOV     R6,A
+   \   00001A   7412         MOV     A,#0x12
+   \   00001C   12....       LCALL   ?XSTACK_DISP0_8
+   \   00001F   E0           MOVX    A,@DPTR
+   \   000020   F5..         MOV     ?V0 + 0,A
+   \   000022   A3           INC     DPTR
+   \   000023   E0           MOVX    A,@DPTR
+   \   000024   F5..         MOV     ?V0 + 1,A
+   \   000026   A3           INC     DPTR
+   \   000027   E0           MOVX    A,@DPTR
+   \   000028   F5..         MOV     ?V0 + 2,A
+    103            osalTaskRec_t *newTask;
+    104            osalTaskRec_t *srchTask;
+    105            osalTaskRec_t **ptr;
+    106          
+    107            newTask = osal_mem_alloc( sizeof( osalTaskRec_t ) );
+   \   00002A                ; Setup parameters for call to function osal_mem_alloc
+   \   00002A   7A0C         MOV     R2,#0xc
+   \   00002C   7B00         MOV     R3,#0x0
+   \   00002E   90....       MOV     DPTR,#(osal_mem_alloc & 0xffff)
+   \   000031   74..         MOV     A,#((osal_mem_alloc >> 16) & 0xff)
+   \   000033   12....       LCALL   ?BCALL               ; Banked call to: DPTR()
+    108            if ( newTask )
+   \   000036   EA           MOV     A,R2
+   \   000037   7001         JNZ     ??osalTaskAdd_0
+   \   000039   EB           MOV     A,R3
+   \                     ??osalTaskAdd_0:
+   \   00003A   7003         JNZ     $+5
+   \   00003C   02....       LJMP    ??osalTaskAdd_1 & 0xFFFF
+    109            {
+    110                // ÐÂÈÎÎñ
+    111                newTask->pfnInit           = pfnInit;
+   \   00003F   85..82       MOV     DPL,?XSP + 0
+   \   000042   85..83       MOV     DPH,?XSP + 1
+   \   000045   E0           MOVX    A,@DPTR
+   \   000046   F5..         MOV     ?V0 + 4,A
+   \   000048   A3           INC     DPTR
+   \   000049   E0           MOVX    A,@DPTR
+   \   00004A   F5..         MOV     ?V0 + 5,A
+   \   00004C   A3           INC     DPTR
+   \   00004D   E0           MOVX    A,@DPTR
+   \   00004E   F5..         MOV     ?V0 + 6,A
+   \   000050   8A82         MOV     DPL,R2
+   \   000052   8B83         MOV     DPH,R3
+   \   000054   A3           INC     DPTR
+   \   000055   A3           INC     DPTR
+   \   000056   E5..         MOV     A,?V0 + 4
+   \   000058   F0           MOVX    @DPTR,A
+   \   000059   A3           INC     DPTR
+   \   00005A   E5..         MOV     A,?V0 + 5
+   \   00005C   F0           MOVX    @DPTR,A
+   \   00005D   A3           INC     DPTR
+   \   00005E   E5..         MOV     A,?V0 + 6
+   \   000060   12....       LCALL   ?Subroutine0 & 0xFFFF
+    112                newTask->pfnEventProcessor = pfnEventProcessor;
+   \                     ??CrossCallReturnLabel_2:
+   \   000063   E5..         MOV     A,?V0 + 0
+   \   000065   F0           MOVX    @DPTR,A
+   \   000066   A3           INC     DPTR
+   \   000067   E5..         MOV     A,?V0 + 1
+   \   000069   F0           MOVX    @DPTR,A
+   \   00006A   A3           INC     DPTR
+   \   00006B   E5..         MOV     A,?V0 + 2
+   \   00006D   F0           MOVX    @DPTR,A
+    113                newTask->taskID            = taskIDs++;
+   \   00006E   90....       MOV     DPTR,#taskIDs
+   \   000071   E0           MOVX    A,@DPTR
+   \   000072   8A82         MOV     DPL,R2
+   \   000074   8B83         MOV     DPH,R3
+   \   000076   A3           INC     DPTR
+   \   000077   A3           INC     DPTR
+   \   000078   A3           INC     DPTR
+   \   000079   A3           INC     DPTR
+   \   00007A   A3           INC     DPTR
+   \   00007B   A3           INC     DPTR
+   \   00007C   A3           INC     DPTR
+   \   00007D   A3           INC     DPTR
+   \   00007E   F0           MOVX    @DPTR,A
+   \   00007F   90....       MOV     DPTR,#taskIDs
+   \   000082   E0           MOVX    A,@DPTR
+   \   000083   04           INC     A
+   \   000084   F0           MOVX    @DPTR,A
+    114                newTask->taskPriority      = taskPriority;
+   \   000085   EE           MOV     A,R6
+   \   000086   8A82         MOV     DPL,R2
+   \   000088   8B83         MOV     DPH,R3
+   \   00008A   A3           INC     DPTR
+   \   00008B   A3           INC     DPTR
+   \   00008C   A3           INC     DPTR
+   \   00008D   A3           INC     DPTR
+   \   00008E   A3           INC     DPTR
+   \   00008F   A3           INC     DPTR
+   \   000090   A3           INC     DPTR
+   \   000091   A3           INC     DPTR
+   \   000092   A3           INC     DPTR
+   \   000093   12....       LCALL   ?Subroutine0 & 0xFFFF
+    115                newTask->events            = 0;
+   \                     ??CrossCallReturnLabel_3:
+   \   000096   A3           INC     DPTR
+   \   000097   A3           INC     DPTR
+   \   000098   A3           INC     DPTR
+   \   000099   A3           INC     DPTR
+   \   00009A   A3           INC     DPTR
+   \   00009B   E4           CLR     A
+   \   00009C   F0           MOVX    @DPTR,A
+   \   00009D   A3           INC     DPTR
+   \   00009E   F0           MOVX    @DPTR,A
+    116                newTask->next              = (osalTaskRec_t *)NULL;
+   \   00009F   8A82         MOV     DPL,R2
+   \   0000A1   8B83         MOV     DPH,R3
+   \   0000A3   F0           MOVX    @DPTR,A
+   \   0000A4   A3           INC     DPTR
+   \   0000A5   F0           MOVX    @DPTR,A
+    117          
+    118                // µ±Ò»¸öÐÂÈÎÎñÊÇÇ¶ÈëµÄ£¬¡®ptr¡¯ÊÇÖ¸ÏòÒ»¸öÐÂÈÎÎñµÄµØÖ·¡£ËüÊÇÔÚÉèÖÃÒ»¸öµØÖ·¸ø¡®taskshead¡¯
+    119                ptr      = &tasksHead;
+   \   0000A6   7C..         MOV     R4,#(tasksHead & 0xff)
+   \   0000A8   7D..         MOV     R5,#((tasksHead >> 8) & 0xff)
+    120                srchTask = tasksHead;
+   \   0000AA   90....       MOV     DPTR,#tasksHead
+   \   0000AD   8008         SJMP    ??osalTaskAdd_2
+    121                while (srchTask)  {
+    122                    if (newTask->taskPriority > srchTask->taskPriority)  {
+    123                        // Ç¶Èëµ½ÕâÀï.ÐÂÈÎÎñÓÐÒ»¸öµÝÔöÐÍÓÅÏÈÖÈÐò£¬
+    124                        newTask->next = srchTask;
+    125                        *ptr          = newTask;
+    126                        return;
+    127                    }
+    128                    // set 'ptr' to address of the pointer to 'next' in the current
+    129                    // (soon to be previous) task control block
+    130                    ptr      = &srchTask->next;
+   \                     ??osalTaskAdd_3:
+   \   0000AF   E8           MOV     A,R0
+   \   0000B0   FC           MOV     R4,A
+   \   0000B1   E9           MOV     A,R1
+   \   0000B2   FD           MOV     R5,A
+    131                    srchTask = srchTask->next;
+   \   0000B3   8882         MOV     DPL,R0
+   \   0000B5   8983         MOV     DPH,R1
+   \                     ??osalTaskAdd_2:
+   \   0000B7   E0           MOVX    A,@DPTR
+   \   0000B8   F8           MOV     R0,A
+   \   0000B9   A3           INC     DPTR
+   \   0000BA   E0           MOVX    A,@DPTR
+   \   0000BB   F9           MOV     R1,A
+   \   0000BC   E8           MOV     A,R0
+   \   0000BD   7001         JNZ     ??osalTaskAdd_4
+   \   0000BF   E9           MOV     A,R1
+   \                     ??osalTaskAdd_4:
+   \   0000C0   601B         JZ      ??osalTaskAdd_5
+   \   0000C2   8882         MOV     DPL,R0
+   \   0000C4   8983         MOV     DPH,R1
+   \   0000C6   A3           INC     DPTR
+   \   0000C7   A3           INC     DPTR
+   \   0000C8   A3           INC     DPTR
+   \   0000C9   A3           INC     DPTR
+   \   0000CA   A3           INC     DPTR
+   \   0000CB   A3           INC     DPTR
+   \   0000CC   A3           INC     DPTR
+   \   0000CD   A3           INC     DPTR
+   \   0000CE   A3           INC     DPTR
+   \   0000CF   E0           MOVX    A,@DPTR
+   \   0000D0   C3           CLR     C
+   \   0000D1   9E           SUBB    A,R6
+   \   0000D2   50DB         JNC     ??osalTaskAdd_3
+   \   0000D4   8A82         MOV     DPL,R2
+   \   0000D6   8B83         MOV     DPH,R3
+   \   0000D8   E8           MOV     A,R0
+   \   0000D9   F0           MOVX    @DPTR,A
+   \   0000DA   A3           INC     DPTR
+   \   0000DB   E9           MOV     A,R1
+   \   0000DC   F0           MOVX    @DPTR,A
+    132                }
+    133          
+    134          	  // We're at the end of the current queue. New task is not higher
+    135          	  // priority than any other already in the list. Make it the tail.
+    136                // (It is also the head if the queue was initially empty.)
+    137                *ptr = newTask;
+   \                     ??osalTaskAdd_5:
+   \   0000DD   EA           MOV     A,R2
+   \   0000DE   F8           MOV     R0,A
+   \   0000DF   EB           MOV     A,R3
+   \   0000E0   F9           MOV     R1,A
+   \   0000E1   8C82         MOV     DPL,R4
+   \   0000E3   8D83         MOV     DPH,R5
+   \   0000E5   E8           MOV     A,R0
+   \   0000E6   F0           MOVX    @DPTR,A
+   \   0000E7   A3           INC     DPTR
+   \   0000E8   E9           MOV     A,R1
+   \   0000E9   F0           MOVX    @DPTR,A
+   \                     ??osalTaskAdd_1:
+   \   0000EA   7403         MOV     A,#0x3
+   \   0000EC   12....       LCALL   ?DEALLOC_XSTACK8
+   \   0000EF   7F07         MOV     R7,#0x7
+   \   0000F1   02....       LJMP    ?BANKED_LEAVE_XDATA
+    138            }
+    139            return;
+    140          }
+
+   \                                 In segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine0:
+   \   000000   F0           MOVX    @DPTR,A
+   \   000001   8A82         MOV     DPL,R2
+   \   000003   8B83         MOV     DPH,R3
+   \   000005   A3           INC     DPTR
+   \   000006                REQUIRE ?Subroutine4
+   \   000006                ; // Fall through to label ?Subroutine4
+
+   \                                 In segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine4:
+   \   000000   A3           INC     DPTR
+   \   000001   A3           INC     DPTR
+   \   000002   A3           INC     DPTR
+   \   000003   A3           INC     DPTR
+   \   000004   22           RET
+    141          
+    142          /*********************************************************************
+    143           * @fn      osalInitTasks
+    144           *
+    145           * @brief   µ÷ÓÃ¸÷×ÔÈÎÎñµÄ³õÊ¼»¯º¯Êý
+    146           *
+    147           * @param   none
+    148           *
+    149           * @return  none
+    150           */
+
+   \                                 In segment BANKED_CODE, align 1, keep-with-next
+    151          void osalInitTasks( void )
+   \                     osalInitTasks:
+    152          {
+   \   000000   74F7         MOV     A,#-0x9
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 9
+   \   000005                ; Auto size: 0
+    153            // Start at the beginning
+    154            activeTask = tasksHead;
+   \   000005   90....       MOV     DPTR,#tasksHead
+   \   000008   8029         SJMP    ??CrossCallReturnLabel_1
+    155          
+    156            // Stop at the end
+    157            while ( activeTask )
+    158            {
+    159              if (  activeTask->pfnInit  )
+   \                     ??osalInitTasks_0:
+   \   00000A   12....       LCALL   ?Subroutine2 & 0xFFFF
+   \                     ??CrossCallReturnLabel_0:
+   \   00000D   A3           INC     DPTR
+   \   00000E   A3           INC     DPTR
+   \   00000F   E0           MOVX    A,@DPTR
+   \   000010   FC           MOV     R4,A
+   \   000011   A3           INC     DPTR
+   \   000012   E0           MOVX    A,@DPTR
+   \   000013   FD           MOV     R5,A
+   \   000014   A3           INC     DPTR
+   \   000015   E0           MOVX    A,@DPTR
+   \   000016   FE           MOV     R6,A
+   \   000017   EC           MOV     A,R4
+   \   000018   4D           ORL     A,R5
+   \   000019   4E           ORL     A,R6
+   \   00001A   6014         JZ      ??osalInitTasks_1
+    160                activeTask->pfnInit( activeTask->taskID );
+   \   00001C                ; Setup parameters for indirect call
+   \   00001C   12....       LCALL   ?Subroutine1 & 0xFFFF
+   \                     ??CrossCallReturnLabel_4:
+   \   00001F   A3           INC     DPTR
+   \   000020   A3           INC     DPTR
+   \   000021   A3           INC     DPTR
+   \   000022   A3           INC     DPTR
+   \   000023   E0           MOVX    A,@DPTR
+   \   000024   F9           MOV     R1,A
+   \   000025   12....       LCALL   ?Subroutine1 & 0xFFFF
+   \                     ??CrossCallReturnLabel_5:
+   \   000028   E0           MOVX    A,@DPTR
+   \   000029   8C82         MOV     DPL,R4
+   \   00002B   8D83         MOV     DPH,R5
+   \   00002D   12....       LCALL   ?BCALL               ; Banked call to: DPTR()
+    161          
+    162              activeTask = activeTask->next;
+   \                     ??osalInitTasks_1:
+   \   000030   12....       LCALL   ?Subroutine2 & 0xFFFF
+   \                     ??CrossCallReturnLabel_1:
+   \   000033   E0           MOVX    A,@DPTR
+   \   000034   F8           MOV     R0,A
+   \   000035   A3           INC     DPTR
+   \   000036   E0           MOVX    A,@DPTR
+   \   000037   F9           MOV     R1,A
+   \   000038   90....       MOV     DPTR,#activeTask
+   \   00003B   E8           MOV     A,R0
+   \   00003C   F0           MOVX    @DPTR,A
+   \   00003D   A3           INC     DPTR
+   \   00003E   E9           MOV     A,R1
+   \   00003F   F0           MOVX    @DPTR,A
+    163            }
+   \   000040   90....       MOV     DPTR,#activeTask
+   \   000043   E0           MOVX    A,@DPTR
+   \   000044   7002         JNZ     ??osalInitTasks_2
+   \   000046   A3           INC     DPTR
+   \   000047   E0           MOVX    A,@DPTR
+   \                     ??osalInitTasks_2:
+   \   000048   70C0         JNZ     ??osalInitTasks_0
+    164          
+    165            activeTask = (osalTaskRec_t *)NULL;
+    166          }
+   \   00004A   7F01         MOV     R7,#0x1
+   \   00004C   02....       LJMP    ?BANKED_LEAVE_XDATA
+
+   \                                 In segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine2:
+   \   000000   90....       MOV     DPTR,#activeTask
+   \   000003   E0           MOVX    A,@DPTR
+   \   000004   F8           MOV     R0,A
+   \   000005   A3           INC     DPTR
+   \   000006   E0           MOVX    A,@DPTR
+   \   000007   F583         MOV     DPH,A
+   \   000009   8882         MOV     DPL,R0
+   \   00000B   22           RET
+
+   \                                 In segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine1:
+   \   000000   90....       MOV     DPTR,#(activeTask + 1)
+   \   000003   E0           MOVX    A,@DPTR
+   \   000004   F583         MOV     DPH,A
+   \   000006   8882         MOV     DPL,R0
+   \   000008   80..         SJMP    ?Subroutine4
+    167          
+    168          /*********************************************************************
+    169           * @fn      osalNextActiveTask
+    170           *
+    171           * @brief   Õâ¸öº¯Êý½«·µ»ØÏÂÒ»¸ö±»¼¤»îµÄÈÎÎñ
+    172           *
+    173           *
+    174           * @param   none
+    175           *
+    176           * @return  Ö¸Ïò·¢ÉúµÄÊÂ¼þµÄÈÎÎñ£¬NULLÎªÃ»ÓÐ·¢ÏÖÊÂ¼þ
+    177           */
+
+   \                                 In segment BANKED_CODE, align 1, keep-with-next
+    178          osalTaskRec_t *osalNextActiveTask( void )
+   \                     osalNextActiveTask:
+    179          {
+   \   000000   C082         PUSH    DPL
+   \   000002   C083         PUSH    DPH
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 0
+    180            osalTaskRec_t *srchTask;
+    181          
+    182            // Start at the beginning
+    183            srchTask = tasksHead;
+   \   000004   90....       MOV     DPTR,#tasksHead
+   \   000007   8004         SJMP    ??osalNextActiveTask_0
+    184          
+    185            // When found or not
+    186            while ( srchTask )  {
+    187                if (srchTask->events)  {
+    188          		  // ¸ßÓÅÏÈ¼¶µÄÈÎÎñ×¼±¸
+    189                    return srchTask;
+    190                }
+    191                srchTask = srchTask->next;
+   \                     ??osalNextActiveTask_1:
+   \   000009   8A82         MOV     DPL,R2
+   \   00000B   8B83         MOV     DPH,R3
+   \                     ??osalNextActiveTask_0:
+   \   00000D   E0           MOVX    A,@DPTR
+   \   00000E   FA           MOV     R2,A
+   \   00000F   A3           INC     DPTR
+   \   000010   E0           MOVX    A,@DPTR
+   \   000011   FB           MOV     R3,A
+   \   000012   EA           MOV     A,R2
+   \   000013   7001         JNZ     ??osalNextActiveTask_2
+   \   000015   EB           MOV     A,R3
+   \                     ??osalNextActiveTask_2:
+   \   000016   6017         JZ      ??osalNextActiveTask_3
+   \   000018   8A82         MOV     DPL,R2
+   \   00001A   8B83         MOV     DPH,R3
+   \   00001C   A3           INC     DPTR
+   \   00001D   A3           INC     DPTR
+   \   00001E   A3           INC     DPTR
+   \   00001F   A3           INC     DPTR
+   \   000020   A3           INC     DPTR
+   \   000021   A3           INC     DPTR
+   \   000022   A3           INC     DPTR
+   \   000023   A3           INC     DPTR
+   \   000024   A3           INC     DPTR
+   \   000025   A3           INC     DPTR
+   \   000026   E0           MOVX    A,@DPTR
+   \   000027   7002         JNZ     ??osalNextActiveTask_4
+   \   000029   A3           INC     DPTR
+   \   00002A   E0           MOVX    A,@DPTR
+   \                     ??osalNextActiveTask_4:
+   \   00002B   60DC         JZ      ??osalNextActiveTask_1
+   \   00002D   8004         SJMP    ??osalNextActiveTask_5
+    192            }
+    193            return NULL;
+   \                     ??osalNextActiveTask_3:
+   \   00002F   7A00         MOV     R2,#0x0
+   \   000031   7B00         MOV     R3,#0x0
+   \                     ??osalNextActiveTask_5:
+   \   000033   02....       LJMP    ?Subroutine3 & 0xFFFF
+    194          }
+    195          
+    196          
+    197          /*********************************************************************
+    198           * @fn      osalFindTask
+    199           *
+    200           * @brief   Õâ¸öº¯Êý½«·µ»ØÒ»¸öÖ¸ÏòÈÎÎñµÄ±»Í¨¹ýµÄÈÎÎñID
+    201           *
+    202           * @param   taskID - task ID to look for
+    203           *
+    204           * @return  pointer to the found task, NULL if not found
+    205           */
+
+   \                                 In segment BANKED_CODE, align 1, keep-with-next
+    206          osalTaskRec_t *osalFindTask( byte taskID )
+   \                     osalFindTask:
+    207          {
+   \   000000   C082         PUSH    DPL
+   \   000002   C083         PUSH    DPH
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 0
+    208            osalTaskRec_t *srchTask;
+    209          
+    210            // Start at the beginning
+    211            srchTask = tasksHead;
+   \   000004   90....       MOV     DPTR,#tasksHead
+   \   000007   8004         SJMP    ??osalFindTask_0
+    212          
+    213            // When found or not
+    214            while ( srchTask )
+    215            {
+    216              // Look for any activity
+    217              if (  srchTask->taskID == taskID  )
+    218                return ( srchTask );
+    219          
+    220              srchTask = srchTask->next;
+   \                     ??osalFindTask_1:
+   \   000009   8A82         MOV     DPL,R2
+   \   00000B   8B83         MOV     DPH,R3
+   \                     ??osalFindTask_0:
+   \   00000D   E0           MOVX    A,@DPTR
+   \   00000E   FA           MOV     R2,A
+   \   00000F   A3           INC     DPTR
+   \   000010   E0           MOVX    A,@DPTR
+   \   000011   FB           MOV     R3,A
+   \   000012   EA           MOV     A,R2
+   \   000013   7001         JNZ     ??osalFindTask_2
+   \   000015   EB           MOV     A,R3
+   \                     ??osalFindTask_2:
+   \   000016   6012         JZ      ??osalFindTask_3
+   \   000018   8A82         MOV     DPL,R2
+   \   00001A   8B83         MOV     DPH,R3
+   \   00001C   A3           INC     DPTR
+   \   00001D   A3           INC     DPTR
+   \   00001E   A3           INC     DPTR
+   \   00001F   A3           INC     DPTR
+   \   000020   A3           INC     DPTR
+   \   000021   A3           INC     DPTR
+   \   000022   A3           INC     DPTR
+   \   000023   A3           INC     DPTR
+   \   000024   E0           MOVX    A,@DPTR
+   \   000025   69           XRL     A,R1
+   \   000026   70E1         JNZ     ??osalFindTask_1
+   \   000028   8004         SJMP    ??osalFindTask_4
+    221            }
+    222          
+    223            return ( (osalTaskRec_t *)NULL );
+   \                     ??osalFindTask_3:
+   \   00002A   7A00         MOV     R2,#0x0
+   \   00002C   7B00         MOV     R3,#0x0
+   \                     ??osalFindTask_4:
+   \   00002E   02....       LJMP    ?Subroutine3 & 0xFFFF
+    224          }
+    225          
+    226          /*********************************************************************
+    227          *********************************************************************/
+
+   Maximum stack usage in bytes:
+
+     Function            ISTACK PSTACK XSTACK
+     --------            ------ ------ ------
+     osalFindTask            2      0      0
+     osalInitTasks           0      0      9
+     osalNextActiveTask      2      0      0
+     osalTaskAdd             1      0     21
+       -> osal_mem_alloc     0      0     36
+     osalTaskInit            2      0      0
+
+
+   Segment part sizes:
+
+     Function/Label     Bytes
+     --------------     -----
+     tasksHead             2
+     activeTask            2
+     taskIDs               1
+     osalTaskInit         21
+     ?Subroutine3          7
+     osalTaskAdd         244
+     ?Subroutine0          6
+     ?Subroutine4          5
+     osalInitTasks        79
+     ?Subroutine2         12
+     ?Subroutine1         10
+     osalNextActiveTask   54
+     osalFindTask         49
+
+ 
+ 487 bytes in segment BANKED_CODE
+   5 bytes in segment XDATA_Z
+ 
+ 487 bytes of CODE  memory
+   5 bytes of XDATA memory
+
+Errors: none
+Warnings: none

@@ -1,0 +1,321 @@
+##############################################################################
+#                                                                            #
+# IAR 8051 C/C++ Compiler V7.20H/W32                   24/Jan/2013  14:47:36 #
+# Copyright 2004-2006 IAR Systems. All rights reserved.                      #
+#                                                                            #
+#    Core               =  plain                                             #
+#    Code model         =  banked                                            #
+#    Data model         =  large                                             #
+#    Calling convention =  xdata reentrant                                   #
+#    Constant location  =  data                                              #
+#    Dptr setup         =  1,16                                              #
+#    Source file        =  D:\Texas Instruments\ZStack-1.4.2-1.1.0\Component #
+#                          s\hal\target\CC2430EB\hal_dma.c                   #
+#    Command line       =  -f E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç #
+#                          ¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006 #
+#                          -´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp #
+#                          les\SampleApp\CC2430DB\..\..\..\Tools\CC2430DB\f8 #
+#                          wRouter.cfg (-DCPU32MHZ -DFORCE_MAC_NEAR          #
+#                          -DROOT=__near_func -DMAC_CFG_APP_PENDING_QUEUE=TR #
+#                          UE -DRTR_NWK -DBLINK_LEDS "-DCONST=const __code"  #
+#                          -DGENERIC=__generic) -f                           #
+#                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª· #
+#                          ¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006-´® #
+#                          ¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples #
+#                          \SampleApp\CC2430DB\..\..\..\Tools\CC2430DB\f8wCo #
+#                          nfig.cfg (-DSECURE=0 -DDEFAULT_CHANLIST=0x0000080 #
+#                          0 -DZDAPP_CONFIG_PAN_ID=0xFFFF                    #
+#                          -DNWK_START_DELAY=100 -DEXTENDED_JOINING_RANDOM_M #
+#                          ASK=0x007F -DBEACON_REQUEST_DELAY=100             #
+#                          -DBEACON_REQ_DELAY_MASK=0x00FF                    #
+#                          -DROUTE_EXPIRY_TIME=30 -DAPSC_ACK_WAIT_DURATION_P #
+#                          OLLED=3000 -DNWK_INDIRECT_MSG_TIMEOUT=7           #
+#                          -DMAX_RREQ_ENTRIES=10 -DAPSC_MAX_FRAME_RETRIES=3  #
+#                          -DNWK_MAX_DATA_RETRIES=2                          #
+#                          -DMAX_POLL_FAILURE_RETRIES=2 -DMAX_BCAST=9        #
+#                          -DAPS_MAX_GROUPS=16 -DMAX_RTG_ENTRIES=20          #
+#                          -DNWK_MAX_BINDING_ENTRIES=10                      #
+#                          -DMAX_BINDING_CLUSTER_IDS=5                       #
+#                          "-DDEFAULT_KEY={0x01, 0x03, 0x05, 0x07, 0x09,     #
+#                          0x0B, 0x0D, 0x0F, 0x00, 0x02, 0x04, 0x06, 0x08,   #
+#                          0x0A, 0x0C, 0x0D}" -DRFD_RCVC_ALWAYS_ON=FALSE     #
+#                          -DPOLL_RATE=1000 -DQUEUED_POLL_RATE=100           #
+#                          -DRESPONSE_POLL_RATE=100 -DREJOIN_POLL_RATE=440   #
+#                          -DTOP_BOOT_PAGES=0) -I "D:\Program Files\IAR      #
+#                          Systems\Embedded Workbench 4.05 Evaluation        #
+#                          version\8051\inc\" -I "D:\Program Files\IAR       #
+#                          Systems\Embedded Workbench 4.05 Evaluation        #
+#                          version\8051\inc\clib\" -I                        #
+#                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª· #
+#                          ¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006-´® #
+#                          ¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples #
+#                          \SampleApp\CC2430DB\ -I                           #
+#                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª· #
+#                          ¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006-´® #
+#                          ¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples #
+#                          \SampleApp\CC2430DB\..\Source\ -I                 #
+#                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª· #
+#                          ¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006-´® #
+#                          ¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples #
+#                          \SampleApp\CC2430DB\..\..\..\ZMain\TI2430DB\ -I   #
+#                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª· #
+#                          ¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006-´® #
+#                          ¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples #
+#                          \SampleApp\CC2430DB\..\..\..\..\..\Components\mt\ #
+#                           -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂ #
+#                          ç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee200 #
+#                          6-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Sam #
+#                          ples\SampleApp\CC2430DB\..\..\..\..\..\Components #
+#                          \hal\include\ -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª· #
+#                          ¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2 #
+#                          006\ZigBee2006-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projec #
+#                          ts\zstack\Samples\SampleApp\CC2430DB\..\..\..\..\ #
+#                          ..\Components\hal\target\CC2430EB\ -I             #
+#                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª· #
+#                          ¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006-´® #
+#                          ¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples #
+#                          \SampleApp\CC2430DB\..\..\..\..\..\Components\osa #
+#                          l\mcu\ccsoc\ -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢ #
+#                          ×ÊÁÏ\ÎÞÏßÍøÂç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee20 #
+#                          06\ZigBee2006-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Project #
+#                          s\zstack\Samples\SampleApp\CC2430DB\..\..\..\..\. #
+#                          .\Components\osal\include\ -I                     #
+#                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª· #
+#                          ¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006-´® #
+#                          ¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples #
+#                          \SampleApp\CC2430DB\..\..\..\..\..\Components\sta #
+#                          ck\af\ -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\Î #
+#                          ÞÏßÍøÂç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\Zig #
+#                          Bee2006-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zsta #
+#                          ck\Samples\SampleApp\CC2430DB\..\..\..\..\..\Comp #
+#                          onents\stack\nwk\ -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC243 #
+#                          0¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\Zig #
+#                          Bee2006\ZigBee2006-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Pr #
+#                          ojects\zstack\Samples\SampleApp\CC2430DB\..\..\.. #
+#                          \..\..\Components\stack\sec\ -I                   #
+#                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª· #
+#                          ¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006-´® #
+#                          ¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples #
+#                          \SampleApp\CC2430DB\..\..\..\..\..\Components\sta #
+#                          ck\sys\ -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ #
+#                          ÎÞÏßÍøÂç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\Zi #
+#                          gBee2006-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zst #
+#                          ack\Samples\SampleApp\CC2430DB\..\..\..\..\..\Com #
+#                          ponents\stack\zdo\ -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC24 #
+#                          30¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\Zi #
+#                          gBee2006\ZigBee2006-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\P #
+#                          rojects\zstack\Samples\SampleApp\CC2430DB\..\..\. #
+#                          .\..\..\Components\zmac\f8w\ -I                   #
+#                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª· #
+#                          ¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006-´® #
+#                          ¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples #
+#                          \SampleApp\CC2430DB\..\..\..\..\..\Components\zma #
+#                          c\ -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍ #
+#                          øÂç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2 #
+#                          006-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\S #
+#                          amples\SampleApp\CC2430DB\..\..\..\..\..\Componen #
+#                          ts\services\saddr\ -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC24 #
+#                          30¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\Zi #
+#                          gBee2006\ZigBee2006-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\P #
+#                          rojects\zstack\Samples\SampleApp\CC2430DB\..\..\. #
+#                          .\..\..\Components\services\sdata\ -I             #
+#                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª· #
+#                          ¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006-´® #
+#                          ¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples #
+#                          \SampleApp\CC2430DB\..\..\..\..\..\Components\mac #
+#                          \include\ -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁ #
+#                          Ï\ÎÞÏßÍøÂç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ #
+#                          ZigBee2006-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\z #
+#                          stack\Samples\SampleApp\CC2430DB\..\..\..\..\..\C #
+#                          omponents\mac\high_level\ -I                      #
+#                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª· #
+#                          ¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006-´® #
+#                          ¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples #
+#                          \SampleApp\CC2430DB\..\..\..\..\..\Components\mac #
+#                          \low_level\srf03\ -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC243 #
+#                          0¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\Zig #
+#                          Bee2006\ZigBee2006-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Pr #
+#                          ojects\zstack\Samples\SampleApp\CC2430DB\..\..\.. #
+#                          \..\..\Components\mac\low_level\srf03\single_chip #
+#                          \ -D CC2430EB -D ZTOOL_P1 -D MT_TASK -lC          #
+#                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª· #
+#                          ¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006-´® #
+#                          ¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples #
+#                          \SampleApp\CC2430DB\RouterEB\List\ -lA            #
+#                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª· #
+#                          ¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006-´® #
+#                          ¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples #
+#                          \SampleApp\CC2430DB\RouterEB\List\                #
+#                          --diag_suppress Pe001,Pa010 --diag_remark pe550   #
+#                          -o E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç #
+#                          ¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006 #
+#                          -´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp #
+#                          les\SampleApp\CC2430DB\RouterEB\Obj\ -e           #
+#                          --require_prototypes -z9 --no_code_motion         #
+#                          --debug --core=plain --dptr=16,1                  #
+#                          --data_model=large --code_model=banked            #
+#                          --calling_convention=xdata_reentrant              #
+#                          --place_constants=data --nr_virtual_regs 8        #
+#                          "D:\Texas Instruments\ZStack-1.4.2-1.1.0\Componen #
+#                          ts\hal\target\CC2430EB\hal_dma.c"                 #
+#    List file          =  E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª· #
+#                          ¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006-´® #
+#                          ¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples #
+#                          \SampleApp\CC2430DB\RouterEB\List\hal_dma.lst     #
+#    Object file        =  E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª· #
+#                          ¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006-´® #
+#                          ¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples #
+#                          \SampleApp\CC2430DB\RouterEB\Obj\hal_dma.r51      #
+#                                                                            #
+#                                                                            #
+##############################################################################
+
+D:\Texas Instruments\ZStack-1.4.2-1.1.0\Components\hal\target\CC2430EB\hal_dma.c
+      1          /******************************************************************************
+      2              Filename:       _hal_dma.c
+      3              Revised:        $Date: 2007-03-13 14:24:09 -0700 (Tue, 13 Mar 2007) $
+      4              Revision:       $Revision: 13747 $
+      5          
+      6              Description: This file contains the interface to the DMA.
+      7          
+      8              Copyright (c) 2007 by Texas Instruments, Inc.
+      9              All Rights Reserved.  Permission to use, reproduce, copy, prepare
+     10              derivative works, modify, distribute, perform, display or sell this
+     11              software and/or its documentation for any purpose is prohibited
+     12              without the express written consent of Texas Instruments, Inc.
+     13          ******************************************************************************/
+     14          
+     15          /*********************************************************************
+     16           * INCLUDES
+     17           */
+     18          
+     19          #include "hal_types.h"
+     20          #include "hal_defs.h"
+     21          #include "hal_dma.h"
+
+   \                                 In segment SFR_AN, at 0xd2
+   \   unsigned char volatile __sfr DMA1CFGL
+   \                     DMA1CFGL:
+   \   000000                DS 1
+
+   \                                 In segment SFR_AN, at 0xd3
+   \   unsigned char volatile __sfr DMA1CFGH
+   \                     DMA1CFGH:
+   \   000000                DS 1
+
+   \                                 In segment SFR_AN, at 0xd4
+   \   unsigned char volatile __sfr DMA0CFGL
+   \                     DMA0CFGL:
+   \   000000                DS 1
+
+   \                                 In segment SFR_AN, at 0xd5
+   \   unsigned char volatile __sfr DMA0CFGH
+   \                     DMA0CFGH:
+   \   000000                DS 1
+     22          #include "hal_mcu.h"
+     23          #include "hal_uart.h"
+     24          
+     25          #if HAL_DMA
+     26          
+     27          /*********************************************************************
+     28           * MACROS
+     29           */
+     30          
+     31          /*********************************************************************
+     32           * CONSTANTS
+     33           */
+     34          
+     35          /*********************************************************************
+     36           * TYPEDEFS
+     37           */
+     38          
+     39          /*********************************************************************
+     40           * GLOBAL VARIABLES
+     41           */
+     42          
+
+   \                                 In segment XDATA_Z, align 1, keep-with-next
+   \   000000                REQUIRE __INIT_XDATA_Z
+     43          halDMADesc_t dmaCh0;
+   \                     dmaCh0:
+   \   000000                DS 8
+
+   \                                 In segment XDATA_Z, align 1, keep-with-next
+   \   000000                REQUIRE __INIT_XDATA_Z
+     44          halDMADesc_t dmaCh1234[4];
+   \                     dmaCh1234:
+   \   000000                DS 32
+     45          
+     46          /*********************************************************************
+     47           * GLOBAL FUNCTIONS
+     48           */
+     49          
+     50          /*********************************************************************
+     51           * LOCAL VARIABLES
+     52           */
+     53          
+     54          /*********************************************************************
+     55           * LOCAL FUNCTIONS
+     56           */
+     57          
+     58          /******************************************************************************
+     59           * @fn      HalDMAInit
+     60           *
+     61           * @brief   DMA Interrupt Service Routine
+     62           *
+     63           * @param   None
+     64           *
+     65           * @return  None
+     66           *****************************************************************************/
+
+   \                                 In segment BANKED_CODE, align 1, keep-with-next
+     67          void HalDmaInit( void )
+   \                     HalDmaInit:
+     68          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+     69            HAL_DMA_SET_ADDR_DESC0( &dmaCh0 );
+   \   000000   74..         MOV     A,#((dmaCh0 >> 8) & 0xff)
+   \   000002   F5D5         MOV     0xd5,A
+   \   000004   75D4..       MOV     0xd4,#(dmaCh0 & 0xff)
+     70            HAL_DMA_SET_ADDR_DESC1234( dmaCh1234 );
+   \   000007   74..         MOV     A,#((dmaCh1234 >> 8) & 0xff)
+   \   000009   F5D3         MOV     0xd3,A
+   \   00000B   75D2..       MOV     0xd2,#(dmaCh1234 & 0xff)
+     71          }
+   \   00000E   02....       LJMP    ?BRET
+     72          
+     73          #endif  // #if HAL_DMA
+     74          /******************************************************************************
+     75          ******************************************************************************/
+
+   Maximum stack usage in bytes:
+
+     Function   ISTACK PSTACK XSTACK
+     --------   ------ ------ ------
+     HalDmaInit     0      0      0
+
+
+   Segment part sizes:
+
+     Function/Label Bytes
+     -------------- -----
+     DMA1CFGL          1
+     DMA1CFGH          1
+     DMA0CFGL          1
+     DMA0CFGH          1
+     dmaCh0            8
+     dmaCh1234        32
+     HalDmaInit       17
+
+ 
+ 17 bytes in segment BANKED_CODE
+  4 bytes in segment SFR_AN
+ 40 bytes in segment XDATA_Z
+ 
+ 17 bytes of CODE  memory
+  0 bytes of DATA  memory (+ 4 bytes shared)
+ 40 bytes of XDATA memory
+
+Errors: none
+Warnings: none

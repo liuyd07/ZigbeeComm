@@ -1,0 +1,444 @@
+##############################################################################
+#                                                                            #
+# IAR 8051 C/C++ Compiler V7.20H/W32                   17/Oct/2013  21:52:33 #
+# Copyright 2004-2006 IAR Systems. All rights reserved.                      #
+#                                                                            #
+#    Core               =  plain                                             #
+#    Code model         =  banked                                            #
+#    Data model         =  large                                             #
+#    Calling convention =  xdata reentrant                                   #
+#    Constant location  =  data                                              #
+#    Dptr setup         =  1,16                                              #
+#    Source file        =  D:\Texas Instruments\ZStack-1.4.2-1.1.0\Component #
+#                          s\osal\common\OSAL_PwrMgr.c                       #
+#    Command line       =  -f E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿Ú #
+#                          ÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\S #
+#                          ampleApp\CC2430DB\..\..\..\Tools\CC2430DB\f8wEnde #
+#                          v.cfg (-DCPU32MHZ -DFORCE_MAC_NEAR                #
+#                          -DROOT=__near_func -DMAC_OPT_FFD=0 -DBLINK_LEDS   #
+#                          "-DCONST=const __code" -DGENERIC=__generic) -f    #
+#                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\..\..\..\Tools\CC2430DB\f8wConfig. #
+#                          cfg (-DSECURE=0 -DDEFAULT_CHANLIST=0x00000800     #
+#                          -DZDAPP_CONFIG_PAN_ID=0xFFFF                      #
+#                          -DNWK_START_DELAY=100 -DEXTENDED_JOINING_RANDOM_M #
+#                          ASK=0x007F -DBEACON_REQUEST_DELAY=100             #
+#                          -DBEACON_REQ_DELAY_MASK=0x00FF                    #
+#                          -DROUTE_EXPIRY_TIME=30 -DAPSC_ACK_WAIT_DURATION_P #
+#                          OLLED=3000 -DNWK_INDIRECT_MSG_TIMEOUT=7           #
+#                          -DMAX_RREQ_ENTRIES=10 -DAPSC_MAX_FRAME_RETRIES=3  #
+#                          -DNWK_MAX_DATA_RETRIES=2                          #
+#                          -DMAX_POLL_FAILURE_RETRIES=2 -DMAX_BCAST=9        #
+#                          -DAPS_MAX_GROUPS=16 -DMAX_RTG_ENTRIES=20          #
+#                          -DNWK_MAX_BINDING_ENTRIES=10                      #
+#                          -DMAX_BINDING_CLUSTER_IDS=5                       #
+#                          "-DDEFAULT_KEY={0x01, 0x03, 0x05, 0x07, 0x09,     #
+#                          0x0B, 0x0D, 0x0F, 0x00, 0x02, 0x04, 0x06, 0x08,   #
+#                          0x0A, 0x0C, 0x0D}" -DRFD_RCVC_ALWAYS_ON=FALSE     #
+#                          -DPOLL_RATE=1000 -DQUEUED_POLL_RATE=100           #
+#                          -DRESPONSE_POLL_RATE=100 -DREJOIN_POLL_RATE=440   #
+#                          -DTOP_BOOT_PAGES=0) -I "D:\Program Files\IAR      #
+#                          Systems\Embedded Workbench 4.05 Evaluation        #
+#                          version\8051\inc\" -I "D:\Program Files\IAR       #
+#                          Systems\Embedded Workbench 4.05 Evaluation        #
+#                          version\8051\inc\clib\" -I                        #
+#                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ #
+#                          ¶Æ½Ì¨\CC2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\ #
+#                          zstack\Samples\SampleApp\CC2430DB\..\Source\ -I   #
+#                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\..\..\..\ZMain\TI2430DB\ -I        #
+#                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\..\..\..\..\..\Components\mt\ -I   #
+#                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\..\..\..\..\..\Components\hal\incl #
+#                          ude\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC243 #
+#                          0´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp #
+#                          les\SampleApp\CC2430DB\..\..\..\..\..\Components\ #
+#                          hal\target\CC2430EB\ -I                           #
+#                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\..\..\..\..\..\Components\osal\mcu #
+#                          \ccsoc\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC #
+#                          2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\S #
+#                          amples\SampleApp\CC2430DB\..\..\..\..\..\Componen #
+#                          ts\osal\include\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨ #
+#                          Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects #
+#                          \zstack\Samples\SampleApp\CC2430DB\..\..\..\..\.. #
+#                          \Components\stack\af\ -I                          #
+#                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\..\..\..\..\..\Components\stack\nw #
+#                          k\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´ #
+#                          ®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Sample #
+#                          s\SampleApp\CC2430DB\..\..\..\..\..\Components\st #
+#                          ack\sec\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\C #
+#                          C2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\ #
+#                          Samples\SampleApp\CC2430DB\..\..\..\..\..\Compone #
+#                          nts\stack\sys\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶ #
+#                          Æ½Ì¨\CC2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\z #
+#                          stack\Samples\SampleApp\CC2430DB\..\..\..\..\..\C #
+#                          omponents\stack\zdo\ -I                           #
+#                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\..\..\..\..\..\Components\zmac\f8w #
+#                          \ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´® #
+#                          ¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples #
+#                          \SampleApp\CC2430DB\..\..\..\..\..\Components\zma #
+#                          c\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´ #
+#                          ®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Sample #
+#                          s\SampleApp\CC2430DB\..\..\..\..\..\Components\se #
+#                          rvices\saddr\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ #
+#                          ½Ì¨\CC2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zs #
+#                          tack\Samples\SampleApp\CC2430DB\..\..\..\..\..\Co #
+#                          mponents\services\sdata\ -I                       #
+#                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\..\..\..\..\..\Components\mac\incl #
+#                          ude\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC243 #
+#                          0´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp #
+#                          les\SampleApp\CC2430DB\..\..\..\..\..\Components\ #
+#                          mac\high_level\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ #
+#                          ¶Æ½Ì¨\CC2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\ #
+#                          zstack\Samples\SampleApp\CC2430DB\..\..\..\..\..\ #
+#                          Components\mac\low_level\srf03\ -I                #
+#                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\..\..\..\..\..\Components\mac\low_ #
+#                          level\srf03\single_chip\ -D CC2430EB -D           #
+#                          NWK_AUTO_POLL -D ZTOOL_P1 -D MT_TASK -D           #
+#                          ZG_ENDDEVICE -lC E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ #
+#                          ½Ì¨\CC2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zs #
+#                          tack\Samples\SampleApp\CC2430DB\EndDeviceEB\List\ #
+#                           -lA E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´® #
+#                          ¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples #
+#                          \SampleApp\CC2430DB\EndDeviceEB\List\             #
+#                          --diag_suppress Pe001,Pa010 --diag_remark pe550   #
+#                          -o E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿Ú #
+#                          ÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\S #
+#                          ampleApp\CC2430DB\EndDeviceEB\Obj\ -e             #
+#                          --require_prototypes -z9 --no_code_motion         #
+#                          --debug --core=plain --dptr=16,1                  #
+#                          --data_model=large --code_model=banked            #
+#                          --calling_convention=xdata_reentrant              #
+#                          --place_constants=data --nr_virtual_regs 8        #
+#                          "D:\Texas Instruments\ZStack-1.4.2-1.1.0\Componen #
+#                          ts\osal\common\OSAL_PwrMgr.c"                     #
+#    List file          =  E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\EndDeviceEB\List\OSAL_PwrMgr.lst   #
+#    Object file        =  E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\EndDeviceEB\Obj\OSAL_PwrMgr.r51    #
+#                                                                            #
+#                                                                            #
+##############################################################################
+
+D:\Texas Instruments\ZStack-1.4.2-1.1.0\Components\osal\common\OSAL_PwrMgr.c
+      1          /*********************************************************************
+      2              Filename:       $RCSfile$
+      3              Revised:        $Date: 2007-02-20 12:44:19 -0800 (Tue, 20 Feb 2007) $
+      4              Revision:       $Revision: 13512 $
+      5          
+      6              Description:
+      7          
+      8                This file contains the OSAL Power Management API.
+      9          
+     10          
+     11              Notes:
+     12          
+     13              Copyright (c) 2006 by Texas Instruments, Inc.
+     14              All Rights Reserved.  Permission to use, reproduce, copy, prepare
+     15              derivative works, modify, distribute, perform, display or sell this
+     16              software and/or its documentation for any purpose is prohibited
+     17              without the express written consent of Texas Instruments, Inc.
+     18          *********************************************************************/
+     19          
+     20          
+     21          /*********************************************************************
+     22           * INCLUDES
+     23           */
+     24          
+     25          #include "ZComDef.h"
+     26          #include "OnBoard.h"
+     27          #include "OSAL.h"
+     28          #include "OSAL_Tasks.h"
+     29          #include "OSAL_Timers.h"
+     30          #include "OSAL_PwrMgr.h"
+     31          
+     32          /*********************************************************************
+     33           * MACROS
+     34           */
+     35          
+     36          /*********************************************************************
+     37           * CONSTANTS
+     38           */
+     39          
+     40          /*********************************************************************
+     41           * TYPEDEFS
+     42           */
+     43          
+     44          /*********************************************************************
+     45           * GLOBAL VARIABLES
+     46           */
+     47          
+     48          /* This global variable stores the power management attributes.
+     49           */
+
+   \                                 In segment XDATA_Z, align 1, keep-with-next
+   \   000000                REQUIRE __INIT_XDATA_Z
+     50          pwrmgr_attribute_t pwrmgr_attribute;
+   \                     pwrmgr_attribute:
+   \   000000                DS 7
+     51          
+     52          /*********************************************************************
+     53           * EXTERNAL VARIABLES
+     54           */
+     55          
+     56          /*********************************************************************
+     57           * EXTERNAL FUNCTIONS
+     58           */
+     59          
+     60          /*********************************************************************
+     61           * LOCAL VARIABLES
+     62           */
+     63          
+     64          /*********************************************************************
+     65           * LOCAL FUNCTION PROTOTYPES
+     66           */
+     67          
+     68          /*********************************************************************
+     69           * FUNCTIONS
+     70           *********************************************************************/
+     71          
+     72          /*********************************************************************
+     73           * @fn      osal_pwrmgr_init
+     74           *
+     75           * @brief   Initialize the power management system.
+     76           *
+     77           * @param   none.
+     78           *
+     79           * @return  none.
+     80           */
+
+   \                                 In segment BANKED_CODE, align 1, keep-with-next
+     81          void osal_pwrmgr_init( void )
+   \                     osal_pwrmgr_init:
+     82          {
+   \   000000   C082         PUSH    DPL
+   \   000002   C083         PUSH    DPH
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 0
+     83            pwrmgr_attribute.pwrmgr_device = PWRMGR_ALWAYS_ON; // Default to no power conservation.
+   \   000004   E4           CLR     A
+   \   000005   90....       MOV     DPTR,#(pwrmgr_attribute + 6)
+   \   000008   F0           MOVX    @DPTR,A
+     84            pwrmgr_attribute.pwrmgr_task_state = 0;            // Cleared.  All set to conserve
+   \   000009   90....       MOV     DPTR,#pwrmgr_attribute
+   \   00000C   F0           MOVX    @DPTR,A
+   \   00000D   A3           INC     DPTR
+   \   00000E                REQUIRE ?Subroutine0
+   \   00000E                ; // Fall through to label ?Subroutine0
+     85          }
+
+   \                                 In segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine0:
+   \   000000   F0           MOVX    @DPTR,A
+   \   000001   D083         POP     DPH
+   \   000003   D082         POP     DPL
+   \   000005   02....       LJMP    ?BRET
+     86          
+     87          /*********************************************************************
+     88           * @fn      osal_pwrmgr_device
+     89           *
+     90           * @brief   Sets the device power characteristic.
+     91           *
+     92           * @param   pwrmgr_device - type of power devices. With PWRMGR_ALWAYS_ON
+     93           *          selection, there is no power savings and the device is most
+     94           *          likely on mains power. The PWRMGR_BATTERY selection allows the
+     95           *          HAL sleep manager to enter sleep.
+     96           *
+     97           * @return  none
+     98           */
+
+   \                                 In segment BANKED_CODE, align 1, keep-with-next
+     99          void osal_pwrmgr_device( uint8 pwrmgr_device )
+   \                     osal_pwrmgr_device:
+    100          {
+   \   000000   C082         PUSH    DPL
+   \   000002   C083         PUSH    DPH
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 0
+    101            pwrmgr_attribute.pwrmgr_device = pwrmgr_device;
+   \   000004   E9           MOV     A,R1
+   \   000005   90....       MOV     DPTR,#(pwrmgr_attribute + 6)
+   \   000008   80..         SJMP    ?Subroutine0
+    102          }
+    103          
+    104          /*********************************************************************
+    105           * @fn      osal_pwrmgr_task_state
+    106           *
+    107           * @brief   This function is called by each task to state whether or
+    108           *          not this task wants to conserve power.
+    109           *
+    110           * @param   task_id - calling task ID.
+    111           *          state - whether the calling task wants to
+    112           *          conserve power or not.
+    113           *
+    114           * @return  ZSUCCESS if task complete
+    115           */
+
+   \                                 In segment BANKED_CODE, align 1, keep-with-next
+    116          uint8 osal_pwrmgr_task_state( uint8 task_id, uint8 state )
+   \                     osal_pwrmgr_task_state:
+    117          {
+   \   000000   74F6         MOV     A,#-0xa
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 10
+   \   000005                ; Auto size: 0
+   \   000005   E9           MOV     A,R1
+   \   000006   FE           MOV     R6,A
+   \   000007   EA           MOV     A,R2
+   \   000008   FF           MOV     R7,A
+    118            if ( osalFindTask( task_id ) == NULL )
+   \   000009                ; Setup parameters for call to function osalFindTask
+   \   000009   90....       MOV     DPTR,#(osalFindTask & 0xffff)
+   \   00000C   74..         MOV     A,#((osalFindTask >> 16) & 0xff)
+   \   00000E   12....       LCALL   ?BCALL               ; Banked call to: DPTR()
+   \   000011   EA           MOV     A,R2
+   \   000012   7001         JNZ     ??osal_pwrmgr_task_state_0
+   \   000014   EB           MOV     A,R3
+   \                     ??osal_pwrmgr_task_state_0:
+   \   000015   7004         JNZ     ??osal_pwrmgr_task_state_1
+    119              return ( INVALID_TASK );
+   \   000017   7901         MOV     R1,#0x1
+   \   000019   8036         SJMP    ??osal_pwrmgr_task_state_2
+    120          
+    121            if ( state == PWRMGR_CONSERVE )
+   \                     ??osal_pwrmgr_task_state_1:
+   \   00001B   EF           MOV     A,R7
+   \   00001C   75..01       MOV     ?V0 + 0,#0x1
+   \   00001F   75..00       MOV     ?V0 + 1,#0x0
+   \   000022   7019         JNZ     ??osal_pwrmgr_task_state_3
+    122            {
+    123              // Clear the task state flag
+    124              pwrmgr_attribute.pwrmgr_task_state &= ~(1 << task_id );
+   \   000024   EE           MOV     A,R6
+   \   000025   78..         MOV     R0,#?V0 + 0
+   \   000027   12....       LCALL   ?S_SHL
+   \   00002A   E5..         MOV     A,?V0 + 0
+   \   00002C   F4           CPL     A
+   \   00002D   F8           MOV     R0,A
+   \   00002E   E5..         MOV     A,?V0 + 1
+   \   000030   F4           CPL     A
+   \   000031   F9           MOV     R1,A
+   \   000032   90....       MOV     DPTR,#pwrmgr_attribute
+   \   000035   E0           MOVX    A,@DPTR
+   \   000036   58           ANL     A,R0
+   \   000037   F0           MOVX    @DPTR,A
+   \   000038   A3           INC     DPTR
+   \   000039   E0           MOVX    A,@DPTR
+   \   00003A   59           ANL     A,R1
+   \   00003B   8011         SJMP    ??osal_pwrmgr_task_state_4
+    125            }
+    126            else
+    127            {
+    128              // Set the task state flag
+    129              pwrmgr_attribute.pwrmgr_task_state |= (1 << task_id);
+   \                     ??osal_pwrmgr_task_state_3:
+   \   00003D   EE           MOV     A,R6
+   \   00003E   78..         MOV     R0,#?V0 + 0
+   \   000040   12....       LCALL   ?S_SHL
+   \   000043   90....       MOV     DPTR,#pwrmgr_attribute
+   \   000046   E0           MOVX    A,@DPTR
+   \   000047   45..         ORL     A,?V0 + 0
+   \   000049   F0           MOVX    @DPTR,A
+   \   00004A   A3           INC     DPTR
+   \   00004B   E0           MOVX    A,@DPTR
+   \   00004C   45..         ORL     A,?V0 + 1
+   \                     ??osal_pwrmgr_task_state_4:
+   \   00004E   F0           MOVX    @DPTR,A
+    130            }
+    131          
+    132            return ( ZSUCCESS );
+   \   00004F   7900         MOV     R1,#0x0
+   \                     ??osal_pwrmgr_task_state_2:
+   \   000051   7F02         MOV     R7,#0x2
+   \   000053   02....       LJMP    ?BANKED_LEAVE_XDATA
+    133          }
+    134          
+    135          #if defined( POWER_SAVING )
+    136          /*********************************************************************
+    137           * @fn      osal_pwrmgr_powerconserve
+    138           *
+    139           * @brief   This function is called from the main OSAL loop when there are
+    140           *          no events scheduled and shouldn't be called from anywhere else.
+    141           *
+    142           * @param   none.
+    143           *
+    144           * @return  none.
+    145           */
+    146          void osal_pwrmgr_powerconserve( void )
+    147          {
+    148            uint16        next;
+    149            halIntState_t intState;
+    150          
+    151            // Should we even look into power conservation
+    152            if ( pwrmgr_attribute.pwrmgr_device != PWRMGR_ALWAYS_ON )
+    153            {
+    154              // Are all tasks in agreement to conserve
+    155              if ( pwrmgr_attribute.pwrmgr_task_state == 0 )
+    156              {
+    157                // Hold off interrupts.
+    158                HAL_ENTER_CRITICAL_SECTION( intState );
+    159          
+    160                // Get next time-out
+    161                next = osal_next_timeout();
+    162          
+    163                // Re-enable interrupts.
+    164                HAL_EXIT_CRITICAL_SECTION( intState );
+    165          
+    166                // Put the processor into sleep mode
+    167                OSAL_SET_CPU_INTO_SLEEP( next );
+    168              }
+    169            }
+    170          }
+    171          #endif /* POWER_SAVING */
+    172          
+    173          /*********************************************************************
+    174          *********************************************************************/
+
+   Maximum stack usage in bytes:
+
+     Function               ISTACK PSTACK XSTACK
+     --------               ------ ------ ------
+     osal_pwrmgr_device         2      0      0
+     osal_pwrmgr_init           2      0      0
+     osal_pwrmgr_task_state     0      0     10
+       -> osalFindTask          0      0     20
+
+
+   Segment part sizes:
+
+     Function/Label         Bytes
+     --------------         -----
+     pwrmgr_attribute          7
+     osal_pwrmgr_init         14
+     ?Subroutine0              8
+     osal_pwrmgr_device       10
+     osal_pwrmgr_task_state   86
+
+ 
+ 118 bytes in segment BANKED_CODE
+   7 bytes in segment XDATA_Z
+ 
+ 118 bytes of CODE  memory
+   7 bytes of XDATA memory
+
+Errors: none
+Warnings: none

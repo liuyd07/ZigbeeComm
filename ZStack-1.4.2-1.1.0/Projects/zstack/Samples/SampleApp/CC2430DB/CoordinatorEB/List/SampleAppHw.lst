@@ -1,0 +1,432 @@
+##############################################################################
+#                                                                            #
+# IAR 8051 C/C++ Compiler V7.20H/W32                   17/Oct/2013  21:25:57 #
+# Copyright 2004-2006 IAR Systems. All rights reserved.                      #
+#                                                                            #
+#    Core               =  plain                                             #
+#    Code model         =  banked                                            #
+#    Data model         =  large                                             #
+#    Calling convention =  xdata reentrant                                   #
+#    Constant location  =  data                                              #
+#    Dptr setup         =  1,16                                              #
+#    Source file        =  E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\Source\SampleAppHw.c               #
+#    Command line       =  -f E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿Ú #
+#                          ÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\S #
+#                          ampleApp\CC2430DB\..\..\..\Tools\CC2430DB\f8wCoor #
+#                          d.cfg (-DCPU32MHZ -DFORCE_MAC_NEAR                #
+#                          -DROOT=__near_func -DMAC_CFG_APP_PENDING_QUEUE=TR #
+#                          UE -DZDO_COORDINATOR -DRTR_NWK -DBLINK_LEDS       #
+#                          "-DCONST=const __code" -DGENERIC=__generic) -f    #
+#                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\..\..\..\Tools\CC2430DB\f8wConfig. #
+#                          cfg (-DSECURE=0 -DDEFAULT_CHANLIST=0x00000800     #
+#                          -DZDAPP_CONFIG_PAN_ID=0xFFFF                      #
+#                          -DNWK_START_DELAY=100 -DEXTENDED_JOINING_RANDOM_M #
+#                          ASK=0x007F -DBEACON_REQUEST_DELAY=100             #
+#                          -DBEACON_REQ_DELAY_MASK=0x00FF                    #
+#                          -DROUTE_EXPIRY_TIME=30 -DAPSC_ACK_WAIT_DURATION_P #
+#                          OLLED=3000 -DNWK_INDIRECT_MSG_TIMEOUT=7           #
+#                          -DMAX_RREQ_ENTRIES=10 -DAPSC_MAX_FRAME_RETRIES=3  #
+#                          -DNWK_MAX_DATA_RETRIES=2                          #
+#                          -DMAX_POLL_FAILURE_RETRIES=2 -DMAX_BCAST=9        #
+#                          -DAPS_MAX_GROUPS=16 -DMAX_RTG_ENTRIES=20          #
+#                          -DNWK_MAX_BINDING_ENTRIES=10                      #
+#                          -DMAX_BINDING_CLUSTER_IDS=5                       #
+#                          "-DDEFAULT_KEY={0x01, 0x03, 0x05, 0x07, 0x09,     #
+#                          0x0B, 0x0D, 0x0F, 0x00, 0x02, 0x04, 0x06, 0x08,   #
+#                          0x0A, 0x0C, 0x0D}" -DRFD_RCVC_ALWAYS_ON=FALSE     #
+#                          -DPOLL_RATE=1000 -DQUEUED_POLL_RATE=100           #
+#                          -DRESPONSE_POLL_RATE=100 -DREJOIN_POLL_RATE=440   #
+#                          -DTOP_BOOT_PAGES=0) -I "D:\Program Files\IAR      #
+#                          Systems\Embedded Workbench 4.05 Evaluation        #
+#                          version\8051\inc\" -I "D:\Program Files\IAR       #
+#                          Systems\Embedded Workbench 4.05 Evaluation        #
+#                          version\8051\inc\clib\" -I                        #
+#                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ #
+#                          ¶Æ½Ì¨\CC2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\ #
+#                          zstack\Samples\SampleApp\CC2430DB\..\Source\ -I   #
+#                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\..\..\..\ZMain\TI2430DB\ -I        #
+#                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\..\..\..\..\..\Components\mt\ -I   #
+#                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\..\..\..\..\..\Components\hal\incl #
+#                          ude\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC243 #
+#                          0´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp #
+#                          les\SampleApp\CC2430DB\..\..\..\..\..\Components\ #
+#                          hal\target\CC2430EB\ -I                           #
+#                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\..\..\..\..\..\Components\osal\mcu #
+#                          \ccsoc\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC #
+#                          2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\S #
+#                          amples\SampleApp\CC2430DB\..\..\..\..\..\Componen #
+#                          ts\osal\include\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨ #
+#                          Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects #
+#                          \zstack\Samples\SampleApp\CC2430DB\..\..\..\..\.. #
+#                          \Components\stack\af\ -I                          #
+#                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\..\..\..\..\..\Components\stack\nw #
+#                          k\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´ #
+#                          ®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Sample #
+#                          s\SampleApp\CC2430DB\..\..\..\..\..\Components\st #
+#                          ack\sec\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\C #
+#                          C2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\ #
+#                          Samples\SampleApp\CC2430DB\..\..\..\..\..\Compone #
+#                          nts\stack\sys\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶ #
+#                          Æ½Ì¨\CC2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\z #
+#                          stack\Samples\SampleApp\CC2430DB\..\..\..\..\..\C #
+#                          omponents\stack\zdo\ -I                           #
+#                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\..\..\..\..\..\Components\zmac\f8w #
+#                          \ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´® #
+#                          ¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples #
+#                          \SampleApp\CC2430DB\..\..\..\..\..\Components\zma #
+#                          c\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´ #
+#                          ®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Sample #
+#                          s\SampleApp\CC2430DB\..\..\..\..\..\Components\se #
+#                          rvices\saddr\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ #
+#                          ½Ì¨\CC2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zs #
+#                          tack\Samples\SampleApp\CC2430DB\..\..\..\..\..\Co #
+#                          mponents\services\sdata\ -I                       #
+#                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\..\..\..\..\..\Components\mac\incl #
+#                          ude\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC243 #
+#                          0´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp #
+#                          les\SampleApp\CC2430DB\..\..\..\..\..\Components\ #
+#                          mac\high_level\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ #
+#                          ¶Æ½Ì¨\CC2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\ #
+#                          zstack\Samples\SampleApp\CC2430DB\..\..\..\..\..\ #
+#                          Components\mac\low_level\srf03\ -I                #
+#                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\..\..\..\..\..\Components\mac\low_ #
+#                          level\srf03\single_chip\ -D CC2430EB -D ZTOOL_P1  #
+#                          -D MT_TASK -D MT_ZDO_FUNC -lC                     #
+#                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\CoordinatorEB\List\ -lA            #
+#                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\CoordinatorEB\List\                #
+#                          --diag_suppress Pe001,Pa010 --diag_remark pe550   #
+#                          -o E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿Ú #
+#                          ÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\S #
+#                          ampleApp\CC2430DB\CoordinatorEB\Obj\ -e           #
+#                          --require_prototypes -z9 --no_code_motion         #
+#                          --debug --core=plain --dptr=16,1                  #
+#                          --data_model=large --code_model=banked            #
+#                          --calling_convention=xdata_reentrant              #
+#                          --place_constants=data --nr_virtual_regs 8        #
+#                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\Source\SampleAppHw.c               #
+#    List file          =  E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\CoordinatorEB\List\SampleAppHw.lst #
+#    Object file        =  E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\CoordinatorEB\Obj\SampleAppHw.r51  #
+#                                                                            #
+#                                                                            #
+##############################################################################
+
+E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\SampleApp\CC2430DB\Source\SampleAppHw.c
+      1          /*********************************************************************
+      2            Filename:       SampleAppHw.c
+      3            Revised:        $Date: 2007-03-08 13:26:13 -0800 (Thu, 08 Mar 2007) $
+      4            Revision:       $Revision: 13719 $
+      5          
+      6            Description:
+      7          
+      8            Copyright (c) 2007 by Texas Instruments, Inc.
+      9            All Rights Reserved.  Permission to use, reproduce, copy, prepare
+     10            derivative works, modify, distribute, perform, display or sell this
+     11            software and/or its documentation for any purpose is prohibited
+     12            without the express written consent of Texas Instruments, Inc.
+     13          *********************************************************************/
+     14          
+     15          /*********************************************************************
+     16           * INCLUDES
+     17           */
+     18          #include "ZComDef.h"
+     19          #include "hal_mcu.h"
+
+   \                                 In segment SFR_AN, at 0x8f
+   \   unsigned char volatile __sfr P0INP
+   \                     P0INP:
+   \   000000                DS 1
+
+   \                                 In segment SFR_AN, at 0xf3
+   \   unsigned char volatile __sfr P0SEL
+   \                     P0SEL:
+   \   000000                DS 1
+
+   \                                 In segment SFR_AN, at 0xfd
+   \   unsigned char volatile __sfr P0DIR
+   \                     P0DIR:
+   \   000000                DS 1
+     20          #include "hal_defs.h"
+     21          
+     22          #include "SampleAppHw.h"
+     23          
+     24          /*********************************************************************
+     25           * MACROS
+     26           */
+     27          
+     28          /*********************************************************************
+     29           * CONSTANTS
+     30           */
+     31          
+     32          #if defined( CC2430DB )
+     33            /* NOTES:   Jumper should be between P7.1 and P7.3 on the CC2430DB.
+     34             *          P7.1 -> CC2430 P1.3
+     35             *          p7.3 -> CC2430 P0.4
+     36             */
+     37            #define JUMPERIN_BIT  0x08
+     38            #define JUMPERIN_SEL  P1SEL
+     39            #define JUMPERIN_DIR  P1DIR
+     40            #define JUMPERIN_INP  P1INP
+     41            #define JUMPERIN      P1
+     42            
+     43            #define JUMPEROUT_BIT 0x10
+     44            #define JUMPEROUT_SEL P0SEL
+     45            #define JUMPEROUT_DIR P0DIR
+     46            #define JUMPEROUT_INP P0INP
+     47            #define JUMPEROUT     P0
+     48          
+     49          #elif defined( CC2430EB )
+     50            /* NOTES:   Jumper should be between I/O A pin 9 and 11 on the CC2430EB.
+     51             *          I/O A pin 9  -> CC2430 P0.2
+     52             *          I/O A pin 11 -> CC2430 P0.3
+     53             */
+     54            #define JUMPERIN_BIT  0x04
+     55            #define JUMPERIN_SEL  P0SEL
+     56            #define JUMPERIN_DIR  P0DIR
+     57            #define JUMPERIN_INP  P0INP
+     58            #define JUMPERIN      P0
+     59            
+     60            #define JUMPEROUT_BIT 0x08
+     61            #define JUMPEROUT_SEL P0SEL
+     62            #define JUMPEROUT_DIR P0DIR
+     63            #define JUMPEROUT_INP P0INP
+     64            #define JUMPEROUT     P0
+     65          
+     66            #if defined (HAL_UART) && (HAL_UART==TRUE)
+     67              #error The UART will not work with this configuration. The RX & TX pins are used.
+     68            #endif
+     69          #else
+     70            #error Unsupported board
+     71          #endif
+     72          /*********************************************************************
+     73           * TYPEDEFS
+     74           */
+     75          
+     76          /*********************************************************************
+     77           * GLOBAL VARIABLES
+     78           */
+     79          
+     80          /*********************************************************************
+     81           * EXTERNAL VARIABLES
+     82           */
+     83          
+     84          /*********************************************************************
+     85           * EXTERNAL FUNCTIONS
+     86           */
+     87          
+     88          /*********************************************************************
+     89           * LOCAL VARIABLES
+     90           */
+     91          
+     92          /*********************************************************************
+     93           * LOCAL FUNCTIONS
+     94           */
+     95          
+     96          /*********************************************************************
+     97           * @fn      readCoordinatorJumper
+     98           *
+     99           * @brief   Checks for a jumper to determine if the device should
+    100           *          become a coordinator
+    101           *
+    102           * NOTES:   Jumper should be between P7.1 and P7.3 on the CC2430DB.
+    103           *          P7.1 -> CC2430 P1.3
+    104           *          p7.3 -> CC2430 P0.4
+    105           *
+    106           * NOTES:   Jumper should be between I/O A pin 9 and 11 on the CC2430EB.
+    107           *          I/O A pin 9  -> CC2430 P0.2
+    108           *          I/O A pin 11 -> CC2430 P0.3
+    109           *
+    110           * @return  TRUE if the jumper is there, FALSE if not
+    111           */
+
+   \                                 In segment BANKED_CODE, align 1, keep-with-next
+    112          uint8 readCoordinatorJumper( void )
+   \                     readCoordinatorJumper:
+    113          {
+   \   000000   74F6         MOV     A,#-0xa
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 10
+   \   000005                ; Auto size: 0
+    114            uint8 jumpered;
+    115            uint8 x, y;
+    116            uint8 result;
+    117            uint8 saveJumpInSEL;
+    118            uint8 saveJumpInDIR;
+    119            uint8 saveJumpInINP;
+    120            uint8 saveJumpOutSEL;
+    121            uint8 saveJumpOutDIR;
+    122            uint8 saveJumpOutINP;
+    123            
+    124            jumpered = TRUE;
+   \   000005   7901         MOV     R1,#0x1
+    125            
+    126            // Setup PORTs
+    127            saveJumpInSEL = JUMPERIN_SEL;
+   \   000007   E5F3         MOV     A,0xf3
+   \   000009   FC           MOV     R4,A
+    128            saveJumpInDIR = JUMPERIN_DIR;
+   \   00000A   E5FD         MOV     A,0xfd
+   \   00000C   FD           MOV     R5,A
+    129            saveJumpInINP = JUMPERIN_INP;
+   \   00000D   E58F         MOV     A,0x8f
+   \   00000F   FE           MOV     R6,A
+    130            saveJumpOutSEL = P0SEL;
+   \   000010   E5F3         MOV     A,0xf3
+   \   000012   FF           MOV     R7,A
+    131            saveJumpOutDIR = P0DIR;
+   \   000013   E5FD         MOV     A,0xfd
+   \   000015   F5..         MOV     ?V0 + 0,A
+    132            saveJumpOutINP = P0INP;
+   \   000017   E58F         MOV     A,0x8f
+   \   000019   F5..         MOV     ?V0 + 1,A
+    133            
+    134            JUMPERIN_SEL &= ~(JUMPERIN_BIT);
+   \   00001B   53F3FB       ANL     0xf3,#0xfb
+    135            JUMPERIN_DIR &= ~(JUMPERIN_BIT);
+   \   00001E   53FDFB       ANL     0xfd,#0xfb
+    136            JUMPERIN_INP &= ~(JUMPERIN_BIT);
+   \   000021   538FFB       ANL     0x8f,#0xfb
+    137            JUMPEROUT_SEL &= ~(JUMPEROUT_BIT);
+   \   000024   53F3F7       ANL     0xf3,#0xf7
+    138            JUMPEROUT_DIR |= JUMPEROUT_BIT;
+   \   000027   43FD08       ORL     0xfd,#0x8
+    139            JUMPEROUT_INP &= ~(JUMPERIN_BIT);
+   \   00002A   538FFB       ANL     0x8f,#0xfb
+    140            
+    141            for ( x = 0; x < 8; x++ )
+   \   00002D   7B00         MOV     R3,#0x0
+    142            {    
+    143              if ( x & 0x01 )
+    144              {
+    145                JUMPEROUT |= JUMPEROUT_BIT;      
+    146                for ( y = 0; y < 8; y++ );
+    147                result = JUMPERIN & JUMPERIN_BIT;
+    148                if ( result != JUMPERIN_BIT )
+    149                  jumpered = FALSE;
+    150              }
+    151              else
+    152              {      
+    153                JUMPEROUT &= ~(JUMPEROUT_BIT);      
+   \                     ??readCoordinatorJumper_0:
+   \   00002F   C283         CLR     0x80.3
+    154                for ( y = 0; y < 8; y++ );
+   \   000031   7A08         MOV     R2,#0x8
+   \                     ??readCoordinatorJumper_1:
+   \   000033   1A           DEC     R2
+   \   000034   EA           MOV     A,R2
+   \   000035   70FC         JNZ     ??readCoordinatorJumper_1
+    155                result = JUMPERIN & JUMPERIN_BIT;
+   \   000037   7404         MOV     A,#0x4
+   \   000039   5580         ANL     A,0x80
+    156                if ( result != 0x00 )
+   \   00003B   701E         JNZ     ??readCoordinatorJumper_2
+    157                  jumpered = FALSE;
+    158              }
+   \                     ??readCoordinatorJumper_3:
+   \   00003D   0B           INC     R3
+   \   00003E   EB           MOV     A,R3
+   \   00003F   C3           CLR     C
+   \   000040   9408         SUBB    A,#0x8
+   \   000042   501B         JNC     ??readCoordinatorJumper_4
+   \   000044   EB           MOV     A,R3
+   \   000045   A2E0         MOV     C,0xE0 /* A   */.0
+   \   000047   50E6         JNC     ??readCoordinatorJumper_0
+   \   000049   D283         SETB    0x80.3
+   \   00004B   7A08         MOV     R2,#0x8
+   \                     ??readCoordinatorJumper_5:
+   \   00004D   1A           DEC     R2
+   \   00004E   EA           MOV     A,R2
+   \   00004F   70FC         JNZ     ??readCoordinatorJumper_5
+   \   000051   7404         MOV     A,#0x4
+   \   000053   5580         ANL     A,0x80
+   \   000055   FA           MOV     R2,A
+   \   000056   7404         MOV     A,#0x4
+   \   000058   6A           XRL     A,R2
+   \   000059   60E2         JZ      ??readCoordinatorJumper_3
+   \                     ??readCoordinatorJumper_2:
+   \   00005B   7900         MOV     R1,#0x0
+   \   00005D   80DE         SJMP    ??readCoordinatorJumper_3
+    159            }
+    160            
+    161            // Restore directions
+    162            JUMPERIN_SEL = saveJumpInSEL;
+   \                     ??readCoordinatorJumper_4:
+   \   00005F   8CF3         MOV     0xf3,R4
+    163            JUMPERIN_DIR = saveJumpInDIR;
+   \   000061   8DFD         MOV     0xfd,R5
+    164            JUMPERIN_INP = saveJumpInINP;
+   \   000063   8E8F         MOV     0x8f,R6
+    165            JUMPEROUT_SEL = saveJumpOutSEL;
+   \   000065   8FF3         MOV     0xf3,R7
+    166            JUMPEROUT_DIR = saveJumpOutDIR;
+   \   000067   85..FD       MOV     0xfd,?V0 + 0
+    167            JUMPEROUT_INP = saveJumpOutINP;
+   \   00006A   85..8F       MOV     0x8f,?V0 + 1
+    168            
+    169            return ( jumpered );
+   \   00006D   7F02         MOV     R7,#0x2
+   \   00006F   02....       LJMP    ?BANKED_LEAVE_XDATA
+    170          }
+
+   \                                 In segment SFR_AN, at 0x80
+   \   union <unnamed> volatile __sfr _A_P0
+   \                     _A_P0:
+   \   000000                DS 1
+
+   Maximum stack usage in bytes:
+
+     Function              ISTACK PSTACK XSTACK
+     --------              ------ ------ ------
+     readCoordinatorJumper     0      0     10
+
+
+   Segment part sizes:
+
+     Function/Label        Bytes
+     --------------        -----
+     P0INP                    1
+     P0SEL                    1
+     P0DIR                    1
+     readCoordinatorJumper  114
+     _A_P0                    1
+
+ 
+ 114 bytes in segment BANKED_CODE
+   4 bytes in segment SFR_AN
+ 
+ 114 bytes of CODE memory
+   0 bytes of DATA memory (+ 4 bytes shared)
+
+Errors: none
+Warnings: none

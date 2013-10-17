@@ -1,0 +1,996 @@
+//////////////////////////////////////////////////////////////////////////////
+//                                                                           /
+// IAR 8051 C/C++ Compiler V7.20H/W32                  24/Jan/2013  14:47:43 /
+// Copyright 2004-2006 IAR Systems. All rights reserved.                     /
+//                                                                           /
+//    Core               =  plain                                            /
+//    Code model         =  banked                                           /
+//    Data model         =  large                                            /
+//    Calling convention =  xdata reentrant                                  /
+//    Constant location  =  data                                             /
+//    Dptr setup         =  1,16                                             /
+//    Source file        =  D:\Texas Instruments\ZStack-1.4.2-1.1.0\Componen /
+//                          ts\stack\nwk\nwk_globals.c                       /
+//    Command line       =  -f E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂ /
+//                          ç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee20 /
+//                          06-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\S /
+//                          amples\SampleApp\CC2430DB\..\..\..\Tools\CC2430D /
+//                          B\f8wRouter.cfg (-DCPU32MHZ -DFORCE_MAC_NEAR     /
+//                          -DROOT=__near_func -DMAC_CFG_APP_PENDING_QUEUE=T /
+//                          RUE -DRTR_NWK -DBLINK_LEDS "-DCONST=const        /
+//                          __code" -DGENERIC=__generic) -f                  /
+//                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª /
+//                          ·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006- /
+//                          ´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp /
+//                          les\SampleApp\CC2430DB\..\..\..\Tools\CC2430DB\f /
+//                          8wConfig.cfg (-DSECURE=0                         /
+//                          -DDEFAULT_CHANLIST=0x00000800                    /
+//                          -DZDAPP_CONFIG_PAN_ID=0xFFFF                     /
+//                          -DNWK_START_DELAY=100 -DEXTENDED_JOINING_RANDOM_ /
+//                          MASK=0x007F -DBEACON_REQUEST_DELAY=100           /
+//                          -DBEACON_REQ_DELAY_MASK=0x00FF                   /
+//                          -DROUTE_EXPIRY_TIME=30 -DAPSC_ACK_WAIT_DURATION_ /
+//                          POLLED=3000 -DNWK_INDIRECT_MSG_TIMEOUT=7         /
+//                          -DMAX_RREQ_ENTRIES=10 -DAPSC_MAX_FRAME_RETRIES=3 /
+//                           -DNWK_MAX_DATA_RETRIES=2                        /
+//                          -DMAX_POLL_FAILURE_RETRIES=2 -DMAX_BCAST=9       /
+//                          -DAPS_MAX_GROUPS=16 -DMAX_RTG_ENTRIES=20         /
+//                          -DNWK_MAX_BINDING_ENTRIES=10                     /
+//                          -DMAX_BINDING_CLUSTER_IDS=5                      /
+//                          "-DDEFAULT_KEY={0x01, 0x03, 0x05, 0x07, 0x09,    /
+//                          0x0B, 0x0D, 0x0F, 0x00, 0x02, 0x04, 0x06, 0x08,  /
+//                          0x0A, 0x0C, 0x0D}" -DRFD_RCVC_ALWAYS_ON=FALSE    /
+//                          -DPOLL_RATE=1000 -DQUEUED_POLL_RATE=100          /
+//                          -DRESPONSE_POLL_RATE=100 -DREJOIN_POLL_RATE=440  /
+//                          -DTOP_BOOT_PAGES=0) -I "D:\Program Files\IAR     /
+//                          Systems\Embedded Workbench 4.05 Evaluation       /
+//                          version\8051\inc\" -I "D:\Program Files\IAR      /
+//                          Systems\Embedded Workbench 4.05 Evaluation       /
+//                          version\8051\inc\clib\" -I                       /
+//                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª /
+//                          ·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006- /
+//                          ´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp /
+//                          les\SampleApp\CC2430DB\ -I                       /
+//                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª /
+//                          ·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006- /
+//                          ´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp /
+//                          les\SampleApp\CC2430DB\..\Source\ -I             /
+//                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª /
+//                          ·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006- /
+//                          ´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp /
+//                          les\SampleApp\CC2430DB\..\..\..\ZMain\TI2430DB\  /
+//                          -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂ /
+//                          ç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee20 /
+//                          06-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\S /
+//                          amples\SampleApp\CC2430DB\..\..\..\..\..\Compone /
+//                          nts\mt\ -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ /
+//                          \ÎÞÏßÍøÂç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ /
+//                          ZigBee2006-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\ /
+//                          zstack\Samples\SampleApp\CC2430DB\..\..\..\..\.. /
+//                          \Components\hal\include\ -I                      /
+//                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª /
+//                          ·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006- /
+//                          ´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp /
+//                          les\SampleApp\CC2430DB\..\..\..\..\..\Components /
+//                          \hal\target\CC2430EB\ -I                         /
+//                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª /
+//                          ·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006- /
+//                          ´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp /
+//                          les\SampleApp\CC2430DB\..\..\..\..\..\Components /
+//                          \osal\mcu\ccsoc\ -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC243 /
+//                          0¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\Zi /
+//                          gBee2006\ZigBee2006-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\ /
+//                          Projects\zstack\Samples\SampleApp\CC2430DB\..\.. /
+//                          \..\..\..\Components\osal\include\ -I            /
+//                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª /
+//                          ·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006- /
+//                          ´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp /
+//                          les\SampleApp\CC2430DB\..\..\..\..\..\Components /
+//                          \stack\af\ -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢× /
+//                          ÊÁÏ\ÎÞÏßÍøÂç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee20 /
+//                          06\ZigBee2006-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projec /
+//                          ts\zstack\Samples\SampleApp\CC2430DB\..\..\..\.. /
+//                          \..\Components\stack\nwk\ -I                     /
+//                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª /
+//                          ·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006- /
+//                          ´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp /
+//                          les\SampleApp\CC2430DB\..\..\..\..\..\Components /
+//                          \stack\sec\ -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢ /
+//                          ×ÊÁÏ\ÎÞÏßÍøÂç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2 /
+//                          006\ZigBee2006-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Proje /
+//                          cts\zstack\Samples\SampleApp\CC2430DB\..\..\..\. /
+//                          .\..\Components\stack\sys\ -I                    /
+//                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª /
+//                          ·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006- /
+//                          ´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp /
+//                          les\SampleApp\CC2430DB\..\..\..\..\..\Components /
+//                          \stack\zdo\ -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢ /
+//                          ×ÊÁÏ\ÎÞÏßÍøÂç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2 /
+//                          006\ZigBee2006-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Proje /
+//                          cts\zstack\Samples\SampleApp\CC2430DB\..\..\..\. /
+//                          .\..\Components\zmac\f8w\ -I                     /
+//                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª /
+//                          ·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006- /
+//                          ´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp /
+//                          les\SampleApp\CC2430DB\..\..\..\..\..\Components /
+//                          \zmac\ -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ /
+//                          ÎÞÏßÍøÂç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\Z /
+//                          igBee2006-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\z /
+//                          stack\Samples\SampleApp\CC2430DB\..\..\..\..\..\ /
+//                          Components\services\saddr\ -I                    /
+//                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª /
+//                          ·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006- /
+//                          ´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp /
+//                          les\SampleApp\CC2430DB\..\..\..\..\..\Components /
+//                          \services\sdata\ -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC243 /
+//                          0¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\Zi /
+//                          gBee2006\ZigBee2006-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\ /
+//                          Projects\zstack\Samples\SampleApp\CC2430DB\..\.. /
+//                          \..\..\..\Components\mac\include\ -I             /
+//                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª /
+//                          ·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006- /
+//                          ´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp /
+//                          les\SampleApp\CC2430DB\..\..\..\..\..\Components /
+//                          \mac\high_level\ -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC243 /
+//                          0¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\Zi /
+//                          gBee2006\ZigBee2006-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\ /
+//                          Projects\zstack\Samples\SampleApp\CC2430DB\..\.. /
+//                          \..\..\..\Components\mac\low_level\srf03\ -I     /
+//                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª /
+//                          ·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006- /
+//                          ´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp /
+//                          les\SampleApp\CC2430DB\..\..\..\..\..\Components /
+//                          \mac\low_level\srf03\single_chip\ -D CC2430EB    /
+//                          -D ZTOOL_P1 -D MT_TASK -lC                       /
+//                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª /
+//                          ·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006- /
+//                          ´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp /
+//                          les\SampleApp\CC2430DB\RouterEB\List\ -lA        /
+//                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª /
+//                          ·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006- /
+//                          ´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp /
+//                          les\SampleApp\CC2430DB\RouterEB\List\            /
+//                          --diag_suppress Pe001,Pa010 --diag_remark pe550  /
+//                          -o E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂ /
+//                          ç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee20 /
+//                          06-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\S /
+//                          amples\SampleApp\CC2430DB\RouterEB\Obj\ -e       /
+//                          --require_prototypes -z9 --no_code_motion        /
+//                          --debug --core=plain --dptr=16,1                 /
+//                          --data_model=large --code_model=banked           /
+//                          --calling_convention=xdata_reentrant             /
+//                          --place_constants=data --nr_virtual_regs 8       /
+//                          "D:\Texas Instruments\ZStack-1.4.2-1.1.0\Compone /
+//                          nts\stack\nwk\nwk_globals.c"                     /
+//    List file          =  E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª /
+//                          ·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006- /
+//                          ´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp /
+//                          les\SampleApp\CC2430DB\RouterEB\List\nwk_globals /
+//                          .s51                                             /
+//                                                                           /
+//                                                                           /
+//////////////////////////////////////////////////////////////////////////////
+
+        NAME nwk_globals
+
+        RTMODEL "__calling_convention", "xdata_reentrant"
+        RTMODEL "__code_model", "banked"
+        RTMODEL "__core", "plain"
+        RTMODEL "__data_model", "large"
+        RTMODEL "__dptr_size", "16"
+        RTMODEL "__extended_stack", "disabled"
+        RTMODEL "__location_for_constants", "data"
+        RTMODEL "__number_of_dptrs", "1"
+        RTMODEL "__rt_version", "1"
+
+        RSEG DOVERLAY:DATA:NOROOT(0)
+        RSEG IOVERLAY:IDATA:NOROOT(0)
+        RSEG ISTACK:IDATA:NOROOT(0)
+        RSEG PSTACK:XDATA:NOROOT(0)
+        RSEG XSTACK:XDATA:NOROOT(0)
+
+        EXTERN ?BCALL
+        EXTERN ?BRET
+        EXTERN ?DEALLOC_XSTACK8
+        EXTERN ?PUSH_XSTACK8_X_TWO
+        EXTERN __INIT_XDATA_I
+        EXTERN __INIT_XDATA_Z
+
+        PUBLIC AssociatedDevList
+        PUBLIC Cskip
+        PUBLIC CskipChldrn
+        PUBLIC CskipRtrs
+        PUBLIC NIB_init
+        FUNCTION NIB_init,021203H
+        LOCFRAME ISTACK, 2, STACK
+        PUBLIC apscMaxWindowSize
+        PUBLIC bcastHoldAckMask
+        PUBLIC bcastHoldHandle
+        PUBLIC bcastTable
+        PUBLIC defaultKey
+        PUBLIC gAPS_INTERFRAME_DELAY
+        PUBLIC gAPS_MAX_GROUPS
+        PUBLIC gMAX_BCAST
+        PUBLIC gMAX_NEIGHBOR_ENTRIES
+        PUBLIC gMAX_RREQ_ENTRIES
+        PUBLIC gMAX_RTG_ENTRIES
+        PUBLIC gMAX_UNRESERVED_RTG_ENTRIES
+        PUBLIC gMIN_TREE_LINK_COST
+        PUBLIC gNWK_INDIRECT_CNT_RTG_TMR
+        PUBLIC gNWK_INDIRECT_MSG_MAX_ALL
+        PUBLIC gNWK_INDIRECT_MSG_MAX_PER
+        PUBLIC gNWK_MAX_DATABUFS_CONFIRMED
+        PUBLIC gNWK_MAX_DATABUFS_SCHEDULED
+        PUBLIC gNWK_MAX_DATABUFS_TOTAL
+        PUBLIC gNWK_MAX_DATABUFS_WAITING
+        PUBLIC gNWK_MAX_DEVICE_LIST
+        PUBLIC neighborTable
+        PUBLIC nwk_Status
+        FUNCTION nwk_Status,0203H
+        PUBLIC nwk_globals_init
+        FUNCTION nwk_globals_init,021203H
+        LOCFRAME ISTACK, 2, STACK
+        LOCFRAME XSTACK, 2, STACK
+        PUBLIC rtDiscTable
+        PUBLIC rtgTable
+        
+        CFI Names cfiNames0
+        CFI StackFrame CFA_SP SP DATA
+        CFI StackFrame CFA_PSP16 PSP16 XDATA
+        CFI StackFrame CFA_XSP16 XSP16 XDATA
+        CFI StaticOverlayFrame CFA_IOVERLAY IOVERLAY
+        CFI StaticOverlayFrame CFA_DOVERLAY DOVERLAY
+        CFI Resource `PSW.CY`:1, `B.BR0`:1, `B.BR1`:1, `B.BR2`:1, `B.BR3`:1
+        CFI Resource `B.BR4`:1, `B.BR5`:1, `B.BR6`:1, `B.BR7`:1, `VB.BR8`:1
+        CFI Resource `VB.BR9`:1, `VB.BR10`:1, `VB.BR11`:1, `VB.BR12`:1
+        CFI Resource `VB.BR13`:1, `VB.BR14`:1, `VB.BR15`:1, VB:8, B:8, A:8
+        CFI Resource PSW:8, DPL0:8, DPH0:8, R0:8, R1:8, R2:8, R3:8, R4:8, R5:8
+        CFI Resource R6:8, R7:8, V0:8, V1:8, V2:8, V3:8, V4:8, V5:8, V6:8, V7:8
+        CFI Resource SP:8, PSPH:8, PSPL:8, PSP16:16, XSPH:8, XSPL:8, XSP16:16
+        CFI VirtualResource ?RET:24
+        CFI Resource ?BRET_EXT:8
+        CFI VirtualResource ?RET_HIGH:8, ?RET_LOW:8
+        CFI ResourceParts PSP16 PSPH, PSPL
+        CFI ResourceParts XSP16 XSPH, XSPL
+        CFI ResourceParts ?RET ?BRET_EXT, ?RET_HIGH, ?RET_LOW
+        CFI EndNames cfiNames0
+        
+        CFI Common cfiCommon0 Using cfiNames0
+        CFI CodeAlign 1
+        CFI DataAlign -1
+        CFI ReturnAddress ?RET CODE
+        CFI CFA_DOVERLAY Used
+        CFI CFA_IOVERLAY Used
+        CFI CFA_SP SP+-3
+        CFI CFA_PSP16 PSP16+0
+        CFI CFA_XSP16 XSP16+0
+        CFI `PSW.CY` SameValue
+        CFI `B.BR0` SameValue
+        CFI `B.BR1` SameValue
+        CFI `B.BR2` SameValue
+        CFI `B.BR3` SameValue
+        CFI `B.BR4` SameValue
+        CFI `B.BR5` SameValue
+        CFI `B.BR6` SameValue
+        CFI `B.BR7` SameValue
+        CFI `VB.BR8` SameValue
+        CFI `VB.BR9` SameValue
+        CFI `VB.BR10` SameValue
+        CFI `VB.BR11` SameValue
+        CFI `VB.BR12` SameValue
+        CFI `VB.BR13` SameValue
+        CFI `VB.BR14` SameValue
+        CFI `VB.BR15` SameValue
+        CFI VB SameValue
+        CFI B Undefined
+        CFI A Undefined
+        CFI PSW SameValue
+        CFI DPL0 SameValue
+        CFI DPH0 SameValue
+        CFI R0 Undefined
+        CFI R1 Undefined
+        CFI R2 Undefined
+        CFI R3 Undefined
+        CFI R4 Undefined
+        CFI R5 Undefined
+        CFI R6 SameValue
+        CFI R7 SameValue
+        CFI V0 SameValue
+        CFI V1 SameValue
+        CFI V2 SameValue
+        CFI V3 SameValue
+        CFI V4 SameValue
+        CFI V5 SameValue
+        CFI V6 SameValue
+        CFI V7 SameValue
+        CFI PSPH Undefined
+        CFI PSPL Undefined
+        CFI XSPH Undefined
+        CFI XSPL Undefined
+        CFI ?RET Concat
+        CFI ?BRET_EXT Frame(CFA_SP, 3)
+        CFI ?RET_HIGH Frame(CFA_SP, 2)
+        CFI ?RET_LOW Frame(CFA_SP, 1)
+        CFI EndCommon cfiCommon0
+        
+        EXTERN AddrMgrInit
+        FUNCTION AddrMgrInit,0202H
+        ARGFRAME ISTACK, 2, STACK
+        EXTERN osal_mem_alloc
+        FUNCTION osal_mem_alloc,0202H
+        ARGFRAME ISTACK, 2, STACK
+        EXTERN RTG_FillCSkipTable
+        FUNCTION RTG_FillCSkipTable,0202H
+        ARGFRAME ISTACK, 2, STACK
+        ARGFRAME XSTACK, 2, STACK
+        EXTERN osal_memset
+        FUNCTION osal_memset,0202H
+        ARGFRAME ISTACK, 2, STACK
+        EXTERN osal_cpyExtAddr
+        FUNCTION osal_cpyExtAddr,0202H
+        ARGFRAME ISTACK, 2, STACK
+        EXTERN ZDO_Config_Node_Descriptor
+        EXTERN _NIB
+        EXTERN zgBcastDeliveryTime
+        EXTERN zgExtendedPANID
+        EXTERN zgIndirectMsgTimeout
+        EXTERN zgMaxBcastRetires
+        EXTERN zgPassiveAckTimeout
+        EXTERN zgRouteExpiryTime
+        EXTERN zgSecurityLevel
+
+// D:\Texas Instruments\ZStack-1.4.2-1.1.0\Components\stack\nwk\nwk_globals.c
+//    1 /*********************************************************************
+//    2     Filename:       nwk_globals.c
+//    3     Revised:        $Date: 2007-05-14 17:34:18 -0700 (Mon, 14 May 2007) $
+//    4     Revision:       $Revision: 14296 $
+//    5 
+//    6     Description:
+//    7 
+//    8         User definable Network Parameters.
+//    9 
+//   10     Notes:
+//   11 
+//   12     Copyright (c) 2006 by Texas Instruments, Inc.
+//   13     All Rights Reserved.  Permission to use, reproduce, copy, prepare
+//   14     derivative works, modify, distribute, perform, display or sell this
+//   15     software and/or its documentation for any purpose is prohibited
+//   16     without the express written consent of Texas Instruments, Inc.
+//   17 *********************************************************************/
+//   18 
+//   19 /*********************************************************************
+//   20  * INCLUDES
+//   21  */
+//   22 #include "ZComdef.h"
+//   23 #include "OSAL.h"
+//   24 #include "AddrMgr.h"
+//   25 #include "AssocList.h"
+//   26 #include "BindingTable.h"
+//   27 #include "nwk_globals.h"
+//   28 #include "ssp.h"
+//   29 #include "rtg.h"
+//   30 #include "ZDConfig.h"
+//   31 #include "ZGlobals.h"
+//   32 
+//   33 /* HAL */
+//   34 #include "hal_lcd.h"
+//   35 
+//   36 /*********************************************************************
+//   37  * MACROS
+//   38  */
+//   39 
+//   40 /*********************************************************************
+//   41  * CONSTANTS
+//   42  */
+//   43 
+//   44 // Maximums for the data buffer queue
+//   45 #define NWK_MAX_DATABUFS_WAITING    8     // Waiting to be sent to MAC
+//   46 #define NWK_MAX_DATABUFS_SCHEDULED  5     // Timed messages to be sent
+//   47 #define NWK_MAX_DATABUFS_CONFIRMED  5     // Held after MAC confirms
+//   48 #define NWK_MAX_DATABUFS_TOTAL      12    // Total number of buffers
+//   49 
+//   50 // 1-255 (0 -> 256) X RTG_TIMER_INTERVAL
+//   51 // A known shortcoming is that when a message is enqueued as "hold" for a
+//   52 // sleeping device, the timer tick may have counted down to 1, so that msg
+//   53 // will not be held as long as expected. If NWK_INDIRECT_MSG_TIMEOUT is set to 1
+//   54 // the hold time will vary randomly from 0 - CNT_RTG_TIMER ticks.
+//   55 // So the hold time will vary within this interval:
+//   56 // { (NWK_INDIRECT_MSG_TIMEOUT-1)*CNT_RTG_TIMER,
+//   57 //                                    NWK_INDIRECT_MSG_TIMEOUT*CNT_RTG_TIMER }
+//   58 #define NWK_INDIRECT_CNT_RTG_TMR    1  //ggg - need hours or days?
+//   59 // To hold msg for sleeping end devices for 30 secs:
+//   60 // #define CNT_RTG_TIMER            1
+//   61 // #define NWK_INDIRECT_MSG_TIMEOUT 30
+//   62 // To hold msg for sleeping end devices for 30 mins:
+//   63 // #define CNT_RTG_TIMER            60
+//   64 // #define NWK_INDIRECT_MSG_TIMEOUT 30
+//   65 // To hold msg for sleeping end devices for 30 days:
+//   66 // #define CNT_RTG_TIMER            60
+//   67 // #define NWK_INDIRECT_MSG_TIMEOUT (30 * 24 * 60)
+//   68 // Maximum msgs to hold per associated device.
+//   69 #define NWK_INDIRECT_MSG_MAX_PER    3
+//   70 // Maximum total msgs to hold for all associated devices.
+//   71 #define NWK_INDIRECT_MSG_MAX_ALL    \ 
+//   72                             (NWK_MAX_DATABUFS_TOTAL - NWK_INDIRECT_MSG_MAX_PER)
+//   73 
+//   74 
+//   75 /*********************************************************************
+//   76  * TYPEDEFS
+//   77  */
+//   78 
+//   79 /*********************************************************************
+//   80  * NWK GLOBAL VARIABLES
+//   81  */
+//   82 
+//   83 // Variables for MAX list size
+
+        RSEG CODE_C:CODE:REORDER:NOROOT(0)
+//   84 CONST uint16 gNWK_MAX_DEVICE_LIST = NWK_MAX_DEVICES;
+gNWK_MAX_DEVICE_LIST:
+        DW 21
+//   85 
+//   86 // Variables for MAX data buffer levels
+
+        RSEG CODE_C:CODE:REORDER:NOROOT(0)
+//   87 CONST byte gNWK_MAX_DATABUFS_WAITING = NWK_MAX_DATABUFS_WAITING;
+gNWK_MAX_DATABUFS_WAITING:
+        DB 8
+
+        RSEG CODE_C:CODE:REORDER:NOROOT(0)
+//   88 CONST byte gNWK_MAX_DATABUFS_SCHEDULED = NWK_MAX_DATABUFS_SCHEDULED;
+gNWK_MAX_DATABUFS_SCHEDULED:
+        DB 5
+
+        RSEG CODE_C:CODE:REORDER:NOROOT(0)
+//   89 CONST byte gNWK_MAX_DATABUFS_CONFIRMED = NWK_MAX_DATABUFS_CONFIRMED;
+gNWK_MAX_DATABUFS_CONFIRMED:
+        DB 5
+
+        RSEG CODE_C:CODE:REORDER:NOROOT(0)
+//   90 CONST byte gNWK_MAX_DATABUFS_TOTAL = NWK_MAX_DATABUFS_TOTAL;
+gNWK_MAX_DATABUFS_TOTAL:
+        DB 12
+//   91 
+
+        RSEG CODE_C:CODE:REORDER:NOROOT(0)
+//   92 CONST byte gNWK_INDIRECT_CNT_RTG_TMR = NWK_INDIRECT_CNT_RTG_TMR;
+gNWK_INDIRECT_CNT_RTG_TMR:
+        DB 1
+
+        RSEG CODE_C:CODE:REORDER:NOROOT(0)
+//   93 CONST byte gNWK_INDIRECT_MSG_MAX_PER = NWK_INDIRECT_MSG_MAX_PER;
+gNWK_INDIRECT_MSG_MAX_PER:
+        DB 3
+
+        RSEG CODE_C:CODE:REORDER:NOROOT(0)
+//   94 CONST byte gNWK_INDIRECT_MSG_MAX_ALL = NWK_INDIRECT_MSG_MAX_ALL;
+gNWK_INDIRECT_MSG_MAX_ALL:
+        DB 9
+//   95 
+//   96 #if defined ( RTR_NWK )
+//   97   // change this if using a different stack profile...
+//   98   // Cskip array
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        REQUIRE __INIT_XDATA_Z
+//   99   uint16 *Cskip;
+Cskip:
+        DS 2
+//  100   #if ( STACK_PROFILE_ID == HOME_CONTROLS )
+
+        RSEG XDATA_I:XDATA:NOROOT(0)
+//  101     byte CskipRtrs[MAX_NODE_DEPTH+1] = {2,5,5,5,5,0};
+CskipRtrs:
+        DS 6
+        REQUIRE `?<Initializer for CskipRtrs>`
+        REQUIRE __INIT_XDATA_I
+
+        RSEG XDATA_I:XDATA:NOROOT(0)
+//  102     byte CskipChldrn[MAX_NODE_DEPTH+1] = {3,10,10,10,10,0};
+CskipChldrn:
+        DS 6
+        REQUIRE `?<Initializer for CskipChldrn>`
+        REQUIRE __INIT_XDATA_I
+//  103   #elif ( STACK_PROFILE_ID == GENERIC_STAR )
+//  104     byte CskipRtrs[MAX_NODE_DEPTH+1] = {5,0};
+//  105     byte CskipChldrn[MAX_NODE_DEPTH+1] = {50,0};
+//  106   #elif ( STACK_PROFILE_ID == NETWORK_SPECIFIC )
+//  107     byte CskipRtrs[MAX_NODE_DEPTH+1] = {5,5,5,5,5,0};
+//  108     byte CskipChldrn[MAX_NODE_DEPTH+1] = {5,5,5,5,5,0};
+//  109   #endif // STACK_PROFILE_ID
+//  110 #endif  // RTR_NWK
+//  111 
+//  112 
+//  113 // Minimum lqi value that is required for association
+
+        RSEG XDATA_I:XDATA:NOROOT(0)
+//  114 byte gMIN_TREE_LINK_COST = MIN_LQI_COST_3;
+gMIN_TREE_LINK_COST:
+        DS 1
+        REQUIRE `?<Initializer for gMIN_TREE_LINK_COST>`
+        REQUIRE __INIT_XDATA_I
+//  115 
+//  116 #if defined(RTR_NWK)
+//  117   // Statically defined Associated Device List
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        REQUIRE __INIT_XDATA_Z
+//  118   associated_devices_t AssociatedDevList[NWK_MAX_DEVICES];
+AssociatedDevList:
+        DS 294
+//  119 #endif
+//  120 
+
+        RSEG CODE_C:CODE:REORDER:NOROOT(0)
+//  121 CONST byte gMAX_RTG_ENTRIES = MAX_RTG_ENTRIES;
+gMAX_RTG_ENTRIES:
+        DB 20
+
+        RSEG CODE_C:CODE:REORDER:NOROOT(0)
+//  122 CONST byte gMAX_UNRESERVED_RTG_ENTRIES = MAX_UNRESERVED_RTG_ENTRIES;
+gMAX_UNRESERVED_RTG_ENTRIES:
+        DB 16
+
+        RSEG CODE_C:CODE:REORDER:NOROOT(0)
+//  123 CONST byte gMAX_RREQ_ENTRIES = MAX_RREQ_ENTRIES;
+gMAX_RREQ_ENTRIES:
+        DB 10
+//  124 
+
+        RSEG CODE_C:CODE:REORDER:NOROOT(0)
+//  125 CONST byte gMAX_NEIGHBOR_ENTRIES = MAX_NEIGHBOR_ENTRIES;
+gMAX_NEIGHBOR_ENTRIES:
+        DB 8
+//  126 
+//  127  // Table of neighboring nodes (not including child nodes)
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        REQUIRE __INIT_XDATA_Z
+//  128 neighborEntry_t neighborTable[MAX_NEIGHBOR_ENTRIES];
+neighborTable:
+        DS 88
+//  129 
+//  130 #if defined ( RTR_NWK )
+//  131   // Routing table
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        REQUIRE __INIT_XDATA_Z
+//  132   rtgEntry_t rtgTable[MAX_RTG_ENTRIES];
+rtgTable:
+        DS 120
+//  133 
+//  134   // Table of current RREQ packets in the network
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        REQUIRE __INIT_XDATA_Z
+//  135   rtDiscEntry_t rtDiscTable[MAX_RREQ_ENTRIES];
+rtDiscTable:
+        DS 80
+//  136 
+//  137   // Table of data broadcast packets currently in circulation.
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        REQUIRE __INIT_XDATA_Z
+//  138   bcastEntry_t bcastTable[MAX_BCAST];
+bcastTable:
+        DS 72
+//  139 
+//  140   // These 2 arrays are to be used as an array of struct { uint8, uint32 }.
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        REQUIRE __INIT_XDATA_Z
+//  141   uint8 bcastHoldHandle[MAX_BCAST];
+bcastHoldHandle:
+        DS 9
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        REQUIRE __INIT_XDATA_Z
+//  142   uint32 bcastHoldAckMask[MAX_BCAST];
+bcastHoldAckMask:
+        DS 36
+//  143 
+
+        RSEG CODE_C:CODE:REORDER:NOROOT(0)
+//  144   CONST byte gMAX_BCAST = MAX_BCAST;
+gMAX_BCAST:
+        DB 9
+//  145 #endif
+//  146 
+//  147 /*********************************************************************
+//  148  * APS GLOBAL VARIABLES
+//  149  */
+//  150 
+//  151 #if defined ( REFLECTOR )
+//  152   // The Maximum number of binding records
+//  153   // This number is defined in BindingTable.h - change it there.
+//  154   CONST uint16 gNWK_MAX_BINDING_ENTRIES = NWK_MAX_BINDING_ENTRIES;
+//  155 
+//  156   // The Maximum number of cluster IDs in a binding record
+//  157   // This number is defined in BindingTable.h - change it there.
+//  158   CONST byte gMAX_BINDING_CLUSTER_IDS = MAX_BINDING_CLUSTER_IDS;
+//  159 
+//  160   CONST uint16 gBIND_REC_SIZE = sizeof( BindingEntry_t );
+//  161 
+//  162   // Binding Table
+//  163   BindingEntry_t BindingTable[NWK_MAX_BINDING_ENTRIES];
+//  164 #endif
+//  165 
+//  166 // Maximum number allowed in the groups table.
+
+        RSEG CODE_C:CODE:REORDER:NOROOT(0)
+//  167 CONST uint8 gAPS_MAX_GROUPS = APS_MAX_GROUPS;
+gAPS_MAX_GROUPS:
+        DB 16
+//  168 
+//  169 // The size of a tx window when using fragmentation
+
+        RSEG CODE_C:CODE:REORDER:NOROOT(0)
+//  170 CONST uint8 apscMaxWindowSize = APS_DEFAULT_WINDOW_SIZE;
+apscMaxWindowSize:
+        DB 5
+//  171 
+//  172 // The delay between tx packets when using fragmentaition
+
+        RSEG CODE_C:CODE:REORDER:NOROOT(0)
+//  173 CONST uint16 gAPS_INTERFRAME_DELAY = APS_DEFAULT_INTERFRAME_DELAY;
+gAPS_INTERFRAME_DELAY:
+        DW 50
+//  174 
+//  175 
+//  176 /*********************************************************************
+//  177  * SECURITY GLOBAL VARIABLES
+//  178  */
+//  179 
+//  180 // This is the default pre-configured key,
+//  181 // change this to make a unique key
+//  182 // SEC_KEY_LEN is defined in ssp.h.
+
+        RSEG CODE_C:CODE:REORDER:NOROOT(0)
+//  183 CONST byte defaultKey[SEC_KEY_LEN] =
+defaultKey:
+        DB 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
+//  184 {
+//  185 #if defined ( APP_TP ) || defined ( APP_TP2 )
+//  186   // Key for ZigBee Conformance Testing
+//  187   0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+//  188   0x89, 0x67, 0x45, 0x23, 0x01, 0xEF, 0xCD, 0xAB
+//  189 #else
+//  190   // Key for In-House Testing
+//  191   0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07,
+//  192   0x08, 0x09, 0x0A, 0x0B, 0x0C, 0x0D, 0x0E, 0x0F
+//  193 #endif
+//  194 };
+//  195 
+//  196 /*********************************************************************
+//  197  * @fn       nwk_globals_init()
+//  198  *
+//  199  * @brief
+//  200  *
+//  201  *   Initialize nwk layer globals.  These are the system defaults and
+//  202  *   should be changed by the user here.  The default definitions are
+//  203  *   defined in nwk.h or NLMEDE.h.
+//  204  *
+//  205  * @param   none
+//  206  *
+//  207  * @return  none
+//  208  */
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  209 void nwk_globals_init( void )
+nwk_globals_init:
+        CFI Block cfiBlock0 Using cfiCommon0
+        CFI Function nwk_globals_init
+//  210 {
+        FUNCALL nwk_globals_init, AddrMgrInit
+        LOCFRAME ISTACK, 2, STACK
+        ARGFRAME ISTACK, 2, STACK
+        FUNCALL nwk_globals_init, osal_mem_alloc
+        LOCFRAME ISTACK, 2, STACK
+        ARGFRAME ISTACK, 2, STACK
+        FUNCALL nwk_globals_init, RTG_FillCSkipTable
+        LOCFRAME ISTACK, 2, STACK
+        LOCFRAME XSTACK, 2, STACK
+        ARGFRAME ISTACK, 2, STACK
+        ARGFRAME XSTACK, 2, STACK
+        PUSH	DPL
+        CFI DPL0 Frame(CFA_SP, 4)
+        CFI CFA_SP SP+-4
+        PUSH	DPH
+        CFI DPH0 Frame(CFA_SP, 5)
+        CFI CFA_SP SP+-5
+        ; Saved register size: 2
+        ; Auto size: 0
+//  211   AddrMgrInit( NWK_MAX_ADDRESSES );
+        ; Setup parameters for call to function AddrMgrInit
+        MOV	R2,#0x16
+        MOV	R3,#0x0
+        MOV	DPTR,#(AddrMgrInit & 0xffff)
+        MOV	A,#((AddrMgrInit >> 16) & 0xff)
+        LCALL	?BCALL               ; Banked call to: DPTR()
+//  212 
+//  213 #if defined ( RTR_NWK )
+//  214   // Initialize the Cskip Table
+//  215   Cskip = osal_mem_alloc(sizeof(uint16) *(MAX_NODE_DEPTH+1));
+        ; Setup parameters for call to function osal_mem_alloc
+        MOV	R2,#0xc
+        MOV	R3,#0x0
+        MOV	DPTR,#(osal_mem_alloc & 0xffff)
+        MOV	A,#((osal_mem_alloc >> 16) & 0xff)
+        LCALL	?BCALL               ; Banked call to: DPTR()
+        MOV	DPTR,#Cskip
+        MOV	A,R2
+        MOVX	@DPTR,A
+        INC	DPTR
+        MOV	A,R3
+        MOVX	@DPTR,A
+//  216   RTG_FillCSkipTable(CskipChldrn, CskipRtrs, MAX_NODE_DEPTH, Cskip);
+        ; Setup parameters for call to function RTG_FillCSkipTable
+        MOV	DPTR,#Cskip
+        LCALL	?PUSH_XSTACK8_X_TWO
+        CFI CFA_XSP16 add(XSP16, 2)
+        MOV	R1,#0x5
+        MOV	R4,#(CskipRtrs & 0xff)
+        MOV	R5,#((CskipRtrs >> 8) & 0xff)
+        MOV	R2,#(CskipChldrn & 0xff)
+        MOV	R3,#((CskipChldrn >> 8) & 0xff)
+        MOV	DPTR,#(RTG_FillCSkipTable & 0xffff)
+        MOV	A,#((RTG_FillCSkipTable >> 16) & 0xff)
+        LCALL	?BCALL               ; Banked call to: DPTR()
+        MOV	A,#0x2
+        LCALL	?DEALLOC_XSTACK8
+        CFI EndBlock cfiBlock0
+//  217 #endif
+//  218 }
+        REQUIRE ?Subroutine0
+        ; // Fall through to label ?Subroutine0
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+?Subroutine0:
+        CFI Block cfiBlock1 Using cfiCommon0
+        CFI NoFunction
+        CFI CFA_SP SP+-5
+        CFI DPL0 Frame(CFA_SP, 4)
+        CFI DPH0 Frame(CFA_SP, 5)
+        POP	DPH
+        CFI CFA_SP SP+-4
+        CFI DPH0 SameValue
+        POP	DPL
+        CFI CFA_SP SP+-3
+        CFI DPL0 SameValue
+        LJMP	?BRET
+        CFI EndBlock cfiBlock1
+//  219 
+//  220 /*********************************************************************
+//  221  * @fn       NIB_init()
+//  222  *
+//  223  * @brief
+//  224  *
+//  225  *   Initialize attribute values in NIB
+//  226  *
+//  227  * @param   none
+//  228  *
+//  229  * @return  none
+//  230  */
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  231 void NIB_init()
+NIB_init:
+        CFI Block cfiBlock2 Using cfiCommon0
+        CFI Function NIB_init
+//  232 {
+        FUNCALL NIB_init, osal_memset
+        LOCFRAME ISTACK, 2, STACK
+        ARGFRAME ISTACK, 2, STACK
+        FUNCALL NIB_init, osal_cpyExtAddr
+        LOCFRAME ISTACK, 2, STACK
+        ARGFRAME ISTACK, 2, STACK
+        PUSH	DPL
+        CFI DPL0 Frame(CFA_SP, 4)
+        CFI CFA_SP SP+-4
+        PUSH	DPH
+        CFI DPH0 Frame(CFA_SP, 5)
+        CFI CFA_SP SP+-5
+        ; Saved register size: 2
+        ; Auto size: 0
+//  233 #if defined ( AUTO_SOFT_START )
+//  234   byte extAddr[Z_EXTADDR_LEN];
+//  235   ZMacGetReq( ZMacExtAddr, extAddr );
+//  236   _NIB.SequenceNum = extAddr[0];
+//  237 #else
+//  238   _NIB.SequenceNum = 1;
+        MOV	A,#0x1
+        MOV	DPTR,#_NIB
+        MOVX	@DPTR,A
+//  239 #endif
+//  240 
+//  241   _NIB.MaxDepth = MAX_NODE_DEPTH;
+        MOV	A,#0x5
+        MOV	DPTR,#(_NIB + 4)
+        MOVX	@DPTR,A
+//  242 
+//  243 #if ( NWK_MODE == NWK_MODE_MESH )
+//  244   _NIB.beaconOrder = BEACON_ORDER_NO_BEACONS;
+        MOV	A,#0xf
+        MOV	DPTR,#(_NIB + 40)
+        MOVX	@DPTR,A
+//  245   _NIB.superFrameOrder = BEACON_ORDER_NO_BEACONS;
+        MOV	DPTR,#(_NIB + 41)
+        MOVX	@DPTR,A
+//  246 #endif
+//  247 
+//  248    // BROADCAST SETTINGS:
+//  249    // *******************
+//  250    //   Broadcast Delivery Time
+//  251    //     - set to multiples of 100ms
+//  252    //     - should be 500ms more than the retry time
+//  253    //       -  "retry time" = PassiveAckTimeout * (MaxBroadcastRetries + 1)
+//  254    //   Passive Ack Timeout
+//  255    //     - set to multiples of 100ms
+//  256    _NIB.BroadcastDeliveryTime = zgBcastDeliveryTime;
+        MOV	DPTR,#zgBcastDeliveryTime
+        MOVX	A,@DPTR
+        MOV	DPTR,#(_NIB + 7)
+        MOVX	@DPTR,A
+//  257    _NIB.PassiveAckTimeout     = zgPassiveAckTimeout;
+        MOV	DPTR,#zgPassiveAckTimeout
+        MOVX	A,@DPTR
+        MOV	DPTR,#(_NIB + 1)
+        MOVX	@DPTR,A
+//  258    _NIB.MaxBroadcastRetries   = zgMaxBcastRetires;
+        MOV	DPTR,#zgMaxBcastRetires
+        MOVX	A,@DPTR
+        MOV	DPTR,#(_NIB + 2)
+        MOVX	@DPTR,A
+//  259 
+//  260    _NIB.ReportConstantCost = 0;
+        CLR	A
+        MOV	DPTR,#(_NIB + 8)
+        MOVX	@DPTR,A
+//  261    _NIB.RouteDiscRetries = 0;
+        MOV	DPTR,#(_NIB + 9)
+        MOVX	@DPTR,A
+//  262    _NIB.SecureAllFrames = USE_NWK_SECURITY;
+        MOV	DPTR,#(_NIB + 11)
+        MOVX	@DPTR,A
+//  263    _NIB.SecurityLevel = zgSecurityLevel;
+        MOV	DPTR,#zgSecurityLevel
+        MOVX	A,@DPTR
+        MOV	DPTR,#(_NIB + 12)
+        MOVX	@DPTR,A
+//  264    _NIB.SymLink = 0;
+        CLR	A
+        MOV	DPTR,#(_NIB + 13)
+        MOVX	@DPTR,A
+//  265    _NIB.CapabilityInfo = ZDO_Config_Node_Descriptor.CapabilityFlags;
+        MOV	DPTR,#(ZDO_Config_Node_Descriptor + 2)
+        MOVX	A,@DPTR
+        MOV	DPTR,#(_NIB + 14)
+        MOVX	@DPTR,A
+//  266 
+//  267    _NIB.TransactionPersistenceTime = zgIndirectMsgTimeout;
+        MOV	DPTR,#zgIndirectMsgTimeout
+        MOVX	A,@DPTR
+        MOV	DPTR,#(_NIB + 15)
+        MOVX	@DPTR,A
+        INC	DPTR
+        CLR	A
+        MOVX	@DPTR,A
+//  268 
+//  269    _NIB.RouteDiscoveryTime = 5;
+        MOV	A,#0x5
+        MOV	DPTR,#(_NIB + 18)
+        MOVX	@DPTR,A
+//  270    _NIB.RouteExpiryTime = zgRouteExpiryTime;
+        MOV	DPTR,#zgRouteExpiryTime
+        MOVX	A,@DPTR
+        MOV	DPTR,#(_NIB + 19)
+        MOVX	@DPTR,A
+//  271 
+//  272    _NIB.nwkDevAddress = INVALID_NODE_ADDR;
+        MOV	DPTR,#(_NIB + 20)
+        MOV	A,#-0x2
+        MOVX	@DPTR,A
+        INC	DPTR
+        MOV	A,#-0x1
+        MOVX	@DPTR,A
+//  273    _NIB.nwkLogicalChannel = 0;
+        CLR	A
+        MOV	DPTR,#(_NIB + 22)
+        MOVX	@DPTR,A
+//  274    _NIB.nwkCoordAddress = INVALID_NODE_ADDR;
+        MOV	DPTR,#(_NIB + 23)
+        MOV	A,#-0x2
+        MOVX	@DPTR,A
+        INC	DPTR
+        MOV	A,#-0x1
+        MOVX	@DPTR,A
+//  275    osal_memset( _NIB.nwkCoordExtAddress, 0, Z_EXTADDR_LEN );
+        ; Setup parameters for call to function osal_memset
+        MOV	R4,#0x8
+        MOV	R5,#0x0
+        MOV	R1,#0x0
+        MOV	R2,#((_NIB + 25) & 0xff)
+        MOV	R3,#(((_NIB + 25) >> 8) & 0xff)
+        MOV	DPTR,#(osal_memset & 0xffff)
+        MOV	A,#((osal_memset >> 16) & 0xff)
+        LCALL	?BCALL               ; Banked call to: DPTR()
+//  276    _NIB.nwkPanId = INVALID_NODE_ADDR;
+        MOV	DPTR,#(_NIB + 33)
+        MOV	A,#-0x2
+        MOVX	@DPTR,A
+        INC	DPTR
+        MOV	A,#-0x1
+        MOVX	@DPTR,A
+//  277 
+//  278    osal_cpyExtAddr( _NIB.extendedPANID, zgExtendedPANID );
+        ; Setup parameters for call to function osal_cpyExtAddr
+        MOV	R4,#(zgExtendedPANID & 0xff)
+        MOV	R5,#((zgExtendedPANID >> 8) & 0xff)
+        MOV	R2,#((_NIB + 53) & 0xff)
+        MOV	R3,#(((_NIB + 53) >> 8) & 0xff)
+        MOV	DPTR,#(osal_cpyExtAddr & 0xffff)
+        MOV	A,#((osal_cpyExtAddr >> 16) & 0xff)
+        LCALL	?BCALL               ; Banked call to: DPTR()
+//  279 
+//  280    _NIB.nwkKeyLoaded = FALSE;
+        CLR	A
+        MOV	DPTR,#(_NIB + 61)
+        MOVX	@DPTR,A
+//  281 }
+        LJMP	?Subroutine0 & 0xFFFF
+        CFI EndBlock cfiBlock2
+//  282 
+//  283 /*********************************************************************
+//  284  * @fn       nwk_Status()
+//  285  *
+//  286  * @brief
+//  287  *
+//  288  *   Status report.
+//  289  *
+//  290  * @param   statusCode
+//  291  * @param   statusValue
+//  292  *
+//  293  * @return  none
+//  294  */
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  295 void nwk_Status( uint16 statusCode, uint16 statusValue )
+nwk_Status:
+        CFI Block cfiBlock3 Using cfiCommon0
+        CFI Function nwk_Status
+//  296 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//  297 
+//  298 }
+        LJMP	?BRET
+        CFI EndBlock cfiBlock3
+
+        RSEG XDATA_ID:CODE:NOROOT(0)
+`?<Initializer for CskipRtrs>`:
+        DB 2, 5, 5, 5, 5, 0
+
+        RSEG XDATA_ID:CODE:NOROOT(0)
+`?<Initializer for CskipChldrn>`:
+        DB 3, 10, 10, 10, 10, 0
+
+        RSEG XDATA_ID:CODE:NOROOT(0)
+`?<Initializer for gMIN_TREE_LINK_COST>`:
+        DB 6
+
+        END
+//  299 
+//  300 /*********************************************************************
+//  301 *********************************************************************/
+// 
+// 261 bytes in segment BANKED_CODE
+//  34 bytes in segment CODE_C
+//  13 bytes in segment XDATA_I
+//  13 bytes in segment XDATA_ID
+// 701 bytes in segment XDATA_Z
+// 
+// 308 bytes of CODE  memory
+// 714 bytes of XDATA memory
+//
+//Errors: none
+//Warnings: none

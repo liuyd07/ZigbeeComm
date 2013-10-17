@@ -1,0 +1,675 @@
+//////////////////////////////////////////////////////////////////////////////
+//                                                                           /
+// IAR 8051 C/C++ Compiler V7.20H/W32                  17/Oct/2013  21:52:43 /
+// Copyright 2004-2006 IAR Systems. All rights reserved.                     /
+//                                                                           /
+//    Core               =  plain                                            /
+//    Code model         =  banked                                           /
+//    Data model         =  large                                            /
+//    Calling convention =  xdata reentrant                                  /
+//    Constant location  =  data                                             /
+//    Dptr setup         =  1,16                                             /
+//    Source file        =  E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ /
+//                          ·¢\ZStack-1.4.2-1.1.0\Components\wxl\source\wxl_ /
+//                          uart.c                                           /
+//    Command line       =  -f E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ /
+//                          ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples /
+//                          \SampleApp\CC2430DB\..\..\..\Tools\CC2430DB\f8wE /
+//                          ndev.cfg (-DCPU32MHZ -DFORCE_MAC_NEAR            /
+//                          -DROOT=__near_func -DMAC_OPT_FFD=0 -DBLINK_LEDS  /
+//                          "-DCONST=const __code" -DGENERIC=__generic) -f   /
+//                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ /
+//                          ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Sa /
+//                          mpleApp\CC2430DB\..\..\..\Tools\CC2430DB\f8wConf /
+//                          ig.cfg (-DSECURE=0 -DDEFAULT_CHANLIST=0x00000800 /
+//                           -DZDAPP_CONFIG_PAN_ID=0xFFFF                    /
+//                          -DNWK_START_DELAY=100 -DEXTENDED_JOINING_RANDOM_ /
+//                          MASK=0x007F -DBEACON_REQUEST_DELAY=100           /
+//                          -DBEACON_REQ_DELAY_MASK=0x00FF                   /
+//                          -DROUTE_EXPIRY_TIME=30 -DAPSC_ACK_WAIT_DURATION_ /
+//                          POLLED=3000 -DNWK_INDIRECT_MSG_TIMEOUT=7         /
+//                          -DMAX_RREQ_ENTRIES=10 -DAPSC_MAX_FRAME_RETRIES=3 /
+//                           -DNWK_MAX_DATA_RETRIES=2                        /
+//                          -DMAX_POLL_FAILURE_RETRIES=2 -DMAX_BCAST=9       /
+//                          -DAPS_MAX_GROUPS=16 -DMAX_RTG_ENTRIES=20         /
+//                          -DNWK_MAX_BINDING_ENTRIES=10                     /
+//                          -DMAX_BINDING_CLUSTER_IDS=5                      /
+//                          "-DDEFAULT_KEY={0x01, 0x03, 0x05, 0x07, 0x09,    /
+//                          0x0B, 0x0D, 0x0F, 0x00, 0x02, 0x04, 0x06, 0x08,  /
+//                          0x0A, 0x0C, 0x0D}" -DRFD_RCVC_ALWAYS_ON=FALSE    /
+//                          -DPOLL_RATE=1000 -DQUEUED_POLL_RATE=100          /
+//                          -DRESPONSE_POLL_RATE=100 -DREJOIN_POLL_RATE=440  /
+//                          -DTOP_BOOT_PAGES=0) -I "D:\Program Files\IAR     /
+//                          Systems\Embedded Workbench 4.05 Evaluation       /
+//                          version\8051\inc\" -I "D:\Program Files\IAR      /
+//                          Systems\Embedded Workbench 4.05 Evaluation       /
+//                          version\8051\inc\clib\" -I                       /
+//                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ /
+//                          ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Sa /
+//                          mpleApp\CC2430DB\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430 /
+//                          Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Proje /
+//                          cts\zstack\Samples\SampleApp\CC2430DB\..\Source\ /
+//                           -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´® /
+//                          ¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Sample /
+//                          s\SampleApp\CC2430DB\..\..\..\ZMain\TI2430DB\    /
+//                          -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ /
+//                          ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples /
+//                          \SampleApp\CC2430DB\..\..\..\..\..\Components\mt /
+//                          \ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´ /
+//                          ®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Sampl /
+//                          es\SampleApp\CC2430DB\..\..\..\..\..\Components\ /
+//                          hal\include\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ /
+//                          ½Ì¨\CC2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\z /
+//                          stack\Samples\SampleApp\CC2430DB\..\..\..\..\..\ /
+//                          Components\hal\target\CC2430EB\ -I               /
+//                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ /
+//                          ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Sa /
+//                          mpleApp\CC2430DB\..\..\..\..\..\Components\osal\ /
+//                          mcu\ccsoc\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì /
+//                          ¨\CC2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zst /
+//                          ack\Samples\SampleApp\CC2430DB\..\..\..\..\..\Co /
+//                          mponents\osal\include\ -I                        /
+//                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ /
+//                          ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Sa /
+//                          mpleApp\CC2430DB\..\..\..\..\..\Components\stack /
+//                          \af\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC24 /
+//                          30´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Sa /
+//                          mples\SampleApp\CC2430DB\..\..\..\..\..\Componen /
+//                          ts\stack\nwk\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶ /
+//                          Æ½Ì¨\CC2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\ /
+//                          zstack\Samples\SampleApp\CC2430DB\..\..\..\..\.. /
+//                          \Components\stack\sec\ -I                        /
+//                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ /
+//                          ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Sa /
+//                          mpleApp\CC2430DB\..\..\..\..\..\Components\stack /
+//                          \sys\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2 /
+//                          430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\S /
+//                          amples\SampleApp\CC2430DB\..\..\..\..\..\Compone /
+//                          nts\stack\zdo\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ /
+//                          ¶Æ½Ì¨\CC2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects /
+//                          \zstack\Samples\SampleApp\CC2430DB\..\..\..\..\. /
+//                          .\Components\zmac\f8w\ -I                        /
+//                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ /
+//                          ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Sa /
+//                          mpleApp\CC2430DB\..\..\..\..\..\Components\zmac\ /
+//                           -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´® /
+//                          ¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Sample /
+//                          s\SampleApp\CC2430DB\..\..\..\..\..\Components\s /
+//                          ervices\saddr\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ /
+//                          ¶Æ½Ì¨\CC2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects /
+//                          \zstack\Samples\SampleApp\CC2430DB\..\..\..\..\. /
+//                          .\Components\services\sdata\ -I                  /
+//                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ /
+//                          ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Sa /
+//                          mpleApp\CC2430DB\..\..\..\..\..\Components\mac\i /
+//                          nclude\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\C /
+//                          C2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack /
+//                          \Samples\SampleApp\CC2430DB\..\..\..\..\..\Compo /
+//                          nents\mac\high_level\ -I                         /
+//                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ /
+//                          ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Sa /
+//                          mpleApp\CC2430DB\..\..\..\..\..\Components\mac\l /
+//                          ow_level\srf03\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨ /
+//                          Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Project /
+//                          s\zstack\Samples\SampleApp\CC2430DB\..\..\..\..\ /
+//                          ..\Components\mac\low_level\srf03\single_chip\   /
+//                          -D CC2430EB -D NWK_AUTO_POLL -D ZTOOL_P1 -D      /
+//                          MT_TASK -D ZG_ENDDEVICE -lC                      /
+//                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ /
+//                          ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Sa /
+//                          mpleApp\CC2430DB\EndDeviceEB\List\ -lA           /
+//                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ /
+//                          ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Sa /
+//                          mpleApp\CC2430DB\EndDeviceEB\List\               /
+//                          --diag_suppress Pe001,Pa010 --diag_remark pe550  /
+//                          -o E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ /
+//                          ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples /
+//                          \SampleApp\CC2430DB\EndDeviceEB\Obj\ -e          /
+//                          --require_prototypes -z9 --no_code_motion        /
+//                          --debug --core=plain --dptr=16,1                 /
+//                          --data_model=large --code_model=banked           /
+//                          --calling_convention=xdata_reentrant             /
+//                          --place_constants=data --nr_virtual_regs 8       /
+//                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ /
+//                          ·¢\ZStack-1.4.2-1.1.0\Components\wxl\source\wxl_ /
+//                          uart.c                                           /
+//    List file          =  E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ /
+//                          ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Sa /
+//                          mpleApp\CC2430DB\EndDeviceEB\List\wxl_uart.s51   /
+//                                                                           /
+//                                                                           /
+//////////////////////////////////////////////////////////////////////////////
+
+        NAME wxl_uart
+
+        RTMODEL "__calling_convention", "xdata_reentrant"
+        RTMODEL "__code_model", "banked"
+        RTMODEL "__core", "plain"
+        RTMODEL "__data_model", "large"
+        RTMODEL "__dptr_size", "16"
+        RTMODEL "__extended_stack", "disabled"
+        RTMODEL "__location_for_constants", "data"
+        RTMODEL "__number_of_dptrs", "1"
+        RTMODEL "__rt_version", "1"
+
+        RSEG DOVERLAY:DATA:NOROOT(0)
+        RSEG IOVERLAY:IDATA:NOROOT(0)
+        RSEG ISTACK:IDATA:NOROOT(0)
+        RSEG PSTACK:XDATA:NOROOT(0)
+        RSEG XSTACK:XDATA:NOROOT(0)
+
+        EXTERN ?BANKED_ENTER_XDATA
+        EXTERN ?BANKED_LEAVE_XDATA
+        EXTERN ?BRET
+        EXTERN ?US_SWITCH_SPARSE
+        EXTERN ?V0
+
+        PUBWEAK CLKCON
+        PUBWEAK P0SEL
+        PUBWEAK P2DIR
+        PUBWEAK PERCFG
+        PUBWEAK SLEEP
+        PUBWEAK U0BAUD
+        PUBWEAK U0CSR
+        PUBWEAK U0DBUF
+        PUBWEAK U0GCR
+        PUBLIC UartRX_Receive_Char
+        FUNCTION UartRX_Receive_Char,0203H
+        PUBLIC UartTX_Send_Single
+        FUNCTION UartTX_Send_Single,0203H
+        PUBLIC UartTX_Send_String
+        FUNCTION UartTX_Send_String,0203H
+        LOCFRAME XSTACK, 9, STACK
+        PUBLIC Uart_Baud_rate
+        FUNCTION Uart_Baud_rate,080203H
+        LOCFRAME XSTACK, 10, STACK
+        PUBWEAK _A_IRCON2
+        PUBWEAK _A_TCON
+        PUBLIC initUARTtest
+        FUNCTION initUARTtest,0203H
+        
+        CFI Names cfiNames0
+        CFI StackFrame CFA_SP SP DATA
+        CFI StackFrame CFA_PSP16 PSP16 XDATA
+        CFI StackFrame CFA_XSP16 XSP16 XDATA
+        CFI StaticOverlayFrame CFA_IOVERLAY IOVERLAY
+        CFI StaticOverlayFrame CFA_DOVERLAY DOVERLAY
+        CFI Resource `PSW.CY`:1, `B.BR0`:1, `B.BR1`:1, `B.BR2`:1, `B.BR3`:1
+        CFI Resource `B.BR4`:1, `B.BR5`:1, `B.BR6`:1, `B.BR7`:1, `VB.BR8`:1
+        CFI Resource `VB.BR9`:1, `VB.BR10`:1, `VB.BR11`:1, `VB.BR12`:1
+        CFI Resource `VB.BR13`:1, `VB.BR14`:1, `VB.BR15`:1, VB:8, B:8, A:8
+        CFI Resource PSW:8, DPL0:8, DPH0:8, R0:8, R1:8, R2:8, R3:8, R4:8, R5:8
+        CFI Resource R6:8, R7:8, V0:8, V1:8, V2:8, V3:8, V4:8, V5:8, V6:8, V7:8
+        CFI Resource SP:8, PSPH:8, PSPL:8, PSP16:16, XSPH:8, XSPL:8, XSP16:16
+        CFI VirtualResource ?RET:24
+        CFI Resource ?BRET_EXT:8
+        CFI VirtualResource ?RET_HIGH:8, ?RET_LOW:8
+        CFI ResourceParts PSP16 PSPH, PSPL
+        CFI ResourceParts XSP16 XSPH, XSPL
+        CFI ResourceParts ?RET ?BRET_EXT, ?RET_HIGH, ?RET_LOW
+        CFI EndNames cfiNames0
+        
+        CFI Common cfiCommon0 Using cfiNames0
+        CFI CodeAlign 1
+        CFI DataAlign -1
+        CFI ReturnAddress ?RET CODE
+        CFI CFA_DOVERLAY Used
+        CFI CFA_IOVERLAY Used
+        CFI CFA_SP SP+-3
+        CFI CFA_PSP16 PSP16+0
+        CFI CFA_XSP16 XSP16+0
+        CFI `PSW.CY` SameValue
+        CFI `B.BR0` SameValue
+        CFI `B.BR1` SameValue
+        CFI `B.BR2` SameValue
+        CFI `B.BR3` SameValue
+        CFI `B.BR4` SameValue
+        CFI `B.BR5` SameValue
+        CFI `B.BR6` SameValue
+        CFI `B.BR7` SameValue
+        CFI `VB.BR8` SameValue
+        CFI `VB.BR9` SameValue
+        CFI `VB.BR10` SameValue
+        CFI `VB.BR11` SameValue
+        CFI `VB.BR12` SameValue
+        CFI `VB.BR13` SameValue
+        CFI `VB.BR14` SameValue
+        CFI `VB.BR15` SameValue
+        CFI VB SameValue
+        CFI B Undefined
+        CFI A Undefined
+        CFI PSW SameValue
+        CFI DPL0 SameValue
+        CFI DPH0 SameValue
+        CFI R0 Undefined
+        CFI R1 Undefined
+        CFI R2 Undefined
+        CFI R3 Undefined
+        CFI R4 Undefined
+        CFI R5 Undefined
+        CFI R6 SameValue
+        CFI R7 SameValue
+        CFI V0 SameValue
+        CFI V1 SameValue
+        CFI V2 SameValue
+        CFI V3 SameValue
+        CFI V4 SameValue
+        CFI V5 SameValue
+        CFI V6 SameValue
+        CFI V7 SameValue
+        CFI PSPH Undefined
+        CFI PSPL Undefined
+        CFI XSPH Undefined
+        CFI XSPL Undefined
+        CFI ?RET Concat
+        CFI ?BRET_EXT Frame(CFA_SP, 3)
+        CFI ?RET_HIGH Frame(CFA_SP, 2)
+        CFI ?RET_LOW Frame(CFA_SP, 1)
+        CFI EndCommon cfiCommon0
+        
+// E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Components\wxl\source\wxl_uart.c
+//    1 //cd wxl      ´®¿Ú0·¢Êý¾Ý
+//    2 #include <ioCC2430.h>
+
+        ASEGN SFR_AN:DATA:NOROOT,086H
+// unsigned char volatile __sfr U0CSR
+U0CSR:
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0beH
+// unsigned char volatile __sfr SLEEP
+SLEEP:
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0c1H
+// unsigned char volatile __sfr U0DBUF
+U0DBUF:
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0c2H
+// unsigned char volatile __sfr U0BAUD
+U0BAUD:
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0c5H
+// unsigned char volatile __sfr U0GCR
+U0GCR:
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0c6H
+// unsigned char volatile __sfr CLKCON
+CLKCON:
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0f1H
+// unsigned char volatile __sfr PERCFG
+PERCFG:
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0f3H
+// unsigned char volatile __sfr P0SEL
+P0SEL:
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0ffH
+// unsigned char volatile __sfr P2DIR
+P2DIR:
+        DS 1
+//    3 #include <wxl_uart.h>
+//    4 //#include <string.h>
+//    5 
+//    6 /****************************************************************
+//    7 *º¯Êý¹¦ÄÜ £º³õÊ¼»¯´®¿Ú1										
+//    8 *Èë¿Ú²ÎÊý £ºÎÞ												
+//    9 *·µ »Ø Öµ £ºÎÞ							
+//   10 *Ëµ    Ã÷ £º57600-8-n-1						
+//   11 ****************************************************************/
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//   12 void initUARTtest(void)
+initUARTtest:
+        CFI Block cfiBlock0 Using cfiCommon0
+        CFI Function initUARTtest
+//   13 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//   14 
+//   15     CLKCON &= ~0x40;              //¾§Õñ
+        ANL	0xc6,#0xbf
+//   16     while(!(SLEEP & 0x40));      //µÈ´ý¾§ÕñÎÈ¶¨
+??initUARTtest_0:
+        MOV	A,0xbe
+        MOV	C,0xE0 /* A   */.6
+        JNC	??initUARTtest_0
+//   17     CLKCON &= ~0x47;             //TICHSPD128·ÖÆµ£¬CLKSPD²»·ÖÆµ
+        ANL	0xc6,#0xb8
+        MOV	A,0xc6
+//   18     SLEEP |= 0x04; 		 //¹Ø±Õ²»ÓÃµÄRCÕñµ´Æ÷
+        ORL	0xbe,#0x4
+//   19     PERCFG = 0x00;				//Î»ÖÃ1 P0¿Ú
+        MOV	0xf1,#0x0
+//   20     P0SEL |= 0x0C;				//P0ÓÃ×÷´®¿Ú
+        ORL	0xf3,#0xc
+        MOV	A,0xf3
+//   21     P2DIR &= ~0xC0;                             //P0ÓÅÏÈ×÷Îª´®¿Ú0
+        ANL	0xff,#0x3f
+        MOV	A,0xff
+//   22     U0CSR |= 0x80;				//UART·½Ê½
+        ORL	0x86,#0x80
+        CFI EndBlock cfiBlock0
+//   23     UTX0IF = 0;
+        REQUIRE ?Subroutine0
+        ; // Fall through to label ?Subroutine0
+//   24 
+//   25 }
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+?Subroutine0:
+        CFI Block cfiBlock1 Using cfiCommon0
+        CFI NoFunction
+        CLR	0xe8.1
+        LJMP	?BRET
+        CFI EndBlock cfiBlock1
+//   26 /****************************************************************
+//   27 *º¯Êý¹¦ÄÜ £º´®¿Ú·¢ËÍ×Ö·û´®º¯Êý					
+//   28 *Èë¿Ú²ÎÊý : data:Êý¾Ý									
+//   29 *			len :Êý¾Ý³¤¶È							
+//   30 *·µ »Ø Öµ £ºÎÞ											
+//   31 *Ëµ    Ã÷ £º				
+//   32 ****************************************************************/
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//   33 void UartTX_Send_String(char *Data,int len)
+UartTX_Send_String:
+        CFI Block cfiBlock2 Using cfiCommon0
+        CFI Function UartTX_Send_String
+//   34 {
+        MOV	A,#-0x9
+        LCALL	?BANKED_ENTER_XDATA
+        CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+        CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+        CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+        CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+        CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+        CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+        CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+        CFI VB load(1, XDATA, add(CFA_XSP16, literal(-8)))
+        CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+        CFI CFA_SP SP+0
+        CFI CFA_XSP16 add(XSP16, 9)
+        ; Saved register size: 9
+        ; Auto size: 0
+//   35   int j;
+//   36   for(j=0;j<len;j++)
+        MOV	R0,#0x0
+        MOV	R1,#0x0
+        SJMP	??UartTX_Send_String_0
+//   37   {
+//   38     U0DBUF = *Data++;
+??UartTX_Send_String_1:
+        MOV	DPL,R2
+        MOV	DPH,R3
+        MOVX	A,@DPTR
+        MOV	0xc1,A
+        INC	DPTR
+        MOV	R2,DPL
+        MOV	R3,DPH
+//   39     while(UTX0IF == 0);
+??UartTX_Send_String_2:
+        MOV	C,0xe8.1
+        JNC	??UartTX_Send_String_2
+//   40     UTX0IF = 0;
+        CLR	0xe8.1
+//   41   }
+        MOV	A,R0
+        ADD	A,#0x1
+        INC	R0
+        MOV	A,R1
+        ADDC	A,#0x0
+        MOV	R1,A
+??UartTX_Send_String_0:
+        CLR	C
+        MOV	A,R0
+        SUBB	A,R4
+        MOV	A,R1
+        SUBB	A,R5
+        MOV	C,0xD0 /* PSW */.2
+        XRL	A,PSW
+        RLC	A
+        JC	??UartTX_Send_String_1
+//   42 }
+        MOV	R7,#0x1
+        LJMP	?BANKED_LEAVE_XDATA
+        CFI EndBlock cfiBlock2
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//   43 void UartTX_Send_Single(char single_Data)
+UartTX_Send_Single:
+        CFI Block cfiBlock3 Using cfiCommon0
+        CFI Function UartTX_Send_Single
+//   44 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//   45     U0DBUF = single_Data;
+        MOV	0xc1,R1
+//   46     while(UTX0IF == 0);
+??UartTX_Send_Single_0:
+        MOV	C,0xe8.1
+        JNC	??UartTX_Send_Single_0
+//   47     UTX0IF = 0;
+        SJMP	?Subroutine0
+        CFI EndBlock cfiBlock3
+//   48 }
+//   49 /*******************************************************************************
+//   50 ÃèÊö£º
+//   51     ´®¿Ú½ÓÊÕÒ»¸ö×Ö·û
+//   52 º¯ÊýÃû£ºchar UartRX_Receive_Char (void)
+//   53 *******************************************************************************/
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//   54 char UartRX_Receive_Char (void)
+UartRX_Receive_Char:
+        CFI Block cfiBlock4 Using cfiCommon0
+        CFI Function UartRX_Receive_Char
+//   55 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//   56    char c;
+//   57    unsigned char status;
+//   58    status = U0CSR;
+        MOV	A,0x86
+        MOV	R2,A
+//   59    U0CSR |= UART_ENABLE_RECEIVE;
+        ORL	0x86,#0x40
+//   60    while (!URX0IF);
+??UartRX_Receive_Char_0:
+        MOV	C,0x88.3
+        JNC	??UartRX_Receive_Char_0
+//   61    c = U0DBUF;
+        MOV	A,0xc1
+        MOV	R1,A
+//   62    URX0IF = 0;
+        CLR	0x88.3
+//   63    U0CSR = status;
+        MOV	0x86,R2
+//   64    return c;
+        LJMP	?BRET
+        CFI EndBlock cfiBlock4
+//   65 }
+//   66 /*******************************************************************************
+//   67 ÃèÊö£º
+//   68     ²¨ÌØÂÊµÄÉèÖÃ
+//   69 º¯ÊýÃû£ºvoid Uart_Baud_rate(int Baud_rate)
+//   70 *******************************************************************************/
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//   71 void Uart_Baud_rate(int Baud_rate)
+Uart_Baud_rate:
+        CFI Block cfiBlock5 Using cfiCommon0
+        CFI Function Uart_Baud_rate
+//   72 {
+        MOV	A,#-0xa
+        LCALL	?BANKED_ENTER_XDATA
+        CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+        CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+        CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+        CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+        CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+        CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+        CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+        CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+        CFI VB load(1, XDATA, add(CFA_XSP16, literal(-9)))
+        CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+        CFI CFA_SP SP+0
+        CFI CFA_XSP16 add(XSP16, 10)
+        ; Saved register size: 10
+        ; Auto size: 0
+//   73   switch (Baud_rate)
+        MOV	?V0 + 0,R2
+        MOV	?V0 + 1,R3
+        MOV	R0,#?V0 + 0
+        LCALL	?US_SWITCH_SPARSE
+`?<Jumptable for Uart_Baud_rate>_0`:
+        DW        0
+        DW        11
+        DW        24
+        DW        ??Uart_Baud_rate_0
+        DW        48
+        DW        ??Uart_Baud_rate_1
+        DW        96
+        DW        ??Uart_Baud_rate_2
+        DW        144
+        DW        ??Uart_Baud_rate_3
+        DW        192
+        DW        ??Uart_Baud_rate_4
+        DW        288
+        DW        ??Uart_Baud_rate_5
+        DW        384
+        DW        ??Uart_Baud_rate_6
+        DW        576
+        DW        ??Uart_Baud_rate_7
+        DW        768
+        DW        ??Uart_Baud_rate_8
+        DW        1152
+        DW        ??Uart_Baud_rate_9
+        DW        2304
+        DW        ??Uart_Baud_rate_10
+        DW        ??Uart_Baud_rate_11
+//   74   {
+//   75     case 24:
+//   76       U0GCR |= 6;				
+??Uart_Baud_rate_0:
+        ORL	0xc5,#0x6
+??Uart_Baud_rate_12:
+        MOV	A,0xc5
+//   77       U0BAUD |= 59;				//²¨ÌØÂÊÉèÖÃ
+??Uart_Baud_rate_13:
+        ORL	0xc2,#0x3b
+        SJMP	??Uart_Baud_rate_14
+//   78     break;
+//   79     case 48:
+//   80       U0GCR |= 7;				
+??Uart_Baud_rate_1:
+        ORL	0xc5,#0x7
+        SJMP	??Uart_Baud_rate_12
+//   81       U0BAUD |= 59;				//²¨ÌØÂÊÉèÖÃ
+//   82     break;
+//   83     case 96:
+//   84       U0GCR |= 8;				
+??Uart_Baud_rate_2:
+        ORL	0xc5,#0x8
+//   85       U0BAUD |= 59;				//²¨ÌØÂÊÉèÖÃ
+        SJMP	??Uart_Baud_rate_13
+//   86     break;
+//   87     case 144:
+//   88       U0GCR |= 8;				
+??Uart_Baud_rate_3:
+        ORL	0xc5,#0x8
+//   89       U0BAUD |= 216;				//²¨ÌØÂÊÉèÖÃ
+        SJMP	??Uart_Baud_rate_15
+//   90     break;
+//   91     case 192:
+//   92       U0GCR |= 9;				
+??Uart_Baud_rate_4:
+        ORL	0xc5,#0x9
+        SJMP	??Uart_Baud_rate_12
+//   93       U0BAUD |= 59;				//²¨ÌØÂÊÉèÖÃ
+//   94     break;
+//   95     case 288:
+//   96       U0GCR |= 9;				
+??Uart_Baud_rate_5:
+        ORL	0xc5,#0x9
+        SJMP	??Uart_Baud_rate_16
+//   97       U0BAUD |= 216;				//²¨ÌØÂÊÉèÖÃ
+//   98     break;
+//   99     case 384:
+//  100       U0GCR |= 10;				
+??Uart_Baud_rate_6:
+        ORL	0xc5,#0xa
+        SJMP	??Uart_Baud_rate_12
+//  101       U0BAUD |= 59;				//²¨ÌØÂÊÉèÖÃ
+//  102     break;
+//  103     case 576:
+//  104       U0GCR |= 10;				
+??Uart_Baud_rate_7:
+        ORL	0xc5,#0xa
+        SJMP	??Uart_Baud_rate_16
+//  105       U0BAUD |= 216;				//²¨ÌØÂÊÉèÖÃ
+//  106     break;
+//  107     case 768:
+//  108       U0GCR |= 11;				
+??Uart_Baud_rate_8:
+        ORL	0xc5,#0xb
+        SJMP	??Uart_Baud_rate_12
+//  109       U0BAUD |= 59;				//²¨ÌØÂÊÉèÖÃ
+//  110     break;
+//  111     case 1152:
+//  112       U0GCR |= 11;				
+??Uart_Baud_rate_9:
+        ORL	0xc5,#0xb
+        SJMP	??Uart_Baud_rate_16
+//  113       U0BAUD |= 216;				//²¨ÌØÂÊÉèÖÃ
+//  114     break;
+//  115     case 2304:
+//  116       U0GCR |= 12;				
+??Uart_Baud_rate_10:
+        ORL	0xc5,#0xc
+??Uart_Baud_rate_16:
+        MOV	A,0xc5
+//  117       U0BAUD |= 216;				//²¨ÌØÂÊÉèÖÃ
+??Uart_Baud_rate_15:
+        ORL	0xc2,#0xd8
+??Uart_Baud_rate_14:
+        MOV	A,0xc2
+//  118     break;
+//  119     default:
+//  120     break;
+//  121   }
+//  122 
+//  123 }
+??Uart_Baud_rate_11:
+        MOV	R7,#0x2
+        LJMP	?BANKED_LEAVE_XDATA
+        CFI EndBlock cfiBlock5
+
+        ASEGN SFR_AN:DATA:NOROOT,088H
+// union <unnamed> volatile __sfr _A_TCON
+_A_TCON:
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0e8H
+// union <unnamed> volatile __sfr _A_IRCON2
+_A_IRCON2:
+        DS 1
+
+        END
+//  124 
+// 
+// 254 bytes in segment BANKED_CODE
+//  11 bytes in segment SFR_AN
+// 
+// 254 bytes of CODE memory
+//   0 bytes of DATA memory (+ 11 bytes shared)
+//
+//Errors: none
+//Warnings: none

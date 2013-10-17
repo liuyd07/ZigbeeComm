@@ -1,0 +1,16 @@
+[DisAssemblyWindow]
+NumStates=_ 1
+State 1=_ 1
+[Log file]
+LoggingEnabled=_ 0
+LogFile=_ ""
+Category=_ 0
+[TermIOLog]
+LoggingEnabled=_ 0
+LogFile=_ ""
+[Breakpoints]
+Bp0=_ "Code" "{E:\研二上\CPS\实验平台\CC2430开发资料\无线网络开发平台\C51RF-3-PK演示程序\ZigBee2006\ZigBee2006-串口互发\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\SampleApp\Source\SampleApp.c}.287.13@1" 1 0 0 0 "" 0 ""
+Count=1
+[ChipconEmu]
+Stop timers on halt=1
+Leave target running=1

@@ -1,0 +1,745 @@
+##############################################################################
+#                                                                            #
+# IAR 8051 C/C++ Compiler V7.20H/W32                   17/Oct/2013  21:52:42 #
+# Copyright 2004-2006 IAR Systems. All rights reserved.                      #
+#                                                                            #
+#    Core               =  plain                                             #
+#    Code model         =  banked                                            #
+#    Data model         =  large                                             #
+#    Calling convention =  xdata reentrant                                   #
+#    Constant location  =  data                                              #
+#    Dptr setup         =  1,16                                              #
+#    Source file        =  D:\Texas Instruments\ZStack-1.4.2-1.1.0\Component #
+#                          s\mac\low_level\srf03\mac_rx_onoff.c              #
+#    Command line       =  -f E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿Ú #
+#                          ÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\S #
+#                          ampleApp\CC2430DB\..\..\..\Tools\CC2430DB\f8wEnde #
+#                          v.cfg (-DCPU32MHZ -DFORCE_MAC_NEAR                #
+#                          -DROOT=__near_func -DMAC_OPT_FFD=0 -DBLINK_LEDS   #
+#                          "-DCONST=const __code" -DGENERIC=__generic) -f    #
+#                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\..\..\..\Tools\CC2430DB\f8wConfig. #
+#                          cfg (-DSECURE=0 -DDEFAULT_CHANLIST=0x00000800     #
+#                          -DZDAPP_CONFIG_PAN_ID=0xFFFF                      #
+#                          -DNWK_START_DELAY=100 -DEXTENDED_JOINING_RANDOM_M #
+#                          ASK=0x007F -DBEACON_REQUEST_DELAY=100             #
+#                          -DBEACON_REQ_DELAY_MASK=0x00FF                    #
+#                          -DROUTE_EXPIRY_TIME=30 -DAPSC_ACK_WAIT_DURATION_P #
+#                          OLLED=3000 -DNWK_INDIRECT_MSG_TIMEOUT=7           #
+#                          -DMAX_RREQ_ENTRIES=10 -DAPSC_MAX_FRAME_RETRIES=3  #
+#                          -DNWK_MAX_DATA_RETRIES=2                          #
+#                          -DMAX_POLL_FAILURE_RETRIES=2 -DMAX_BCAST=9        #
+#                          -DAPS_MAX_GROUPS=16 -DMAX_RTG_ENTRIES=20          #
+#                          -DNWK_MAX_BINDING_ENTRIES=10                      #
+#                          -DMAX_BINDING_CLUSTER_IDS=5                       #
+#                          "-DDEFAULT_KEY={0x01, 0x03, 0x05, 0x07, 0x09,     #
+#                          0x0B, 0x0D, 0x0F, 0x00, 0x02, 0x04, 0x06, 0x08,   #
+#                          0x0A, 0x0C, 0x0D}" -DRFD_RCVC_ALWAYS_ON=FALSE     #
+#                          -DPOLL_RATE=1000 -DQUEUED_POLL_RATE=100           #
+#                          -DRESPONSE_POLL_RATE=100 -DREJOIN_POLL_RATE=440   #
+#                          -DTOP_BOOT_PAGES=0) -I "D:\Program Files\IAR      #
+#                          Systems\Embedded Workbench 4.05 Evaluation        #
+#                          version\8051\inc\" -I "D:\Program Files\IAR       #
+#                          Systems\Embedded Workbench 4.05 Evaluation        #
+#                          version\8051\inc\clib\" -I                        #
+#                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ #
+#                          ¶Æ½Ì¨\CC2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\ #
+#                          zstack\Samples\SampleApp\CC2430DB\..\Source\ -I   #
+#                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\..\..\..\ZMain\TI2430DB\ -I        #
+#                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\..\..\..\..\..\Components\mt\ -I   #
+#                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\..\..\..\..\..\Components\hal\incl #
+#                          ude\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC243 #
+#                          0´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp #
+#                          les\SampleApp\CC2430DB\..\..\..\..\..\Components\ #
+#                          hal\target\CC2430EB\ -I                           #
+#                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\..\..\..\..\..\Components\osal\mcu #
+#                          \ccsoc\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC #
+#                          2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\S #
+#                          amples\SampleApp\CC2430DB\..\..\..\..\..\Componen #
+#                          ts\osal\include\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨ #
+#                          Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects #
+#                          \zstack\Samples\SampleApp\CC2430DB\..\..\..\..\.. #
+#                          \Components\stack\af\ -I                          #
+#                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\..\..\..\..\..\Components\stack\nw #
+#                          k\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´ #
+#                          ®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Sample #
+#                          s\SampleApp\CC2430DB\..\..\..\..\..\Components\st #
+#                          ack\sec\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\C #
+#                          C2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\ #
+#                          Samples\SampleApp\CC2430DB\..\..\..\..\..\Compone #
+#                          nts\stack\sys\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶ #
+#                          Æ½Ì¨\CC2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\z #
+#                          stack\Samples\SampleApp\CC2430DB\..\..\..\..\..\C #
+#                          omponents\stack\zdo\ -I                           #
+#                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\..\..\..\..\..\Components\zmac\f8w #
+#                          \ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´® #
+#                          ¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples #
+#                          \SampleApp\CC2430DB\..\..\..\..\..\Components\zma #
+#                          c\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´ #
+#                          ®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Sample #
+#                          s\SampleApp\CC2430DB\..\..\..\..\..\Components\se #
+#                          rvices\saddr\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ #
+#                          ½Ì¨\CC2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zs #
+#                          tack\Samples\SampleApp\CC2430DB\..\..\..\..\..\Co #
+#                          mponents\services\sdata\ -I                       #
+#                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\..\..\..\..\..\Components\mac\incl #
+#                          ude\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC243 #
+#                          0´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp #
+#                          les\SampleApp\CC2430DB\..\..\..\..\..\Components\ #
+#                          mac\high_level\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ #
+#                          ¶Æ½Ì¨\CC2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\ #
+#                          zstack\Samples\SampleApp\CC2430DB\..\..\..\..\..\ #
+#                          Components\mac\low_level\srf03\ -I                #
+#                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\..\..\..\..\..\Components\mac\low_ #
+#                          level\srf03\single_chip\ -D CC2430EB -D           #
+#                          NWK_AUTO_POLL -D ZTOOL_P1 -D MT_TASK -D           #
+#                          ZG_ENDDEVICE -lC E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ #
+#                          ½Ì¨\CC2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zs #
+#                          tack\Samples\SampleApp\CC2430DB\EndDeviceEB\List\ #
+#                           -lA E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´® #
+#                          ¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples #
+#                          \SampleApp\CC2430DB\EndDeviceEB\List\             #
+#                          --diag_suppress Pe001,Pa010 --diag_remark pe550   #
+#                          -o E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿Ú #
+#                          ÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\S #
+#                          ampleApp\CC2430DB\EndDeviceEB\Obj\ -e             #
+#                          --require_prototypes -z9 --no_code_motion         #
+#                          --debug --core=plain --dptr=16,1                  #
+#                          --data_model=large --code_model=banked            #
+#                          --calling_convention=xdata_reentrant              #
+#                          --place_constants=data --nr_virtual_regs 8        #
+#                          "D:\Texas Instruments\ZStack-1.4.2-1.1.0\Componen #
+#                          ts\mac\low_level\srf03\mac_rx_onoff.c"            #
+#    List file          =  E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\EndDeviceEB\List\mac_rx_onoff.lst  #
+#    Object file        =  E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\EndDeviceEB\Obj\mac_rx_onoff.r51   #
+#                                                                            #
+#                                                                            #
+##############################################################################
+
+D:\Texas Instruments\ZStack-1.4.2-1.1.0\Components\mac\low_level\srf03\mac_rx_onoff.c
+      1          /**************************************************************************************************
+      2              Filename:
+      3              Revised:        $Date: 2007-03-22 20:35:43 -0700 (Thu, 22 Mar 2007) $
+      4              Revision:       $Revision: 13832 $
+      5          
+      6              Description:
+      7          
+      8              Describe the purpose and contents of the file.
+      9          
+     10              Copyright (c) 2006 by Texas Instruments, Inc.
+     11              All Rights Reserved.  Permission to use, reproduce, copy, prepare
+     12              derivative works, modify, distribute, perform, display or sell this
+     13              software and/or its documentation for any purpose is prohibited
+     14              without the express written consent of Texas Instruments, Inc.
+     15          **************************************************************************************************/
+     16          
+     17          
+     18          /* ------------------------------------------------------------------------------------------------
+     19           *                                          Includes
+     20           * ------------------------------------------------------------------------------------------------
+     21           */
+     22          
+     23          /* hal */
+     24          #include "hal_defs.h"
+     25          #include "hal_types.h"
+     26          
+     27          /* exported low-level */
+     28          #include "mac_low_level.h"
+     29          
+     30          /* low-level specific */
+     31          #include "mac_rx_onoff.h"
+     32          #include "mac_rx.h"
+     33          #include "mac_tx.h"
+     34          
+     35          /* target specific */
+     36          #include "mac_radio_defs.h"
+
+   \                                 In segment SFR_AN, at 0xe1
+   \   unsigned char volatile __sfr RFST
+   \                     RFST:
+   \   000000                DS 1
+
+   \                                 In segment SFR_AN, at 0xe9
+   \   unsigned char volatile __sfr RFIF
+   \                     RFIF:
+   \   000000                DS 1
+     37          
+     38          /* debug */
+     39          #include "mac_assert.h"
+     40          
+     41          
+     42          /* ------------------------------------------------------------------------------------------------
+     43           *                                         Global Variables
+     44           * ------------------------------------------------------------------------------------------------
+     45           */
+
+   \                                 In segment XDATA_Z, align 1, keep-with-next
+   \   000000                REQUIRE __INIT_XDATA_Z
+     46          uint8 macRxOnFlag;
+   \                     macRxOnFlag:
+   \   000000                DS 1
+
+   \                                 In segment XDATA_Z, align 1, keep-with-next
+   \   000000                REQUIRE __INIT_XDATA_Z
+     47          uint8 macRxEnableFlags;
+   \                     macRxEnableFlags:
+   \   000000                DS 1
+     48          
+     49          
+     50          /**************************************************************************************************
+     51           * @fn          macRxOnOffInit
+     52           *
+     53           * @brief       Initialize variables for rx on/off module.
+     54           *
+     55           * @param       none
+     56           *
+     57           * @return      none
+     58           **************************************************************************************************
+     59           */
+
+   \                                 In segment BANKED_CODE, align 1, keep-with-next
+     60          void macRxOnOffInit(void)
+   \                     macRxOnOffInit:
+     61          {
+   \   000000   C082         PUSH    DPL
+   \   000002   C083         PUSH    DPH
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 0
+     62            macRxEnableFlags = 0;
+   \   000004   E4           CLR     A
+   \   000005   90....       MOV     DPTR,#macRxEnableFlags
+   \   000008   F0           MOVX    @DPTR,A
+     63            macRxOnFlag = 0;
+   \   000009   90....       MOV     DPTR,#macRxOnFlag
+   \   00000C   F0           MOVX    @DPTR,A
+     64          }
+   \   00000D   80..         SJMP    ??Subroutine1_0
+
+   \                                 In segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine1:
+   \   000000   92AF         MOV     0xa8.7,C
+   \                     ??Subroutine1_0:
+   \   000002   D083         POP     DPH
+   \   000004   D082         POP     DPL
+   \   000006   02....       LJMP    ?BRET
+     65          
+     66          
+     67          /**************************************************************************************************
+     68           * @fn          macRxEnable
+     69           *
+     70           * @brief       Set enable flags and then turn on receiver.
+     71           *
+     72           * @param       flags - byte containing rx enable flags to set
+     73           *
+     74           * @return      none
+     75           **************************************************************************************************
+     76           */
+
+   \                                 In segment BANKED_CODE, align 1, keep-with-next
+     77          void macRxEnable(uint8 flags)
+   \                     macRxEnable:
+     78          {
+   \   000000   74F7         MOV     A,#-0x9
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 9
+   \   000005                ; Auto size: 0
+   \   000005   E9           MOV     A,R1
+   \   000006   FE           MOV     R6,A
+     79            halIntState_t  s;
+     80          
+     81            MAC_ASSERT(flags != 0); /* rx flags not affected */
+   \   000007   7008         JNZ     ??macRxEnable_0
+   \   000009                ; Setup parameters for call to function halAssertHandler
+   \   000009   90....       MOV     DPTR,#(halAssertHandler & 0xffff)
+   \   00000C   74..         MOV     A,#((halAssertHandler >> 16) & 0xff)
+   \   00000E   12....       LCALL   ?BCALL               ; Banked call to: DPTR()
+     82          
+     83            /* set enable flags and then turn on receiver */
+     84            HAL_ENTER_CRITICAL_SECTION(s);
+   \                     ??macRxEnable_0:
+   \   000011   A2AF         MOV     C,0xa8.7
+   \   000013   E4           CLR     A
+   \   000014   92E0         MOV     0xE0 /* A   */.0,C
+   \   000016   FF           MOV     R7,A
+   \   000017   C2AF         CLR     0xa8.7
+     85            macRxEnableFlags |= flags;
+   \   000019   90....       MOV     DPTR,#macRxEnableFlags
+   \   00001C   E0           MOVX    A,@DPTR
+   \   00001D   4E           ORL     A,R6
+   \   00001E   F0           MOVX    @DPTR,A
+     86            macRxOn();
+   \   00001F                ; Setup parameters for call to function macRxOn
+   \   00001F   90....       MOV     DPTR,#(macRxOn & 0xffff)
+   \   000022   74..         MOV     A,#((macRxOn >> 16) & 0xff)
+   \   000024   12....       LCALL   ?BCALL               ; Banked call to: DPTR()
+     87            HAL_EXIT_CRITICAL_SECTION(s);
+   \   000027   EF           MOV     A,R7
+   \   000028   80..         SJMP    ??Subroutine2_0
+     88          }
+
+   \                                 In segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine2:
+   \   000000   EE           MOV     A,R6
+   \                     ??Subroutine2_0:
+   \   000001   A2E0         MOV     C,0xE0 /* A   */.0
+   \                     ??Subroutine2_1:
+   \   000003   92AF         MOV     0xa8.7,C
+   \                     ??Subroutine2_2:
+   \   000005   7F01         MOV     R7,#0x1
+   \   000007   02....       LJMP    ?BANKED_LEAVE_XDATA
+     89          
+     90          
+     91          /**************************************************************************************************
+     92           * @fn          macRxSoftEnable
+     93           *
+     94           * @brief       Set enable flags but don't turn on the receiver.  Useful to leave the receiver
+     95           *              on after a transmit, but without turning it on immediately.
+     96           *
+     97           * @param       flags - byte containing rx enable flags to set
+     98           *
+     99           * @return      none
+    100           **************************************************************************************************
+    101           */
+
+   \                                 In segment BANKED_CODE, align 1, keep-with-next
+    102          void macRxSoftEnable(uint8 flags)
+   \                     macRxSoftEnable:
+    103          {
+   \   000000   74F7         MOV     A,#-0x9
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 9
+   \   000005                ; Auto size: 0
+   \   000005   E9           MOV     A,R1
+   \   000006   FE           MOV     R6,A
+    104            halIntState_t  s;
+    105          
+    106            MAC_ASSERT(flags != 0); /* rx flags not affected */
+   \   000007   7008         JNZ     ??macRxSoftEnable_0
+   \   000009                ; Setup parameters for call to function halAssertHandler
+   \   000009   90....       MOV     DPTR,#(halAssertHandler & 0xffff)
+   \   00000C   74..         MOV     A,#((halAssertHandler >> 16) & 0xff)
+   \   00000E   12....       LCALL   ?BCALL               ; Banked call to: DPTR()
+    107          
+    108            /* set the enable flags but do not turn on the receiver */
+    109            HAL_ENTER_CRITICAL_SECTION(s);
+   \                     ??macRxSoftEnable_0:
+   \   000011   A2AF         MOV     C,0xa8.7
+   \   000013   E4           CLR     A
+   \   000014   92E0         MOV     0xE0 /* A   */.0,C
+   \   000016   C2AF         CLR     0xa8.7
+    110            macRxEnableFlags |= flags;
+   \   000018   90....       MOV     DPTR,#macRxEnableFlags
+   \   00001B   E0           MOVX    A,@DPTR
+   \   00001C   4E           ORL     A,R6
+   \   00001D   F0           MOVX    @DPTR,A
+    111            HAL_EXIT_CRITICAL_SECTION(s);
+   \   00001E   80..         SJMP    ??Subroutine2_1
+    112          }
+    113          
+    114          
+    115          /**************************************************************************************************
+    116           * @fn          macRxDisable
+    117           *
+    118           * @brief       Clear indicated rx enable flags.  If all flags are clear, turn off receiver
+    119           *              unless there is an active receive or transmit.
+    120           *
+    121           * @param       flags - byte containg rx enable flags to clear
+    122           *
+    123           * @return      none
+    124           **************************************************************************************************
+    125           */
+
+   \                                 In segment BANKED_CODE, align 1, keep-with-next
+    126          void macRxDisable(uint8 flags)
+   \                     macRxDisable:
+    127          {
+   \   000000   74F7         MOV     A,#-0x9
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 9
+   \   000005                ; Auto size: 0
+   \   000005   E9           MOV     A,R1
+   \   000006   FE           MOV     R6,A
+    128            halIntState_t  s;
+    129          
+    130            MAC_ASSERT(flags != 0); /* rx flags not affected */
+   \   000007   7008         JNZ     ??macRxDisable_0
+   \   000009                ; Setup parameters for call to function halAssertHandler
+   \   000009   90....       MOV     DPTR,#(halAssertHandler & 0xffff)
+   \   00000C   74..         MOV     A,#((halAssertHandler >> 16) & 0xff)
+   \   00000E   12....       LCALL   ?BCALL               ; Banked call to: DPTR()
+    131          
+    132            /* clear the indicated flags */
+    133            HAL_ENTER_CRITICAL_SECTION(s);
+   \                     ??macRxDisable_0:
+   \   000011   A2AF         MOV     C,0xa8.7
+   \   000013   E4           CLR     A
+   \   000014   92E0         MOV     0xE0 /* A   */.0,C
+   \   000016   C2AF         CLR     0xa8.7
+    134            macRxEnableFlags &= ~flags;
+   \   000018   EE           MOV     A,R6
+   \   000019   F4           CPL     A
+   \   00001A   FA           MOV     R2,A
+   \   00001B   90....       MOV     DPTR,#macRxEnableFlags
+   \   00001E   E0           MOVX    A,@DPTR
+   \   00001F   5A           ANL     A,R2
+   \   000020   F0           MOVX    @DPTR,A
+    135            HAL_EXIT_CRITICAL_SECTION(s);
+   \   000021   92AF         MOV     0xa8.7,C
+    136          
+    137            /* turn off the radio if it is allowed */
+    138            macRxOffRequest();
+   \   000023                ; Setup parameters for call to function macRxOffRequest
+   \   000023   90....       MOV     DPTR,#(macRxOffRequest & 0xffff)
+   \   000026   74..         MOV     A,#((macRxOffRequest >> 16) & 0xff)
+   \   000028   12....       LCALL   ?BCALL               ; Banked call to: DPTR()
+    139          }
+   \   00002B   80..         SJMP    ??Subroutine2_2
+    140          
+    141          
+    142          /**************************************************************************************************
+    143           * @fn          macRxHardDisable
+    144           *
+    145           * @brief       Clear all enable flags and turn off receiver.
+    146           *
+    147           * @param       none
+    148           *
+    149           * @return      none
+    150           **************************************************************************************************
+    151           */
+
+   \                                 In segment BANKED_CODE, align 1, keep-with-next
+    152          void macRxHardDisable(void)
+   \                     macRxHardDisable:
+    153          {
+   \   000000   C082         PUSH    DPL
+   \   000002   C083         PUSH    DPH
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 0
+    154            halIntState_t  s;
+    155          
+    156            HAL_ENTER_CRITICAL_SECTION(s);
+   \   000004   A2AF         MOV     C,0xa8.7
+   \   000006   E4           CLR     A
+   \   000007   92E0         MOV     0xE0 /* A   */.0,C
+   \   000009   C2AF         CLR     0xa8.7
+    157          
+    158            macRxEnableFlags = 0;
+   \   00000B   E4           CLR     A
+   \   00000C   90....       MOV     DPTR,#macRxEnableFlags
+   \   00000F   F0           MOVX    @DPTR,A
+    159            macRxOnFlag = 0;
+   \   000010   90....       MOV     DPTR,#macRxOnFlag
+   \   000013   12....       LCALL   ?Subroutine0 & 0xFFFF
+    160          
+    161            /* force receiver off */
+    162            MAC_RADIO_RXTX_OFF();
+    163            MAC_RADIO_FLUSH_RX_FIFO();
+    164            MAC_DEBUG_TURN_OFF_RX_LED();
+    165          
+    166            HAL_EXIT_CRITICAL_SECTION(s);
+   \                     ??CrossCallReturnLabel_0:
+   \   000016   92AF         MOV     0xa8.7,C
+    167          
+    168            /* clean up after being forced off */
+    169            macRxHaltCleanup();
+   \   000018                ; Setup parameters for call to function macRxHaltCleanup
+   \   000018   90....       MOV     DPTR,#(macRxHaltCleanup & 0xffff)
+   \   00001B   74..         MOV     A,#((macRxHaltCleanup >> 16) & 0xff)
+   \   00001D   12....       LCALL   ?BCALL               ; Banked call to: DPTR()
+    170          }
+   \   000020   02....       LJMP    ??Subroutine1_0 & 0xFFFF
+
+   \                                 In segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine0:
+   \   000000   F0           MOVX    @DPTR,A
+   \   000001   75E1E5       MOV     0xe1,#-0x1b
+   \   000004   75E1E6       MOV     0xe1,#-0x1a
+   \   000007   75E1E6       MOV     0xe1,#-0x1a
+   \   00000A   22           RET
+    171          
+    172          
+    173          /**************************************************************************************************
+    174           * @fn          macRxOnRequest
+    175           *
+    176           * @brief       Turn on the receiver if any rx enable flag is set.
+    177           *
+    178           * @param       none
+    179           *
+    180           * @return      none
+    181           **************************************************************************************************
+    182           */
+
+   \                                 In segment BANKED_CODE, align 1, keep-with-next
+    183          void macRxOnRequest(void)
+   \                     macRxOnRequest:
+    184          {
+   \   000000   74F7         MOV     A,#-0x9
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 9
+   \   000005                ; Auto size: 0
+    185            halIntState_t  s;
+    186          
+    187            HAL_ENTER_CRITICAL_SECTION(s);
+   \   000005   A2AF         MOV     C,0xa8.7
+   \   000007   E4           CLR     A
+   \   000008   92E0         MOV     0xE0 /* A   */.0,C
+   \   00000A   FE           MOV     R6,A
+   \   00000B   C2AF         CLR     0xa8.7
+    188            if (macRxEnableFlags)
+   \   00000D   90....       MOV     DPTR,#macRxEnableFlags
+   \   000010   E0           MOVX    A,@DPTR
+   \   000011   6008         JZ      ??macRxOnRequest_0
+    189            {
+    190              macRxOn();
+   \   000013                ; Setup parameters for call to function macRxOn
+   \   000013   90....       MOV     DPTR,#(macRxOn & 0xffff)
+   \   000016   74..         MOV     A,#((macRxOn >> 16) & 0xff)
+   \   000018   12....       LCALL   ?BCALL               ; Banked call to: DPTR()
+    191            }
+    192            HAL_EXIT_CRITICAL_SECTION(s);
+   \                     ??macRxOnRequest_0:
+   \   00001B   02....       LJMP    ?Subroutine2 & 0xFFFF
+    193          }
+    194          
+    195          
+    196          /**************************************************************************************************
+    197           * @fn          macRxOffRequest
+    198           *
+    199           * @brief       Turn off receiver if permitted.
+    200           *
+    201           * @param       none
+    202           *
+    203           * @return      none
+    204           **************************************************************************************************
+    205           */
+
+   \                                 In segment BANKED_CODE, align 1, keep-with-next
+    206          void macRxOffRequest(void)
+   \                     macRxOffRequest:
+    207          {
+   \   000000   74F7         MOV     A,#-0x9
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 9
+   \   000005                ; Auto size: 0
+    208            halIntState_t  s;
+    209          
+    210            HAL_ENTER_CRITICAL_SECTION(s);
+   \   000005   A2AF         MOV     C,0xa8.7
+   \   000007   E4           CLR     A
+   \   000008   92E0         MOV     0xE0 /* A   */.0,C
+   \   00000A   FE           MOV     R6,A
+   \   00000B   C2AF         CLR     0xa8.7
+    211            if (!macRxEnableFlags)
+   \   00000D   90....       MOV     DPTR,#macRxEnableFlags
+   \   000010   E0           MOVX    A,@DPTR
+   \   000011   701E         JNZ     ??macRxOffRequest_0
+    212            {
+    213              if (!MAC_RX_IS_PHYSICALLY_ACTIVE() && !MAC_TX_IS_PHYSICALLY_ACTIVE())
+   \   000013   90....       MOV     DPTR,#macRxActive
+   \   000016   E0           MOVX    A,@DPTR
+   \   000017   A2E7         MOV     C,0xE0 /* A   */.7
+   \   000019   4016         JC      ??macRxOffRequest_0
+   \   00001B   90....       MOV     DPTR,#macRxOutgoingAckFlag
+   \   00001E   E0           MOVX    A,@DPTR
+   \   00001F   7010         JNZ     ??macRxOffRequest_0
+   \   000021   90....       MOV     DPTR,#macTxActive
+   \   000024   E0           MOVX    A,@DPTR
+   \   000025   A2E7         MOV     C,0xE0 /* A   */.7
+   \   000027   4008         JC      ??macRxOffRequest_0
+    214              {
+    215                macRxOff();
+   \   000029                ; Setup parameters for call to function macRxOff
+   \   000029   90....       MOV     DPTR,#(macRxOff & 0xffff)
+   \   00002C   74..         MOV     A,#((macRxOff >> 16) & 0xff)
+   \   00002E   12....       LCALL   ?BCALL               ; Banked call to: DPTR()
+    216              }
+    217            }
+    218            HAL_EXIT_CRITICAL_SECTION(s);
+   \                     ??macRxOffRequest_0:
+   \   000031   02....       LJMP    ?Subroutine2 & 0xFFFF
+    219          }
+    220          
+    221          
+    222          /**************************************************************************************************
+    223           * @fn          macRxOn
+    224           *
+    225           * @brief       Turn on the receiver if it's not already on.
+    226           *
+    227           * @param       none
+    228           *
+    229           * @return      none
+    230           **************************************************************************************************
+    231           */
+
+   \                                 In segment BANKED_CODE, align 1, keep-with-next
+    232          void macRxOn(void)
+   \                     macRxOn:
+    233          {
+   \   000000   C082         PUSH    DPL
+   \   000002   C083         PUSH    DPH
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 0
+    234            halIntState_t  s;
+    235          
+    236            HAL_ENTER_CRITICAL_SECTION(s);
+   \   000004   A2AF         MOV     C,0xa8.7
+   \   000006   E4           CLR     A
+   \   000007   92E0         MOV     0xE0 /* A   */.0,C
+   \   000009   C2AF         CLR     0xa8.7
+    237            if (!macRxOnFlag)
+   \   00000B   90....       MOV     DPTR,#macRxOnFlag
+   \   00000E   E0           MOVX    A,@DPTR
+   \   00000F   7006         JNZ     ??macRxOn_0
+    238            {
+    239              macRxOnFlag = 1;
+   \   000011   7401         MOV     A,#0x1
+   \   000013   F0           MOVX    @DPTR,A
+    240              MAC_RADIO_RX_ON();
+   \   000014   75E1E2       MOV     0xe1,#-0x1e
+    241              MAC_DEBUG_TURN_ON_RX_LED();
+    242            }
+    243            HAL_EXIT_CRITICAL_SECTION(s);
+   \                     ??macRxOn_0:
+   \   000017   02....       LJMP    ?Subroutine1 & 0xFFFF
+    244          }
+    245          
+    246          
+    247          /**************************************************************************************************
+    248           * @fn          macRxOff
+    249           *
+    250           * @brief       Turn off the receiver if it's not already off.
+    251           *
+    252           * @param       none
+    253           *
+    254           * @return      none
+    255           **************************************************************************************************
+    256           */
+
+   \                                 In segment BANKED_CODE, align 1, keep-with-next
+    257          void macRxOff(void)
+   \                     macRxOff:
+    258          {
+   \   000000   C082         PUSH    DPL
+   \   000002   C083         PUSH    DPH
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 0
+    259            halIntState_t  s;
+    260          
+    261            HAL_ENTER_CRITICAL_SECTION(s);
+   \   000004   A2AF         MOV     C,0xa8.7
+   \   000006   E4           CLR     A
+   \   000007   92E0         MOV     0xE0 /* A   */.0,C
+   \   000009   C2AF         CLR     0xa8.7
+    262            if (macRxOnFlag)
+   \   00000B   90....       MOV     DPTR,#macRxOnFlag
+   \   00000E   E0           MOVX    A,@DPTR
+   \   00000F   6007         JZ      ??macRxOff_0
+    263            {
+    264              macRxOnFlag = 0;
+   \   000011   E4           CLR     A
+   \   000012   12....       LCALL   ?Subroutine0 & 0xFFFF
+    265              MAC_RADIO_RXTX_OFF();
+    266              MAC_DEBUG_TURN_OFF_RX_LED();
+    267              
+    268              /* just in case a receive was about to start, flush the receive FIFO */
+    269              MAC_RADIO_FLUSH_RX_FIFO();
+    270          
+    271              /* clear any receive interrupt that happened to squeak through */
+    272              MAC_RADIO_CLEAR_RX_THRESHOLD_INTERRUPT_FLAG();
+   \                     ??CrossCallReturnLabel_1:
+   \   000015   75E9DF       MOV     0xe9,#-0x21
+    273          
+    274            }
+    275            HAL_EXIT_CRITICAL_SECTION(s);
+   \                     ??macRxOff_0:
+   \   000018   02....       LJMP    ?Subroutine1 & 0xFFFF
+    276          }
+
+   \                                 In segment SFR_AN, at 0xa8
+   \   union <unnamed> volatile __sfr _A_IEN0
+   \                     _A_IEN0:
+   \   000000                DS 1
+    277          
+    278          
+    279          /**************************************************************************************************
+    280          */
+
+   Maximum stack usage in bytes:
+
+     Function              ISTACK PSTACK XSTACK
+     --------              ------ ------ ------
+     macRxDisable              0      0      9
+       -> halAssertHandler     0      0     18
+       -> macRxOffRequest      0      0     18
+     macRxEnable               0      0      9
+       -> halAssertHandler     0      0     18
+       -> macRxOn              0      0     18
+     macRxHardDisable          2      0      0
+       -> macRxHaltCleanup     4      0      0
+     macRxOff                  2      0      9
+     macRxOffRequest           0      0     18
+       -> macRxOff             0      0     18
+     macRxOn                   2      0      9
+     macRxOnOffInit            2      0      0
+     macRxOnRequest            0      0      9
+       -> macRxOn              0      0     18
+     macRxSoftEnable           0      0      9
+       -> halAssertHandler     0      0     18
+
+
+   Segment part sizes:
+
+     Function/Label   Bytes
+     --------------   -----
+     RFST                1
+     RFIF                1
+     macRxOnFlag         1
+     macRxEnableFlags    1
+     macRxOnOffInit     15
+     ?Subroutine1        9
+     macRxEnable        42
+     ?Subroutine2       10
+     macRxSoftEnable    32
+     macRxDisable       45
+     macRxHardDisable   35
+     ?Subroutine0       11
+     macRxOnRequest     30
+     macRxOffRequest    52
+     macRxOn            26
+     macRxOff           27
+     _A_IEN0             1
+
+ 
+ 334 bytes in segment BANKED_CODE
+   3 bytes in segment SFR_AN
+   2 bytes in segment XDATA_Z
+ 
+ 334 bytes of CODE  memory
+   0 bytes of DATA  memory (+ 3 bytes shared)
+   2 bytes of XDATA memory
+
+Errors: none
+Warnings: none

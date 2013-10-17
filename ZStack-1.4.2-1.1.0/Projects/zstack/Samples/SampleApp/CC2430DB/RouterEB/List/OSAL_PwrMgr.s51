@@ -1,0 +1,619 @@
+//////////////////////////////////////////////////////////////////////////////
+//                                                                           /
+// IAR 8051 C/C++ Compiler V7.20H/W32                  24/Jan/2013  14:47:46 /
+// Copyright 2004-2006 IAR Systems. All rights reserved.                     /
+//                                                                           /
+//    Core               =  plain                                            /
+//    Code model         =  banked                                           /
+//    Data model         =  large                                            /
+//    Calling convention =  xdata reentrant                                  /
+//    Constant location  =  data                                             /
+//    Dptr setup         =  1,16                                             /
+//    Source file        =  D:\Texas Instruments\ZStack-1.4.2-1.1.0\Componen /
+//                          ts\osal\common\OSAL_PwrMgr.c                     /
+//    Command line       =  -f E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂ /
+//                          ç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee20 /
+//                          06-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\S /
+//                          amples\SampleApp\CC2430DB\..\..\..\Tools\CC2430D /
+//                          B\f8wRouter.cfg (-DCPU32MHZ -DFORCE_MAC_NEAR     /
+//                          -DROOT=__near_func -DMAC_CFG_APP_PENDING_QUEUE=T /
+//                          RUE -DRTR_NWK -DBLINK_LEDS "-DCONST=const        /
+//                          __code" -DGENERIC=__generic) -f                  /
+//                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª /
+//                          ·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006- /
+//                          ´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp /
+//                          les\SampleApp\CC2430DB\..\..\..\Tools\CC2430DB\f /
+//                          8wConfig.cfg (-DSECURE=0                         /
+//                          -DDEFAULT_CHANLIST=0x00000800                    /
+//                          -DZDAPP_CONFIG_PAN_ID=0xFFFF                     /
+//                          -DNWK_START_DELAY=100 -DEXTENDED_JOINING_RANDOM_ /
+//                          MASK=0x007F -DBEACON_REQUEST_DELAY=100           /
+//                          -DBEACON_REQ_DELAY_MASK=0x00FF                   /
+//                          -DROUTE_EXPIRY_TIME=30 -DAPSC_ACK_WAIT_DURATION_ /
+//                          POLLED=3000 -DNWK_INDIRECT_MSG_TIMEOUT=7         /
+//                          -DMAX_RREQ_ENTRIES=10 -DAPSC_MAX_FRAME_RETRIES=3 /
+//                           -DNWK_MAX_DATA_RETRIES=2                        /
+//                          -DMAX_POLL_FAILURE_RETRIES=2 -DMAX_BCAST=9       /
+//                          -DAPS_MAX_GROUPS=16 -DMAX_RTG_ENTRIES=20         /
+//                          -DNWK_MAX_BINDING_ENTRIES=10                     /
+//                          -DMAX_BINDING_CLUSTER_IDS=5                      /
+//                          "-DDEFAULT_KEY={0x01, 0x03, 0x05, 0x07, 0x09,    /
+//                          0x0B, 0x0D, 0x0F, 0x00, 0x02, 0x04, 0x06, 0x08,  /
+//                          0x0A, 0x0C, 0x0D}" -DRFD_RCVC_ALWAYS_ON=FALSE    /
+//                          -DPOLL_RATE=1000 -DQUEUED_POLL_RATE=100          /
+//                          -DRESPONSE_POLL_RATE=100 -DREJOIN_POLL_RATE=440  /
+//                          -DTOP_BOOT_PAGES=0) -I "D:\Program Files\IAR     /
+//                          Systems\Embedded Workbench 4.05 Evaluation       /
+//                          version\8051\inc\" -I "D:\Program Files\IAR      /
+//                          Systems\Embedded Workbench 4.05 Evaluation       /
+//                          version\8051\inc\clib\" -I                       /
+//                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª /
+//                          ·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006- /
+//                          ´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp /
+//                          les\SampleApp\CC2430DB\ -I                       /
+//                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª /
+//                          ·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006- /
+//                          ´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp /
+//                          les\SampleApp\CC2430DB\..\Source\ -I             /
+//                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª /
+//                          ·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006- /
+//                          ´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp /
+//                          les\SampleApp\CC2430DB\..\..\..\ZMain\TI2430DB\  /
+//                          -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂ /
+//                          ç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee20 /
+//                          06-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\S /
+//                          amples\SampleApp\CC2430DB\..\..\..\..\..\Compone /
+//                          nts\mt\ -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ /
+//                          \ÎÞÏßÍøÂç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ /
+//                          ZigBee2006-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\ /
+//                          zstack\Samples\SampleApp\CC2430DB\..\..\..\..\.. /
+//                          \Components\hal\include\ -I                      /
+//                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª /
+//                          ·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006- /
+//                          ´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp /
+//                          les\SampleApp\CC2430DB\..\..\..\..\..\Components /
+//                          \hal\target\CC2430EB\ -I                         /
+//                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª /
+//                          ·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006- /
+//                          ´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp /
+//                          les\SampleApp\CC2430DB\..\..\..\..\..\Components /
+//                          \osal\mcu\ccsoc\ -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC243 /
+//                          0¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\Zi /
+//                          gBee2006\ZigBee2006-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\ /
+//                          Projects\zstack\Samples\SampleApp\CC2430DB\..\.. /
+//                          \..\..\..\Components\osal\include\ -I            /
+//                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª /
+//                          ·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006- /
+//                          ´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp /
+//                          les\SampleApp\CC2430DB\..\..\..\..\..\Components /
+//                          \stack\af\ -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢× /
+//                          ÊÁÏ\ÎÞÏßÍøÂç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee20 /
+//                          06\ZigBee2006-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projec /
+//                          ts\zstack\Samples\SampleApp\CC2430DB\..\..\..\.. /
+//                          \..\Components\stack\nwk\ -I                     /
+//                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª /
+//                          ·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006- /
+//                          ´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp /
+//                          les\SampleApp\CC2430DB\..\..\..\..\..\Components /
+//                          \stack\sec\ -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢ /
+//                          ×ÊÁÏ\ÎÞÏßÍøÂç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2 /
+//                          006\ZigBee2006-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Proje /
+//                          cts\zstack\Samples\SampleApp\CC2430DB\..\..\..\. /
+//                          .\..\Components\stack\sys\ -I                    /
+//                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª /
+//                          ·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006- /
+//                          ´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp /
+//                          les\SampleApp\CC2430DB\..\..\..\..\..\Components /
+//                          \stack\zdo\ -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢ /
+//                          ×ÊÁÏ\ÎÞÏßÍøÂç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2 /
+//                          006\ZigBee2006-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Proje /
+//                          cts\zstack\Samples\SampleApp\CC2430DB\..\..\..\. /
+//                          .\..\Components\zmac\f8w\ -I                     /
+//                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª /
+//                          ·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006- /
+//                          ´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp /
+//                          les\SampleApp\CC2430DB\..\..\..\..\..\Components /
+//                          \zmac\ -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ /
+//                          ÎÞÏßÍøÂç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\Z /
+//                          igBee2006-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\z /
+//                          stack\Samples\SampleApp\CC2430DB\..\..\..\..\..\ /
+//                          Components\services\saddr\ -I                    /
+//                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª /
+//                          ·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006- /
+//                          ´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp /
+//                          les\SampleApp\CC2430DB\..\..\..\..\..\Components /
+//                          \services\sdata\ -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC243 /
+//                          0¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\Zi /
+//                          gBee2006\ZigBee2006-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\ /
+//                          Projects\zstack\Samples\SampleApp\CC2430DB\..\.. /
+//                          \..\..\..\Components\mac\include\ -I             /
+//                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª /
+//                          ·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006- /
+//                          ´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp /
+//                          les\SampleApp\CC2430DB\..\..\..\..\..\Components /
+//                          \mac\high_level\ -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC243 /
+//                          0¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\Zi /
+//                          gBee2006\ZigBee2006-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\ /
+//                          Projects\zstack\Samples\SampleApp\CC2430DB\..\.. /
+//                          \..\..\..\Components\mac\low_level\srf03\ -I     /
+//                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª /
+//                          ·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006- /
+//                          ´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp /
+//                          les\SampleApp\CC2430DB\..\..\..\..\..\Components /
+//                          \mac\low_level\srf03\single_chip\ -D CC2430EB    /
+//                          -D ZTOOL_P1 -D MT_TASK -lC                       /
+//                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª /
+//                          ·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006- /
+//                          ´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp /
+//                          les\SampleApp\CC2430DB\RouterEB\List\ -lA        /
+//                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª /
+//                          ·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006- /
+//                          ´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp /
+//                          les\SampleApp\CC2430DB\RouterEB\List\            /
+//                          --diag_suppress Pe001,Pa010 --diag_remark pe550  /
+//                          -o E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂ /
+//                          ç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee20 /
+//                          06-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\S /
+//                          amples\SampleApp\CC2430DB\RouterEB\Obj\ -e       /
+//                          --require_prototypes -z9 --no_code_motion        /
+//                          --debug --core=plain --dptr=16,1                 /
+//                          --data_model=large --code_model=banked           /
+//                          --calling_convention=xdata_reentrant             /
+//                          --place_constants=data --nr_virtual_regs 8       /
+//                          "D:\Texas Instruments\ZStack-1.4.2-1.1.0\Compone /
+//                          nts\osal\common\OSAL_PwrMgr.c"                   /
+//    List file          =  E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª /
+//                          ·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006- /
+//                          ´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp /
+//                          les\SampleApp\CC2430DB\RouterEB\List\OSAL_PwrMgr /
+//                          .s51                                             /
+//                                                                           /
+//                                                                           /
+//////////////////////////////////////////////////////////////////////////////
+
+        NAME OSAL_PwrMgr
+
+        RTMODEL "__calling_convention", "xdata_reentrant"
+        RTMODEL "__code_model", "banked"
+        RTMODEL "__core", "plain"
+        RTMODEL "__data_model", "large"
+        RTMODEL "__dptr_size", "16"
+        RTMODEL "__extended_stack", "disabled"
+        RTMODEL "__location_for_constants", "data"
+        RTMODEL "__number_of_dptrs", "1"
+        RTMODEL "__rt_version", "1"
+
+        RSEG DOVERLAY:DATA:NOROOT(0)
+        RSEG IOVERLAY:IDATA:NOROOT(0)
+        RSEG ISTACK:IDATA:NOROOT(0)
+        RSEG PSTACK:XDATA:NOROOT(0)
+        RSEG XSTACK:XDATA:NOROOT(0)
+
+        EXTERN ?BANKED_ENTER_XDATA
+        EXTERN ?BANKED_LEAVE_XDATA
+        EXTERN ?BCALL
+        EXTERN ?BRET
+        EXTERN ?S_SHL
+        EXTERN ?V0
+        EXTERN __INIT_XDATA_Z
+
+        PUBLIC osal_pwrmgr_device
+        FUNCTION osal_pwrmgr_device,0203H
+        LOCFRAME ISTACK, 2, STACK
+        PUBLIC osal_pwrmgr_init
+        FUNCTION osal_pwrmgr_init,0203H
+        LOCFRAME ISTACK, 2, STACK
+        PUBLIC osal_pwrmgr_task_state
+        FUNCTION osal_pwrmgr_task_state,021203H
+        LOCFRAME XSTACK, 10, STACK
+        PUBLIC pwrmgr_attribute
+        
+        CFI Names cfiNames0
+        CFI StackFrame CFA_SP SP DATA
+        CFI StackFrame CFA_PSP16 PSP16 XDATA
+        CFI StackFrame CFA_XSP16 XSP16 XDATA
+        CFI StaticOverlayFrame CFA_IOVERLAY IOVERLAY
+        CFI StaticOverlayFrame CFA_DOVERLAY DOVERLAY
+        CFI Resource `PSW.CY`:1, `B.BR0`:1, `B.BR1`:1, `B.BR2`:1, `B.BR3`:1
+        CFI Resource `B.BR4`:1, `B.BR5`:1, `B.BR6`:1, `B.BR7`:1, `VB.BR8`:1
+        CFI Resource `VB.BR9`:1, `VB.BR10`:1, `VB.BR11`:1, `VB.BR12`:1
+        CFI Resource `VB.BR13`:1, `VB.BR14`:1, `VB.BR15`:1, VB:8, B:8, A:8
+        CFI Resource PSW:8, DPL0:8, DPH0:8, R0:8, R1:8, R2:8, R3:8, R4:8, R5:8
+        CFI Resource R6:8, R7:8, V0:8, V1:8, V2:8, V3:8, V4:8, V5:8, V6:8, V7:8
+        CFI Resource SP:8, PSPH:8, PSPL:8, PSP16:16, XSPH:8, XSPL:8, XSP16:16
+        CFI VirtualResource ?RET:24
+        CFI Resource ?BRET_EXT:8
+        CFI VirtualResource ?RET_HIGH:8, ?RET_LOW:8
+        CFI ResourceParts PSP16 PSPH, PSPL
+        CFI ResourceParts XSP16 XSPH, XSPL
+        CFI ResourceParts ?RET ?BRET_EXT, ?RET_HIGH, ?RET_LOW
+        CFI EndNames cfiNames0
+        
+        CFI Common cfiCommon0 Using cfiNames0
+        CFI CodeAlign 1
+        CFI DataAlign -1
+        CFI ReturnAddress ?RET CODE
+        CFI CFA_DOVERLAY Used
+        CFI CFA_IOVERLAY Used
+        CFI CFA_SP SP+-3
+        CFI CFA_PSP16 PSP16+0
+        CFI CFA_XSP16 XSP16+0
+        CFI `PSW.CY` SameValue
+        CFI `B.BR0` SameValue
+        CFI `B.BR1` SameValue
+        CFI `B.BR2` SameValue
+        CFI `B.BR3` SameValue
+        CFI `B.BR4` SameValue
+        CFI `B.BR5` SameValue
+        CFI `B.BR6` SameValue
+        CFI `B.BR7` SameValue
+        CFI `VB.BR8` SameValue
+        CFI `VB.BR9` SameValue
+        CFI `VB.BR10` SameValue
+        CFI `VB.BR11` SameValue
+        CFI `VB.BR12` SameValue
+        CFI `VB.BR13` SameValue
+        CFI `VB.BR14` SameValue
+        CFI `VB.BR15` SameValue
+        CFI VB SameValue
+        CFI B Undefined
+        CFI A Undefined
+        CFI PSW SameValue
+        CFI DPL0 SameValue
+        CFI DPH0 SameValue
+        CFI R0 Undefined
+        CFI R1 Undefined
+        CFI R2 Undefined
+        CFI R3 Undefined
+        CFI R4 Undefined
+        CFI R5 Undefined
+        CFI R6 SameValue
+        CFI R7 SameValue
+        CFI V0 SameValue
+        CFI V1 SameValue
+        CFI V2 SameValue
+        CFI V3 SameValue
+        CFI V4 SameValue
+        CFI V5 SameValue
+        CFI V6 SameValue
+        CFI V7 SameValue
+        CFI PSPH Undefined
+        CFI PSPL Undefined
+        CFI XSPH Undefined
+        CFI XSPL Undefined
+        CFI ?RET Concat
+        CFI ?BRET_EXT Frame(CFA_SP, 3)
+        CFI ?RET_HIGH Frame(CFA_SP, 2)
+        CFI ?RET_LOW Frame(CFA_SP, 1)
+        CFI EndCommon cfiCommon0
+        
+        EXTERN osalFindTask
+        FUNCTION osalFindTask,0202H
+        ARGFRAME XSTACK, 10, STACK
+
+// D:\Texas Instruments\ZStack-1.4.2-1.1.0\Components\osal\common\OSAL_PwrMgr.c
+//    1 /*********************************************************************
+//    2     Filename:       $RCSfile$
+//    3     Revised:        $Date: 2007-02-20 12:44:19 -0800 (Tue, 20 Feb 2007) $
+//    4     Revision:       $Revision: 13512 $
+//    5 
+//    6     Description:
+//    7 
+//    8       This file contains the OSAL Power Management API.
+//    9 
+//   10 
+//   11     Notes:
+//   12 
+//   13     Copyright (c) 2006 by Texas Instruments, Inc.
+//   14     All Rights Reserved.  Permission to use, reproduce, copy, prepare
+//   15     derivative works, modify, distribute, perform, display or sell this
+//   16     software and/or its documentation for any purpose is prohibited
+//   17     without the express written consent of Texas Instruments, Inc.
+//   18 *********************************************************************/
+//   19 
+//   20 
+//   21 /*********************************************************************
+//   22  * INCLUDES
+//   23  */
+//   24 
+//   25 #include "ZComDef.h"
+//   26 #include "OnBoard.h"
+//   27 #include "OSAL.h"
+//   28 #include "OSAL_Tasks.h"
+//   29 #include "OSAL_Timers.h"
+//   30 #include "OSAL_PwrMgr.h"
+//   31 
+//   32 /*********************************************************************
+//   33  * MACROS
+//   34  */
+//   35 
+//   36 /*********************************************************************
+//   37  * CONSTANTS
+//   38  */
+//   39 
+//   40 /*********************************************************************
+//   41  * TYPEDEFS
+//   42  */
+//   43 
+//   44 /*********************************************************************
+//   45  * GLOBAL VARIABLES
+//   46  */
+//   47 
+//   48 /* This global variable stores the power management attributes.
+//   49  */
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        REQUIRE __INIT_XDATA_Z
+//   50 pwrmgr_attribute_t pwrmgr_attribute;
+pwrmgr_attribute:
+        DS 7
+//   51 
+//   52 /*********************************************************************
+//   53  * EXTERNAL VARIABLES
+//   54  */
+//   55 
+//   56 /*********************************************************************
+//   57  * EXTERNAL FUNCTIONS
+//   58  */
+//   59 
+//   60 /*********************************************************************
+//   61  * LOCAL VARIABLES
+//   62  */
+//   63 
+//   64 /*********************************************************************
+//   65  * LOCAL FUNCTION PROTOTYPES
+//   66  */
+//   67 
+//   68 /*********************************************************************
+//   69  * FUNCTIONS
+//   70  *********************************************************************/
+//   71 
+//   72 /*********************************************************************
+//   73  * @fn      osal_pwrmgr_init
+//   74  *
+//   75  * @brief   Initialize the power management system.
+//   76  *
+//   77  * @param   none.
+//   78  *
+//   79  * @return  none.
+//   80  */
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//   81 void osal_pwrmgr_init( void )
+osal_pwrmgr_init:
+        CFI Block cfiBlock0 Using cfiCommon0
+        CFI Function osal_pwrmgr_init
+//   82 {
+        PUSH	DPL
+        CFI DPL0 Frame(CFA_SP, 4)
+        CFI CFA_SP SP+-4
+        PUSH	DPH
+        CFI DPH0 Frame(CFA_SP, 5)
+        CFI CFA_SP SP+-5
+        ; Saved register size: 2
+        ; Auto size: 0
+//   83   pwrmgr_attribute.pwrmgr_device = PWRMGR_ALWAYS_ON; // Default to no power conservation.
+        CLR	A
+        MOV	DPTR,#(pwrmgr_attribute + 6)
+        MOVX	@DPTR,A
+//   84   pwrmgr_attribute.pwrmgr_task_state = 0;            // Cleared.  All set to conserve
+        MOV	DPTR,#pwrmgr_attribute
+        MOVX	@DPTR,A
+        INC	DPTR
+        CFI EndBlock cfiBlock0
+        REQUIRE ?Subroutine0
+        ; // Fall through to label ?Subroutine0
+//   85 }
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+?Subroutine0:
+        CFI Block cfiBlock1 Using cfiCommon0
+        CFI NoFunction
+        CFI CFA_SP SP+-5
+        CFI DPL0 Frame(CFA_SP, 4)
+        CFI DPH0 Frame(CFA_SP, 5)
+        MOVX	@DPTR,A
+        POP	DPH
+        CFI CFA_SP SP+-4
+        CFI DPH0 SameValue
+        POP	DPL
+        CFI CFA_SP SP+-3
+        CFI DPL0 SameValue
+        LJMP	?BRET
+        CFI EndBlock cfiBlock1
+//   86 
+//   87 /*********************************************************************
+//   88  * @fn      osal_pwrmgr_device
+//   89  *
+//   90  * @brief   Sets the device power characteristic.
+//   91  *
+//   92  * @param   pwrmgr_device - type of power devices. With PWRMGR_ALWAYS_ON
+//   93  *          selection, there is no power savings and the device is most
+//   94  *          likely on mains power. The PWRMGR_BATTERY selection allows the
+//   95  *          HAL sleep manager to enter sleep.
+//   96  *
+//   97  * @return  none
+//   98  */
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//   99 void osal_pwrmgr_device( uint8 pwrmgr_device )
+osal_pwrmgr_device:
+        CFI Block cfiBlock2 Using cfiCommon0
+        CFI Function osal_pwrmgr_device
+//  100 {
+        PUSH	DPL
+        CFI DPL0 Frame(CFA_SP, 4)
+        CFI CFA_SP SP+-4
+        PUSH	DPH
+        CFI DPH0 Frame(CFA_SP, 5)
+        CFI CFA_SP SP+-5
+        ; Saved register size: 2
+        ; Auto size: 0
+//  101   pwrmgr_attribute.pwrmgr_device = pwrmgr_device;
+        MOV	A,R1
+        MOV	DPTR,#(pwrmgr_attribute + 6)
+        SJMP	?Subroutine0
+        CFI EndBlock cfiBlock2
+//  102 }
+//  103 
+//  104 /*********************************************************************
+//  105  * @fn      osal_pwrmgr_task_state
+//  106  *
+//  107  * @brief   This function is called by each task to state whether or
+//  108  *          not this task wants to conserve power.
+//  109  *
+//  110  * @param   task_id - calling task ID.
+//  111  *          state - whether the calling task wants to
+//  112  *          conserve power or not.
+//  113  *
+//  114  * @return  ZSUCCESS if task complete
+//  115  */
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  116 uint8 osal_pwrmgr_task_state( uint8 task_id, uint8 state )
+osal_pwrmgr_task_state:
+        CFI Block cfiBlock3 Using cfiCommon0
+        CFI Function osal_pwrmgr_task_state
+//  117 {
+        FUNCALL osal_pwrmgr_task_state, osalFindTask
+        LOCFRAME XSTACK, 10, STACK
+        ARGFRAME XSTACK, 10, STACK
+        MOV	A,#-0xa
+        LCALL	?BANKED_ENTER_XDATA
+        CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+        CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+        CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+        CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+        CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+        CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+        CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+        CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+        CFI VB load(1, XDATA, add(CFA_XSP16, literal(-9)))
+        CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+        CFI CFA_SP SP+0
+        CFI CFA_XSP16 add(XSP16, 10)
+        ; Saved register size: 10
+        ; Auto size: 0
+        MOV	A,R1
+        MOV	R6,A
+        MOV	A,R2
+        MOV	R7,A
+//  118   if ( osalFindTask( task_id ) == NULL )
+        ; Setup parameters for call to function osalFindTask
+        MOV	DPTR,#(osalFindTask & 0xffff)
+        MOV	A,#((osalFindTask >> 16) & 0xff)
+        LCALL	?BCALL               ; Banked call to: DPTR()
+        MOV	A,R2
+        JNZ	??osal_pwrmgr_task_state_0
+        MOV	A,R3
+??osal_pwrmgr_task_state_0:
+        JNZ	??osal_pwrmgr_task_state_1
+//  119     return ( INVALID_TASK );
+        MOV	R1,#0x1
+        SJMP	??osal_pwrmgr_task_state_2
+//  120 
+//  121   if ( state == PWRMGR_CONSERVE )
+??osal_pwrmgr_task_state_1:
+        MOV	A,R7
+        MOV	?V0 + 0,#0x1
+        MOV	?V0 + 1,#0x0
+        JNZ	??osal_pwrmgr_task_state_3
+//  122   {
+//  123     // Clear the task state flag
+//  124     pwrmgr_attribute.pwrmgr_task_state &= ~(1 << task_id );
+        MOV	A,R6
+        MOV	R0,#?V0 + 0
+        LCALL	?S_SHL
+        MOV	A,?V0 + 0
+        CPL	A
+        MOV	R0,A
+        MOV	A,?V0 + 1
+        CPL	A
+        MOV	R1,A
+        MOV	DPTR,#pwrmgr_attribute
+        MOVX	A,@DPTR
+        ANL	A,R0
+        MOVX	@DPTR,A
+        INC	DPTR
+        MOVX	A,@DPTR
+        ANL	A,R1
+        SJMP	??osal_pwrmgr_task_state_4
+//  125   }
+//  126   else
+//  127   {
+//  128     // Set the task state flag
+//  129     pwrmgr_attribute.pwrmgr_task_state |= (1 << task_id);
+??osal_pwrmgr_task_state_3:
+        MOV	A,R6
+        MOV	R0,#?V0 + 0
+        LCALL	?S_SHL
+        MOV	DPTR,#pwrmgr_attribute
+        MOVX	A,@DPTR
+        ORL	A,?V0 + 0
+        MOVX	@DPTR,A
+        INC	DPTR
+        MOVX	A,@DPTR
+        ORL	A,?V0 + 1
+??osal_pwrmgr_task_state_4:
+        MOVX	@DPTR,A
+//  130   }
+//  131 
+//  132   return ( ZSUCCESS );
+        MOV	R1,#0x0
+??osal_pwrmgr_task_state_2:
+        MOV	R7,#0x2
+        LJMP	?BANKED_LEAVE_XDATA
+        CFI EndBlock cfiBlock3
+//  133 }
+
+        END
+//  134 
+//  135 #if defined( POWER_SAVING )
+//  136 /*********************************************************************
+//  137  * @fn      osal_pwrmgr_powerconserve
+//  138  *
+//  139  * @brief   This function is called from the main OSAL loop when there are
+//  140  *          no events scheduled and shouldn't be called from anywhere else.
+//  141  *
+//  142  * @param   none.
+//  143  *
+//  144  * @return  none.
+//  145  */
+//  146 void osal_pwrmgr_powerconserve( void )
+//  147 {
+//  148   uint16        next;
+//  149   halIntState_t intState;
+//  150 
+//  151   // Should we even look into power conservation
+//  152   if ( pwrmgr_attribute.pwrmgr_device != PWRMGR_ALWAYS_ON )
+//  153   {
+//  154     // Are all tasks in agreement to conserve
+//  155     if ( pwrmgr_attribute.pwrmgr_task_state == 0 )
+//  156     {
+//  157       // Hold off interrupts.
+//  158       HAL_ENTER_CRITICAL_SECTION( intState );
+//  159 
+//  160       // Get next time-out
+//  161       next = osal_next_timeout();
+//  162 
+//  163       // Re-enable interrupts.
+//  164       HAL_EXIT_CRITICAL_SECTION( intState );
+//  165 
+//  166       // Put the processor into sleep mode
+//  167       OSAL_SET_CPU_INTO_SLEEP( next );
+//  168     }
+//  169   }
+//  170 }
+//  171 #endif /* POWER_SAVING */
+//  172 
+//  173 /*********************************************************************
+//  174 *********************************************************************/
+// 
+// 118 bytes in segment BANKED_CODE
+//   7 bytes in segment XDATA_Z
+// 
+// 118 bytes of CODE  memory
+//   7 bytes of XDATA memory
+//
+//Errors: none
+//Warnings: none

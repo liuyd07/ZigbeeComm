@@ -1,0 +1,2618 @@
+//////////////////////////////////////////////////////////////////////////////
+//                                                                           /
+// IAR 8051 C/C++ Compiler V7.20H/W32                  24/Jan/2013  14:47:46 /
+// Copyright 2004-2006 IAR Systems. All rights reserved.                     /
+//                                                                           /
+//    Core               =  plain                                            /
+//    Code model         =  banked                                           /
+//    Data model         =  large                                            /
+//    Calling convention =  xdata reentrant                                  /
+//    Constant location  =  data                                             /
+//    Dptr setup         =  1,16                                             /
+//    Source file        =  D:\Texas Instruments\ZStack-1.4.2-1.1.0\Componen /
+//                          ts\osal\common\OSAL_Timers.c                     /
+//    Command line       =  -f E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂ /
+//                          ç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee20 /
+//                          06-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\S /
+//                          amples\SampleApp\CC2430DB\..\..\..\Tools\CC2430D /
+//                          B\f8wRouter.cfg (-DCPU32MHZ -DFORCE_MAC_NEAR     /
+//                          -DROOT=__near_func -DMAC_CFG_APP_PENDING_QUEUE=T /
+//                          RUE -DRTR_NWK -DBLINK_LEDS "-DCONST=const        /
+//                          __code" -DGENERIC=__generic) -f                  /
+//                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª /
+//                          ·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006- /
+//                          ´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp /
+//                          les\SampleApp\CC2430DB\..\..\..\Tools\CC2430DB\f /
+//                          8wConfig.cfg (-DSECURE=0                         /
+//                          -DDEFAULT_CHANLIST=0x00000800                    /
+//                          -DZDAPP_CONFIG_PAN_ID=0xFFFF                     /
+//                          -DNWK_START_DELAY=100 -DEXTENDED_JOINING_RANDOM_ /
+//                          MASK=0x007F -DBEACON_REQUEST_DELAY=100           /
+//                          -DBEACON_REQ_DELAY_MASK=0x00FF                   /
+//                          -DROUTE_EXPIRY_TIME=30 -DAPSC_ACK_WAIT_DURATION_ /
+//                          POLLED=3000 -DNWK_INDIRECT_MSG_TIMEOUT=7         /
+//                          -DMAX_RREQ_ENTRIES=10 -DAPSC_MAX_FRAME_RETRIES=3 /
+//                           -DNWK_MAX_DATA_RETRIES=2                        /
+//                          -DMAX_POLL_FAILURE_RETRIES=2 -DMAX_BCAST=9       /
+//                          -DAPS_MAX_GROUPS=16 -DMAX_RTG_ENTRIES=20         /
+//                          -DNWK_MAX_BINDING_ENTRIES=10                     /
+//                          -DMAX_BINDING_CLUSTER_IDS=5                      /
+//                          "-DDEFAULT_KEY={0x01, 0x03, 0x05, 0x07, 0x09,    /
+//                          0x0B, 0x0D, 0x0F, 0x00, 0x02, 0x04, 0x06, 0x08,  /
+//                          0x0A, 0x0C, 0x0D}" -DRFD_RCVC_ALWAYS_ON=FALSE    /
+//                          -DPOLL_RATE=1000 -DQUEUED_POLL_RATE=100          /
+//                          -DRESPONSE_POLL_RATE=100 -DREJOIN_POLL_RATE=440  /
+//                          -DTOP_BOOT_PAGES=0) -I "D:\Program Files\IAR     /
+//                          Systems\Embedded Workbench 4.05 Evaluation       /
+//                          version\8051\inc\" -I "D:\Program Files\IAR      /
+//                          Systems\Embedded Workbench 4.05 Evaluation       /
+//                          version\8051\inc\clib\" -I                       /
+//                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª /
+//                          ·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006- /
+//                          ´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp /
+//                          les\SampleApp\CC2430DB\ -I                       /
+//                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª /
+//                          ·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006- /
+//                          ´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp /
+//                          les\SampleApp\CC2430DB\..\Source\ -I             /
+//                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª /
+//                          ·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006- /
+//                          ´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp /
+//                          les\SampleApp\CC2430DB\..\..\..\ZMain\TI2430DB\  /
+//                          -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂ /
+//                          ç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee20 /
+//                          06-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\S /
+//                          amples\SampleApp\CC2430DB\..\..\..\..\..\Compone /
+//                          nts\mt\ -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ /
+//                          \ÎÞÏßÍøÂç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ /
+//                          ZigBee2006-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\ /
+//                          zstack\Samples\SampleApp\CC2430DB\..\..\..\..\.. /
+//                          \Components\hal\include\ -I                      /
+//                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª /
+//                          ·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006- /
+//                          ´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp /
+//                          les\SampleApp\CC2430DB\..\..\..\..\..\Components /
+//                          \hal\target\CC2430EB\ -I                         /
+//                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª /
+//                          ·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006- /
+//                          ´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp /
+//                          les\SampleApp\CC2430DB\..\..\..\..\..\Components /
+//                          \osal\mcu\ccsoc\ -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC243 /
+//                          0¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\Zi /
+//                          gBee2006\ZigBee2006-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\ /
+//                          Projects\zstack\Samples\SampleApp\CC2430DB\..\.. /
+//                          \..\..\..\Components\osal\include\ -I            /
+//                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª /
+//                          ·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006- /
+//                          ´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp /
+//                          les\SampleApp\CC2430DB\..\..\..\..\..\Components /
+//                          \stack\af\ -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢× /
+//                          ÊÁÏ\ÎÞÏßÍøÂç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee20 /
+//                          06\ZigBee2006-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projec /
+//                          ts\zstack\Samples\SampleApp\CC2430DB\..\..\..\.. /
+//                          \..\Components\stack\nwk\ -I                     /
+//                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª /
+//                          ·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006- /
+//                          ´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp /
+//                          les\SampleApp\CC2430DB\..\..\..\..\..\Components /
+//                          \stack\sec\ -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢ /
+//                          ×ÊÁÏ\ÎÞÏßÍøÂç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2 /
+//                          006\ZigBee2006-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Proje /
+//                          cts\zstack\Samples\SampleApp\CC2430DB\..\..\..\. /
+//                          .\..\Components\stack\sys\ -I                    /
+//                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª /
+//                          ·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006- /
+//                          ´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp /
+//                          les\SampleApp\CC2430DB\..\..\..\..\..\Components /
+//                          \stack\zdo\ -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢ /
+//                          ×ÊÁÏ\ÎÞÏßÍøÂç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2 /
+//                          006\ZigBee2006-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Proje /
+//                          cts\zstack\Samples\SampleApp\CC2430DB\..\..\..\. /
+//                          .\..\Components\zmac\f8w\ -I                     /
+//                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª /
+//                          ·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006- /
+//                          ´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp /
+//                          les\SampleApp\CC2430DB\..\..\..\..\..\Components /
+//                          \zmac\ -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ /
+//                          ÎÞÏßÍøÂç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\Z /
+//                          igBee2006-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\z /
+//                          stack\Samples\SampleApp\CC2430DB\..\..\..\..\..\ /
+//                          Components\services\saddr\ -I                    /
+//                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª /
+//                          ·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006- /
+//                          ´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp /
+//                          les\SampleApp\CC2430DB\..\..\..\..\..\Components /
+//                          \services\sdata\ -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC243 /
+//                          0¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\Zi /
+//                          gBee2006\ZigBee2006-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\ /
+//                          Projects\zstack\Samples\SampleApp\CC2430DB\..\.. /
+//                          \..\..\..\Components\mac\include\ -I             /
+//                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª /
+//                          ·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006- /
+//                          ´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp /
+//                          les\SampleApp\CC2430DB\..\..\..\..\..\Components /
+//                          \mac\high_level\ -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC243 /
+//                          0¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\Zi /
+//                          gBee2006\ZigBee2006-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\ /
+//                          Projects\zstack\Samples\SampleApp\CC2430DB\..\.. /
+//                          \..\..\..\Components\mac\low_level\srf03\ -I     /
+//                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª /
+//                          ·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006- /
+//                          ´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp /
+//                          les\SampleApp\CC2430DB\..\..\..\..\..\Components /
+//                          \mac\low_level\srf03\single_chip\ -D CC2430EB    /
+//                          -D ZTOOL_P1 -D MT_TASK -lC                       /
+//                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª /
+//                          ·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006- /
+//                          ´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp /
+//                          les\SampleApp\CC2430DB\RouterEB\List\ -lA        /
+//                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª /
+//                          ·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006- /
+//                          ´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp /
+//                          les\SampleApp\CC2430DB\RouterEB\List\            /
+//                          --diag_suppress Pe001,Pa010 --diag_remark pe550  /
+//                          -o E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂ /
+//                          ç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee20 /
+//                          06-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\S /
+//                          amples\SampleApp\CC2430DB\RouterEB\Obj\ -e       /
+//                          --require_prototypes -z9 --no_code_motion        /
+//                          --debug --core=plain --dptr=16,1                 /
+//                          --data_model=large --code_model=banked           /
+//                          --calling_convention=xdata_reentrant             /
+//                          --place_constants=data --nr_virtual_regs 8       /
+//                          "D:\Texas Instruments\ZStack-1.4.2-1.1.0\Compone /
+//                          nts\osal\common\OSAL_Timers.c"                   /
+//    List file          =  E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª /
+//                          ·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006- /
+//                          ´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp /
+//                          les\SampleApp\CC2430DB\RouterEB\List\OSAL_Timers /
+//                          .s51                                             /
+//                                                                           /
+//                                                                           /
+//////////////////////////////////////////////////////////////////////////////
+
+        NAME OSAL_Timers
+
+        RTMODEL "__calling_convention", "xdata_reentrant"
+        RTMODEL "__code_model", "banked"
+        RTMODEL "__core", "plain"
+        RTMODEL "__data_model", "large"
+        RTMODEL "__dptr_size", "16"
+        RTMODEL "__extended_stack", "disabled"
+        RTMODEL "__location_for_constants", "data"
+        RTMODEL "__number_of_dptrs", "1"
+        RTMODEL "__rt_version", "1"
+
+        RSEG DOVERLAY:DATA:NOROOT(0)
+        RSEG IOVERLAY:IDATA:NOROOT(0)
+        RSEG ISTACK:IDATA:NOROOT(0)
+        RSEG PSTACK:XDATA:NOROOT(0)
+        RSEG XSTACK:XDATA:NOROOT(0)
+
+        EXTERN ?ALLOC_XSTACK8
+        EXTERN ?BANKED_ENTER_XDATA
+        EXTERN ?BANKED_LEAVE_XDATA
+        EXTERN ?BCALL
+        EXTERN ?BRET
+        EXTERN ?DEALLOC_XSTACK8
+        EXTERN ?L_ADD_TO_X
+        EXTERN ?L_MOV_TO_X
+        EXTERN ?L_MOV_X
+        EXTERN ?V0
+        EXTERN ?XSP
+        EXTERN __INIT_XDATA_I
+        EXTERN __INIT_XDATA_Z
+
+        FUNCTION ??osalTimerUpdate,021203H
+        ARGFRAME ISTACK, 2, STACK
+        LOCFRAME ISTACK, 1, STACK
+        LOCFRAME XSTACK, 17, STACK
+        PUBWEAK _A_IEN0
+        PUBWEAK __Constant_0
+        PUBWEAK __Constant_3e8
+        PUBLIC osalAddTimer
+        FUNCTION osalAddTimer,021203H
+        ARGFRAME XSTACK, 12, STACK
+        LOCFRAME ISTACK, 1, STACK
+        LOCFRAME XSTACK, 14, STACK
+        PUBLIC osalDeleteTimer
+        FUNCTION osalDeleteTimer,021203H
+        ARGFRAME XSTACK, 12, STACK
+        LOCFRAME XSTACK, 9, STACK
+        PUBLIC osalFindTimer
+        FUNCTION osalFindTimer,0203H
+        ARGFRAME XSTACK, 14, STACK
+        LOCFRAME XSTACK, 9, STACK
+        PUBLIC osalTimerInit
+        FUNCTION osalTimerInit,021203H
+        LOCFRAME XSTACK, 12, STACK
+        PUBLIC osal_GetSystemClock
+        FUNCTION osal_GetSystemClock,0203H
+        LOCFRAME XSTACK, 12, STACK
+        PUBLIC osal_get_timeoutEx
+        FUNCTION osal_get_timeoutEx,021203H
+        LOCFRAME XSTACK, 12, STACK
+        PUBLIC osal_set_timer_interrupt
+        FUNCTION osal_set_timer_interrupt,021203H
+        LOCFRAME ISTACK, 2, STACK
+        PUBLIC osal_start_timer
+        FUNCTION osal_start_timer,021203H
+        LOCFRAME ISTACK, 2, STACK
+        LOCFRAME XSTACK, 9, STACK
+        PUBLIC osal_start_timerEx
+        FUNCTION osal_start_timerEx,021203H
+        ARGFRAME XSTACK, 9, STACK
+        LOCFRAME XSTACK, 12, STACK
+        PUBLIC osal_stop_timer
+        FUNCTION osal_stop_timer,021203H
+        LOCFRAME XSTACK, 9, STACK
+        PUBLIC osal_stop_timerEx
+        FUNCTION osal_stop_timerEx,021203H
+        ARGFRAME XSTACK, 9, STACK
+        LOCFRAME XSTACK, 12, STACK
+        PUBLIC osal_timer_activate
+        FUNCTION osal_timer_activate,021203H
+        ARGFRAME XSTACK, 12, STACK
+        LOCFRAME XSTACK, 9, STACK
+        PUBLIC osal_timer_hw_setup
+        FUNCTION osal_timer_hw_setup,021203H
+        ARGFRAME XSTACK, 9, STACK
+        LOCFRAME XSTACK, 12, STACK
+        PUBLIC osal_timer_num_active
+        FUNCTION osal_timer_num_active,0203H
+        LOCFRAME ISTACK, 2, STACK
+        PUBLIC osal_update_timers
+        FUNCTION osal_update_timers,021203H
+        LOCFRAME ISTACK, 2, STACK
+        PUBLIC timerActive
+        PUBLIC timerHead
+        PUBLIC tmr_count
+        PUBLIC tmr_decr_time
+        
+        CFI Names cfiNames0
+        CFI StackFrame CFA_SP SP DATA
+        CFI StackFrame CFA_PSP16 PSP16 XDATA
+        CFI StackFrame CFA_XSP16 XSP16 XDATA
+        CFI StaticOverlayFrame CFA_IOVERLAY IOVERLAY
+        CFI StaticOverlayFrame CFA_DOVERLAY DOVERLAY
+        CFI Resource `PSW.CY`:1, `B.BR0`:1, `B.BR1`:1, `B.BR2`:1, `B.BR3`:1
+        CFI Resource `B.BR4`:1, `B.BR5`:1, `B.BR6`:1, `B.BR7`:1, `VB.BR8`:1
+        CFI Resource `VB.BR9`:1, `VB.BR10`:1, `VB.BR11`:1, `VB.BR12`:1
+        CFI Resource `VB.BR13`:1, `VB.BR14`:1, `VB.BR15`:1, VB:8, B:8, A:8
+        CFI Resource PSW:8, DPL0:8, DPH0:8, R0:8, R1:8, R2:8, R3:8, R4:8, R5:8
+        CFI Resource R6:8, R7:8, V0:8, V1:8, V2:8, V3:8, V4:8, V5:8, V6:8, V7:8
+        CFI Resource SP:8, PSPH:8, PSPL:8, PSP16:16, XSPH:8, XSPL:8, XSP16:16
+        CFI VirtualResource ?RET:24
+        CFI Resource ?BRET_EXT:8
+        CFI VirtualResource ?RET_HIGH:8, ?RET_LOW:8
+        CFI ResourceParts PSP16 PSPH, PSPL
+        CFI ResourceParts XSP16 XSPH, XSPL
+        CFI ResourceParts ?RET ?BRET_EXT, ?RET_HIGH, ?RET_LOW
+        CFI EndNames cfiNames0
+        
+        CFI Common cfiCommon0 Using cfiNames0
+        CFI CodeAlign 1
+        CFI DataAlign -1
+        CFI ReturnAddress ?RET CODE
+        CFI CFA_DOVERLAY Used
+        CFI CFA_IOVERLAY Used
+        CFI CFA_SP SP+-3
+        CFI CFA_PSP16 PSP16+0
+        CFI CFA_XSP16 XSP16+0
+        CFI `PSW.CY` SameValue
+        CFI `B.BR0` SameValue
+        CFI `B.BR1` SameValue
+        CFI `B.BR2` SameValue
+        CFI `B.BR3` SameValue
+        CFI `B.BR4` SameValue
+        CFI `B.BR5` SameValue
+        CFI `B.BR6` SameValue
+        CFI `B.BR7` SameValue
+        CFI `VB.BR8` SameValue
+        CFI `VB.BR9` SameValue
+        CFI `VB.BR10` SameValue
+        CFI `VB.BR11` SameValue
+        CFI `VB.BR12` SameValue
+        CFI `VB.BR13` SameValue
+        CFI `VB.BR14` SameValue
+        CFI `VB.BR15` SameValue
+        CFI VB SameValue
+        CFI B Undefined
+        CFI A Undefined
+        CFI PSW SameValue
+        CFI DPL0 SameValue
+        CFI DPH0 SameValue
+        CFI R0 Undefined
+        CFI R1 Undefined
+        CFI R2 Undefined
+        CFI R3 Undefined
+        CFI R4 Undefined
+        CFI R5 Undefined
+        CFI R6 SameValue
+        CFI R7 SameValue
+        CFI V0 SameValue
+        CFI V1 SameValue
+        CFI V2 SameValue
+        CFI V3 SameValue
+        CFI V4 SameValue
+        CFI V5 SameValue
+        CFI V6 SameValue
+        CFI V7 SameValue
+        CFI PSPH Undefined
+        CFI PSPL Undefined
+        CFI XSPH Undefined
+        CFI XSPL Undefined
+        CFI ?RET Concat
+        CFI ?BRET_EXT Frame(CFA_SP, 3)
+        CFI ?RET_HIGH Frame(CFA_SP, 2)
+        CFI ?RET_LOW Frame(CFA_SP, 1)
+        CFI EndCommon cfiCommon0
+        
+        
+        CFI Common cfiCommon1 Using cfiNames0
+        CFI CodeAlign 1
+        CFI DataAlign -1
+        CFI ReturnAddress ?RET CODE
+        CFI CFA_DOVERLAY Used
+        CFI CFA_IOVERLAY Used
+        CFI CFA_SP SP+-2
+        CFI CFA_PSP16 PSP16+0
+        CFI CFA_XSP16 XSP16+0
+        CFI `PSW.CY` SameValue
+        CFI `B.BR0` SameValue
+        CFI `B.BR1` SameValue
+        CFI `B.BR2` SameValue
+        CFI `B.BR3` SameValue
+        CFI `B.BR4` SameValue
+        CFI `B.BR5` SameValue
+        CFI `B.BR6` SameValue
+        CFI `B.BR7` SameValue
+        CFI `VB.BR8` SameValue
+        CFI `VB.BR9` SameValue
+        CFI `VB.BR10` SameValue
+        CFI `VB.BR11` SameValue
+        CFI `VB.BR12` SameValue
+        CFI `VB.BR13` SameValue
+        CFI `VB.BR14` SameValue
+        CFI `VB.BR15` SameValue
+        CFI VB SameValue
+        CFI B SameValue
+        CFI A SameValue
+        CFI PSW SameValue
+        CFI DPL0 SameValue
+        CFI DPH0 SameValue
+        CFI R0 SameValue
+        CFI R1 SameValue
+        CFI R2 SameValue
+        CFI R3 SameValue
+        CFI R4 SameValue
+        CFI R5 SameValue
+        CFI R6 SameValue
+        CFI R7 SameValue
+        CFI V0 SameValue
+        CFI V1 SameValue
+        CFI V2 SameValue
+        CFI V3 SameValue
+        CFI V4 SameValue
+        CFI V5 SameValue
+        CFI V6 SameValue
+        CFI V7 SameValue
+        CFI PSPH Undefined
+        CFI PSPL Undefined
+        CFI XSPH Undefined
+        CFI XSPL Undefined
+        CFI ?RET Concat
+        CFI ?BRET_EXT SameValue
+        CFI ?RET_HIGH Frame(CFA_SP, 2)
+        CFI ?RET_LOW Frame(CFA_SP, 1)
+        CFI EndCommon cfiCommon1
+        
+        EXTERN osal_mem_alloc
+        FUNCTION osal_mem_alloc,0202H
+        ARGFRAME XSTACK, 14, STACK
+        EXTERN osal_mem_free
+        FUNCTION osal_mem_free,0202H
+        ARGFRAME XSTACK, 17, STACK
+        EXTERN osal_self
+        FUNCTION osal_self,0202H
+        ARGFRAME ISTACK, 2, STACK
+        ARGFRAME XSTACK, 9, STACK
+        EXTERN HalTimerStart
+        FUNCTION HalTimerStart,0202H
+        ARGFRAME XSTACK, 12, STACK
+        EXTERN HalTimerStop
+        FUNCTION HalTimerStop,0202H
+        ARGFRAME XSTACK, 12, STACK
+        EXTERN HalTimerInterruptEnable
+        FUNCTION HalTimerInterruptEnable,0202H
+        ARGFRAME ISTACK, 2, STACK
+        EXTERN osal_set_event
+        FUNCTION osal_set_event,0202H
+        ARGFRAME XSTACK, 17, STACK
+
+// D:\Texas Instruments\ZStack-1.4.2-1.1.0\Components\osal\common\OSAL_Timers.c
+//    1 /*********************************************************************
+//    2     Filename:       OSAL_Timers.c
+//    3     Revised:        $Date: 2006-10-27 16:25:55 -0700 (Fri, 27 Oct 2006) $
+//    4     Revision:       $Revision: 12442 $
+//    5 
+//    6     Description:    OSAL Timer definition and manipulation functions.
+//    7 
+//    8     Copyright (c) 2006 by Texas Instruments, Inc.
+//    9     All Rights Reserved.  Permission to use, reproduce, copy, prepare
+//   10     derivative works, modify, distribute, perform, display or sell this
+//   11     software and/or its documentation for any purpose is prohibited
+//   12     without the express written consent of Texas Instruments, Inc.
+//   13 *********************************************************************/
+//   14 
+//   15 /*********************************************************************
+//   16  * INCLUDES
+//   17  */
+//   18 
+//   19 #include "ZComDef.h"
+//   20 #include "OnBoard.h"
+//   21 #include "OSAL.h"
+//   22 #include "OSAL_Timers.h"
+//   23 
+//   24 #include "hal_timer.h"
+//   25 #include "hal_led.h"
+//   26 
+//   27 /*********************************************************************
+//   28  * MACROS
+//   29  */
+//   30 
+//   31 /*********************************************************************
+//   32  * CONSTANTS
+//   33  */
+//   34 
+//   35 /*********************************************************************
+//   36  * TYPEDEFS
+//   37  */
+//   38 
+//   39 typedef struct
+//   40 {
+//   41   void *next;
+//   42   UINT16 timeout;
+//   43   UINT16 event_flag;
+//   44   byte task_id;
+//   45 } osalTimerRec_t;
+//   46 
+//   47 /*********************************************************************
+//   48  * GLOBAL VARIABLES
+//   49  */
+//   50 
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        REQUIRE __INIT_XDATA_Z
+//   51 osalTimerRec_t *timerHead;
+timerHead:
+        DS 2
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        REQUIRE __INIT_XDATA_Z
+//   52 uint32 tmr_count;          // Amount of time per tick - in micro-sec
+tmr_count:
+        DS 4
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        REQUIRE __INIT_XDATA_Z
+//   53 uint16 tmr_decr_time;      // Decr_Time for system timer
+tmr_decr_time:
+        DS 2
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        REQUIRE __INIT_XDATA_Z
+//   54 byte timerActive;          // Flag if hw timer active
+timerActive:
+        DS 1
+//   55 
+//   56 /*********************************************************************
+//   57  * EXTERNAL VARIABLES
+//   58  */
+//   59 
+//   60 /*********************************************************************
+//   61  * EXTERNAL FUNCTIONS
+//   62  */
+//   63 
+//   64 /*********************************************************************
+//   65  * LOCAL VARIABLES
+//   66  */
+//   67 // Milliseconds since last reboot
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        REQUIRE __INIT_XDATA_Z
+//   68 static uint32 osal_systemClock;
+??osal_systemClock:
+        DS 4
+//   69 
+//   70 /*********************************************************************
+//   71  * LOCAL FUNCTION PROTOTYPES
+//   72  */
+//   73 osalTimerRec_t  *osalAddTimer( byte task_id, UINT16 event_flag, UINT16 timeout );
+//   74 osalTimerRec_t *osalFindTimer( byte task_id, uint16 event_flag );
+//   75 void osalDeleteTimer( osalTimerRec_t *rmTimer );
+//   76 static void osalTimerUpdate( uint16 time );
+//   77 
+//   78 void osal_timer_activate( byte turn_on );
+//   79 void osal_timer_hw_setup( byte turn_on );
+//   80 void osal_set_timer_interrupt( byte turn_on );
+//   81 void osal_retune_timers( void );
+//   82 
+//   83 /*********************************************************************
+//   84  * FUNCTIONS
+//   85  *********************************************************************/
+//   86 
+//   87 /*********************************************************************
+//   88  * @fn      osalTimerInit
+//   89  *
+//   90  * @brief   Initialization for the OSAL Timer System.
+//   91  *
+//   92  * @param   none
+//   93  *
+//   94  * @return
+//   95  */
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//   96 void osalTimerInit( void )
+osalTimerInit:
+        CFI Block cfiBlock0 Using cfiCommon0
+        CFI Function osalTimerInit
+//   97 {
+        FUNCALL osalTimerInit, osal_timer_activate
+        LOCFRAME XSTACK, 12, STACK
+        ARGFRAME XSTACK, 12, STACK
+        MOV	A,#-0xc
+        LCALL	?BANKED_ENTER_XDATA
+        CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+        CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+        CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+        CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+        CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+        CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+        CFI V3 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+        CFI V2 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+        CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+        CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+        CFI VB load(1, XDATA, add(CFA_XSP16, literal(-11)))
+        CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+        CFI CFA_SP SP+0
+        CFI CFA_XSP16 add(XSP16, 12)
+        ; Saved register size: 12
+        ; Auto size: 0
+//   98   // Initialize the rollover modulo
+//   99   tmr_count = TICK_TIME;
+        MOV	DPTR,#__Constant_3e8
+        MOV	R0,#?V0 + 0
+        LCALL	?L_MOV_X
+        MOV	DPTR,#tmr_count
+        MOV	R0,#?V0 + 0
+        LCALL	?L_MOV_TO_X
+//  100   tmr_decr_time = TIMER_DECR_TIME;
+        MOV	DPTR,#tmr_decr_time
+        MOV	A,#0x1
+        MOVX	@DPTR,A
+        INC	DPTR
+        CLR	A
+        MOVX	@DPTR,A
+//  101 
+//  102   // Initialize the system timer
+//  103   osal_timer_activate( false );
+        ; Setup parameters for call to function osal_timer_activate
+        MOV	R1,A
+        MOV	DPTR,#(osal_timer_activate & 0xffff)
+        MOV	A,#((osal_timer_activate >> 16) & 0xff)
+        LCALL	?BCALL               ; Banked call to: DPTR()
+//  104   timerActive = false;
+        CLR	A
+        MOV	DPTR,#timerActive
+        MOVX	@DPTR,A
+//  105 
+//  106   osal_systemClock = 0;
+        MOV	DPTR,#__Constant_0
+        MOV	R0,#?V0 + 0
+        LCALL	?L_MOV_X
+        MOV	DPTR,#??osal_systemClock
+        MOV	R0,#?V0 + 0
+        LCALL	?L_MOV_TO_X
+//  107 }
+        LJMP	?Subroutine3 & 0xFFFF
+        CFI EndBlock cfiBlock0
+//  108 
+//  109 /*********************************************************************
+//  110  * @fn      osalAddTimer
+//  111  *
+//  112  * @brief   Add a timer to the timer list.
+//  113  *          Ints must be disabled.
+//  114  *
+//  115  * @param   task_id
+//  116  * @param   event_flag
+//  117  * @param   timeout
+//  118  *
+//  119  * @return  osalTimerRec_t * - pointer to newly created timer
+//  120  */
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  121 osalTimerRec_t * osalAddTimer( byte task_id, UINT16 event_flag, UINT16 timeout )
+osalAddTimer:
+        CFI Block cfiBlock1 Using cfiCommon0
+        CFI Function osalAddTimer
+//  122 {
+        FUNCALL osalAddTimer, osalFindTimer
+        LOCFRAME XSTACK, 14, STACK
+        ARGFRAME XSTACK, 14, STACK
+        FUNCALL osalAddTimer, osal_mem_alloc
+        LOCFRAME XSTACK, 14, STACK
+        ARGFRAME XSTACK, 14, STACK
+        MOV	A,#-0xe
+        LCALL	?BANKED_ENTER_XDATA
+        CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+        CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+        CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+        CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+        CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+        CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+        CFI V5 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+        CFI V4 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+        CFI V3 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+        CFI V2 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+        CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-11)))
+        CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+        CFI VB load(1, XDATA, add(CFA_XSP16, literal(-13)))
+        CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-14)))
+        CFI CFA_SP SP+0
+        CFI CFA_XSP16 add(XSP16, 14)
+        ; Saved register size: 14
+        ; Auto size: 0
+        MOV	?V0 + 2,R1
+        MOV	?V0 + 0,R2
+        MOV	?V0 + 1,R3
+        MOV	A,R4
+        MOV	R6,A
+        MOV	A,R5
+        MOV	R7,A
+//  123   osalTimerRec_t *newTimer;
+//  124   osalTimerRec_t *srchTimer;
+//  125 
+//  126   // Look for an existing timer first
+//  127   newTimer = osalFindTimer( task_id, event_flag );
+        ; Setup parameters for call to function osalFindTimer
+        MOV	DPTR,#(osalFindTimer & 0xffff)
+        MOV	A,#((osalFindTimer >> 16) & 0xff)
+        LCALL	?BCALL               ; Banked call to: DPTR()
+//  128   if ( newTimer )
+        MOV	A,R2
+        JNZ	??osalAddTimer_0
+        MOV	A,R3
+??osalAddTimer_0:
+        JZ	??osalAddTimer_1
+//  129   {
+//  130     // Timer is found - update it.
+//  131     newTimer->timeout = timeout;
+        MOV	DPL,R2
+        MOV	DPH,R3
+        INC	DPTR
+        INC	DPTR
+        MOV	A,R6
+        MOVX	@DPTR,A
+        INC	DPTR
+        MOV	A,R7
+??osalAddTimer_2:
+        MOVX	@DPTR,A
+        SJMP	??osalAddTimer_3
+//  132 
+//  133     return ( newTimer );
+//  134   }
+//  135   else
+//  136   {
+//  137     // New Timer
+//  138     newTimer = osal_mem_alloc( sizeof( osalTimerRec_t ) );
+??osalAddTimer_1:
+        ; Setup parameters for call to function osal_mem_alloc
+        MOV	R2,#0x7
+        MOV	R3,#0x0
+        MOV	DPTR,#(osal_mem_alloc & 0xffff)
+        MOV	A,#((osal_mem_alloc >> 16) & 0xff)
+        LCALL	?BCALL               ; Banked call to: DPTR()
+//  139 
+//  140     if ( newTimer )
+        MOV	A,R2
+        JNZ	??osalAddTimer_4
+        MOV	A,R3
+??osalAddTimer_4:
+        JZ	??osalAddTimer_5
+//  141     {
+//  142       // Fill in new timer
+//  143       newTimer->task_id = task_id;
+        MOV	DPL,R2
+        MOV	DPH,R3
+        INC	DPTR
+        INC	DPTR
+        INC	DPTR
+        INC	DPTR
+        INC	DPTR
+        INC	DPTR
+        MOV	A,?V0 + 2
+        MOVX	@DPTR,A
+//  144       newTimer->event_flag = event_flag;
+        MOV	DPL,R2
+        MOV	DPH,R3
+        INC	DPTR
+        INC	DPTR
+        INC	DPTR
+        INC	DPTR
+        MOV	A,?V0 + 0
+        MOVX	@DPTR,A
+        INC	DPTR
+        MOV	A,?V0 + 1
+        MOVX	@DPTR,A
+//  145       newTimer->timeout = timeout;
+        MOV	DPL,R2
+        MOV	DPH,R3
+        INC	DPTR
+        INC	DPTR
+        MOV	A,R6
+        MOVX	@DPTR,A
+        INC	DPTR
+        MOV	A,R7
+        MOVX	@DPTR,A
+//  146       newTimer->next = (void *)NULL;
+        MOV	DPL,R2
+        MOV	DPH,R3
+        CLR	A
+        MOVX	@DPTR,A
+        INC	DPTR
+        MOVX	@DPTR,A
+//  147 
+//  148       // Does the timer list already exist
+//  149       if ( timerHead == NULL )
+        MOV	DPTR,#timerHead
+        MOVX	A,@DPTR
+        JNZ	??osalAddTimer_6
+        INC	DPTR
+        MOVX	A,@DPTR
+??osalAddTimer_6:
+        MOV	DPTR,#timerHead
+??osalAddTimer_7:
+        JNZ	??osalAddTimer_8
+//  150       {
+//  151         // Start task list
+//  152         timerHead = newTimer;
+        MOV	A,R2
+        MOVX	@DPTR,A
+        INC	DPTR
+        MOV	A,R3
+        SJMP	??osalAddTimer_2
+//  153       }
+//  154       else
+//  155       {
+//  156         // Add it to the end of the timer list
+//  157         srchTimer = timerHead;
+//  158 
+//  159         // Stop at the last record
+//  160         while ( srchTimer->next )
+//  161           srchTimer = srchTimer->next;
+??osalAddTimer_8:
+        LCALL	?Subroutine2 & 0xFFFF
+??CrossCallReturnLabel_6:
+        MOV	DPL,R0
+        MOV	DPH,R1
+        MOVX	A,@DPTR
+        JNZ	??osalAddTimer_9
+        INC	DPTR
+        MOVX	A,@DPTR
+??osalAddTimer_9:
+        MOV	DPL,R0
+        MOV	DPH,R1
+        SJMP	??osalAddTimer_7
+//  162 
+//  163         // Add to the list
+//  164         srchTimer->next = newTimer;
+//  165       }
+//  166 
+//  167       return ( newTimer );
+//  168     }
+//  169     else
+//  170       return ( (osalTimerRec_t *)NULL );
+??osalAddTimer_5:
+        MOV	R2,#0x0
+        MOV	R3,#0x0
+??osalAddTimer_3:
+        MOV	R7,#0x6
+        LJMP	?BANKED_LEAVE_XDATA
+        CFI EndBlock cfiBlock1
+//  171   }
+//  172 }
+//  173 
+//  174 /*********************************************************************
+//  175  * @fn      osalFindTimer
+//  176  *
+//  177  * @brief   Find a timer in a timer list.
+//  178  *          Ints must be disabled.
+//  179  *
+//  180  * @param   task_id
+//  181  * @param   event_flag
+//  182  *
+//  183  * @return  osalTimerRec_t *
+//  184  */
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  185 osalTimerRec_t *osalFindTimer( byte task_id, uint16 event_flag )
+osalFindTimer:
+        CFI Block cfiBlock2 Using cfiCommon0
+        CFI Function osalFindTimer
+//  186 {
+        MOV	A,#-0x9
+        LCALL	?BANKED_ENTER_XDATA
+        CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+        CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+        CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+        CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+        CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+        CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+        CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+        CFI VB load(1, XDATA, add(CFA_XSP16, literal(-8)))
+        CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+        CFI CFA_SP SP+0
+        CFI CFA_XSP16 add(XSP16, 9)
+        ; Saved register size: 9
+        ; Auto size: 0
+//  187   osalTimerRec_t *srchTimer;
+//  188 
+//  189   // Head of the timer list
+//  190   srchTimer = timerHead;
+        MOV	DPTR,#timerHead
+        SJMP	??osalFindTimer_0
+//  191 
+//  192   // Stop when found or at the end
+//  193   while ( srchTimer )
+//  194   {
+//  195     if ( srchTimer->event_flag == event_flag &&
+//  196          srchTimer->task_id == task_id )
+//  197       break;
+//  198 
+//  199     // Not this one, check another
+//  200     srchTimer = srchTimer->next;
+??osalFindTimer_1:
+        MOV	DPL,R4
+        MOV	DPH,R5
+??osalFindTimer_0:
+        LCALL	??Subroutine0_0 & 0xFFFF
+??CrossCallReturnLabel_0:
+        MOV	A,R4
+        JNZ	??osalFindTimer_2
+        MOV	A,R5
+??osalFindTimer_2:
+        JZ	??osalFindTimer_3
+        MOV	DPL,R4
+        MOV	DPH,R5
+        INC	DPTR
+        INC	DPTR
+        INC	DPTR
+        INC	DPTR
+        MOVX	A,@DPTR
+        XRL	A,R2
+        JNZ	??osalFindTimer_4
+        INC	DPTR
+        MOVX	A,@DPTR
+        XRL	A,R3
+??osalFindTimer_4:
+        JNZ	??osalFindTimer_1
+        MOV	DPL,R4
+        MOV	DPH,R5
+        INC	DPTR
+        INC	DPTR
+        INC	DPTR
+        INC	DPTR
+        INC	DPTR
+        INC	DPTR
+        MOVX	A,@DPTR
+        XRL	A,R1
+        JNZ	??osalFindTimer_1
+//  201   }
+//  202 
+//  203   return ( srchTimer );
+??osalFindTimer_3:
+        MOV	A,R4
+        MOV	R2,A
+        MOV	A,R5
+        MOV	R3,A
+        SJMP	??Subroutine4_0
+        CFI EndBlock cfiBlock2
+//  204 }
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+?Subroutine4:
+        CFI Block cfiBlock3 Using cfiCommon0
+        CFI NoFunction
+        CFI CFA_SP SP+0
+        CFI CFA_XSP16 add(XSP16, 9)
+        CFI VB load(1, XDATA, add(CFA_XSP16, literal(-8)))
+        CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+        CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+        CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+        CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+        CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+        CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+        CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+        CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+        LCALL	?BCALL               ; Banked call to: DPTR()
+??Subroutine4_0:
+        MOV	R7,#0x1
+        LJMP	?BANKED_LEAVE_XDATA
+        CFI EndBlock cfiBlock3
+//  205 
+//  206 /*********************************************************************
+//  207  * @fn      osalDeleteTimer
+//  208  *
+//  209  * @brief   Delete a timer from a timer list.
+//  210  *          Ints must be disabled.
+//  211  *
+//  212  * @param   table
+//  213  * @param   rmTimer
+//  214  *
+//  215  * @return  none
+//  216  */
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  217 void osalDeleteTimer( osalTimerRec_t *rmTimer )
+osalDeleteTimer:
+        CFI Block cfiBlock4 Using cfiCommon0
+        CFI Function osalDeleteTimer
+//  218 {
+        FUNCALL osalDeleteTimer, osal_mem_free
+        LOCFRAME XSTACK, 9, STACK
+        ARGFRAME XSTACK, 9, STACK
+        FUNCALL osalDeleteTimer, osal_mem_free
+        LOCFRAME XSTACK, 9, STACK
+        ARGFRAME XSTACK, 9, STACK
+        MOV	A,#-0x9
+        LCALL	?BANKED_ENTER_XDATA
+        CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+        CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+        CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+        CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+        CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+        CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+        CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+        CFI VB load(1, XDATA, add(CFA_XSP16, literal(-8)))
+        CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+        CFI CFA_SP SP+0
+        CFI CFA_XSP16 add(XSP16, 9)
+        ; Saved register size: 9
+        ; Auto size: 0
+//  219   osalTimerRec_t *srchTimer;
+//  220 
+//  221   // Does the timer list really exist
+//  222   if ( (timerHead != NULL) && rmTimer )
+        MOV	DPTR,#timerHead
+        MOVX	A,@DPTR
+        JNZ	??osalDeleteTimer_0
+        INC	DPTR
+        MOVX	A,@DPTR
+??osalDeleteTimer_0:
+        JZ	??osalDeleteTimer_1
+        MOV	A,R2
+        JNZ	??osalDeleteTimer_2
+        MOV	A,R3
+??osalDeleteTimer_2:
+        JZ	??osalDeleteTimer_1
+//  223   {
+//  224     // Add it to the end of the timer list
+//  225     srchTimer = timerHead;
+        MOV	DPTR,#timerHead
+        LCALL	?Subroutine2 & 0xFFFF
+//  226 
+//  227     // First element?
+//  228     if ( srchTimer == rmTimer )
+??CrossCallReturnLabel_7:
+        MOV	A,R2
+        XRL	A,R0
+        JNZ	??osalDeleteTimer_3
+        MOV	A,R3
+        XRL	A,R1
+??osalDeleteTimer_3:
+        JNZ	??CrossCallReturnLabel_8
+//  229     {
+//  230       timerHead = rmTimer->next;
+        MOV	DPL,R2
+        MOV	DPH,R3
+        LCALL	?Subroutine1 & 0xFFFF
+??CrossCallReturnLabel_4:
+        MOV	A,R0
+        MOVX	@DPTR,A
+        INC	DPTR
+        MOV	A,R1
+        SJMP	??osalDeleteTimer_4
+//  231       osal_mem_free( rmTimer );
+//  232     }
+//  233     else
+//  234     {
+//  235       // Stop when found or at the end
+//  236       while ( srchTimer->next && srchTimer->next != rmTimer )
+//  237         srchTimer = srchTimer->next;
+??osalDeleteTimer_5:
+        MOV	DPL,R0
+        MOV	DPH,R1
+        LCALL	?Subroutine2 & 0xFFFF
+??CrossCallReturnLabel_8:
+        MOV	DPL,R0
+        MOV	DPH,R1
+        MOVX	A,@DPTR
+        JNZ	??osalDeleteTimer_6
+        INC	DPTR
+        MOVX	A,@DPTR
+??osalDeleteTimer_6:
+        JZ	??osalDeleteTimer_7
+        LCALL	?Subroutine0 & 0xFFFF
+??CrossCallReturnLabel_1:
+        MOV	A,R2
+        XRL	A,R4
+        JNZ	??osalDeleteTimer_8
+        MOV	A,R3
+        XRL	A,R5
+??osalDeleteTimer_8:
+        JNZ	??osalDeleteTimer_5
+//  238 
+//  239       // Found?
+//  240       if ( srchTimer->next == rmTimer )
+??osalDeleteTimer_7:
+        LCALL	?Subroutine0 & 0xFFFF
+??CrossCallReturnLabel_2:
+        MOV	A,R2
+        XRL	A,R4
+        JNZ	??osalDeleteTimer_9
+        MOV	A,R3
+        XRL	A,R5
+??osalDeleteTimer_9:
+        JNZ	??osalDeleteTimer_1
+//  241       {
+//  242         // Fix pointers
+//  243         srchTimer->next = rmTimer->next;
+        MOV	DPL,R2
+        MOV	DPH,R3
+        LCALL	??Subroutine0_0 & 0xFFFF
+??CrossCallReturnLabel_3:
+        MOV	DPL,R0
+        MOV	DPH,R1
+        MOV	A,R4
+        MOVX	@DPTR,A
+        INC	DPTR
+        MOV	A,R5
+??osalDeleteTimer_4:
+        MOVX	@DPTR,A
+//  244 
+//  245         // Deallocate the timer struct memory
+//  246         osal_mem_free( rmTimer );
+        ; Setup parameters for call to function osal_mem_free
+        MOV	DPTR,#(osal_mem_free & 0xffff)
+        MOV	A,#((osal_mem_free >> 16) & 0xff)
+        LCALL	?BCALL               ; Banked call to: DPTR()
+//  247       }
+//  248     }
+//  249   }
+//  250 }
+??osalDeleteTimer_1:
+        SJMP	??Subroutine4_0
+        CFI EndBlock cfiBlock4
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+?Subroutine2:
+        CFI Block cfiCond5 Using cfiCommon0
+        CFI NoFunction
+        CFI Conditional ??CrossCallReturnLabel_9
+        CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-16)))
+        CFI VB load(1, XDATA, add(CFA_XSP16, literal(-15)))
+        CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-14)))
+        CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-13)))
+        CFI V2 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+        CFI V3 load(1, XDATA, add(CFA_XSP16, literal(-11)))
+        CFI V4 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+        CFI V5 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+        CFI V6 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+        CFI V7 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+        CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+        CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+        CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+        CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+        CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+        CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+        CFI CFA_SP SP+0
+        CFI CFA_XSP16 add(XSP16, 17)
+        CFI Block cfiCond6 Using cfiCommon0
+        CFI (cfiCond6) NoFunction
+        CFI (cfiCond6) Conditional ??CrossCallReturnLabel_10
+        CFI (cfiCond6) R6 load(1, XDATA, add(CFA_XSP16, literal(-16)))
+        CFI (cfiCond6) VB load(1, XDATA, add(CFA_XSP16, literal(-15)))
+        CFI (cfiCond6) V0 load(1, XDATA, add(CFA_XSP16, literal(-14)))
+        CFI (cfiCond6) V1 load(1, XDATA, add(CFA_XSP16, literal(-13)))
+        CFI (cfiCond6) V2 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+        CFI (cfiCond6) V3 load(1, XDATA, add(CFA_XSP16, literal(-11)))
+        CFI (cfiCond6) V4 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+        CFI (cfiCond6) V5 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+        CFI (cfiCond6) V6 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+        CFI (cfiCond6) V7 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+        CFI (cfiCond6) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+        CFI (cfiCond6) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+        CFI (cfiCond6) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+        CFI (cfiCond6) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+        CFI (cfiCond6) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+        CFI (cfiCond6) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+        CFI (cfiCond6) CFA_SP SP+0
+        CFI (cfiCond6) CFA_XSP16 add(XSP16, 17)
+        CFI Block cfiCond7 Using cfiCommon0
+        CFI (cfiCond7) NoFunction
+        CFI (cfiCond7) Conditional ??CrossCallReturnLabel_6
+        CFI (cfiCond7) R6 load(1, XDATA, add(CFA_XSP16, literal(-14)))
+        CFI (cfiCond7) VB load(1, XDATA, add(CFA_XSP16, literal(-13)))
+        CFI (cfiCond7) V0 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+        CFI (cfiCond7) V1 load(1, XDATA, add(CFA_XSP16, literal(-11)))
+        CFI (cfiCond7) V2 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+        CFI (cfiCond7) V3 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+        CFI (cfiCond7) V4 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+        CFI (cfiCond7) V5 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+        CFI (cfiCond7) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+        CFI (cfiCond7) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+        CFI (cfiCond7) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+        CFI (cfiCond7) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+        CFI (cfiCond7) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+        CFI (cfiCond7) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+        CFI (cfiCond7) CFA_SP SP+0
+        CFI (cfiCond7) CFA_XSP16 add(XSP16, 14)
+        CFI Block cfiCond8 Using cfiCommon0
+        CFI (cfiCond8) NoFunction
+        CFI (cfiCond8) Conditional ??CrossCallReturnLabel_7
+        CFI (cfiCond8) R6 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+        CFI (cfiCond8) VB load(1, XDATA, add(CFA_XSP16, literal(-8)))
+        CFI (cfiCond8) V0 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+        CFI (cfiCond8) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+        CFI (cfiCond8) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+        CFI (cfiCond8) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+        CFI (cfiCond8) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+        CFI (cfiCond8) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+        CFI (cfiCond8) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+        CFI (cfiCond8) CFA_SP SP+0
+        CFI (cfiCond8) CFA_XSP16 add(XSP16, 9)
+        CFI Block cfiCond9 Using cfiCommon0
+        CFI (cfiCond9) NoFunction
+        CFI (cfiCond9) Conditional ??CrossCallReturnLabel_8
+        CFI (cfiCond9) R6 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+        CFI (cfiCond9) VB load(1, XDATA, add(CFA_XSP16, literal(-8)))
+        CFI (cfiCond9) V0 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+        CFI (cfiCond9) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+        CFI (cfiCond9) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+        CFI (cfiCond9) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+        CFI (cfiCond9) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+        CFI (cfiCond9) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+        CFI (cfiCond9) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+        CFI (cfiCond9) CFA_SP SP+0
+        CFI (cfiCond9) CFA_XSP16 add(XSP16, 9)
+        CFI Block cfiPicker10 Using cfiCommon1
+        CFI (cfiPicker10) NoFunction
+        CFI (cfiPicker10) Picker
+        MOVX	A,@DPTR
+        MOV	R0,A
+        INC	DPTR
+        MOVX	A,@DPTR
+        MOV	R1,A
+        RET
+        CFI EndBlock cfiCond5
+        CFI EndBlock cfiCond6
+        CFI EndBlock cfiCond7
+        CFI EndBlock cfiCond8
+        CFI EndBlock cfiCond9
+        CFI EndBlock cfiPicker10
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+?Subroutine0:
+        CFI Block cfiCond11 Using cfiCommon0
+        CFI NoFunction
+        CFI Conditional ??CrossCallReturnLabel_1
+        CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+        CFI VB load(1, XDATA, add(CFA_XSP16, literal(-8)))
+        CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+        CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+        CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+        CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+        CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+        CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+        CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+        CFI CFA_SP SP+0
+        CFI CFA_XSP16 add(XSP16, 9)
+        CFI Block cfiCond12 Using cfiCommon0
+        CFI (cfiCond12) NoFunction
+        CFI (cfiCond12) Conditional ??CrossCallReturnLabel_2
+        CFI (cfiCond12) R6 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+        CFI (cfiCond12) VB load(1, XDATA, add(CFA_XSP16, literal(-8)))
+        CFI (cfiCond12) V0 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+        CFI (cfiCond12) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+        CFI (cfiCond12) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+        CFI (cfiCond12) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+        CFI (cfiCond12) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+        CFI (cfiCond12) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+        CFI (cfiCond12) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+        CFI (cfiCond12) CFA_SP SP+0
+        CFI (cfiCond12) CFA_XSP16 add(XSP16, 9)
+        CFI Block cfiPicker13 Using cfiCommon1
+        CFI (cfiPicker13) NoFunction
+        CFI (cfiPicker13) Picker
+        MOV	DPL,R0
+        MOV	DPH,R1
+        CFI Block cfiCond14 Using cfiCommon0
+        CFI (cfiCond14) NoFunction
+        CFI (cfiCond14) Conditional ??CrossCallReturnLabel_3
+        CFI (cfiCond14) R6 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+        CFI (cfiCond14) VB load(1, XDATA, add(CFA_XSP16, literal(-8)))
+        CFI (cfiCond14) V0 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+        CFI (cfiCond14) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+        CFI (cfiCond14) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+        CFI (cfiCond14) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+        CFI (cfiCond14) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+        CFI (cfiCond14) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+        CFI (cfiCond14) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+        CFI (cfiCond14) CFA_SP SP+0
+        CFI (cfiCond14) CFA_XSP16 add(XSP16, 9)
+        CFI Block cfiCond15 Using cfiCommon0
+        CFI (cfiCond15) NoFunction
+        CFI (cfiCond15) Conditional ??CrossCallReturnLabel_0
+        CFI (cfiCond15) R6 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+        CFI (cfiCond15) VB load(1, XDATA, add(CFA_XSP16, literal(-8)))
+        CFI (cfiCond15) V0 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+        CFI (cfiCond15) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+        CFI (cfiCond15) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+        CFI (cfiCond15) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+        CFI (cfiCond15) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+        CFI (cfiCond15) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+        CFI (cfiCond15) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+        CFI (cfiCond15) CFA_SP SP+0
+        CFI (cfiCond15) CFA_XSP16 add(XSP16, 9)
+??Subroutine0_0:
+        MOVX	A,@DPTR
+        MOV	R4,A
+        INC	DPTR
+        MOVX	A,@DPTR
+        MOV	R5,A
+        RET
+        CFI EndBlock cfiCond11
+        CFI EndBlock cfiCond12
+        CFI EndBlock cfiPicker13
+        CFI EndBlock cfiCond14
+        CFI EndBlock cfiCond15
+//  251 
+//  252 /*********************************************************************
+//  253  * @fn      osal_start_timer
+//  254  *
+//  255  * @brief
+//  256  *
+//  257  *   This function is called to start a timer to expire in n mSecs.
+//  258  *   When the timer expires, the calling task will get the specified event.
+//  259  *
+//  260  * @param   UINT16 event_id - event to be notified with
+//  261  * @param   UNINT16 timeout_value - in milliseconds.
+//  262  *
+//  263  * @return  ZSUCCESS, NO_TIMER_AVAIL, INVALID_EVENT_ID or INVALID_TIMEOUT_VALUE
+//  264  */
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  265 byte osal_start_timer( UINT16 event_id, UINT16 timeout_value )
+osal_start_timer:
+        CFI Block cfiBlock16 Using cfiCommon0
+        CFI Function osal_start_timer
+//  266 {
+        FUNCALL osal_start_timer, osal_self
+        LOCFRAME ISTACK, 2, STACK
+        LOCFRAME XSTACK, 9, STACK
+        ARGFRAME ISTACK, 2, STACK
+        ARGFRAME XSTACK, 9, STACK
+        FUNCALL osal_start_timer, osal_start_timerEx
+        LOCFRAME XSTACK, 9, STACK
+        ARGFRAME XSTACK, 9, STACK
+        MOV	A,#-0x9
+        LCALL	?BANKED_ENTER_XDATA
+        CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+        CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+        CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+        CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+        CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+        CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+        CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+        CFI VB load(1, XDATA, add(CFA_XSP16, literal(-8)))
+        CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+        CFI CFA_SP SP+0
+        CFI CFA_XSP16 add(XSP16, 9)
+        ; Saved register size: 9
+        ; Auto size: 0
+//  267   return osal_start_timerEx( osal_self(), event_id, timeout_value );
+        ; Setup parameters for call to function osal_start_timerEx
+        MOV	A,R2
+        PUSH	A
+        CFI CFA_SP SP+-1
+        MOV	A,R3
+        PUSH	A
+        CFI CFA_SP SP+-2
+        MOV	A,R4
+        MOV	R6,A
+        MOV	A,R5
+        MOV	R7,A
+        ; Setup parameters for call to function osal_self
+        MOV	DPTR,#(osal_self & 0xffff)
+        MOV	A,#((osal_self >> 16) & 0xff)
+        LCALL	?BCALL               ; Banked call to: DPTR()
+        MOV	A,R6
+        MOV	R4,A
+        MOV	A,R7
+        MOV	R5,A
+        POP	A
+        CFI CFA_SP SP+-1
+        MOV	R3,A
+        POP	A
+        CFI CFA_SP SP+0
+        MOV	R2,A
+        MOV	DPTR,#(osal_start_timerEx & 0xffff)
+        MOV	A,#((osal_start_timerEx >> 16) & 0xff)
+        LJMP	?Subroutine4 & 0xFFFF
+        CFI EndBlock cfiBlock16
+//  268 }
+//  269 
+//  270 /*********************************************************************
+//  271  * @fn      osal_start_timerEx
+//  272  *
+//  273  * @brief
+//  274  *
+//  275  *   This function is called to start a timer to expire in n mSecs.
+//  276  *   When the timer expires, the calling task will get the specified event.
+//  277  *
+//  278  * @param   byte taskID - task id to set timer for
+//  279  * @param   UINT16 event_id - event to be notified with
+//  280  * @param   UNINT16 timeout_value - in milliseconds.
+//  281  *
+//  282  * @return  ZSUCCESS, or NO_TIMER_AVAIL.
+//  283  */
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  284 byte osal_start_timerEx( byte taskID, UINT16 event_id, UINT16 timeout_value )
+osal_start_timerEx:
+        CFI Block cfiBlock17 Using cfiCommon0
+        CFI Function osal_start_timerEx
+//  285 {
+        FUNCALL osal_start_timerEx, osalAddTimer
+        LOCFRAME XSTACK, 12, STACK
+        ARGFRAME XSTACK, 12, STACK
+        FUNCALL osal_start_timerEx, osal_timer_activate
+        LOCFRAME XSTACK, 12, STACK
+        ARGFRAME XSTACK, 12, STACK
+        MOV	A,#-0xc
+        LCALL	?BANKED_ENTER_XDATA
+        CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+        CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+        CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+        CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+        CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+        CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+        CFI V3 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+        CFI V2 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+        CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+        CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+        CFI VB load(1, XDATA, add(CFA_XSP16, literal(-11)))
+        CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+        CFI CFA_SP SP+0
+        CFI CFA_XSP16 add(XSP16, 12)
+        ; Saved register size: 12
+        ; Auto size: 0
+//  286   halIntState_t intState;
+//  287   osalTimerRec_t *newTimer;
+//  288 
+//  289   HAL_ENTER_CRITICAL_SECTION( intState );  // Hold off interrupts.
+        MOV	C,0xa8.7
+        CLR	A
+        MOV	0xE0 /* A   */.0,C
+        MOV	?V0 + 0,A
+        CLR	0xa8.7
+//  290 
+//  291   // Add timer
+//  292   newTimer = osalAddTimer( taskID, event_id, timeout_value );
+        ; Setup parameters for call to function osalAddTimer
+        MOV	DPTR,#(osalAddTimer & 0xffff)
+        MOV	A,#((osalAddTimer >> 16) & 0xff)
+        LCALL	?BCALL               ; Banked call to: DPTR()
+        MOV	?V0 + 2,R2
+        MOV	?V0 + 3,R3
+        MOV	R6,?V0 + 2
+        MOV	R7,?V0 + 3
+//  293   if ( newTimer )
+        MOV	A,R6
+        JNZ	??osal_start_timerEx_0
+        MOV	A,R7
+??osal_start_timerEx_0:
+        JZ	??osal_start_timerEx_1
+//  294   {
+//  295 #ifdef POWER_SAVING
+//  296     // Update timer registers
+//  297     osal_retune_timers();
+//  298     (void)timerActive;
+//  299 #endif
+//  300     // Does the timer need to be started?
+//  301     if ( timerActive == FALSE )
+        MOV	DPTR,#timerActive
+        MOVX	A,@DPTR
+        JNZ	??osal_start_timerEx_1
+//  302     {
+//  303       osal_timer_activate( TRUE );
+        ; Setup parameters for call to function osal_timer_activate
+        MOV	R1,#0x1
+        MOV	DPTR,#(osal_timer_activate & 0xffff)
+        MOV	A,#((osal_timer_activate >> 16) & 0xff)
+        LCALL	?BCALL               ; Banked call to: DPTR()
+//  304     }
+//  305   }
+//  306 
+//  307   HAL_EXIT_CRITICAL_SECTION( intState );   // Re-enable interrupts.
+??osal_start_timerEx_1:
+        MOV	A,?V0 + 0
+        MOV	C,0xE0 /* A   */.0
+        MOV	0xa8.7,C
+//  308 
+//  309   return ( (newTimer != NULL) ? ZSUCCESS : NO_TIMER_AVAIL );
+        MOV	A,R6
+        JNZ	??osal_start_timerEx_2
+        MOV	A,R7
+??osal_start_timerEx_2:
+        JZ	??osal_start_timerEx_3
+        MOV	R1,#0x0
+        SJMP	??osal_start_timerEx_4
+??osal_start_timerEx_3:
+        MOV	R1,#0xc
+??osal_start_timerEx_4:
+        LJMP	?Subroutine3 & 0xFFFF
+        CFI EndBlock cfiBlock17
+//  310 }
+//  311 
+//  312 /*********************************************************************
+//  313  * @fn      osal_stop_timer
+//  314  *
+//  315  * @brief
+//  316  *
+//  317  *   This function is called to stop a timer that has already been started.
+//  318  *   If ZSUCCESS, the function will cancel the timer and prevent the event
+//  319  *   associated with the timer from being set for the calling task.
+//  320  *
+//  321  * @param   UINT16 event_id - identifier of the timer that is to be stopped
+//  322  *
+//  323  * @return  ZSUCCESS or INVALID_EVENT_ID
+//  324  */
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  325 byte osal_stop_timer( UINT16 event_id )
+osal_stop_timer:
+        CFI Block cfiBlock18 Using cfiCommon0
+        CFI Function osal_stop_timer
+//  326 {
+        FUNCALL osal_stop_timer, osal_self
+        LOCFRAME XSTACK, 9, STACK
+        ARGFRAME XSTACK, 9, STACK
+        FUNCALL osal_stop_timer, osal_stop_timerEx
+        LOCFRAME XSTACK, 9, STACK
+        ARGFRAME XSTACK, 9, STACK
+        MOV	A,#-0x9
+        LCALL	?BANKED_ENTER_XDATA
+        CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+        CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+        CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+        CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+        CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+        CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+        CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+        CFI VB load(1, XDATA, add(CFA_XSP16, literal(-8)))
+        CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+        CFI CFA_SP SP+0
+        CFI CFA_XSP16 add(XSP16, 9)
+        ; Saved register size: 9
+        ; Auto size: 0
+//  327   return osal_stop_timerEx( osal_self(), event_id );
+        ; Setup parameters for call to function osal_stop_timerEx
+        MOV	A,R2
+        MOV	R6,A
+        MOV	A,R3
+        MOV	R7,A
+        ; Setup parameters for call to function osal_self
+        MOV	DPTR,#(osal_self & 0xffff)
+        MOV	A,#((osal_self >> 16) & 0xff)
+        LCALL	?BCALL               ; Banked call to: DPTR()
+        MOV	A,R6
+        MOV	R2,A
+        MOV	A,R7
+        MOV	R3,A
+        MOV	DPTR,#(osal_stop_timerEx & 0xffff)
+        MOV	A,#((osal_stop_timerEx >> 16) & 0xff)
+        LJMP	?Subroutine4 & 0xFFFF
+        CFI EndBlock cfiBlock18
+//  328 }
+//  329 
+//  330 /*********************************************************************
+//  331  * @fn      osal_stop_timerEx
+//  332  *
+//  333  * @brief
+//  334  *
+//  335  *   This function is called to stop a timer that has already been started.
+//  336  *   If ZSUCCESS, the function will cancel the timer and prevent the event
+//  337  *   associated with the timer from being set for the calling task.
+//  338  *
+//  339  * @param   byte task_id - task id of timer to stop
+//  340  * @param   UINT16 event_id - identifier of the timer that is to be stopped
+//  341  *
+//  342  * @return  ZSUCCESS or INVALID_EVENT_ID
+//  343  */
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  344 byte osal_stop_timerEx( byte task_id, UINT16 event_id )
+osal_stop_timerEx:
+        CFI Block cfiBlock19 Using cfiCommon0
+        CFI Function osal_stop_timerEx
+//  345 {
+        FUNCALL osal_stop_timerEx, osalFindTimer
+        LOCFRAME XSTACK, 12, STACK
+        ARGFRAME XSTACK, 12, STACK
+        FUNCALL osal_stop_timerEx, osalDeleteTimer
+        LOCFRAME XSTACK, 12, STACK
+        ARGFRAME XSTACK, 12, STACK
+        MOV	A,#-0xc
+        LCALL	?BANKED_ENTER_XDATA
+        CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+        CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+        CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+        CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+        CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+        CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+        CFI V3 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+        CFI V2 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+        CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+        CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+        CFI VB load(1, XDATA, add(CFA_XSP16, literal(-11)))
+        CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+        CFI CFA_SP SP+0
+        CFI CFA_XSP16 add(XSP16, 12)
+        ; Saved register size: 12
+        ; Auto size: 0
+//  346   halIntState_t intState;
+//  347   osalTimerRec_t *foundTimer;
+//  348 
+//  349   HAL_ENTER_CRITICAL_SECTION( intState );  // Hold off interrupts.
+        MOV	C,0xa8.7
+        CLR	A
+        MOV	0xE0 /* A   */.0,C
+        MOV	?V0 + 0,A
+        CLR	0xa8.7
+//  350 
+//  351   // Find the timer to stop
+//  352   foundTimer = osalFindTimer( task_id, event_id );
+        ; Setup parameters for call to function osalFindTimer
+        MOV	DPTR,#(osalFindTimer & 0xffff)
+        MOV	A,#((osalFindTimer >> 16) & 0xff)
+        LCALL	?BCALL               ; Banked call to: DPTR()
+        MOV	?V0 + 2,R2
+        MOV	?V0 + 3,R3
+        MOV	R6,?V0 + 2
+        MOV	R7,?V0 + 3
+//  353   if ( foundTimer )
+        MOV	A,R6
+        JNZ	??osal_stop_timerEx_0
+        MOV	A,R7
+??osal_stop_timerEx_0:
+        JZ	??osal_stop_timerEx_1
+//  354   {
+//  355     osalDeleteTimer( foundTimer );
+        ; Setup parameters for call to function osalDeleteTimer
+        MOV	DPTR,#(osalDeleteTimer & 0xffff)
+        MOV	A,#((osalDeleteTimer >> 16) & 0xff)
+        LCALL	?BCALL               ; Banked call to: DPTR()
+//  356 
+//  357 #ifdef POWER_SAVING
+//  358     osal_retune_timers();
+//  359 #endif
+//  360   }
+//  361 
+//  362   HAL_EXIT_CRITICAL_SECTION( intState );   // Re-enable interrupts.
+??osal_stop_timerEx_1:
+        MOV	A,?V0 + 0
+        MOV	C,0xE0 /* A   */.0
+        MOV	0xa8.7,C
+//  363 
+//  364   return ( (foundTimer != NULL) ? ZSUCCESS : INVALID_EVENT_ID );
+        MOV	A,R6
+        JNZ	??osal_stop_timerEx_2
+        MOV	A,R7
+??osal_stop_timerEx_2:
+        JZ	??osal_stop_timerEx_3
+        MOV	R1,#0x0
+        SJMP	??osal_stop_timerEx_4
+??osal_stop_timerEx_3:
+        MOV	R1,#0x7
+??osal_stop_timerEx_4:
+        SJMP	?Subroutine3
+        CFI EndBlock cfiBlock19
+//  365 }
+//  366 
+//  367 /*********************************************************************
+//  368  * @fn      osal_get_timeoutEx
+//  369  *
+//  370  * @brief
+//  371  *
+//  372  * @param   byte task_id - task id of timer to check
+//  373  * @param   UINT16 event_id - identifier of timer to be checked
+//  374  *
+//  375  * @return  Return the timer's tick count if found, zero otherwise.
+//  376  */
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  377 UINT16 osal_get_timeoutEx( byte task_id, UINT16 event_id )
+osal_get_timeoutEx:
+        CFI Block cfiBlock20 Using cfiCommon0
+        CFI Function osal_get_timeoutEx
+//  378 {
+        FUNCALL osal_get_timeoutEx, osalFindTimer
+        LOCFRAME XSTACK, 12, STACK
+        ARGFRAME XSTACK, 12, STACK
+        MOV	A,#-0xc
+        LCALL	?BANKED_ENTER_XDATA
+        CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+        CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+        CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+        CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+        CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+        CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+        CFI V3 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+        CFI V2 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+        CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+        CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+        CFI VB load(1, XDATA, add(CFA_XSP16, literal(-11)))
+        CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+        CFI CFA_SP SP+0
+        CFI CFA_XSP16 add(XSP16, 12)
+        ; Saved register size: 12
+        ; Auto size: 0
+//  379   halIntState_t intState;
+//  380   uint16 rtrn = 0;
+        MOV	R6,#0x0
+        MOV	R7,#0x0
+//  381   osalTimerRec_t *tmr;
+//  382 
+//  383   HAL_ENTER_CRITICAL_SECTION( intState );  // Hold off interrupts.
+        MOV	C,0xa8.7
+        CLR	A
+        MOV	0xE0 /* A   */.0,C
+        MOV	?V0 + 0,A
+        CLR	0xa8.7
+//  384 
+//  385   tmr = osalFindTimer( task_id, event_id );
+        ; Setup parameters for call to function osalFindTimer
+        MOV	DPTR,#(osalFindTimer & 0xffff)
+        MOV	A,#((osalFindTimer >> 16) & 0xff)
+        LCALL	?BCALL               ; Banked call to: DPTR()
+        MOV	DPL,R2
+        MOV	DPH,R3
+//  386 
+//  387   if ( tmr )
+        MOV	A,DPL
+        JNZ	??osal_get_timeoutEx_0
+        MOV	A,DPH
+??osal_get_timeoutEx_0:
+        JZ	??osal_get_timeoutEx_1
+//  388   {
+//  389     rtrn = tmr->timeout;
+        INC	DPTR
+        INC	DPTR
+        MOVX	A,@DPTR
+        MOV	R6,A
+        INC	DPTR
+        MOVX	A,@DPTR
+        MOV	R7,A
+//  390   }
+//  391 
+//  392   HAL_EXIT_CRITICAL_SECTION( intState );   // Re-enable interrupts.
+??osal_get_timeoutEx_1:
+        MOV	A,?V0 + 0
+        MOV	C,0xE0 /* A   */.0
+        MOV	0xa8.7,C
+//  393 
+//  394   return rtrn;
+        MOV	A,R6
+        MOV	R2,A
+        MOV	A,R7
+        MOV	R3,A
+        CFI EndBlock cfiBlock20
+        REQUIRE ?Subroutine3
+        ; // Fall through to label ?Subroutine3
+//  395 }
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+?Subroutine3:
+        CFI Block cfiBlock21 Using cfiCommon0
+        CFI NoFunction
+        CFI CFA_SP SP+0
+        CFI CFA_XSP16 add(XSP16, 12)
+        CFI VB load(1, XDATA, add(CFA_XSP16, literal(-11)))
+        CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+        CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+        CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+        CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+        CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+        CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+        CFI V2 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+        CFI V3 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+        CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+        CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+        CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+        MOV	R7,#0x4
+        LJMP	?BANKED_LEAVE_XDATA
+        CFI EndBlock cfiBlock21
+//  396 
+//  397 /*********************************************************************
+//  398  * @fn      osal_timer_activate
+//  399  *
+//  400  * @brief
+//  401  *
+//  402  *   Turns the hardware timer on or off
+//  403  *
+//  404  * @param  byte turn_on - false - turn off, true - turn on
+//  405  *
+//  406  * @return  none
+//  407  */
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  408 void osal_timer_activate( byte turn_on )
+osal_timer_activate:
+        CFI Block cfiBlock22 Using cfiCommon0
+        CFI Function osal_timer_activate
+//  409 {
+        FUNCALL osal_timer_activate, osal_timer_hw_setup
+        LOCFRAME XSTACK, 9, STACK
+        ARGFRAME XSTACK, 9, STACK
+        MOV	A,#-0x9
+        LCALL	?BANKED_ENTER_XDATA
+        CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+        CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+        CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+        CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+        CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+        CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+        CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+        CFI VB load(1, XDATA, add(CFA_XSP16, literal(-8)))
+        CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+        CFI CFA_SP SP+0
+        CFI CFA_XSP16 add(XSP16, 9)
+        ; Saved register size: 9
+        ; Auto size: 0
+        MOV	A,R1
+        MOV	R6,A
+//  410   osal_timer_hw_setup( turn_on );
+        ; Setup parameters for call to function osal_timer_hw_setup
+        MOV	DPTR,#(osal_timer_hw_setup & 0xffff)
+        MOV	A,#((osal_timer_hw_setup >> 16) & 0xff)
+        LCALL	?BCALL               ; Banked call to: DPTR()
+//  411   timerActive = turn_on;
+        MOV	A,R6
+        MOV	DPTR,#timerActive
+        MOVX	@DPTR,A
+//  412 }
+        LJMP	??Subroutine4_0 & 0xFFFF
+        CFI EndBlock cfiBlock22
+//  413 
+//  414 /*********************************************************************
+//  415  * @fn      osal_timer_num_active
+//  416  *
+//  417  * @brief
+//  418  *
+//  419  *   This function counts the number of active timers.
+//  420  *
+//  421  * @return  byte - number of timers
+//  422  */
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  423 byte osal_timer_num_active( void )
+osal_timer_num_active:
+        CFI Block cfiBlock23 Using cfiCommon0
+        CFI Function osal_timer_num_active
+//  424 {
+        PUSH	DPL
+        CFI DPL0 Frame(CFA_SP, 4)
+        CFI CFA_SP SP+-4
+        PUSH	DPH
+        CFI DPH0 Frame(CFA_SP, 5)
+        CFI CFA_SP SP+-5
+        ; Saved register size: 2
+        ; Auto size: 0
+//  425   halIntState_t intState;
+//  426   byte num_timers = 0;
+        MOV	R1,#0x0
+//  427   osalTimerRec_t *srchTimer;
+//  428 
+//  429   HAL_ENTER_CRITICAL_SECTION( intState );  // Hold off interrupts.
+        MOV	C,0xa8.7
+        CLR	A
+        MOV	0xE0 /* A   */.0,C
+        CLR	0xa8.7
+//  430 
+//  431   // Head of the timer list
+//  432   srchTimer = timerHead;
+        MOV	DPTR,#timerHead
+        SJMP	??osal_timer_num_active_0
+//  433 
+//  434   // Count timers in the list
+//  435   while ( srchTimer != NULL )
+//  436   {
+//  437     num_timers++;
+??osal_timer_num_active_1:
+        INC	R1
+//  438     srchTimer = srchTimer->next;
+??osal_timer_num_active_0:
+        MOVX	A,@DPTR
+        MOV	R2,A
+        INC	DPTR
+        MOVX	A,@DPTR
+        MOV	R3,A
+        MOV	DPL,R2
+        MOV	DPH,R3
+//  439   }
+        MOV	A,DPL
+        JNZ	??osal_timer_num_active_2
+        MOV	A,DPH
+??osal_timer_num_active_2:
+        JNZ	??osal_timer_num_active_1
+//  440 
+//  441   HAL_EXIT_CRITICAL_SECTION( intState );   // Re-enable interrupts.
+        MOV	0xa8.7,C
+//  442 
+//  443   return num_timers;
+        SJMP	??Subroutine5_0
+        CFI EndBlock cfiBlock23
+//  444 }
+//  445 
+//  446 /*********************************************************************
+//  447  * @fn      osal_timer_hw_setup
+//  448  *
+//  449  * @brief
+//  450  *
+//  451  *   Setup the timer hardware.
+//  452  *
+//  453  * @param  byte turn_on
+//  454  *
+//  455  * @return  void
+//  456  */
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  457 void osal_timer_hw_setup( byte turn_on )
+osal_timer_hw_setup:
+        CFI Block cfiBlock24 Using cfiCommon0
+        CFI Function osal_timer_hw_setup
+//  458 {
+        FUNCALL osal_timer_hw_setup, HalTimerStart
+        LOCFRAME XSTACK, 12, STACK
+        ARGFRAME XSTACK, 12, STACK
+        FUNCALL osal_timer_hw_setup, HalTimerStop
+        LOCFRAME XSTACK, 12, STACK
+        ARGFRAME XSTACK, 12, STACK
+        MOV	A,#-0xc
+        LCALL	?BANKED_ENTER_XDATA
+        CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+        CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+        CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+        CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+        CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+        CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+        CFI V3 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+        CFI V2 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+        CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+        CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+        CFI VB load(1, XDATA, add(CFA_XSP16, literal(-11)))
+        CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+        CFI CFA_SP SP+0
+        CFI CFA_XSP16 add(XSP16, 12)
+        ; Saved register size: 12
+        ; Auto size: 0
+//  459   if (turn_on)
+        MOV	A,R1
+        JZ	??osal_timer_hw_setup_0
+//  460   {
+//  461     HalTimerStart (OSAL_TIMER, tmr_count );
+        ; Setup parameters for call to function HalTimerStart
+        MOV	DPTR,#tmr_count
+        MOV	R0,#?V0 + 0
+        LCALL	?L_MOV_X
+        MOV	R2,?V0 + 0
+        MOV	R3,?V0 + 1
+        MOV	R4,?V0 + 2
+        MOV	R5,?V0 + 3
+        MOV	R1,#0x2
+        MOV	DPTR,#(HalTimerStart & 0xffff)
+        MOV	A,#((HalTimerStart >> 16) & 0xff)
+        SJMP	??osal_timer_hw_setup_1
+//  462   }
+//  463   else
+//  464   {
+//  465     HalTimerStop (OSAL_TIMER);
+??osal_timer_hw_setup_0:
+        ; Setup parameters for call to function HalTimerStop
+        MOV	R1,#0x2
+        MOV	DPTR,#(HalTimerStop & 0xffff)
+        MOV	A,#((HalTimerStop >> 16) & 0xff)
+??osal_timer_hw_setup_1:
+        LCALL	?BCALL               ; Banked call to: DPTR()
+//  466   }
+//  467 }
+        SJMP	?Subroutine3
+        CFI EndBlock cfiBlock24
+//  468 
+//  469 #if defined( POWER_SAVING )
+//  470 /*********************************************************************
+//  471  * @fn      osal_sleep_timers
+//  472  *
+//  473  * @brief
+//  474  *
+//  475  *   This function will enable interrupts if timers are running.
+//  476  *
+//  477  * @param  none
+//  478  *
+//  479  * @return  none
+//  480  */
+//  481 void osal_sleep_timers( void )
+//  482 {
+//  483 #ifndef TIMER_INT
+//  484   if ( osal_timer_num_active() )
+//  485     osal_set_timer_interrupt( TRUE );
+//  486 #endif
+//  487 }
+//  488 
+//  489 /*********************************************************************
+//  490  * @fn      osal_unsleep_timers
+//  491  *
+//  492  * @brief
+//  493  *
+//  494  *   This function will disable interrupts if timers are running.
+//  495  *
+//  496  * @param  none
+//  497  *
+//  498  * @return  none
+//  499  */
+//  500 void osal_unsleep_timers( void )
+//  501 {
+//  502 #ifndef TIMER_INT
+//  503   osal_set_timer_interrupt( FALSE );
+//  504 #endif
+//  505 }
+//  506 #endif
+//  507 
+//  508 /*********************************************************************
+//  509  * @fn      osal_set_timer_interrupt
+//  510  *
+//  511  * @brief
+//  512  *
+//  513  *   Setup the timer hardware interrupt.
+//  514  *
+//  515  * @param  byte turn_on
+//  516  *
+//  517  * @return  void
+//  518  *********************************************************************/
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  519 void osal_set_timer_interrupt( byte turn_on )
+osal_set_timer_interrupt:
+        CFI Block cfiBlock25 Using cfiCommon0
+        CFI Function osal_set_timer_interrupt
+//  520 {
+        FUNCALL osal_set_timer_interrupt, HalTimerInterruptEnable
+        LOCFRAME ISTACK, 2, STACK
+        ARGFRAME ISTACK, 2, STACK
+        PUSH	DPL
+        CFI DPL0 Frame(CFA_SP, 4)
+        CFI CFA_SP SP+-4
+        PUSH	DPH
+        CFI DPH0 Frame(CFA_SP, 5)
+        CFI CFA_SP SP+-5
+        ; Saved register size: 2
+        ; Auto size: 0
+//  521   // Enable or disable timer interrupts
+//  522   HalTimerInterruptEnable ( OSAL_TIMER, HAL_TIMER_CH_MODE_OUTPUT_COMPARE, turn_on);
+        ; Setup parameters for call to function HalTimerInterruptEnable
+        MOV	A,R1
+        MOV	R3,A
+        MOV	R2,#0x2
+        MOV	R1,#0x2
+        MOV	DPTR,#(HalTimerInterruptEnable & 0xffff)
+        MOV	A,#((HalTimerInterruptEnable >> 16) & 0xff)
+        CFI EndBlock cfiBlock25
+        REQUIRE ?Subroutine5
+        ; // Fall through to label ?Subroutine5
+//  523 }
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+?Subroutine5:
+        CFI Block cfiBlock26 Using cfiCommon0
+        CFI NoFunction
+        CFI CFA_SP SP+-5
+        CFI DPL0 Frame(CFA_SP, 4)
+        CFI DPH0 Frame(CFA_SP, 5)
+        LCALL	?BCALL               ; Banked call to: DPTR()
+??Subroutine5_0:
+        POP	DPH
+        CFI CFA_SP SP+-4
+        CFI DPH0 SameValue
+        POP	DPL
+        CFI CFA_SP SP+-3
+        CFI DPL0 SameValue
+        LJMP	?BRET
+        CFI EndBlock cfiBlock26
+//  524 
+//  525 /*********************************************************************
+//  526  * @fn      osalTimerUpdate
+//  527  *
+//  528  * @brief   Update the timer structures for a timer tick.
+//  529  *
+//  530  * @param   none
+//  531  *
+//  532  * @return  none
+//  533  *********************************************************************/
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  534 static void osalTimerUpdate( uint16 updateTime )
+??osalTimerUpdate:
+        CFI Block cfiBlock27 Using cfiCommon0
+        CFI Function ??osalTimerUpdate
+//  535 {
+        FUNCALL ??osalTimerUpdate, osal_mem_free
+        LOCFRAME XSTACK, 17, STACK
+        ARGFRAME XSTACK, 17, STACK
+        FUNCALL ??osalTimerUpdate, osal_set_event
+        LOCFRAME XSTACK, 17, STACK
+        ARGFRAME XSTACK, 17, STACK
+        MOV	A,#-0x10
+        LCALL	?BANKED_ENTER_XDATA
+        CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+        CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+        CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+        CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+        CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+        CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+        CFI V7 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+        CFI V6 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+        CFI V5 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+        CFI V4 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+        CFI V3 load(1, XDATA, add(CFA_XSP16, literal(-11)))
+        CFI V2 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+        CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-13)))
+        CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-14)))
+        CFI VB load(1, XDATA, add(CFA_XSP16, literal(-15)))
+        CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-16)))
+        CFI CFA_SP SP+0
+        CFI CFA_XSP16 add(XSP16, 16)
+        ; Saved register size: 16
+        ; Auto size: 1
+        MOV	A,#-0x1
+        LCALL	?ALLOC_XSTACK8
+        CFI CFA_XSP16 add(XSP16, 17)
+        MOV	?V0 + 0,R2
+        MOV	?V0 + 1,R3
+//  536   halIntState_t intState;
+//  537   osalTimerRec_t *srchTimer;
+//  538   osalTimerRec_t *prevTimer;
+//  539   osalTimerRec_t *saveTimer;
+//  540 
+//  541   HAL_ENTER_CRITICAL_SECTION( intState );  // Hold off interrupts.
+        MOV	C,0xa8.7
+        CLR	A
+        MOV	0xE0 /* A   */.0,C
+        MOV	DPL,?XSP + 0
+        MOV	DPH,?XSP + 1
+        MOVX	@DPTR,A
+        CLR	0xa8.7
+//  542 
+//  543   // Update the system time
+//  544   osal_systemClock += updateTime;
+        MOV	?V0 + 4,R2
+        MOV	?V0 + 5,R3
+        MOV	?V0 + 6,#0x0
+        MOV	?V0 + 7,#0x0
+        MOV	DPTR,#??osal_systemClock
+        MOV	R0,#?V0 + 4
+        LCALL	?L_ADD_TO_X
+//  545 
+//  546   // Look for open timer slot
+//  547   if ( timerHead != NULL )
+        MOV	DPTR,#timerHead
+        MOVX	A,@DPTR
+        JNZ	??osalTimerUpdate_1
+        INC	DPTR
+        MOVX	A,@DPTR
+??osalTimerUpdate_1:
+        JNZ	$+5
+        LJMP	??osalTimerUpdate_2 & 0xFFFF
+//  548   {
+//  549     // Add it to the end of the timer list
+//  550     srchTimer = timerHead;
+        MOV	DPTR,#timerHead
+        MOVX	A,@DPTR
+        MOV	R6,A
+        INC	DPTR
+        MOVX	A,@DPTR
+        MOV	R7,A
+//  551     prevTimer = (void *)NULL;
+        MOV	?V0 + 2,#0x0
+        MOV	?V0 + 3,#0x0
+        SJMP	??osalTimerUpdate_3
+//  552 
+//  553     // Look for open timer slot
+//  554     while ( srchTimer )
+//  555     {
+//  556       // Decrease the correct amount of time
+//  557       if (srchTimer->timeout <= updateTime)
+//  558         srchTimer->timeout = 0;
+//  559       else
+//  560         srchTimer->timeout = srchTimer->timeout - updateTime;
+//  561 
+//  562       // When timeout, execute the task
+//  563       if ( srchTimer->timeout == 0 )
+//  564       {
+//  565         osal_set_event( srchTimer->task_id, srchTimer->event_flag );
+//  566 
+//  567         // Take out of list
+//  568         if ( prevTimer == NULL )
+//  569           timerHead = srchTimer->next;
+//  570         else
+//  571           prevTimer->next = srchTimer->next;
+??osalTimerUpdate_4:
+        LCALL	?Subroutine2 & 0xFFFF
+??CrossCallReturnLabel_9:
+        MOV	DPL,?V0 + 2
+        MOV	DPH,?V0 + 3
+??osalTimerUpdate_5:
+        MOV	A,R0
+        MOVX	@DPTR,A
+        INC	DPTR
+        MOV	A,R1
+        MOVX	@DPTR,A
+//  572 
+//  573         // Next
+//  574         saveTimer = srchTimer->next;
+        MOV	DPL,R6
+        MOV	DPH,R7
+        MOVX	A,@DPTR
+        MOV	?V0 + 4,A
+        INC	DPTR
+        MOVX	A,@DPTR
+        MOV	?V0 + 5,A
+//  575 
+//  576         // Free memory
+//  577         osal_mem_free( srchTimer );
+        ; Setup parameters for call to function osal_mem_free
+        MOV	A,R6
+        MOV	R2,A
+        MOV	A,R7
+        MOV	R3,A
+        MOV	DPTR,#(osal_mem_free & 0xffff)
+        MOV	A,#((osal_mem_free >> 16) & 0xff)
+        LCALL	?BCALL               ; Banked call to: DPTR()
+//  578 
+//  579         srchTimer = saveTimer;
+        MOV	R6,?V0 + 4
+        MOV	R7,?V0 + 5
+??osalTimerUpdate_3:
+        MOV	A,R6
+        JNZ	??osalTimerUpdate_6
+        MOV	A,R7
+??osalTimerUpdate_6:
+        JNZ	$+5
+        LJMP	??osalTimerUpdate_2 & 0xFFFF
+        MOV	DPL,R6
+        MOV	DPH,R7
+        INC	DPTR
+        INC	DPTR
+        LCALL	?Subroutine2 & 0xFFFF
+??CrossCallReturnLabel_10:
+        CLR	C
+        MOV	A,?V0 + 0
+        SUBB	A,R0
+        MOV	A,?V0 + 1
+        SUBB	A,R1
+        JC	??osalTimerUpdate_7
+        MOV	DPL,R6
+        MOV	DPH,R7
+        INC	DPTR
+        INC	DPTR
+        CLR	A
+        MOVX	@DPTR,A
+        INC	DPTR
+        MOVX	@DPTR,A
+        SJMP	??osalTimerUpdate_8
+??osalTimerUpdate_7:
+        MOV	A,R6
+        ADD	A,#0x2
+        MOV	R0,A
+        MOV	A,R7
+        ADDC	A,#0x0
+        MOV	R1,A
+        MOV	DPL,R0
+        MOV	DPH,R1
+        CLR	C
+        MOVX	A,@DPTR
+        SUBB	A,?V0 + 0
+        MOVX	@DPTR,A
+        INC	DPTR
+        MOVX	A,@DPTR
+        SUBB	A,?V0 + 1
+        MOVX	@DPTR,A
+        MOV	DPL,R0
+        MOV	DPH,R1
+        MOVX	A,@DPTR
+        JNZ	??osalTimerUpdate_9
+        INC	DPTR
+        MOVX	A,@DPTR
+??osalTimerUpdate_9:
+        JNZ	??osalTimerUpdate_10
+??osalTimerUpdate_8:
+        ; Setup parameters for call to function osal_set_event
+        MOV	DPL,R6
+        MOV	DPH,R7
+        INC	DPTR
+        INC	DPTR
+        INC	DPTR
+        INC	DPTR
+        MOVX	A,@DPTR
+        MOV	R2,A
+        INC	DPTR
+        MOVX	A,@DPTR
+        MOV	R3,A
+        MOV	DPL,R6
+        MOV	DPH,R7
+        INC	DPTR
+        INC	DPTR
+        INC	DPTR
+        INC	DPTR
+        INC	DPTR
+        INC	DPTR
+        MOVX	A,@DPTR
+        MOV	R1,A
+        MOV	DPTR,#(osal_set_event & 0xffff)
+        MOV	A,#((osal_set_event >> 16) & 0xff)
+        LCALL	?BCALL               ; Banked call to: DPTR()
+        MOV	A,?V0 + 2
+        JNZ	??osalTimerUpdate_11
+        MOV	A,?V0 + 3
+??osalTimerUpdate_11:
+        MOV	DPL,R6
+        MOV	DPH,R7
+        JZ	$+5
+        LJMP	??osalTimerUpdate_4 & 0xFFFF
+        LCALL	?Subroutine1 & 0xFFFF
+??CrossCallReturnLabel_5:
+        LJMP	??osalTimerUpdate_5 & 0xFFFF
+//  580       }
+//  581       else
+//  582       {
+//  583         // Get next
+//  584         prevTimer = srchTimer;
+??osalTimerUpdate_10:
+        MOV	?V0 + 2,R6
+        MOV	?V0 + 3,R7
+//  585         srchTimer = srchTimer->next;
+        MOV	DPL,R6
+        MOV	DPH,R7
+        MOVX	A,@DPTR
+        MOV	R6,A
+        INC	DPTR
+        MOVX	A,@DPTR
+        MOV	R7,A
+        LJMP	??osalTimerUpdate_3 & 0xFFFF
+//  586       }
+//  587     }
+//  588 
+//  589 #ifdef POWER_SAVING
+//  590     osal_retune_timers();
+//  591 #endif
+//  592   }
+//  593 
+//  594   HAL_EXIT_CRITICAL_SECTION( intState );   // Re-enable interrupts.
+??osalTimerUpdate_2:
+        MOV	DPL,?XSP + 0
+        MOV	DPH,?XSP + 1
+        MOVX	A,@DPTR
+        MOV	C,0xE0 /* A   */.0
+        MOV	0xa8.7,C
+//  595 }
+        MOV	A,#0x1
+        LCALL	?DEALLOC_XSTACK8
+        CFI CFA_XSP16 add(XSP16, 16)
+        MOV	R7,#0x8
+        LJMP	?BANKED_LEAVE_XDATA
+        CFI EndBlock cfiBlock27
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+?Subroutine1:
+        CFI Block cfiCond28 Using cfiCommon0
+        CFI NoFunction
+        CFI Conditional ??CrossCallReturnLabel_5
+        CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-16)))
+        CFI VB load(1, XDATA, add(CFA_XSP16, literal(-15)))
+        CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-14)))
+        CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-13)))
+        CFI V2 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+        CFI V3 load(1, XDATA, add(CFA_XSP16, literal(-11)))
+        CFI V4 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+        CFI V5 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+        CFI V6 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+        CFI V7 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+        CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+        CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+        CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+        CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+        CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+        CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+        CFI CFA_SP SP+0
+        CFI CFA_XSP16 add(XSP16, 17)
+        CFI Block cfiCond29 Using cfiCommon0
+        CFI (cfiCond29) NoFunction
+        CFI (cfiCond29) Conditional ??CrossCallReturnLabel_4
+        CFI (cfiCond29) R6 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+        CFI (cfiCond29) VB load(1, XDATA, add(CFA_XSP16, literal(-8)))
+        CFI (cfiCond29) V0 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+        CFI (cfiCond29) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+        CFI (cfiCond29) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+        CFI (cfiCond29) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+        CFI (cfiCond29) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+        CFI (cfiCond29) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+        CFI (cfiCond29) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+        CFI (cfiCond29) CFA_SP SP+0
+        CFI (cfiCond29) CFA_XSP16 add(XSP16, 9)
+        CFI Block cfiPicker30 Using cfiCommon1
+        CFI (cfiPicker30) NoFunction
+        CFI (cfiPicker30) Picker
+        MOVX	A,@DPTR
+        MOV	R0,A
+        INC	DPTR
+        MOVX	A,@DPTR
+        MOV	R1,A
+        MOV	DPTR,#timerHead
+        RET
+        CFI EndBlock cfiCond28
+        CFI EndBlock cfiCond29
+        CFI EndBlock cfiPicker30
+//  596 
+//  597 /*********************************************************************
+//  598  * @fn      osal_update_timers
+//  599  *
+//  600  * @brief   Update the timer structures for timer ticks.
+//  601  *
+//  602  * @param   none
+//  603  *
+//  604  * @return  none
+//  605  */
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  606 void osal_update_timers( void )
+osal_update_timers:
+        CFI Block cfiBlock31 Using cfiCommon0
+        CFI Function osal_update_timers
+//  607 {
+        FUNCALL osal_update_timers, ??osalTimerUpdate
+        LOCFRAME ISTACK, 2, STACK
+        ARGFRAME ISTACK, 2, STACK
+        PUSH	DPL
+        CFI DPL0 Frame(CFA_SP, 4)
+        CFI CFA_SP SP+-4
+        PUSH	DPH
+        CFI DPH0 Frame(CFA_SP, 5)
+        CFI CFA_SP SP+-5
+        ; Saved register size: 2
+        ; Auto size: 0
+//  608   osalTimerUpdate( tmr_decr_time );
+        ; Setup parameters for call to function osalTimerUpdate
+        MOV	DPTR,#tmr_decr_time
+        MOVX	A,@DPTR
+        MOV	R2,A
+        INC	DPTR
+        MOVX	A,@DPTR
+        MOV	R3,A
+        MOV	DPTR,#(??osalTimerUpdate & 0xffff)
+        MOV	A,#((??osalTimerUpdate >> 16) & 0xff)
+        LJMP	?Subroutine5 & 0xFFFF
+        CFI EndBlock cfiBlock31
+//  609 }
+//  610 
+//  611 #ifdef POWER_SAVING
+//  612 /*********************************************************************
+//  613  * @fn      osal_adjust_timers
+//  614  *
+//  615  * @brief   Update the timer structures for elapsed ticks.
+//  616  *
+//  617  * @param   none
+//  618  *
+//  619  * @return  none
+//  620  *********************************************************************/
+//  621 void osal_adjust_timers( void )
+//  622 {
+//  623   uint16 eTime;
+//  624 
+//  625   if ( timerHead != NULL )
+//  626   {
+//  627     // Compute elapsed time (msec)
+//  628     eTime = TimerElapsed() /  TICK_COUNT;
+//  629 
+//  630     if ( eTime )
+//  631       osalTimerUpdate( eTime );
+//  632   }
+//  633 }
+//  634 #endif
+//  635 
+//  636 #ifdef POWER_SAVING
+//  637 /*********************************************************************
+//  638  * @fn      osal_retune_timers
+//  639  *
+//  640  * @brief
+//  641  *
+//  642  *   Adjust CPU sleep time to the lowest timeout value. If the timeout
+//  643  *   value is more then RETUNE_THRESHOLD, then the sleep time will be
+//  644  *   RETUNE_THRESHOLD.
+//  645  *
+//  646  * @param   none
+//  647  *
+//  648  * @return  none
+//  649  *********************************************************************/
+//  650 void osal_retune_timers( void )
+//  651 {
+//  652   halIntState_t intState;
+//  653   uint16 nextTimeout;
+//  654 
+//  655   HAL_ENTER_CRITICAL_SECTION( intState );  // Hold off interrupts.
+//  656 
+//  657   // Next occuring timeout
+//  658   nextTimeout = osal_next_timeout();
+//  659 
+//  660   // Make sure timer counter can handle it
+//  661   if ( !nextTimeout || (nextTimeout > RETUNE_THRESHOLD) )
+//  662     nextTimeout = RETUNE_THRESHOLD;
+//  663 
+//  664   if (nextTimeout != tmr_decr_time)
+//  665   {
+//  666     // Stop the clock
+//  667     osal_timer_activate( FALSE );
+//  668 
+//  669     // Alter the rolling time
+//  670     tmr_decr_time = nextTimeout;
+//  671     tmr_count = (uint32)nextTimeout * TICK_TIME;
+//  672 
+//  673     // Restart the clock
+//  674     osal_timer_activate( TRUE );
+//  675   }
+//  676 
+//  677   HAL_EXIT_CRITICAL_SECTION( intState );   // Re-enable interrupts.
+//  678 }
+//  679 
+//  680 /*********************************************************************
+//  681  * @fn      osal_next_timeout
+//  682  *
+//  683  * @brief
+//  684  *
+//  685  *   Search timer table to return the lowest timeout value. If the
+//  686  *   timer list is empty, then the returned timeout will be zero.
+//  687  *
+//  688  * @param   none
+//  689  *
+//  690  * @return  none
+//  691  *********************************************************************/
+//  692 uint16 osal_next_timeout( void )
+//  693 {
+//  694   uint16 nextTimeout;
+//  695   osalTimerRec_t *srchTimer;
+//  696 
+//  697   if ( timerHead != NULL )
+//  698   {
+//  699     // Head of the timer list
+//  700     srchTimer = timerHead;
+//  701     nextTimeout = OSAL_TIMERS_MAX_TIMEOUT;
+//  702 
+//  703     // Look for the next timeout timer
+//  704     while ( srchTimer != NULL )
+//  705     {
+//  706       if (srchTimer->timeout < nextTimeout)
+//  707       {
+//  708         nextTimeout = srchTimer->timeout;
+//  709       }
+//  710       // Check next timer
+//  711       srchTimer = srchTimer->next;
+//  712     }
+//  713   }
+//  714   else
+//  715   {
+//  716     // No timers
+//  717     nextTimeout = 0;
+//  718   }
+//  719 
+//  720   return ( nextTimeout );
+//  721 }
+//  722 #endif // POWER_SAVING
+//  723 
+//  724 /*********************************************************************
+//  725  * @fn      osal_GetSystemClock()
+//  726  *
+//  727  * @brief   Read the local system clock.
+//  728  *
+//  729  * @param   none
+//  730  *
+//  731  * @return  local clock in milliseconds
+//  732  */
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  733 uint32 osal_GetSystemClock( void )
+osal_GetSystemClock:
+        CFI Block cfiBlock32 Using cfiCommon0
+        CFI Function osal_GetSystemClock
+//  734 {
+        MOV	A,#-0xc
+        LCALL	?BANKED_ENTER_XDATA
+        CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+        CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+        CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+        CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+        CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+        CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+        CFI V3 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+        CFI V2 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+        CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+        CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+        CFI VB load(1, XDATA, add(CFA_XSP16, literal(-11)))
+        CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+        CFI CFA_SP SP+0
+        CFI CFA_XSP16 add(XSP16, 12)
+        ; Saved register size: 12
+        ; Auto size: 0
+//  735   return ( osal_systemClock );
+        MOV	DPTR,#??osal_systemClock
+        MOV	R0,#?V0 + 0
+        LCALL	?L_MOV_X
+        MOV	R2,?V0 + 0
+        MOV	R3,?V0 + 1
+        MOV	R4,?V0 + 2
+        MOV	R5,?V0 + 3
+        LJMP	?Subroutine3 & 0xFFFF
+        CFI EndBlock cfiBlock32
+//  736 }
+
+        RSEG XDATA_I:XDATA:NOROOT(0)
+__Constant_3e8:
+        DS 4
+        REQUIRE `?<Initializer for __Constant_3e8>`
+        REQUIRE __INIT_XDATA_I
+
+        RSEG XDATA_ID:CODE:NOROOT(0)
+`?<Initializer for __Constant_3e8>`:
+        DD 1000
+
+        RSEG XDATA_I:XDATA:NOROOT(0)
+__Constant_0:
+        DS 4
+        REQUIRE `?<Initializer for __Constant_0>`
+        REQUIRE __INIT_XDATA_I
+
+        RSEG XDATA_ID:CODE:NOROOT(0)
+`?<Initializer for __Constant_0>`:
+        DD 0
+
+        ASEGN SFR_AN:DATA:NOROOT,0a8H
+// union <unnamed> volatile __sfr _A_IEN0
+_A_IEN0:
+        DS 1
+
+        END
+//  737 
+//  738 /*********************************************************************
+//  739 *********************************************************************/
+// 
+// 1 146 bytes in segment BANKED_CODE
+//     1 byte  in segment SFR_AN
+//     8 bytes in segment XDATA_I
+//     8 bytes in segment XDATA_ID
+//    13 bytes in segment XDATA_Z
+// 
+// 1 146 bytes of CODE  memory (+ 8 bytes shared)
+//     0 bytes of DATA  memory (+ 1 byte  shared)
+//    13 bytes of XDATA memory (+ 8 bytes shared)
+//
+//Errors: none
+//Warnings: none

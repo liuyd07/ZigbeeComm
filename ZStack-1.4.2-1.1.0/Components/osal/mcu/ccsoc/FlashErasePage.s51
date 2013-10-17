@@ -1,0 +1,135 @@
+/******************************************************************************
+*
+*   Filename:     flashErasePage.s51
+*   Target:       cc2430
+*   Author:       EFU
+*   Revised:      13/12-2005
+*   Revision:     1.0
+*
+*   Copyright (c) 2006 by Texas Instruments, Inc.
+*   All Rights Reserved.  Permission to use, reproduce, copy, prepare
+*   derivative works, modify, distribute, perform, display or sell this
+*   software and/or its documentation for any purpose is prohibited
+*   without the express written consent of Texas Instruments, Inc.
+*
+******************************************************************************/
+
+;;------------------------------------------------------------------------------------------------------
+;; See hal.h for a description of this function.
+;;------------------------------------------------------------------------------------------------------
+#include "ioCC2430.h"
+
+
+                 MODULE  flashErasePage.s51
+                 RSEG RCODE
+                 PUBLIC flashErasePage
+                 FUNCTION flashErasePage, 0203H
+
+                 DS 1
+
+ flashErasePage:
+                ; R2 (LSB) and R3 (MSB) contains the start address of the buffer from which the program can be run in RAM
+                ; R1 contains the flash page the data is to be written to
+
+                ; Make sure that interrupts are off
+                MOV     R0, #01;
+                JBC     EA, intsOffHere;
+                MOV     R0, #00;
+intsOffHere:
+                ; Storing the initial data pointer select.
+                PUSH    DPH;
+                PUSH    DPL;
+                PUSH    DPH1;
+                PUSH    DPL1;
+                PUSH    DPS;
+
+                ; Set DPTR0 = address in XDATA RAM to which the flash write procedure which is to be copied.
+                MOV     A, R3;
+                MOV     DPH, A;
+                MOV     A, R2;
+                MOV     DPL, A;
+
+                ; Saving the start address of the actual flash write procedure in XDATA RAM.
+                PUSH    DPL;
+                PUSH    DPH;
+
+                ; Set DPTR1 = start address of the procedure template in CODE
+                ; This procedure is to be copied to XDATA.
+                MOV     DPH1, #HIGH(eraseFlashProcStart);
+                MOV     DPL1, #LOW(eraseFlashProcStart);
+
+                ; Use R1 to count loops...
+                MOV     R4, #eraseFlashProcEnd - eraseFlashProcStart;
+
+                ; Copy @DPTR1->@DPTR0
+copyLoop:       MOV     DPS, #1;
+                MOVX    A, @DPTR;
+                INC     DPTR;
+                MOV     DPS, #0;
+                MOVX    @DPTR, A;
+                INC     DPTR;
+                DJNZ    R4, copyLoop;
+
+
+                ; Setting the flash page to write to
+                ; Bits 6:1 of FADDRH indicates which page to write to.
+                MOV     A,R1
+                RL      A
+                MOV     FADDRH, A
+                MOV     FADDRL, #00H
+
+                ; Setting the flash write timing according to the clock division factor in CLKCON.
+                MOV     A,CLKCON
+                ANL     A,#07H
+                MOV     R4,A
+                INC     R4
+                MOV     A,#054H
+rotate:         CLR     C
+                RRC     A
+                DJNZ    R4,rotate
+                MOV     FWT,A
+
+                ; Data pointer 0 indicates where the start of the copied routine in XDATA is located.
+                ; Pointer to start of data to copy is in data pointer 1.
+                MOV     DPS, #0;
+                POP     DPH;
+                POP     DPL;
+                PUSH    MEMCTR;
+                MOV     MEMCTR, #051H;
+
+                ; Make the indirect function call
+                LCALL   indirCall;
+
+                POP     MEMCTR;
+
+                ; Using the original data pointer
+                POP     DPS;
+                POP     DPL1;
+                POP     DPH1;
+                POP     DPL;
+                POP     DPH;
+
+                MOV     A, R0;
+                JZ      intsWereOff;
+                SETB    EA;
+intsWereOff:
+                RET;
+
+
+                ; Calling the flash write in XDATA RAM. (Pointed to by DPTR0)
+indirCall:      CLR     A;
+                JMP     @A+DPTR;
+
+
+
+eraseFlashProcStart:
+                ; Erasing the page
+                MOV     FCTL, #01H
+waitEraseLoop:  MOV     A, FCTL
+                ANL     A,#80H
+                JNZ     waitEraseLoop
+
+
+done:           RET;
+eraseFlashProcEnd:
+                END;

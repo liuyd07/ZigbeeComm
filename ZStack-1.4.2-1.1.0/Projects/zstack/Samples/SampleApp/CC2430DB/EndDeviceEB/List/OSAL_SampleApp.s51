@@ -1,0 +1,578 @@
+//////////////////////////////////////////////////////////////////////////////
+//                                                                           /
+// IAR 8051 C/C++ Compiler V7.20H/W32                  17/Oct/2013  21:52:33 /
+// Copyright 2004-2006 IAR Systems. All rights reserved.                     /
+//                                                                           /
+//    Core               =  plain                                            /
+//    Code model         =  banked                                           /
+//    Data model         =  large                                            /
+//    Calling convention =  xdata reentrant                                  /
+//    Constant location  =  data                                             /
+//    Dptr setup         =  1,16                                             /
+//    Source file        =  E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ /
+//                          ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Sa /
+//                          mpleApp\Source\OSAL_SampleApp.c                  /
+//    Command line       =  -f E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ /
+//                          ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples /
+//                          \SampleApp\CC2430DB\..\..\..\Tools\CC2430DB\f8wE /
+//                          ndev.cfg (-DCPU32MHZ -DFORCE_MAC_NEAR            /
+//                          -DROOT=__near_func -DMAC_OPT_FFD=0 -DBLINK_LEDS  /
+//                          "-DCONST=const __code" -DGENERIC=__generic) -f   /
+//                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ /
+//                          ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Sa /
+//                          mpleApp\CC2430DB\..\..\..\Tools\CC2430DB\f8wConf /
+//                          ig.cfg (-DSECURE=0 -DDEFAULT_CHANLIST=0x00000800 /
+//                           -DZDAPP_CONFIG_PAN_ID=0xFFFF                    /
+//                          -DNWK_START_DELAY=100 -DEXTENDED_JOINING_RANDOM_ /
+//                          MASK=0x007F -DBEACON_REQUEST_DELAY=100           /
+//                          -DBEACON_REQ_DELAY_MASK=0x00FF                   /
+//                          -DROUTE_EXPIRY_TIME=30 -DAPSC_ACK_WAIT_DURATION_ /
+//                          POLLED=3000 -DNWK_INDIRECT_MSG_TIMEOUT=7         /
+//                          -DMAX_RREQ_ENTRIES=10 -DAPSC_MAX_FRAME_RETRIES=3 /
+//                           -DNWK_MAX_DATA_RETRIES=2                        /
+//                          -DMAX_POLL_FAILURE_RETRIES=2 -DMAX_BCAST=9       /
+//                          -DAPS_MAX_GROUPS=16 -DMAX_RTG_ENTRIES=20         /
+//                          -DNWK_MAX_BINDING_ENTRIES=10                     /
+//                          -DMAX_BINDING_CLUSTER_IDS=5                      /
+//                          "-DDEFAULT_KEY={0x01, 0x03, 0x05, 0x07, 0x09,    /
+//                          0x0B, 0x0D, 0x0F, 0x00, 0x02, 0x04, 0x06, 0x08,  /
+//                          0x0A, 0x0C, 0x0D}" -DRFD_RCVC_ALWAYS_ON=FALSE    /
+//                          -DPOLL_RATE=1000 -DQUEUED_POLL_RATE=100          /
+//                          -DRESPONSE_POLL_RATE=100 -DREJOIN_POLL_RATE=440  /
+//                          -DTOP_BOOT_PAGES=0) -I "D:\Program Files\IAR     /
+//                          Systems\Embedded Workbench 4.05 Evaluation       /
+//                          version\8051\inc\" -I "D:\Program Files\IAR      /
+//                          Systems\Embedded Workbench 4.05 Evaluation       /
+//                          version\8051\inc\clib\" -I                       /
+//                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ /
+//                          ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Sa /
+//                          mpleApp\CC2430DB\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430 /
+//                          Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Proje /
+//                          cts\zstack\Samples\SampleApp\CC2430DB\..\Source\ /
+//                           -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´® /
+//                          ¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Sample /
+//                          s\SampleApp\CC2430DB\..\..\..\ZMain\TI2430DB\    /
+//                          -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ /
+//                          ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples /
+//                          \SampleApp\CC2430DB\..\..\..\..\..\Components\mt /
+//                          \ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´ /
+//                          ®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Sampl /
+//                          es\SampleApp\CC2430DB\..\..\..\..\..\Components\ /
+//                          hal\include\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ /
+//                          ½Ì¨\CC2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\z /
+//                          stack\Samples\SampleApp\CC2430DB\..\..\..\..\..\ /
+//                          Components\hal\target\CC2430EB\ -I               /
+//                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ /
+//                          ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Sa /
+//                          mpleApp\CC2430DB\..\..\..\..\..\Components\osal\ /
+//                          mcu\ccsoc\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì /
+//                          ¨\CC2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zst /
+//                          ack\Samples\SampleApp\CC2430DB\..\..\..\..\..\Co /
+//                          mponents\osal\include\ -I                        /
+//                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ /
+//                          ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Sa /
+//                          mpleApp\CC2430DB\..\..\..\..\..\Components\stack /
+//                          \af\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC24 /
+//                          30´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Sa /
+//                          mples\SampleApp\CC2430DB\..\..\..\..\..\Componen /
+//                          ts\stack\nwk\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶ /
+//                          Æ½Ì¨\CC2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\ /
+//                          zstack\Samples\SampleApp\CC2430DB\..\..\..\..\.. /
+//                          \Components\stack\sec\ -I                        /
+//                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ /
+//                          ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Sa /
+//                          mpleApp\CC2430DB\..\..\..\..\..\Components\stack /
+//                          \sys\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2 /
+//                          430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\S /
+//                          amples\SampleApp\CC2430DB\..\..\..\..\..\Compone /
+//                          nts\stack\zdo\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ /
+//                          ¶Æ½Ì¨\CC2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects /
+//                          \zstack\Samples\SampleApp\CC2430DB\..\..\..\..\. /
+//                          .\Components\zmac\f8w\ -I                        /
+//                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ /
+//                          ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Sa /
+//                          mpleApp\CC2430DB\..\..\..\..\..\Components\zmac\ /
+//                           -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´® /
+//                          ¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Sample /
+//                          s\SampleApp\CC2430DB\..\..\..\..\..\Components\s /
+//                          ervices\saddr\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ /
+//                          ¶Æ½Ì¨\CC2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects /
+//                          \zstack\Samples\SampleApp\CC2430DB\..\..\..\..\. /
+//                          .\Components\services\sdata\ -I                  /
+//                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ /
+//                          ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Sa /
+//                          mpleApp\CC2430DB\..\..\..\..\..\Components\mac\i /
+//                          nclude\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\C /
+//                          C2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack /
+//                          \Samples\SampleApp\CC2430DB\..\..\..\..\..\Compo /
+//                          nents\mac\high_level\ -I                         /
+//                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ /
+//                          ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Sa /
+//                          mpleApp\CC2430DB\..\..\..\..\..\Components\mac\l /
+//                          ow_level\srf03\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨ /
+//                          Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Project /
+//                          s\zstack\Samples\SampleApp\CC2430DB\..\..\..\..\ /
+//                          ..\Components\mac\low_level\srf03\single_chip\   /
+//                          -D CC2430EB -D NWK_AUTO_POLL -D ZTOOL_P1 -D      /
+//                          MT_TASK -D ZG_ENDDEVICE -lC                      /
+//                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ /
+//                          ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Sa /
+//                          mpleApp\CC2430DB\EndDeviceEB\List\ -lA           /
+//                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ /
+//                          ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Sa /
+//                          mpleApp\CC2430DB\EndDeviceEB\List\               /
+//                          --diag_suppress Pe001,Pa010 --diag_remark pe550  /
+//                          -o E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ /
+//                          ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples /
+//                          \SampleApp\CC2430DB\EndDeviceEB\Obj\ -e          /
+//                          --require_prototypes -z9 --no_code_motion        /
+//                          --debug --core=plain --dptr=16,1                 /
+//                          --data_model=large --code_model=banked           /
+//                          --calling_convention=xdata_reentrant             /
+//                          --place_constants=data --nr_virtual_regs 8       /
+//                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ /
+//                          ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Sa /
+//                          mpleApp\Source\OSAL_SampleApp.c                  /
+//    List file          =  E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ /
+//                          ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Sa /
+//                          mpleApp\CC2430DB\EndDeviceEB\List\OSAL_SampleApp /
+//                          .s51                                             /
+//                                                                           /
+//                                                                           /
+//////////////////////////////////////////////////////////////////////////////
+
+        NAME OSAL_SampleApp
+
+        RTMODEL "__calling_convention", "xdata_reentrant"
+        RTMODEL "__code_model", "banked"
+        RTMODEL "__core", "plain"
+        RTMODEL "__data_model", "large"
+        RTMODEL "__dptr_size", "16"
+        RTMODEL "__extended_stack", "disabled"
+        RTMODEL "__location_for_constants", "data"
+        RTMODEL "__number_of_dptrs", "1"
+        RTMODEL "__rt_version", "1"
+
+        RSEG DOVERLAY:DATA:NOROOT(0)
+        RSEG IOVERLAY:IDATA:NOROOT(0)
+        RSEG ISTACK:IDATA:NOROOT(0)
+        RSEG PSTACK:XDATA:NOROOT(0)
+        RSEG XSTACK:XDATA:NOROOT(0)
+
+        EXTERN ?BANKED_ENTER_XDATA
+        EXTERN ?BANKED_LEAVE_XDATA
+        EXTERN ?BCALL
+        EXTERN ?DEALLOC_XSTACK8
+        EXTERN ?PUSH_XSTACK_I_THREE
+        EXTERN ?V0
+
+        PUBLIC osalAddTasks
+        FUNCTION osalAddTasks,021203H
+        LOCFRAME XSTACK, 14, STACK
+        
+        CFI Names cfiNames0
+        CFI StackFrame CFA_SP SP DATA
+        CFI StackFrame CFA_PSP16 PSP16 XDATA
+        CFI StackFrame CFA_XSP16 XSP16 XDATA
+        CFI StaticOverlayFrame CFA_IOVERLAY IOVERLAY
+        CFI StaticOverlayFrame CFA_DOVERLAY DOVERLAY
+        CFI Resource `PSW.CY`:1, `B.BR0`:1, `B.BR1`:1, `B.BR2`:1, `B.BR3`:1
+        CFI Resource `B.BR4`:1, `B.BR5`:1, `B.BR6`:1, `B.BR7`:1, `VB.BR8`:1
+        CFI Resource `VB.BR9`:1, `VB.BR10`:1, `VB.BR11`:1, `VB.BR12`:1
+        CFI Resource `VB.BR13`:1, `VB.BR14`:1, `VB.BR15`:1, VB:8, B:8, A:8
+        CFI Resource PSW:8, DPL0:8, DPH0:8, R0:8, R1:8, R2:8, R3:8, R4:8, R5:8
+        CFI Resource R6:8, R7:8, V0:8, V1:8, V2:8, V3:8, V4:8, V5:8, V6:8, V7:8
+        CFI Resource SP:8, PSPH:8, PSPL:8, PSP16:16, XSPH:8, XSPL:8, XSP16:16
+        CFI VirtualResource ?RET:24
+        CFI Resource ?BRET_EXT:8
+        CFI VirtualResource ?RET_HIGH:8, ?RET_LOW:8
+        CFI ResourceParts PSP16 PSPH, PSPL
+        CFI ResourceParts XSP16 XSPH, XSPL
+        CFI ResourceParts ?RET ?BRET_EXT, ?RET_HIGH, ?RET_LOW
+        CFI EndNames cfiNames0
+        
+        CFI Common cfiCommon0 Using cfiNames0
+        CFI CodeAlign 1
+        CFI DataAlign -1
+        CFI ReturnAddress ?RET CODE
+        CFI CFA_DOVERLAY Used
+        CFI CFA_IOVERLAY Used
+        CFI CFA_SP SP+-3
+        CFI CFA_PSP16 PSP16+0
+        CFI CFA_XSP16 XSP16+0
+        CFI `PSW.CY` SameValue
+        CFI `B.BR0` SameValue
+        CFI `B.BR1` SameValue
+        CFI `B.BR2` SameValue
+        CFI `B.BR3` SameValue
+        CFI `B.BR4` SameValue
+        CFI `B.BR5` SameValue
+        CFI `B.BR6` SameValue
+        CFI `B.BR7` SameValue
+        CFI `VB.BR8` SameValue
+        CFI `VB.BR9` SameValue
+        CFI `VB.BR10` SameValue
+        CFI `VB.BR11` SameValue
+        CFI `VB.BR12` SameValue
+        CFI `VB.BR13` SameValue
+        CFI `VB.BR14` SameValue
+        CFI `VB.BR15` SameValue
+        CFI VB SameValue
+        CFI B Undefined
+        CFI A Undefined
+        CFI PSW SameValue
+        CFI DPL0 SameValue
+        CFI DPH0 SameValue
+        CFI R0 Undefined
+        CFI R1 Undefined
+        CFI R2 Undefined
+        CFI R3 Undefined
+        CFI R4 Undefined
+        CFI R5 Undefined
+        CFI R6 SameValue
+        CFI R7 SameValue
+        CFI V0 SameValue
+        CFI V1 SameValue
+        CFI V2 SameValue
+        CFI V3 SameValue
+        CFI V4 SameValue
+        CFI V5 SameValue
+        CFI V6 SameValue
+        CFI V7 SameValue
+        CFI PSPH Undefined
+        CFI PSPL Undefined
+        CFI XSPH Undefined
+        CFI XSPL Undefined
+        CFI ?RET Concat
+        CFI ?BRET_EXT Frame(CFA_SP, 3)
+        CFI ?RET_HIGH Frame(CFA_SP, 2)
+        CFI ?RET_LOW Frame(CFA_SP, 1)
+        CFI EndCommon cfiCommon0
+        
+        EXTERN osalTaskAdd
+        FUNCTION osalTaskAdd,0202H
+        ARGFRAME XSTACK, 14, STACK
+        EXTERN APS_Init
+        FUNCTION APS_Init,0602H
+        EXTERN APS_event_loop
+        FUNCTION APS_event_loop,0602H
+        EXTERN Hal_Init
+        FUNCTION Hal_Init,0602H
+        EXTERN Hal_ProcessEvent
+        FUNCTION Hal_ProcessEvent,0602H
+        EXTERN MT_ProcessEvent
+        FUNCTION MT_ProcessEvent,0602H
+        EXTERN MT_TaskInit
+        FUNCTION MT_TaskInit,0602H
+        EXTERN SampleApp_Init
+        FUNCTION SampleApp_Init,0602H
+        EXTERN SampleApp_ProcessEvent
+        FUNCTION SampleApp_ProcessEvent,0602H
+        EXTERN ZDApp_Init
+        FUNCTION ZDApp_Init,0602H
+        EXTERN ZDApp_event_loop
+        FUNCTION ZDApp_event_loop,0602H
+        EXTERN macEventLoop
+        FUNCTION macEventLoop,0602H
+        EXTERN macTaskInit
+        FUNCTION macTaskInit,0602H
+        EXTERN nwk_event_loop
+        FUNCTION nwk_event_loop,0602H
+        EXTERN nwk_init
+        FUNCTION nwk_init,0602H
+
+// E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\SampleApp\Source\OSAL_SampleApp.c
+//    1 /*********************************************************************
+//    2     Filename:       OSAL_SampleApp.c
+//    3     Revised:        $Date: 2007-03-08 13:26:13 -0800 (Thu, 08 Mar 2007) $
+//    4     Revision:       $Revision: 13719 $
+//    5 
+//    6     Description:
+//    7 
+//    8     This file contains all the settings and other functions that
+//    9     the user should set and change.
+//   10 
+//   11     Notes:
+//   12 
+//   13     Copyright (c) 2007 by Texas Instruments, Inc.
+//   14     All Rights Reserved.  Permission to use, reproduce, copy, prepare
+//   15     derivative works, modify, distribute, perform, display or sell this
+//   16     software and/or its documentation for any purpose is prohibited
+//   17     without the express written consent of Texas Instruments, Inc.
+//   18 *********************************************************************/
+//   19 
+//   20 
+//   21 /*********************************************************************
+//   22  * INCLUDES
+//   23  */
+//   24 #include "ZComDef.h"
+//   25 #include "OSAL.h"
+//   26 #include "OSAL_Tasks.h"
+//   27 #include "OSAL_Custom.h"
+//   28 
+//   29 #if defined ( MT_TASK )
+//   30   #include "MTEL.h"
+//   31 #endif
+//   32 
+//   33 #if !defined( NONWK )
+//   34   #include "nwk.h"
+//   35   #include "APS.h"
+//   36   #include "ZDApp.h"
+//   37 #endif
+//   38 
+//   39 #include "SampleApp.h"
+//   40 
+//   41 #include "OnBoard.h"
+//   42 
+//   43 #include "hal_drivers.h"
+//   44 
+//   45 /*********************************************************************
+//   46  * MACROS
+//   47  */
+//   48 
+//   49 /*********************************************************************
+//   50  * CONSTANTS
+//   51  */
+//   52 
+//   53 /*********************************************************************
+//   54  * TYPEDEFS
+//   55  */
+//   56 
+//   57 /*********************************************************************
+//   58  * GLOBAL VARIABLES
+//   59  */
+//   60 
+//   61 /*********************************************************************
+//   62  * USER DEFINED TASK TABLE
+//   63  */
+//   64 
+//   65 /*********************************************************************
+//   66  * EXTERNAL VARIABLES
+//   67  */
+//   68 
+//   69 /*********************************************************************
+//   70  * EXTERNAL FUNCTIONS
+//   71  */
+//   72 
+//   73 /*********************************************************************
+//   74  * LOCAL VARIABLES
+//   75  */
+//   76 
+//   77 /*********************************************************************
+//   78  * LOCAL FUNCTION PROTOTYPES
+//   79  */
+//   80 
+//   81 /*********************************************************************
+//   82  * FUNCTIONS
+//   83  *********************************************************************/
+//   84 
+//   85 /*********************************************************************
+//   86  * @fn      osalAddTasks
+//   87  *
+//   88  * @brief   This function adds all the tasks to the task list.
+//   89  *          This is where to add new tasks.
+//   90  *
+//   91  * @param   void
+//   92  *
+//   93  * @return  none
+//   94  */
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//   95 void osalAddTasks( void )
+osalAddTasks:
+        CFI Block cfiBlock0 Using cfiCommon0
+        CFI Function osalAddTasks
+//   96 {
+        FUNCALL osalAddTasks, osalTaskAdd
+        LOCFRAME XSTACK, 14, STACK
+        ARGFRAME XSTACK, 14, STACK
+        FUNCALL osalAddTasks, osalTaskAdd
+        LOCFRAME XSTACK, 14, STACK
+        ARGFRAME XSTACK, 14, STACK
+        FUNCALL osalAddTasks, osalTaskAdd
+        LOCFRAME XSTACK, 14, STACK
+        ARGFRAME XSTACK, 14, STACK
+        FUNCALL osalAddTasks, osalTaskAdd
+        LOCFRAME XSTACK, 14, STACK
+        ARGFRAME XSTACK, 14, STACK
+        FUNCALL osalAddTasks, osalTaskAdd
+        LOCFRAME XSTACK, 14, STACK
+        ARGFRAME XSTACK, 14, STACK
+        FUNCALL osalAddTasks, osalTaskAdd
+        LOCFRAME XSTACK, 14, STACK
+        ARGFRAME XSTACK, 14, STACK
+        FUNCALL osalAddTasks, osalTaskAdd
+        LOCFRAME XSTACK, 14, STACK
+        ARGFRAME XSTACK, 14, STACK
+        MOV	A,#-0xb
+        LCALL	?BANKED_ENTER_XDATA
+        CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+        CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+        CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+        CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+        CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+        CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+        CFI V2 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+        CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+        CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+        CFI VB load(1, XDATA, add(CFA_XSP16, literal(-10)))
+        CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-11)))
+        CFI CFA_SP SP+0
+        CFI CFA_XSP16 add(XSP16, 11)
+        ; Saved register size: 11
+        ; Auto size: 0
+//   97 
+//   98 /*
+//   99   This task must be loaded first because Hal_Init() initializes
+//  100   many things that other task_init functions may need.
+//  101 */
+//  102   osalTaskAdd (Hal_Init, Hal_ProcessEvent, OSAL_TASK_PRIORITY_LOW);
+        ; Setup parameters for call to function osalTaskAdd
+        MOV	?V0 + 0,#(Hal_ProcessEvent & 0xff)
+        MOV	?V0 + 1,#((Hal_ProcessEvent >> 8) & 0xff)
+        MOV	?V0 + 2,#((Hal_ProcessEvent >> 16) & 0xff)
+        MOV	R0,#?V0 + 0
+        LCALL	?PUSH_XSTACK_I_THREE
+        CFI CFA_XSP16 add(XSP16, 14)
+        MOV	R4,#0x32
+        MOV	R1,#(Hal_Init & 0xff)
+        MOV	R2,#((Hal_Init >> 8) & 0xff)
+        MOV	R3,#((Hal_Init >> 16) & 0xff)
+        MOV	DPTR,#(osalTaskAdd & 0xffff)
+        MOV	A,#((osalTaskAdd >> 16) & 0xff)
+        LCALL	?BCALL               ; Banked call to: DPTR()
+        MOV	A,#0x3
+        LCALL	?DEALLOC_XSTACK8
+        CFI CFA_XSP16 add(XSP16, 11)
+//  103 
+//  104 #if defined( ZMAC_F8W )
+//  105   osalTaskAdd( macTaskInit, macEventLoop, OSAL_TASK_PRIORITY_HIGH );
+        ; Setup parameters for call to function osalTaskAdd
+        MOV	?V0 + 0,#(macEventLoop & 0xff)
+        MOV	?V0 + 1,#((macEventLoop >> 8) & 0xff)
+        MOV	?V0 + 2,#((macEventLoop >> 16) & 0xff)
+        MOV	R0,#?V0 + 0
+        LCALL	?PUSH_XSTACK_I_THREE
+        CFI CFA_XSP16 add(XSP16, 14)
+        MOV	R4,#-0x1a
+        MOV	R1,#(macTaskInit & 0xff)
+        MOV	R2,#((macTaskInit >> 8) & 0xff)
+        MOV	R3,#((macTaskInit >> 16) & 0xff)
+        MOV	DPTR,#(osalTaskAdd & 0xffff)
+        MOV	A,#((osalTaskAdd >> 16) & 0xff)
+        LCALL	?BCALL               ; Banked call to: DPTR()
+        MOV	A,#0x3
+        LCALL	?DEALLOC_XSTACK8
+        CFI CFA_XSP16 add(XSP16, 11)
+//  106 #endif
+//  107 
+//  108 #if defined( MT_TASK )
+//  109   osalTaskAdd( MT_TaskInit, MT_ProcessEvent, OSAL_TASK_PRIORITY_LOW );
+        ; Setup parameters for call to function osalTaskAdd
+        MOV	?V0 + 0,#(MT_ProcessEvent & 0xff)
+        MOV	?V0 + 1,#((MT_ProcessEvent >> 8) & 0xff)
+        MOV	?V0 + 2,#((MT_ProcessEvent >> 16) & 0xff)
+        MOV	R0,#?V0 + 0
+        LCALL	?PUSH_XSTACK_I_THREE
+        CFI CFA_XSP16 add(XSP16, 14)
+        MOV	R4,#0x32
+        MOV	R1,#(MT_TaskInit & 0xff)
+        MOV	R2,#((MT_TaskInit >> 8) & 0xff)
+        MOV	R3,#((MT_TaskInit >> 16) & 0xff)
+        MOV	DPTR,#(osalTaskAdd & 0xffff)
+        MOV	A,#((osalTaskAdd >> 16) & 0xff)
+        LCALL	?BCALL               ; Banked call to: DPTR()
+        MOV	A,#0x3
+        LCALL	?DEALLOC_XSTACK8
+        CFI CFA_XSP16 add(XSP16, 11)
+//  110 #endif
+//  111 
+//  112   osalTaskAdd( nwk_init, nwk_event_loop, OSAL_TASK_PRIORITY_MED );
+        ; Setup parameters for call to function osalTaskAdd
+        MOV	?V0 + 0,#(nwk_event_loop & 0xff)
+        MOV	?V0 + 1,#((nwk_event_loop >> 8) & 0xff)
+        MOV	?V0 + 2,#((nwk_event_loop >> 16) & 0xff)
+        MOV	R0,#?V0 + 0
+        LCALL	?PUSH_XSTACK_I_THREE
+        CFI CFA_XSP16 add(XSP16, 14)
+        MOV	R4,#-0x7e
+        MOV	R1,#(nwk_init & 0xff)
+        MOV	R2,#((nwk_init >> 8) & 0xff)
+        MOV	R3,#((nwk_init >> 16) & 0xff)
+        MOV	DPTR,#(osalTaskAdd & 0xffff)
+        MOV	A,#((osalTaskAdd >> 16) & 0xff)
+        LCALL	?BCALL               ; Banked call to: DPTR()
+        MOV	A,#0x3
+        LCALL	?DEALLOC_XSTACK8
+        CFI CFA_XSP16 add(XSP16, 11)
+//  113   osalTaskAdd( APS_Init, APS_event_loop, OSAL_TASK_PRIORITY_LOW );
+        ; Setup parameters for call to function osalTaskAdd
+        MOV	?V0 + 0,#(APS_event_loop & 0xff)
+        MOV	?V0 + 1,#((APS_event_loop >> 8) & 0xff)
+        MOV	?V0 + 2,#((APS_event_loop >> 16) & 0xff)
+        MOV	R0,#?V0 + 0
+        LCALL	?PUSH_XSTACK_I_THREE
+        CFI CFA_XSP16 add(XSP16, 14)
+        MOV	R4,#0x32
+        MOV	R1,#(APS_Init & 0xff)
+        MOV	R2,#((APS_Init >> 8) & 0xff)
+        MOV	R3,#((APS_Init >> 16) & 0xff)
+        MOV	DPTR,#(osalTaskAdd & 0xffff)
+        MOV	A,#((osalTaskAdd >> 16) & 0xff)
+        LCALL	?BCALL               ; Banked call to: DPTR()
+        MOV	A,#0x3
+        LCALL	?DEALLOC_XSTACK8
+        CFI CFA_XSP16 add(XSP16, 11)
+//  114   osalTaskAdd( ZDApp_Init, ZDApp_event_loop, OSAL_TASK_PRIORITY_LOW );
+        ; Setup parameters for call to function osalTaskAdd
+        MOV	?V0 + 0,#(ZDApp_event_loop & 0xff)
+        MOV	?V0 + 1,#((ZDApp_event_loop >> 8) & 0xff)
+        MOV	?V0 + 2,#((ZDApp_event_loop >> 16) & 0xff)
+        MOV	R0,#?V0 + 0
+        LCALL	?PUSH_XSTACK_I_THREE
+        CFI CFA_XSP16 add(XSP16, 14)
+        MOV	R4,#0x32
+        MOV	R1,#(ZDApp_Init & 0xff)
+        MOV	R2,#((ZDApp_Init >> 8) & 0xff)
+        MOV	R3,#((ZDApp_Init >> 16) & 0xff)
+        MOV	DPTR,#(osalTaskAdd & 0xffff)
+        MOV	A,#((osalTaskAdd >> 16) & 0xff)
+        LCALL	?BCALL               ; Banked call to: DPTR()
+        MOV	A,#0x3
+        LCALL	?DEALLOC_XSTACK8
+        CFI CFA_XSP16 add(XSP16, 11)
+//  115 
+//  116   osalTaskAdd( SampleApp_Init, SampleApp_ProcessEvent, OSAL_TASK_PRIORITY_LOW );
+        ; Setup parameters for call to function osalTaskAdd
+        MOV	?V0 + 0,#(SampleApp_ProcessEvent & 0xff)
+        MOV	?V0 + 1,#((SampleApp_ProcessEvent >> 8) & 0xff)
+        MOV	?V0 + 2,#((SampleApp_ProcessEvent >> 16) & 0xff)
+        MOV	R0,#?V0 + 0
+        LCALL	?PUSH_XSTACK_I_THREE
+        CFI CFA_XSP16 add(XSP16, 14)
+        MOV	R4,#0x32
+        MOV	R1,#(SampleApp_Init & 0xff)
+        MOV	R2,#((SampleApp_Init >> 8) & 0xff)
+        MOV	R3,#((SampleApp_Init >> 16) & 0xff)
+        MOV	DPTR,#(osalTaskAdd & 0xffff)
+        MOV	A,#((osalTaskAdd >> 16) & 0xff)
+        LCALL	?BCALL               ; Banked call to: DPTR()
+        MOV	A,#0x3
+        LCALL	?DEALLOC_XSTACK8
+        CFI CFA_XSP16 add(XSP16, 11)
+//  117 }
+        MOV	R7,#0x3
+        LJMP	?BANKED_LEAVE_XDATA
+        CFI EndBlock cfiBlock0
+
+        END
+//  118 
+//  119 /*********************************************************************
+//  120 *********************************************************************/
+// 
+// 255 bytes in segment BANKED_CODE
+// 
+// 255 bytes of CODE memory
+//
+//Errors: none
+//Warnings: none

@@ -1,0 +1,871 @@
+##############################################################################
+#                                                                            #
+# IAR 8051 C/C++ Compiler V7.20H/W32                   24/Jan/2013  14:47:42 #
+# Copyright 2004-2006 IAR Systems. All rights reserved.                      #
+#                                                                            #
+#    Core               =  plain                                             #
+#    Code model         =  banked                                            #
+#    Data model         =  large                                             #
+#    Calling convention =  xdata reentrant                                   #
+#    Constant location  =  data                                              #
+#    Dptr setup         =  1,16                                              #
+#    Source file        =  D:\Texas Instruments\ZStack-1.4.2-1.1.0\Component #
+#                          s\mt\MT_NWK.c                                     #
+#    Command line       =  -f E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç #
+#                          ¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006 #
+#                          -´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp #
+#                          les\SampleApp\CC2430DB\..\..\..\Tools\CC2430DB\f8 #
+#                          wRouter.cfg (-DCPU32MHZ -DFORCE_MAC_NEAR          #
+#                          -DROOT=__near_func -DMAC_CFG_APP_PENDING_QUEUE=TR #
+#                          UE -DRTR_NWK -DBLINK_LEDS "-DCONST=const __code"  #
+#                          -DGENERIC=__generic) -f                           #
+#                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª· #
+#                          ¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006-´® #
+#                          ¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples #
+#                          \SampleApp\CC2430DB\..\..\..\Tools\CC2430DB\f8wCo #
+#                          nfig.cfg (-DSECURE=0 -DDEFAULT_CHANLIST=0x0000080 #
+#                          0 -DZDAPP_CONFIG_PAN_ID=0xFFFF                    #
+#                          -DNWK_START_DELAY=100 -DEXTENDED_JOINING_RANDOM_M #
+#                          ASK=0x007F -DBEACON_REQUEST_DELAY=100             #
+#                          -DBEACON_REQ_DELAY_MASK=0x00FF                    #
+#                          -DROUTE_EXPIRY_TIME=30 -DAPSC_ACK_WAIT_DURATION_P #
+#                          OLLED=3000 -DNWK_INDIRECT_MSG_TIMEOUT=7           #
+#                          -DMAX_RREQ_ENTRIES=10 -DAPSC_MAX_FRAME_RETRIES=3  #
+#                          -DNWK_MAX_DATA_RETRIES=2                          #
+#                          -DMAX_POLL_FAILURE_RETRIES=2 -DMAX_BCAST=9        #
+#                          -DAPS_MAX_GROUPS=16 -DMAX_RTG_ENTRIES=20          #
+#                          -DNWK_MAX_BINDING_ENTRIES=10                      #
+#                          -DMAX_BINDING_CLUSTER_IDS=5                       #
+#                          "-DDEFAULT_KEY={0x01, 0x03, 0x05, 0x07, 0x09,     #
+#                          0x0B, 0x0D, 0x0F, 0x00, 0x02, 0x04, 0x06, 0x08,   #
+#                          0x0A, 0x0C, 0x0D}" -DRFD_RCVC_ALWAYS_ON=FALSE     #
+#                          -DPOLL_RATE=1000 -DQUEUED_POLL_RATE=100           #
+#                          -DRESPONSE_POLL_RATE=100 -DREJOIN_POLL_RATE=440   #
+#                          -DTOP_BOOT_PAGES=0) -I "D:\Program Files\IAR      #
+#                          Systems\Embedded Workbench 4.05 Evaluation        #
+#                          version\8051\inc\" -I "D:\Program Files\IAR       #
+#                          Systems\Embedded Workbench 4.05 Evaluation        #
+#                          version\8051\inc\clib\" -I                        #
+#                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª· #
+#                          ¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006-´® #
+#                          ¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples #
+#                          \SampleApp\CC2430DB\ -I                           #
+#                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª· #
+#                          ¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006-´® #
+#                          ¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples #
+#                          \SampleApp\CC2430DB\..\Source\ -I                 #
+#                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª· #
+#                          ¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006-´® #
+#                          ¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples #
+#                          \SampleApp\CC2430DB\..\..\..\ZMain\TI2430DB\ -I   #
+#                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª· #
+#                          ¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006-´® #
+#                          ¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples #
+#                          \SampleApp\CC2430DB\..\..\..\..\..\Components\mt\ #
+#                           -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂ #
+#                          ç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee200 #
+#                          6-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Sam #
+#                          ples\SampleApp\CC2430DB\..\..\..\..\..\Components #
+#                          \hal\include\ -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª· #
+#                          ¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2 #
+#                          006\ZigBee2006-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projec #
+#                          ts\zstack\Samples\SampleApp\CC2430DB\..\..\..\..\ #
+#                          ..\Components\hal\target\CC2430EB\ -I             #
+#                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª· #
+#                          ¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006-´® #
+#                          ¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples #
+#                          \SampleApp\CC2430DB\..\..\..\..\..\Components\osa #
+#                          l\mcu\ccsoc\ -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢ #
+#                          ×ÊÁÏ\ÎÞÏßÍøÂç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee20 #
+#                          06\ZigBee2006-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Project #
+#                          s\zstack\Samples\SampleApp\CC2430DB\..\..\..\..\. #
+#                          .\Components\osal\include\ -I                     #
+#                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª· #
+#                          ¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006-´® #
+#                          ¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples #
+#                          \SampleApp\CC2430DB\..\..\..\..\..\Components\sta #
+#                          ck\af\ -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\Î #
+#                          ÞÏßÍøÂç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\Zig #
+#                          Bee2006-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zsta #
+#                          ck\Samples\SampleApp\CC2430DB\..\..\..\..\..\Comp #
+#                          onents\stack\nwk\ -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC243 #
+#                          0¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\Zig #
+#                          Bee2006\ZigBee2006-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Pr #
+#                          ojects\zstack\Samples\SampleApp\CC2430DB\..\..\.. #
+#                          \..\..\Components\stack\sec\ -I                   #
+#                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª· #
+#                          ¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006-´® #
+#                          ¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples #
+#                          \SampleApp\CC2430DB\..\..\..\..\..\Components\sta #
+#                          ck\sys\ -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ #
+#                          ÎÞÏßÍøÂç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\Zi #
+#                          gBee2006-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zst #
+#                          ack\Samples\SampleApp\CC2430DB\..\..\..\..\..\Com #
+#                          ponents\stack\zdo\ -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC24 #
+#                          30¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\Zi #
+#                          gBee2006\ZigBee2006-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\P #
+#                          rojects\zstack\Samples\SampleApp\CC2430DB\..\..\. #
+#                          .\..\..\Components\zmac\f8w\ -I                   #
+#                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª· #
+#                          ¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006-´® #
+#                          ¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples #
+#                          \SampleApp\CC2430DB\..\..\..\..\..\Components\zma #
+#                          c\ -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍ #
+#                          øÂç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2 #
+#                          006-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\S #
+#                          amples\SampleApp\CC2430DB\..\..\..\..\..\Componen #
+#                          ts\services\saddr\ -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC24 #
+#                          30¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\Zi #
+#                          gBee2006\ZigBee2006-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\P #
+#                          rojects\zstack\Samples\SampleApp\CC2430DB\..\..\. #
+#                          .\..\..\Components\services\sdata\ -I             #
+#                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª· #
+#                          ¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006-´® #
+#                          ¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples #
+#                          \SampleApp\CC2430DB\..\..\..\..\..\Components\mac #
+#                          \include\ -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁ #
+#                          Ï\ÎÞÏßÍøÂç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ #
+#                          ZigBee2006-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\z #
+#                          stack\Samples\SampleApp\CC2430DB\..\..\..\..\..\C #
+#                          omponents\mac\high_level\ -I                      #
+#                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª· #
+#                          ¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006-´® #
+#                          ¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples #
+#                          \SampleApp\CC2430DB\..\..\..\..\..\Components\mac #
+#                          \low_level\srf03\ -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC243 #
+#                          0¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\Zig #
+#                          Bee2006\ZigBee2006-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Pr #
+#                          ojects\zstack\Samples\SampleApp\CC2430DB\..\..\.. #
+#                          \..\..\Components\mac\low_level\srf03\single_chip #
+#                          \ -D CC2430EB -D ZTOOL_P1 -D MT_TASK -lC          #
+#                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª· #
+#                          ¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006-´® #
+#                          ¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples #
+#                          \SampleApp\CC2430DB\RouterEB\List\ -lA            #
+#                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª· #
+#                          ¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006-´® #
+#                          ¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples #
+#                          \SampleApp\CC2430DB\RouterEB\List\                #
+#                          --diag_suppress Pe001,Pa010 --diag_remark pe550   #
+#                          -o E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç #
+#                          ¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006 #
+#                          -´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp #
+#                          les\SampleApp\CC2430DB\RouterEB\Obj\ -e           #
+#                          --require_prototypes -z9 --no_code_motion         #
+#                          --debug --core=plain --dptr=16,1                  #
+#                          --data_model=large --code_model=banked            #
+#                          --calling_convention=xdata_reentrant              #
+#                          --place_constants=data --nr_virtual_regs 8        #
+#                          "D:\Texas Instruments\ZStack-1.4.2-1.1.0\Componen #
+#                          ts\mt\MT_NWK.c"                                   #
+#    List file          =  E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª· #
+#                          ¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006-´® #
+#                          ¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples #
+#                          \SampleApp\CC2430DB\RouterEB\List\MT_NWK.lst      #
+#    Object file        =  E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª· #
+#                          ¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006-´® #
+#                          ¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples #
+#                          \SampleApp\CC2430DB\RouterEB\Obj\MT_NWK.r51       #
+#                                                                            #
+#                                                                            #
+##############################################################################
+
+D:\Texas Instruments\ZStack-1.4.2-1.1.0\Components\mt\MT_NWK.c
+      1          /*********************************************************************
+      2              Filename:       MT_NWK.c
+      3              Revised:        $Date: 2007-05-03 14:52:32 -0700 (Thu, 03 May 2007) $
+      4              Revision:       $Revision: 14191 $
+      5          
+      6              Description:
+      7          
+      8                  MonitorTest functions for the NWK layer.
+      9          
+     10              Notes:
+     11          
+     12              Copyright (c) 2006 by Texas Instruments, Inc.
+     13              All Rights Reserved.  Permission to use, reproduce, copy, prepare
+     14              derivative works, modify, distribute, perform, display or sell this
+     15              software and/or its documentation for any purpose is prohibited
+     16              without the express written consent of Texas Instruments, Inc.
+     17          *********************************************************************/
+     18          
+     19          
+     20          
+     21          /*********************************************************************
+     22           * INCLUDES
+     23           */
+     24          #include "ZComDef.h"
+     25          #include "OSAL.h"
+     26          #include "MTEL.h"
+     27          #include "NLMEDE.h"
+     28          #include "nwk.h"
+     29          #include "ZDApp.h"
+     30          #include "nwk_globals.h"
+     31          #include "MT_NWK.h"
+     32          
+     33          #if !defined( WIN32 )
+     34            #include "OnBoard.h"
+     35          #endif
+     36          
+     37          /*********************************************************************
+     38           * MACROS
+     39           */
+     40          
+     41          /*********************************************************************
+     42           * CONSTANTS
+     43           */
+     44          
+     45          /*********************************************************************
+     46           * TYPEDEFS
+     47           */
+     48          
+     49          /*********************************************************************
+     50           * GLOBAL VARIABLES
+     51           */
+
+   \                                 In segment XDATA_Z, align 1, keep-with-next
+   \   000000                REQUIRE __INIT_XDATA_Z
+     52          uint16 _nwkCallbackSub;
+   \                     _nwkCallbackSub:
+   \   000000                DS 2
+     53          
+     54          /*********************************************************************
+     55           * EXTERNAL VARIABLES
+     56           */
+     57          
+     58          /*********************************************************************
+     59           * EXTERNAL FUNCTIONS
+     60           */
+     61          
+     62          /*********************************************************************
+     63           * LOCAL VARIABLES
+     64           */
+     65          
+     66          /*********************************************************************
+     67           * LOCAL FUNCTIONS
+     68           */
+     69          #if defined ( MT_NWK_FUNC )  //NWK commands
+     70          uint8 MT_Nwk_DataRequest( uint16 dstAddr, uint8 nsduLen, uint8* nsdu,
+     71                                   uint8 nsduHandle, uint16 nsduHandleOptions,
+     72                                   uint8 secure, uint8 discoverRoute,
+     73                                   uint8 radius);
+     74          
+     75          uint8 MT_Nwk_DataRequest( uint16 dstAddr, uint8 nsduLen, uint8* nsdu,
+     76                                   uint8 nsduHandle, uint16 nsduHandleOptions,
+     77                                   uint8 secure, uint8 discoverRoute,
+     78                                   uint8 radius)
+     79          {
+     80              uint8               status;
+     81              NLDE_DataReqAlloc_t dra;
+     82              NLDE_DataReq_t*     req;
+     83          
+     84          
+     85              dra.overhead = sizeof(NLDE_DataReq_t);
+     86              dra.nsduLen  = nsduLen;
+     87              dra.secure   = secure;
+     88          
+     89              req = NLDE_DataReqAlloc(&dra);
+     90          
+     91              if ( req != NULL )
+     92              {
+     93                osal_memcpy(req->nfd.nsdu, nsdu, nsduLen);
+     94          
+     95                req->nfd.dstAddr           = dstAddr;
+     96                req->nfd.nsduHandleOptions = nsduHandleOptions;
+     97                req->nfd.discoverRoute     = discoverRoute;
+     98                req->nfd.radius            = radius;
+     99          
+    100                status = NLDE_DataReq( req );
+    101              }
+    102              else
+    103              {
+    104                status = ZMemError;
+    105              }
+    106          
+    107              return status;
+    108          }
+    109          #endif // defined ( MT_NWK_FUNC )
+    110          
+    111          /*********************************************************************
+    112           * @fn      MT_NwkCommandProcessing
+    113           *
+    114           * @brief
+    115           *
+    116           *   Process all the NWK commands that are issued by test tool
+    117           *
+    118           * @param   cmd_id - Command ID
+    119           * @param   len    - Length of received SPI data message
+    120           * @param   pData  - pointer to received SPI data message
+    121           *
+    122           * @return  void
+    123           */
+
+   \                                 In segment BANKED_CODE, align 1, keep-with-next
+    124          void MT_NwkCommandProcessing( uint16 cmd_id , byte len , byte *pData )
+   \                     MT_NwkCommandProcessing:
+    125          {
+   \   000000   74F6         MOV     A,#-0xa
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 10
+   \   000005                ; Auto size: 0
+    126            byte ret;
+    127          #if defined ( MT_NWK_FUNC )
+    128            uint8 dummyExPANID[Z_EXTADDR_LEN] = { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
+    129            uint16 dstAddr;
+    130          #endif
+    131          #if defined ( MT_NWK_FUNC )  //NWK commands
+    132            byte attr;
+    133            byte index;
+    134            byte dataLen;
+    135            byte *dataPtr;
+    136            uint32 channelList;
+    137            byte databuf[SPI_RESP_LEN_NWK_DEFAULT + NWK_DEFAULT_GET_RESPONSE_LEN];
+    138          #if defined( ZDO_COORDINATOR )
+    139          	uint16 panId;
+    140          #else
+    141            byte i,j;
+    142          #endif
+    143          #endif // MT_NWK_FUNC
+    144          
+    145            len = SPI_0DATA_MSG_LEN + SPI_RESP_LEN_NWK_DEFAULT;
+    146          	ret = (byte)ZSuccess;
+    147          
+    148            switch (cmd_id)
+   \   000005   8A..         MOV     ?V0 + 0,R2
+   \   000007   8B..         MOV     ?V0 + 1,R3
+   \   000009   78..         MOV     R0,#?V0 + 0
+   \   00000B   12....       LCALL   ?US_SWITCH_DENSE
+   \                     `?<Jumptable for MT_NwkCommandProcessing>_0`:
+   \   00000E   0301         DW        259
+   \   000010   00           DB        0
+   \   000011   ....         DW        ??MT_NwkCommandProcessing_0
+   \   000013   ....         DW        ??MT_NwkCommandProcessing_1
+    149            {
+    150          #if defined( RTR_NWK )
+    151              case SPI_CMD_NLME_PERMIT_JOINING_REQ:
+    152                //The only information is PermitDuration
+    153                ret = (byte)NLME_PermitJoiningRequest( *pData );
+   \                     ??MT_NwkCommandProcessing_1:
+   \   000015                ; Setup parameters for call to function NLME_PermitJoiningRequest
+   \   000015   8C82         MOV     DPL,R4
+   \   000017   8D83         MOV     DPH,R5
+   \   000019   E0           MOVX    A,@DPTR
+   \   00001A   F9           MOV     R1,A
+   \   00001B   90....       MOV     DPTR,#(NLME_PermitJoiningRequest & 0xffff)
+   \   00001E   74..         MOV     A,#((NLME_PermitJoiningRequest >> 16) & 0xff)
+   \   000020   12....       LCALL   ?BCALL               ; Banked call to: DPTR()
+    154                break;
+    155          #endif
+    156          
+    157          #if defined ( MT_NWK_FUNC )  //NWK commands
+    158              case SPI_CMD_NWK_INIT:
+    159                nwk_init( NWK_TaskID );
+    160                break;
+    161          
+    162              case SPI_CMD_NLDE_DATA_REQ:
+    163                //First read the DstAddr
+    164                dstAddr = BUILD_UINT16( pData[1], pData[0] );
+    165                pData += sizeof( dstAddr );
+    166          
+    167                //Get the NSDU details
+    168                dataLen = *pData++;
+    169                dataPtr = pData;
+    170          
+    171                /* For now, skip a length of ZTEST_DEFAULT_DATA_LEN, instead of dataLen.
+    172                   In future ZTOOL releases the data buffer will be only as long as dataLen */
+    173          
+    174                //pData += dataLen;
+    175                pData += ZTEST_DEFAULT_DATA_LEN;
+    176          
+    177                /* pData[0] = NSDUHandlde
+    178                   pData[1] = NSDUHandleOptions
+    179                   pData[3] = SecurityEnable
+    180                   pData[4] = DiscoverRoute
+    181                   pData[5] = RadiusCounter */
+    182          
+    183                ret = (byte)MT_Nwk_DataRequest( dstAddr, dataLen, dataPtr, pData[0],
+    184                                                BUILD_UINT16( pData[2], pData[1] ),
+    185                                                pData[3], pData[4], pData[5]);
+    186                break;
+    187          
+    188          #if defined( ZDO_COORDINATOR )
+    189              case SPI_CMD_NLME_INIT_COORD_REQ:
+    190          			panId = BUILD_UINT16( pData[1], pData[0] );
+    191          			
+    192          			MT_ReverseBytes( &pData[2], 4 );
+    193          			channelList = osal_build_uint32( &pData[2], 4 );
+    194          
+    195          			ret = (byte)NLME_NetworkFormationRequest( panId, channelList, pData[6], pData[7],
+    196                                                                pData[8], pData[9] );
+    197                break;
+    198          #endif  // ZDO
+    199          
+    200          #if defined( RTR_NWK )
+    201              case SPI_CMD_NLME_START_ROUTER_REQ:
+    202                // NOTE: first two parameters are not used, see NLMEDE.h for details
+    203                ret = (byte)NLME_StartRouterRequest( pData[0], pData[1], pData[2] );
+    204              break;
+    205          #endif  // RTR
+    206          
+    207              case SPI_CMD_NLME_JOIN_REQ:
+    208          		  ret = (byte)NLME_JoinRequest( dummyExPANID, BUILD_UINT16( pData[1], pData[0] ), pData[2], pData[3] );
+    209                if ( pData[3] & CAPINFO_RCVR_ON_IDLE )
+    210                {
+    211                  // The receiver is on, turn network layer polling off.
+    212                  NLME_SetPollRate( 0 );
+    213                  NLME_SetQueuedPollRate( 0 );
+    214                  NLME_SetResponseRate( 0 );
+    215                }
+    216                break;
+    217          
+    218              case SPI_CMD_NLME_LEAVE_REQ:
+    219                {
+    220                  NLME_LeaveReq_t req;
+    221                  // if extAddr is all zeros, it means null pointer..
+    222                  for( index = 0; ( ( index < Z_EXTADDR_LEN ) &&
+    223                                  ( pData[index] == 0 ) ) ; index++ );
+    224                  if ( index == Z_EXTADDR_LEN )
+    225                  {
+    226                    req.extAddr = NULL;
+    227                  }
+    228                  else
+    229                  {
+    230                    MT_ReverseBytes( pData, Z_EXTADDR_LEN );
+    231                    req.extAddr = pData;
+    232                  }
+    233                  pData += Z_EXTADDR_LEN;
+    234          
+    235                  req.removeChildren = FALSE;
+    236                  req.rejoin         = FALSE;
+    237                  req.silent         = FALSE;
+    238                  ret = (byte)NLME_LeaveReq( &req );
+    239                }
+    240                break;
+    241          
+    242              case SPI_CMD_NLME_RESET_REQ:
+    243                //Its a direct call to reset NWK
+    244                ret = (byte)NLME_ResetRequest();
+    245                break;
+    246          
+    247              case SPI_CMD_NLME_GET_REQ:
+    248                attr = *pData++;
+    249                index = *pData;
+    250          			databuf[0] = (byte)NLME_GetRequest( (ZNwkAttributes_t )attr, index, &databuf[1] );
+    251                len = SPI_0DATA_MSG_LEN + SPI_RESP_LEN_NWK_DEFAULT + NWK_DEFAULT_GET_RESPONSE_LEN;
+    252                MT_BuildAndSendZToolResponse( len, (SPI_RESPONSE_BIT | SPI_CMD_NLME_GET_REQ),
+    253                      (SPI_RESP_LEN_NWK_DEFAULT + NWK_DEFAULT_GET_RESPONSE_LEN), databuf );
+    254                return;   // Don't return to this function
+    255          
+    256              case SPI_CMD_NLME_SET_REQ:
+    257                ret = (byte)NLME_SetRequest( (ZNwkAttributes_t)pData[0], pData[1], &pData[2] );
+    258                osal_start_timerEx( ZDAppTaskID, ZDO_NWK_UPDATE_NV, 1000 );
+    259                break;
+    260          
+    261              case SPI_CMD_NLME_NWK_DISC_REQ:
+    262                MT_ReverseBytes( pData, 4 );
+    263                ret = (byte)NLME_NetworkDiscoveryRequest( osal_build_uint32( pData, 4 ), pData[4] );
+    264                break;
+    265          
+    266          #if !defined( ZDO_COORDINATOR )
+    267              case SPI_CMD_NLME_ORPHAN_JOIN_REQ:
+    268                // Channel list bit mask
+    269                MT_ReverseBytes( pData, 4 );
+    270                channelList = osal_build_uint32( pData, 4 );
+    271          
+    272                // Count number of channels
+    273                j = attr = 0;
+    274                for ( i = 0; i < ED_SCAN_MAXCHANNELS; i++ )
+    275                {
+    276                  if ( channelList & (1 << i) )
+    277                  {
+    278                     j++;
+    279                     attr = i;
+    280                  }
+    281                }
+    282          
+    283                // If only one channel specified...
+    284                if ( j == 1 )
+    285                {
+    286                  _NIB.scanDuration = pData[4];
+    287                  _NIB.nwkLogicalChannel = attr;
+    288                  _NIB.channelList = channelList;
+    289                  if ( !_NIB.CapabilityInfo )
+    290                    _NIB.CapabilityInfo = ZDO_Config_Node_Descriptor.CapabilityFlags;
+    291          
+    292                  devState = DEV_NWK_ORPHAN;
+    293                  ret = (byte)NLME_OrphanJoinRequest( channelList, pData[4] );
+    294                }
+    295                else
+    296                  ret = ZNwkInvalidParam;
+    297                break;
+    298          #endif  // !ZDO
+    299          	
+    300          #if defined (RTR_NWK)
+    301              case SPI_CMD_NLME_ROUTE_DISC_REQ:
+    302                ret = (byte)NLME_RouteDiscoveryRequest( BUILD_UINT16( pData[1], pData[0] ), pData[2] );
+    303                break;
+    304          			
+    305              case SPI_CMD_NLME_DIRECT_JOIN_REQ:
+    306                MT_ReverseBytes( pData, 8 );
+    307                ret = (byte)NLME_DirectJoinRequest( pData, pData[8] );
+    308              break;
+    309          #endif	// RTR
+    310          
+    311          #endif // MT_NWK_FUNC
+    312          
+    313              default:
+    314                ret = (byte)ZUnsupportedMode;
+    315                break;
+    316            }
+    317          
+    318          #if defined ( MT_NWK_FUNC )
+    319          	MT_SendSPIRespMsg( ret, cmd_id, len, SPI_RESP_LEN_NWK_DEFAULT );
+    320          #endif	
+    321            (void)len;
+    322            (void)ret;
+    323          }
+   \                     ??MT_NwkCommandProcessing_0:
+   \   000023   7F02         MOV     R7,#0x2
+   \   000025   02....       LJMP    ?BANKED_LEAVE_XDATA
+    324          
+    325          #if defined ( MT_NWK_CB_FUNC )             //NWK callback commands
+    326          /*********************************************************************
+    327           * @fn          nwk_MTCallbackSubDataConfirm
+    328           *
+    329           * @brief       Process the callback subscription for NLDE-DATA.confirm
+    330           *
+    331           * @param       nsduHandle  - APS handle
+    332           * @param       Status      - result of data request
+    333           *
+    334           * @return      none
+    335           */
+    336          void nwk_MTCallbackSubDataConfirm(byte nsduHandle, ZStatus_t status )
+    337          {
+    338            byte buf[2];
+    339          
+    340            buf[0] = nsduHandle;
+    341            buf[1] = (byte)status;
+    342          
+    343            MT_BuildAndSendZToolCB( SPI_CB_NLDE_DATA_CNF, 2, buf );
+    344          }
+    345          
+    346          /*********************************************************************
+    347           * @fn          nwk_MTCallbackSubDataIndication
+    348           *
+    349           * @brief       Process the callback subscription for NLDE-DATA.indication
+    350           *
+    351           * @param       SrcAddress      - 16 bit address
+    352           * @param       nsduLength      - Length of incoming data
+    353           * @param       nsdu            - Pointer to incoming data
+    354           * @param       LinkQuality     - Link quality measured during
+    355           *                                reception.
+    356           * @param       SecuritySuite   - Security Suite Applied
+    357           * @param       SecurityStatus  - MLDE_SUCCESS if security process
+    358           *                                successfull, MLDE_FAILURE if not.
+    359           *
+    360           * @return      none
+    361           */
+    362          void nwk_MTCallbackSubDataIndication( uint16 SrcAddress, int16 nsduLength,
+    363                                                byte *nsdu, byte LinkQuality )
+    364          {
+    365            byte *msgPtr;
+    366            byte *msg;
+    367            byte msgLen;
+    368          
+    369            msgLen = sizeof( uint16 ) + sizeof( uint8 ) + ZTEST_DEFAULT_DATA_LEN
+    370                      + sizeof( byte);
+    371          
+    372            msgPtr = osal_mem_alloc( msgLen );
+    373            if ( msgPtr )
+    374            {
+    375              //Fill up the data bytes
+    376              msg = msgPtr;
+    377          
+    378              //First fill in details
+    379              *msg++ = HI_UINT16( SrcAddress );
+    380              *msg++ = LO_UINT16( SrcAddress );
+    381          
+    382              //Since the max packet size is less than 255 bytes, a byte is enough
+    383              //to represent nsdu length
+    384              *msg++ = ( uint8 ) nsduLength;
+    385          
+    386              osal_memset( msg, NULL, ZTEST_DEFAULT_DATA_LEN ); // Clear the mem
+    387              osal_memcpy( msg, nsdu, nsduLength );
+    388              msg += ZTEST_DEFAULT_DATA_LEN;
+    389          
+    390              *msg++ = LinkQuality;
+    391          
+    392              MT_BuildAndSendZToolCB( SPI_CB_NLDE_DATA_IND, msgLen, msgPtr );
+    393          
+    394              osal_mem_free( msgPtr );
+    395            }
+    396          }
+    397          
+    398          /*********************************************************************
+    399           * @fn          nwk_MTCallbackSubInitCoordConfirm
+    400           *
+    401           * @brief       Process the callback subscription for NLME-INIT-COORD.confirm
+    402           *
+    403           * @param       Status - Result of NLME_InitCoordinatorRequest()
+    404           *
+    405           * @return      none
+    406           */
+    407          void nwk_MTCallbackSubInitCoordConfirm( ZStatus_t Status )
+    408          {
+    409          #if defined( ZDO_COORDINATOR )
+    410            MT_BuildAndSendZToolCB( SPI_CB_NLME_INITCOORD_CNF,
+    411                                              sizeof( byte ), (byte*)&Status );
+    412          #endif  // ZDO_COORDINATOR
+    413          }
+    414          
+    415          /*********************************************************************
+    416           * @fn          nwk_MTCallbackSubStartRouterConfirm
+    417           *
+    418           * @brief       Process the callback subscription for NLME-START-ROUTER.confirm
+    419           *
+    420           * @param       Status - Result of NLME_StartRouterRequest()
+    421           *
+    422           * @return      none
+    423           */
+    424          void nwk_MTCallbackSubStartRouterConfirm( ZStatus_t Status )
+    425          {
+    426            MT_BuildAndSendZToolCB( SPI_CB_NLME_START_ROUTER_CNF,
+    427                                                  sizeof( byte ), (byte*)&Status );
+    428          }
+    429          
+    430          /*********************************************************************
+    431           * @fn          nwk_MTCallbackSubJoinConfirm
+    432           *
+    433           * @brief       Process the callback subscription for NLME-JOIN.confirm
+    434           *
+    435           * @param       Status - Result of NLME_JoinRequest()
+    436           *
+    437           * @return      none
+    438           */
+    439          void nwk_MTCallbackSubJoinConfirm(  uint16 PanId, ZStatus_t Status )
+    440          {
+    441            byte msg[Z_EXTADDR_LEN + 3];
+    442          
+    443            // This device's 64-bit address
+    444            ZMacGetReq( ZMacExtAddr, msg );
+    445            MT_ReverseBytes( msg, Z_EXTADDR_LEN );
+    446          
+    447            msg[Z_EXTADDR_LEN + 0] = HI_UINT16( PanId );
+    448            msg[Z_EXTADDR_LEN + 1] = LO_UINT16( PanId );
+    449            msg[Z_EXTADDR_LEN + 2] = (byte)Status;
+    450          
+    451            MT_BuildAndSendZToolCB( SPI_CB_NLME_JOIN_CNF, Z_EXTADDR_LEN + 3, msg );
+    452          }
+    453          /*********************************************************************
+    454           * @fn          nwk_MTCallbackSubNetworkDiscoveryConfirm
+    455           *
+    456           * @brief       Process the callback subscription for NLME-NWK_DISC.confirm
+    457           *
+    458           * @param       ResultCount			- number of networks discovered
+    459           * @param				NetworkList			- pointer to list of network descriptors
+    460           *
+    461           * @return      void
+    462           */
+    463          void nwk_MTCallbackSubNetworkDiscoveryConfirm( byte ResultCount, networkDesc_t *NetworkList )
+    464          {
+    465          	byte len;
+    466          	byte *msgPtr;
+    467          	byte *msg;
+    468          	byte i;
+    469          
+    470                  // The message cannot be bigger then SPI_TX_BUFF_MAX.  Reduce resultCount if necessary
+    471                  if (ResultCount * sizeof(networkDesc_t) > SPI_TX_BUFF_MAX - (1 + SPI_0DATA_MSG_LEN))
+    472                  {
+    473                    ResultCount = (SPI_TX_BUFF_MAX - (1 + SPI_0DATA_MSG_LEN)) / sizeof(networkDesc_t);
+    474                  }
+    475          
+    476          	len = 1 + ResultCount * sizeof(networkDesc_t);
+    477            msgPtr = osal_mem_alloc( len );
+    478          	if ( msgPtr )
+    479          	{
+    480          	 //Fill up the data bytes
+    481              msg = msgPtr;
+    482          
+    483          		*msg++ = ResultCount;
+    484          
+    485          		for ( i = 0; i < ResultCount; i++ )
+    486          		{
+    487          		  *msg++ = HI_UINT16( NetworkList->panId );
+    488          		  *msg++ = LO_UINT16( NetworkList->panId );
+    489          		  *msg++ = NetworkList->logicalChannel;
+    490          		  *msg++ = NetworkList->beaconOrder;
+    491          		  *msg++ = NetworkList->superFrameOrder;
+    492          		  *msg++ = NetworkList->routerCapacity;
+    493          		  *msg++ = NetworkList->deviceCapacity;
+    494          		  *msg++ = NetworkList->version;
+    495          		  *msg++ = NetworkList->stackProfile;
+    496          		  //*msg++ = NetworkList->securityLevel;
+    497          		
+    498          			NetworkList = (networkDesc_t*)NetworkList->nextDesc;
+    499          		}
+    500          
+    501              MT_BuildAndSendZToolCB( SPI_CB_NLME_NWK_DISC_CNF, len, msgPtr );
+    502          
+    503              osal_mem_free( msgPtr );
+    504          	}
+    505          }
+    506          /*********************************************************************
+    507           * @fn          nwk_MTCallbackSubJoinIndication
+    508           *
+    509           * @brief       Process the callback subscription for NLME-INIT-COORD.indication
+    510           *
+    511           * @param       ShortAddress - 16-bit address
+    512           * @param       ExtendedAddress - IEEE (64-bit) address
+    513           * @param       CapabilityInformation - Association Capability Information
+    514           *
+    515           * @return      ZStatus_t
+    516           */
+    517          void nwk_MTCallbackSubJoinIndication( uint16 ShortAddress, byte *ExtendedAddress,
+    518                                                byte CapabilityInformation )
+    519          {
+    520            byte *msgPtr;
+    521            byte *msg;
+    522            byte len;
+    523          
+    524            len = sizeof( uint16 ) + Z_EXTADDR_LEN + sizeof( byte );
+    525            msgPtr = osal_mem_alloc( len );
+    526          
+    527            if ( msgPtr )
+    528            {
+    529              //Fill up the data bytes
+    530              msg = msgPtr;
+    531          
+    532              //First fill in details
+    533              *msg++ = HI_UINT16( ShortAddress );
+    534              *msg++ = LO_UINT16( ShortAddress );
+    535          
+    536              osal_cpyExtAddr( msg, ExtendedAddress );
+    537              MT_ReverseBytes( msg, Z_EXTADDR_LEN );
+    538              msg += Z_EXTADDR_LEN;
+    539          
+    540              *msg = CapabilityInformation;
+    541          
+    542              MT_BuildAndSendZToolCB( SPI_CB_NLME_JOIN_IND, len, msgPtr );
+    543          
+    544              osal_mem_free( msgPtr );
+    545            }
+    546          }
+    547          
+    548          /*********************************************************************
+    549           * @fn          nwk_MTCallbackSubLeaveConfirm
+    550           *
+    551           * @brief       Process the callback subscription for NLME-LEAVE.confirm
+    552           *
+    553           * @param       DeviceAddress - IEEE (64-bit) address
+    554           * @param       Status - Result of NLME_LeaveRequest()
+    555           *
+    556           * @return      none
+    557           */
+    558          void nwk_MTCallbackSubLeaveConfirm( byte *DeviceAddress, ZStatus_t Status )
+    559          {
+    560            byte *msgPtr;
+    561            byte *msg;
+    562          
+    563            msgPtr = osal_mem_alloc( Z_EXTADDR_LEN + sizeof( byte ) );
+    564            if ( msgPtr )
+    565            {
+    566              //Fill up the data bytes
+    567              msg = msgPtr;
+    568          
+    569              //First fill in details
+    570              osal_cpyExtAddr( msg, DeviceAddress );
+    571              MT_ReverseBytes( msg, Z_EXTADDR_LEN );
+    572              msg += Z_EXTADDR_LEN;
+    573          
+    574              *msg = (byte)Status;
+    575          
+    576              MT_BuildAndSendZToolCB( SPI_CB_NLME_LEAVE_CNF,
+    577                                            Z_EXTADDR_LEN + sizeof( byte ), msgPtr );
+    578          
+    579              osal_mem_free( msgPtr );
+    580            }
+    581          }
+    582          /*********************************************************************
+    583           * @fn          nwk_MTCallbackSubLeaveIndication
+    584           *
+    585           * @brief       Process the callback subscription for NLME-LEAVE.indication
+    586           *
+    587           * @param       DeviceAddress - IEEE (64-bit) address
+    588           *
+    589           * @return      NULL
+    590           */
+    591          void nwk_MTCallbackSubLeaveIndication( byte *DeviceAddress )
+    592          {
+    593            byte msg[Z_EXTADDR_LEN+1];
+    594          
+    595            //First fill in details
+    596            if ( DeviceAddress )
+    597            {
+    598              osal_cpyExtAddr( msg, DeviceAddress );
+    599              MT_ReverseBytes( msg, Z_EXTADDR_LEN );
+    600            }
+    601            else
+    602              osal_memset( msg, 0, Z_EXTADDR_LEN );
+    603            msg[Z_EXTADDR_LEN] = 0;  // Status, assume good if we get this far
+    604          
+    605            MT_BuildAndSendZToolCB( SPI_CB_NLME_LEAVE_IND, Z_EXTADDR_LEN+1, msg );
+    606          }
+    607          /*********************************************************************
+    608           * @fn          nwk_MTCallbackSubSyncIndication
+    609           *
+    610           * @brief       Process the callback subscription for NLME-SYNC.indication
+    611           *
+    612           * @param       none
+    613           *
+    614           * @return      none
+    615           */
+    616          void nwk_MTCallbackSubSyncIndication( void )
+    617          {
+    618            MT_BuildAndSendZToolCB( SPI_CB_NLME_SYNC_IND, 0, NULL );
+    619          }
+    620          
+    621          /*********************************************************************
+    622           * @fn          nwk_MTCallbackSubPollConfirm
+    623           *
+    624           * @brief       Process the callback subscription for NLME-POLL.confirm
+    625           *
+    626           * @param       status - status of the poll operation
+    627           *
+    628           * @return      none
+    629           */
+    630          void nwk_MTCallbackSubPollConfirm( byte status )
+    631          {
+    632            byte msg = status;
+    633            MT_BuildAndSendZToolCB( SPI_CB_NLME_POLL_CNF, 1, &msg );
+    634          }
+    635          
+    636          #endif /*NWK Callback commands*/
+    637          
+    638          /*********************************************************************
+    639          *********************************************************************/
+    640          
+
+   Maximum stack usage in bytes:
+
+     Function                       ISTACK PSTACK XSTACK
+     --------                       ------ ------ ------
+     MT_NwkCommandProcessing            0      0     10
+       -> NLME_PermitJoiningRequest     0      0     20
+
+
+   Segment part sizes:
+
+     Function/Label          Bytes
+     --------------          -----
+     _nwkCallbackSub            2
+     MT_NwkCommandProcessing   40
+
+ 
+ 40 bytes in segment BANKED_CODE
+  2 bytes in segment XDATA_Z
+ 
+ 40 bytes of CODE  memory
+  2 bytes of XDATA memory
+
+Errors: none
+Warnings: none

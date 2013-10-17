@@ -1,0 +1,357 @@
+##############################################################################
+#                                                                            #
+# IAR 8051 C/C++ Compiler V7.20H/W32                   17/Oct/2013  21:52:40 #
+# Copyright 2004-2006 IAR Systems. All rights reserved.                      #
+#                                                                            #
+#    Core               =  plain                                             #
+#    Code model         =  banked                                            #
+#    Data model         =  large                                             #
+#    Calling convention =  xdata reentrant                                   #
+#    Constant location  =  data                                              #
+#    Dptr setup         =  1,16                                              #
+#    Source file        =  D:\Texas Instruments\ZStack-1.4.2-1.1.0\Component #
+#                          s\mac\low_level\srf03\mac_low_level.c             #
+#    Command line       =  -f E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿Ú #
+#                          ÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\S #
+#                          ampleApp\CC2430DB\..\..\..\Tools\CC2430DB\f8wEnde #
+#                          v.cfg (-DCPU32MHZ -DFORCE_MAC_NEAR                #
+#                          -DROOT=__near_func -DMAC_OPT_FFD=0 -DBLINK_LEDS   #
+#                          "-DCONST=const __code" -DGENERIC=__generic) -f    #
+#                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\..\..\..\Tools\CC2430DB\f8wConfig. #
+#                          cfg (-DSECURE=0 -DDEFAULT_CHANLIST=0x00000800     #
+#                          -DZDAPP_CONFIG_PAN_ID=0xFFFF                      #
+#                          -DNWK_START_DELAY=100 -DEXTENDED_JOINING_RANDOM_M #
+#                          ASK=0x007F -DBEACON_REQUEST_DELAY=100             #
+#                          -DBEACON_REQ_DELAY_MASK=0x00FF                    #
+#                          -DROUTE_EXPIRY_TIME=30 -DAPSC_ACK_WAIT_DURATION_P #
+#                          OLLED=3000 -DNWK_INDIRECT_MSG_TIMEOUT=7           #
+#                          -DMAX_RREQ_ENTRIES=10 -DAPSC_MAX_FRAME_RETRIES=3  #
+#                          -DNWK_MAX_DATA_RETRIES=2                          #
+#                          -DMAX_POLL_FAILURE_RETRIES=2 -DMAX_BCAST=9        #
+#                          -DAPS_MAX_GROUPS=16 -DMAX_RTG_ENTRIES=20          #
+#                          -DNWK_MAX_BINDING_ENTRIES=10                      #
+#                          -DMAX_BINDING_CLUSTER_IDS=5                       #
+#                          "-DDEFAULT_KEY={0x01, 0x03, 0x05, 0x07, 0x09,     #
+#                          0x0B, 0x0D, 0x0F, 0x00, 0x02, 0x04, 0x06, 0x08,   #
+#                          0x0A, 0x0C, 0x0D}" -DRFD_RCVC_ALWAYS_ON=FALSE     #
+#                          -DPOLL_RATE=1000 -DQUEUED_POLL_RATE=100           #
+#                          -DRESPONSE_POLL_RATE=100 -DREJOIN_POLL_RATE=440   #
+#                          -DTOP_BOOT_PAGES=0) -I "D:\Program Files\IAR      #
+#                          Systems\Embedded Workbench 4.05 Evaluation        #
+#                          version\8051\inc\" -I "D:\Program Files\IAR       #
+#                          Systems\Embedded Workbench 4.05 Evaluation        #
+#                          version\8051\inc\clib\" -I                        #
+#                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ #
+#                          ¶Æ½Ì¨\CC2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\ #
+#                          zstack\Samples\SampleApp\CC2430DB\..\Source\ -I   #
+#                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\..\..\..\ZMain\TI2430DB\ -I        #
+#                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\..\..\..\..\..\Components\mt\ -I   #
+#                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\..\..\..\..\..\Components\hal\incl #
+#                          ude\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC243 #
+#                          0´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp #
+#                          les\SampleApp\CC2430DB\..\..\..\..\..\Components\ #
+#                          hal\target\CC2430EB\ -I                           #
+#                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\..\..\..\..\..\Components\osal\mcu #
+#                          \ccsoc\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC #
+#                          2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\S #
+#                          amples\SampleApp\CC2430DB\..\..\..\..\..\Componen #
+#                          ts\osal\include\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨ #
+#                          Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects #
+#                          \zstack\Samples\SampleApp\CC2430DB\..\..\..\..\.. #
+#                          \Components\stack\af\ -I                          #
+#                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\..\..\..\..\..\Components\stack\nw #
+#                          k\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´ #
+#                          ®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Sample #
+#                          s\SampleApp\CC2430DB\..\..\..\..\..\Components\st #
+#                          ack\sec\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\C #
+#                          C2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\ #
+#                          Samples\SampleApp\CC2430DB\..\..\..\..\..\Compone #
+#                          nts\stack\sys\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶ #
+#                          Æ½Ì¨\CC2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\z #
+#                          stack\Samples\SampleApp\CC2430DB\..\..\..\..\..\C #
+#                          omponents\stack\zdo\ -I                           #
+#                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\..\..\..\..\..\Components\zmac\f8w #
+#                          \ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´® #
+#                          ¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples #
+#                          \SampleApp\CC2430DB\..\..\..\..\..\Components\zma #
+#                          c\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´ #
+#                          ®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Sample #
+#                          s\SampleApp\CC2430DB\..\..\..\..\..\Components\se #
+#                          rvices\saddr\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ #
+#                          ½Ì¨\CC2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zs #
+#                          tack\Samples\SampleApp\CC2430DB\..\..\..\..\..\Co #
+#                          mponents\services\sdata\ -I                       #
+#                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\..\..\..\..\..\Components\mac\incl #
+#                          ude\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC243 #
+#                          0´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp #
+#                          les\SampleApp\CC2430DB\..\..\..\..\..\Components\ #
+#                          mac\high_level\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ #
+#                          ¶Æ½Ì¨\CC2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\ #
+#                          zstack\Samples\SampleApp\CC2430DB\..\..\..\..\..\ #
+#                          Components\mac\low_level\srf03\ -I                #
+#                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\..\..\..\..\..\Components\mac\low_ #
+#                          level\srf03\single_chip\ -D CC2430EB -D           #
+#                          NWK_AUTO_POLL -D ZTOOL_P1 -D MT_TASK -D           #
+#                          ZG_ENDDEVICE -lC E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ #
+#                          ½Ì¨\CC2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zs #
+#                          tack\Samples\SampleApp\CC2430DB\EndDeviceEB\List\ #
+#                           -lA E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´® #
+#                          ¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples #
+#                          \SampleApp\CC2430DB\EndDeviceEB\List\             #
+#                          --diag_suppress Pe001,Pa010 --diag_remark pe550   #
+#                          -o E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿Ú #
+#                          ÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\S #
+#                          ampleApp\CC2430DB\EndDeviceEB\Obj\ -e             #
+#                          --require_prototypes -z9 --no_code_motion         #
+#                          --debug --core=plain --dptr=16,1                  #
+#                          --data_model=large --code_model=banked            #
+#                          --calling_convention=xdata_reentrant              #
+#                          --place_constants=data --nr_virtual_regs 8        #
+#                          "D:\Texas Instruments\ZStack-1.4.2-1.1.0\Componen #
+#                          ts\mac\low_level\srf03\mac_low_level.c"           #
+#    List file          =  E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\EndDeviceEB\List\mac_low_level.lst #
+#    Object file        =  E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\EndDeviceEB\Obj\mac_low_level.r51  #
+#                                                                            #
+#                                                                            #
+##############################################################################
+
+D:\Texas Instruments\ZStack-1.4.2-1.1.0\Components\mac\low_level\srf03\mac_low_level.c
+      1          /**************************************************************************************************
+      2              Filename:
+      3              Revised:        $Date: 2007-01-10 11:56:57 -0800 (Wed, 10 Jan 2007) $
+      4              Revision:       $Revision: 13262 $
+      5          
+      6              Description:
+      7          
+      8              Describe the purpose and contents of the file.
+      9          
+     10              Copyright (c) 2006 by Texas Instruments, Inc.
+     11              All Rights Reserved.  Permission to use, reproduce, copy, prepare
+     12              derivative works, modify, distribute, perform, display or sell this
+     13              software and/or its documentation for any purpose is prohibited
+     14              without the express written consent of Texas Instruments, Inc.
+     15          **************************************************************************************************/
+     16          
+     17          
+     18          /* ------------------------------------------------------------------------------------------------
+     19           *                                          Includes
+     20           * ------------------------------------------------------------------------------------------------
+     21           */
+     22          
+     23          /* hal */
+     24          #include "hal_types.h"
+     25          #include "hal_mcu.h"
+     26          
+     27          /* exported low-level */
+     28          #include "mac_low_level.h"
+     29          
+     30          /* low-level specific */
+     31          #include "mac_radio.h"
+     32          #include "mac_rx.h"
+     33          #include "mac_tx.h"
+     34          #include "mac_rx_onoff.h"
+     35          #include "mac_backoff_timer.h"
+     36          #include "mac_sleep.h"
+     37          
+     38          /* target specific */
+     39          #include "mac_radio_defs.h"
+     40          
+     41          /* debug */
+     42          #include "mac_assert.h"
+     43          
+     44          
+     45          /**************************************************************************************************
+     46           * @fn          macLowLevelInit
+     47           *
+     48           * @brief       Initialize low-level MAC.  Called only once on system power-up.
+     49           *
+     50           * @param       none
+     51           *
+     52           * @return      none
+     53           **************************************************************************************************
+     54           */
+
+   \                                 In segment BANKED_CODE, align 1, keep-with-next
+     55          void macLowLevelInit(void)
+   \                     macLowLevelInit:
+     56          {
+   \   000000   C082         PUSH    DPL
+   \   000002   C083         PUSH    DPH
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 0
+     57            /* initialize mcu before anything else */
+     58            MAC_RADIO_MCU_INIT();
+   \   000004                ; Setup parameters for call to function macMcuInit
+   \   000004   90....       MOV     DPTR,#(macMcuInit & 0xffff)
+   \   000007   74..         MOV     A,#((macMcuInit >> 16) & 0xff)
+   \   000009   12....       LCALL   ?BCALL               ; Banked call to: DPTR()
+     59          
+     60            /* software initialziation */
+     61            macRadioInit();
+   \   00000C                ; Setup parameters for call to function macRadioInit
+   \   00000C   90....       MOV     DPTR,#(macRadioInit & 0xffff)
+   \   00000F   74..         MOV     A,#((macRadioInit >> 16) & 0xff)
+   \   000011   12....       LCALL   ?BCALL               ; Banked call to: DPTR()
+     62            macRxOnOffInit();
+   \   000014                ; Setup parameters for call to function macRxOnOffInit
+   \   000014   90....       MOV     DPTR,#(macRxOnOffInit & 0xffff)
+   \   000017   74..         MOV     A,#((macRxOnOffInit >> 16) & 0xff)
+   \   000019   12....       LCALL   ?BCALL               ; Banked call to: DPTR()
+     63            macRxInit();
+   \   00001C                ; Setup parameters for call to function macRxInit
+   \   00001C   90....       MOV     DPTR,#(macRxInit & 0xffff)
+   \   00001F   74..         MOV     A,#((macRxInit >> 16) & 0xff)
+   \   000021   12....       LCALL   ?BCALL               ; Banked call to: DPTR()
+     64            macTxInit();
+   \   000024                ; Setup parameters for call to function macTxInit
+   \   000024   90....       MOV     DPTR,#(macTxInit & 0xffff)
+   \   000027   74..         MOV     A,#((macTxInit >> 16) & 0xff)
+   \   000029   12....       LCALL   ?BCALL               ; Banked call to: DPTR()
+     65            macBackoffTimerInit();
+   \   00002C                ; Setup parameters for call to function macBackoffTimerInit
+   \   00002C   90....       MOV     DPTR,#(macBackoffTimerInit & 0xffff)
+   \   00002F   74..         MOV     A,#((macBackoffTimerInit >> 16) & 0xff)
+   \   000031                REQUIRE ?Subroutine0
+   \   000031                ; // Fall through to label ?Subroutine0
+     66          }
+
+   \                                 In segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine0:
+   \   000000   12....       LCALL   ?BCALL               ; Banked call to: DPTR()
+   \   000003   D083         POP     DPH
+   \   000005   D082         POP     DPL
+   \   000007   02....       LJMP    ?BRET
+     67          
+     68          
+     69          /**************************************************************************************************
+     70           * @fn          macLowLevelReset
+     71           *
+     72           * @brief       Reset low-level MAC.
+     73           *
+     74           * @param       none
+     75           *
+     76           * @return      none
+     77           **************************************************************************************************
+     78           */
+
+   \                                 In segment BANKED_CODE, align 1, keep-with-next
+     79          void macLowLevelReset(void)
+   \                     macLowLevelReset:
+     80          {
+   \   000000   C082         PUSH    DPL
+   \   000002   C083         PUSH    DPH
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 0
+     81            MAC_ASSERT(!HAL_INTERRUPTS_ARE_ENABLED());   /* interrupts must be disabled */
+   \   000004   A2AF         MOV     C,0xa8.7
+   \   000006   5008         JNC     ??macLowLevelReset_0
+   \   000008                ; Setup parameters for call to function halAssertHandler
+   \   000008   90....       MOV     DPTR,#(halAssertHandler & 0xffff)
+   \   00000B   74..         MOV     A,#((halAssertHandler >> 16) & 0xff)
+   \   00000D   12....       LCALL   ?BCALL               ; Banked call to: DPTR()
+     82          
+     83            /* reset radio modules;  if not awake, skip this */
+     84            if (macSleepState == MAC_SLEEP_STATE_AWAKE)
+   \                     ??macLowLevelReset_0:
+   \   000010   90....       MOV     DPTR,#macSleepState
+   \   000013   E0           MOVX    A,@DPTR
+   \   000014   7010         JNZ     ??macLowLevelReset_1
+     85            {
+     86              macRxTxReset();
+   \   000016                ; Setup parameters for call to function macRxTxReset
+   \   000016   90....       MOV     DPTR,#(macRxTxReset & 0xffff)
+   \   000019   74..         MOV     A,#((macRxTxReset >> 16) & 0xff)
+   \   00001B   12....       LCALL   ?BCALL               ; Banked call to: DPTR()
+     87              macRadioReset();
+   \   00001E                ; Setup parameters for call to function macRadioReset
+   \   00001E   90....       MOV     DPTR,#(macRadioReset & 0xffff)
+   \   000021   74..         MOV     A,#((macRadioReset >> 16) & 0xff)
+   \   000023   12....       LCALL   ?BCALL               ; Banked call to: DPTR()
+     88            }
+     89          
+     90            /* reset timer */
+     91            macBackoffTimerReset();
+   \                     ??macLowLevelReset_1:
+   \   000026                ; Setup parameters for call to function macBackoffTimerReset
+   \   000026   90....       MOV     DPTR,#(macBackoffTimerReset & 0xffff)
+   \   000029   74..         MOV     A,#((macBackoffTimerReset >> 16) & 0xff)
+   \   00002B   12....       LCALL   ?BCALL               ; Banked call to: DPTR()
+     92          
+     93            /* power up the radio */
+     94            macSleepWakeUp();
+   \   00002E                ; Setup parameters for call to function macSleepWakeUp
+   \   00002E   90....       MOV     DPTR,#(macSleepWakeUp & 0xffff)
+   \   000031   74..         MOV     A,#((macSleepWakeUp >> 16) & 0xff)
+   \   000033   80..         SJMP    ?Subroutine0
+     95          }
+
+   \                                 In segment SFR_AN, at 0xa8
+   \   union <unnamed> volatile __sfr _A_IEN0
+   \                     _A_IEN0:
+   \   000000                DS 1
+     96          
+     97          
+     98          /**************************************************************************************************
+     99          */
+
+   Maximum stack usage in bytes:
+
+     Function                  ISTACK PSTACK XSTACK
+     --------                  ------ ------ ------
+     macLowLevelInit               2      0      0
+       -> macMcuInit               4      0      0
+       -> macRadioInit             4      0      0
+       -> macRxOnOffInit           4      0      0
+       -> macRxInit                4      0      0
+       -> macTxInit                4      0      0
+       -> macBackoffTimerInit      4      0      0
+     macLowLevelReset              2      0      0
+       -> halAssertHandler         4      0      0
+       -> macRxTxReset             4      0      0
+       -> macRadioReset            4      0      0
+       -> macBackoffTimerReset     4      0      0
+       -> macSleepWakeUp           4      0      0
+
+
+   Segment part sizes:
+
+     Function/Label   Bytes
+     --------------   -----
+     macLowLevelInit    49
+     ?Subroutine0       10
+     macLowLevelReset   53
+     _A_IEN0             1
+
+ 
+ 112 bytes in segment BANKED_CODE
+   1 byte  in segment SFR_AN
+ 
+ 112 bytes of CODE memory
+   0 bytes of DATA memory (+ 1 byte shared)
+
+Errors: none
+Warnings: none

@@ -1,0 +1,1360 @@
+//////////////////////////////////////////////////////////////////////////////
+//                                                                           /
+// IAR 8051 C/C++ Compiler V7.20H/W32                  17/Oct/2013  21:52:35 /
+// Copyright 2004-2006 IAR Systems. All rights reserved.                     /
+//                                                                           /
+//    Core               =  plain                                            /
+//    Code model         =  banked                                           /
+//    Data model         =  large                                            /
+//    Calling convention =  xdata reentrant                                  /
+//    Constant location  =  data                                             /
+//    Dptr setup         =  1,16                                             /
+//    Source file        =  D:\Texas Instruments\ZStack-1.4.2-1.1.0\Componen /
+//                          ts\stack\zdo\ZDCache.c                           /
+//    Command line       =  -f E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ /
+//                          ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples /
+//                          \SampleApp\CC2430DB\..\..\..\Tools\CC2430DB\f8wE /
+//                          ndev.cfg (-DCPU32MHZ -DFORCE_MAC_NEAR            /
+//                          -DROOT=__near_func -DMAC_OPT_FFD=0 -DBLINK_LEDS  /
+//                          "-DCONST=const __code" -DGENERIC=__generic) -f   /
+//                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ /
+//                          ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Sa /
+//                          mpleApp\CC2430DB\..\..\..\Tools\CC2430DB\f8wConf /
+//                          ig.cfg (-DSECURE=0 -DDEFAULT_CHANLIST=0x00000800 /
+//                           -DZDAPP_CONFIG_PAN_ID=0xFFFF                    /
+//                          -DNWK_START_DELAY=100 -DEXTENDED_JOINING_RANDOM_ /
+//                          MASK=0x007F -DBEACON_REQUEST_DELAY=100           /
+//                          -DBEACON_REQ_DELAY_MASK=0x00FF                   /
+//                          -DROUTE_EXPIRY_TIME=30 -DAPSC_ACK_WAIT_DURATION_ /
+//                          POLLED=3000 -DNWK_INDIRECT_MSG_TIMEOUT=7         /
+//                          -DMAX_RREQ_ENTRIES=10 -DAPSC_MAX_FRAME_RETRIES=3 /
+//                           -DNWK_MAX_DATA_RETRIES=2                        /
+//                          -DMAX_POLL_FAILURE_RETRIES=2 -DMAX_BCAST=9       /
+//                          -DAPS_MAX_GROUPS=16 -DMAX_RTG_ENTRIES=20         /
+//                          -DNWK_MAX_BINDING_ENTRIES=10                     /
+//                          -DMAX_BINDING_CLUSTER_IDS=5                      /
+//                          "-DDEFAULT_KEY={0x01, 0x03, 0x05, 0x07, 0x09,    /
+//                          0x0B, 0x0D, 0x0F, 0x00, 0x02, 0x04, 0x06, 0x08,  /
+//                          0x0A, 0x0C, 0x0D}" -DRFD_RCVC_ALWAYS_ON=FALSE    /
+//                          -DPOLL_RATE=1000 -DQUEUED_POLL_RATE=100          /
+//                          -DRESPONSE_POLL_RATE=100 -DREJOIN_POLL_RATE=440  /
+//                          -DTOP_BOOT_PAGES=0) -I "D:\Program Files\IAR     /
+//                          Systems\Embedded Workbench 4.05 Evaluation       /
+//                          version\8051\inc\" -I "D:\Program Files\IAR      /
+//                          Systems\Embedded Workbench 4.05 Evaluation       /
+//                          version\8051\inc\clib\" -I                       /
+//                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ /
+//                          ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Sa /
+//                          mpleApp\CC2430DB\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430 /
+//                          Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Proje /
+//                          cts\zstack\Samples\SampleApp\CC2430DB\..\Source\ /
+//                           -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´® /
+//                          ¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Sample /
+//                          s\SampleApp\CC2430DB\..\..\..\ZMain\TI2430DB\    /
+//                          -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ /
+//                          ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples /
+//                          \SampleApp\CC2430DB\..\..\..\..\..\Components\mt /
+//                          \ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´ /
+//                          ®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Sampl /
+//                          es\SampleApp\CC2430DB\..\..\..\..\..\Components\ /
+//                          hal\include\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ /
+//                          ½Ì¨\CC2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\z /
+//                          stack\Samples\SampleApp\CC2430DB\..\..\..\..\..\ /
+//                          Components\hal\target\CC2430EB\ -I               /
+//                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ /
+//                          ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Sa /
+//                          mpleApp\CC2430DB\..\..\..\..\..\Components\osal\ /
+//                          mcu\ccsoc\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì /
+//                          ¨\CC2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zst /
+//                          ack\Samples\SampleApp\CC2430DB\..\..\..\..\..\Co /
+//                          mponents\osal\include\ -I                        /
+//                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ /
+//                          ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Sa /
+//                          mpleApp\CC2430DB\..\..\..\..\..\Components\stack /
+//                          \af\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC24 /
+//                          30´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Sa /
+//                          mples\SampleApp\CC2430DB\..\..\..\..\..\Componen /
+//                          ts\stack\nwk\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶ /
+//                          Æ½Ì¨\CC2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\ /
+//                          zstack\Samples\SampleApp\CC2430DB\..\..\..\..\.. /
+//                          \Components\stack\sec\ -I                        /
+//                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ /
+//                          ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Sa /
+//                          mpleApp\CC2430DB\..\..\..\..\..\Components\stack /
+//                          \sys\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2 /
+//                          430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\S /
+//                          amples\SampleApp\CC2430DB\..\..\..\..\..\Compone /
+//                          nts\stack\zdo\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ /
+//                          ¶Æ½Ì¨\CC2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects /
+//                          \zstack\Samples\SampleApp\CC2430DB\..\..\..\..\. /
+//                          .\Components\zmac\f8w\ -I                        /
+//                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ /
+//                          ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Sa /
+//                          mpleApp\CC2430DB\..\..\..\..\..\Components\zmac\ /
+//                           -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´® /
+//                          ¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Sample /
+//                          s\SampleApp\CC2430DB\..\..\..\..\..\Components\s /
+//                          ervices\saddr\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ /
+//                          ¶Æ½Ì¨\CC2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects /
+//                          \zstack\Samples\SampleApp\CC2430DB\..\..\..\..\. /
+//                          .\Components\services\sdata\ -I                  /
+//                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ /
+//                          ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Sa /
+//                          mpleApp\CC2430DB\..\..\..\..\..\Components\mac\i /
+//                          nclude\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\C /
+//                          C2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack /
+//                          \Samples\SampleApp\CC2430DB\..\..\..\..\..\Compo /
+//                          nents\mac\high_level\ -I                         /
+//                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ /
+//                          ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Sa /
+//                          mpleApp\CC2430DB\..\..\..\..\..\Components\mac\l /
+//                          ow_level\srf03\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨ /
+//                          Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Project /
+//                          s\zstack\Samples\SampleApp\CC2430DB\..\..\..\..\ /
+//                          ..\Components\mac\low_level\srf03\single_chip\   /
+//                          -D CC2430EB -D NWK_AUTO_POLL -D ZTOOL_P1 -D      /
+//                          MT_TASK -D ZG_ENDDEVICE -lC                      /
+//                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ /
+//                          ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Sa /
+//                          mpleApp\CC2430DB\EndDeviceEB\List\ -lA           /
+//                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ /
+//                          ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Sa /
+//                          mpleApp\CC2430DB\EndDeviceEB\List\               /
+//                          --diag_suppress Pe001,Pa010 --diag_remark pe550  /
+//                          -o E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ /
+//                          ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples /
+//                          \SampleApp\CC2430DB\EndDeviceEB\Obj\ -e          /
+//                          --require_prototypes -z9 --no_code_motion        /
+//                          --debug --core=plain --dptr=16,1                 /
+//                          --data_model=large --code_model=banked           /
+//                          --calling_convention=xdata_reentrant             /
+//                          --place_constants=data --nr_virtual_regs 8       /
+//                          "D:\Texas Instruments\ZStack-1.4.2-1.1.0\Compone /
+//                          nts\stack\zdo\ZDCache.c"                         /
+//    List file          =  E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ /
+//                          ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Sa /
+//                          mpleApp\CC2430DB\EndDeviceEB\List\ZDCache.s51    /
+//                                                                           /
+//                                                                           /
+//////////////////////////////////////////////////////////////////////////////
+
+        NAME ZDCache
+
+        RTMODEL "__calling_convention", "xdata_reentrant"
+        RTMODEL "__code_model", "banked"
+        RTMODEL "__core", "plain"
+        RTMODEL "__data_model", "large"
+        RTMODEL "__dptr_size", "16"
+        RTMODEL "__extended_stack", "disabled"
+        RTMODEL "__location_for_constants", "data"
+        RTMODEL "__number_of_dptrs", "1"
+        RTMODEL "__rt_version", "1"
+
+        RSEG DOVERLAY:DATA:NOROOT(0)
+        RSEG IOVERLAY:IDATA:NOROOT(0)
+        RSEG ISTACK:IDATA:NOROOT(0)
+        RSEG PSTACK:XDATA:NOROOT(0)
+        RSEG XSTACK:XDATA:NOROOT(0)
+
+
+        END
+// D:\Texas Instruments\ZStack-1.4.2-1.1.0\Components\stack\zdo\ZDCache.c
+//    1 /*********************************************************************
+//    2     Filename:       ZDCache.c
+//    3     Revised:        $Date: 2007-02-15 15:11:28 -0800 (Thu, 15 Feb 2007) $
+//    4     Revision:       $Revision: 13481 $
+//    5 
+//    6     Description: Implementation of the ZDO Discovery Cache functionality.
+//    7 
+//    8     Notes:
+//    9 
+//   10     Copyright (c) 2006 by Texas Instruments, Inc.
+//   11     All Rights Reserved.  Permission to use, reproduce, copy, prepare
+//   12     derivative works, modify, distribute, perform, display or sell this
+//   13     software and/or its documentation for any purpose is prohibited
+//   14     without the express written consent of Texas Instruments, Inc.
+//   15 *********************************************************************/
+//   16 #if defined( ZDO_CACHE )
+//   17 
+//   18 /*********************************************************************
+//   19  * INCLUDES
+//   20  */
+//   21 #include "AF.h"
+//   22 #include "nwk_globals.h"
+//   23 #include "nwk_util.h"
+//   24 #include "OSAL.h"
+//   25 #include "ZDCache.h"
+//   26 #include "ZDConfig.h"
+//   27 #include "ZDObject.h"
+//   28 
+//   29 
+//   30 /*********************************************************************
+//   31  * MACROS
+//   32  */
+//   33 
+//   34 /*********************************************************************
+//   35  * CONSTANTS
+//   36  */
+//   37 
+//   38 #define MAX_PKT_LEN  (MAX_DATA_PACKET_LEN - NWK_HDR_LEN)
+//   39 
+//   40 #if ( CACHE_DEV_MAX == 0 )
+//   41   #define WAIT_ON_RESP_CACHE  5
+//   42 
+//   43   #define FIND_RSP_MAX  16
+//   44 #endif
+//   45 
+//   46 #define SendMsg( CMD, LEN, DATA ) \ 
+//   47   afAddOrSendMessage(   &msgAddr,             /* *DestAddr         */\ 
+//   48                         ZDO_EP,               /*  Endpoint         */\ 
+//   49                         (CMD),                /*  ClusterId        */\ 
+//   50                         SEND_MESSAGE,         /*  TransCount       */\ 
+//   51                         FRAMETYPE_MSG,        /*  FrameType        */\ 
+//   52                         &tranSeq,             /* *TransSeqNumber   */\ 
+//   53                         NULL,                 /*  CommandType      */\ 
+//   54                         NULL,                 /*  AttribDataType   */\ 
+//   55                         NULL,                 /*  AttribId         */\ 
+//   56                         NULL,                 /*  ErrorCode        */\ 
+//   57                         (LEN),                /*  DataLength       */\ 
+//   58                         (DATA),               /* *Data             */\ 
+//   59                         AF_TX_OPTIONS_NONE,   \ 
+//   60                         FALSE,                /*  Discover route   */\ 
+//   61                         radius )
+//   62 
+//   63 /*********************************************************************
+//   64  * TYPEDEFS
+//   65  */
+//   66 
+//   67 #if ( CACHE_DEV_MAX == 0 )
+//   68 typedef enum {
+//   69   eCacheWait,
+//   70   eCacheClean,
+//   71   eCacheFind,
+//   72   eCacheRequest,
+//   73   eNodeDescStore,
+//   74   ePwrDescStore,
+//   75   eActiveEPStore,
+//   76   eSimpDescStore,
+//   77   eCacheDone
+//   78 } eCacheState;
+//   79 #endif
+//   80 
+//   81 /*********************************************************************
+//   82  * GLOBAL VARIABLES
+//   83  */
+//   84 
+//   85 /*********************************************************************
+//   86  * EXTERNAL VARIABLES
+//   87  */
+//   88 
+//   89 /*********************************************************************
+//   90  * EXTERNAL FUNCTIONS
+//   91  */
+//   92 
+//   93 /*********************************************************************
+//   94  * LOCAL FUNCTIONS
+//   95  */
+//   96 
+//   97 #if ( CACHE_DEV_MAX > 0 )
+//   98 static byte processDiscoveryStoreReq  ( byte *data );
+//   99 static byte processSimpleDescStoreReq ( byte *data, byte idx );
+//  100 static void processFindNodeCacheReq   ( byte *data );
+//  101 
+//  102 static byte getCnt    ( void );
+//  103 static byte getIdx    ( uint16 addr );
+//  104 static byte getNth    ( byte Nth );
+//  105 static byte getIdxExt ( byte *ieee );
+//  106 static byte getIdxEP  ( byte idx, byte ep );
+//  107 static byte purgeAddr ( uint16 addr );
+//  108 static byte purgeIEEE ( byte *ieee );
+//  109 #endif
+//  110 
+//  111 /*********************************************************************
+//  112  * LOCAL VARIABLES
+//  113  */
+//  114 
+//  115 static afAddrType_t msgAddr;
+//  116 static byte radius;
+//  117 static byte tranSeq;
+//  118 static byte secUse;
+//  119 
+//  120 #if ( CACHE_DEV_MAX > 0 )
+//  121 static uint16                      NwkAddr[CACHE_DEV_MAX];
+//  122 static byte                        ExtAddr[CACHE_DEV_MAX][Z_EXTADDR_LEN];
+//  123 static uint32                       Expiry[CACHE_DEV_MAX];
+//  124 static NodeDescriptorFormat_t     NodeDesc[CACHE_DEV_MAX];
+//  125 static NodePowerDescriptorFormat_t NodePwr[CACHE_DEV_MAX];
+//  126 static byte                          EPCnt[CACHE_DEV_MAX];
+//  127 static byte                          EPArr[CACHE_DEV_MAX][CACHE_EP_MAX];
+//  128 static SimpleDescriptionFormat_t  SimpDesc[CACHE_DEV_MAX][CACHE_EP_MAX];
+//  129 static uint16               InClusters[CACHE_DEV_MAX][CACHE_EP_MAX][CACHE_CR_MAX];
+//  130 static uint16              OutClusters[CACHE_DEV_MAX][CACHE_EP_MAX][CACHE_CR_MAX];
+//  131 #elif ( CACHE_DEV_MAX == 0 )
+//  132 static uint16 cacheFindAddr[FIND_RSP_MAX];
+//  133 static byte EPArr[CACHE_EP_MAX];
+//  134 static byte EPCnt;
+//  135 static byte cacheCnt;  // Count of responding cache devices.
+//  136 static byte cacheRsp;  // Results of last discovery cache request.
+//  137 #endif
+//  138 
+//  139 
+//  140 
+//  141 #if ( CACHE_DEV_MAX > 0 )
+//  142 /*********************************************************************
+//  143  * @fn          processDiscoveryStoreReq
+//  144  *
+//  145  * @brief       Process a Discovery_store_req
+//  146  *
+//  147  * @return      none
+//  148  */
+//  149 static byte processDiscoveryStoreReq( byte *data )
+//  150 {
+//  151   uint16 aoi = BUILD_UINT16( data[0], data[1] );
+//  152   byte rtrn = ZDP_INSUFFICIENT_SPACE;
+//  153   byte idx;
+//  154 
+//  155   data += 2;
+//  156   // First purge any outdated cache with this network address or IEEE.
+//  157   purgeAddr( aoi );
+//  158   purgeIEEE( data );
+//  159 
+//  160   // If an invalid addr cannot be found, the cache arrays are full.
+//  161   if ( (idx = getIdx( INVALID_NODE_ADDR )) != CACHE_DEV_MAX )
+//  162   {
+//  163     osal_cpyExtAddr( ExtAddr[idx], data );
+//  164     data += Z_EXTADDR_LEN;
+//  165 
+//  166     if ( (*data++ == sizeof( NodeDescriptorFormat_t )) &&
+//  167          (*data++ == sizeof( NodePowerDescriptorFormat_t )) &&
+//  168          (*data++ <= CACHE_EP_MAX) &&
+//  169          (*data   < CACHE_EP_MAX) )
+//  170     {
+//  171       rtrn = ZDP_SUCCESS;
+//  172       NwkAddr[idx] = aoi;
+//  173       Expiry[idx] = 0;  //TBD - what value & how to keep alive?
+//  174       EPCnt[idx] = 0;
+//  175     }
+//  176   }
+//  177 
+//  178   return rtrn;
+//  179 }
+//  180 
+//  181 /*********************************************************************
+//  182  * @fn          processSimpleDescStoreReq
+//  183  *
+//  184  * @brief       Process a Simple_Desc_store_req
+//  185  *
+//  186  * @return      none
+//  187  */
+//  188 static byte processSimpleDescStoreReq( byte *data, byte idx )
+//  189 {
+//  190   byte rtrn = ZDP_INSUFFICIENT_SPACE;
+//  191   SimpleDescriptionFormat_t desc;
+//  192 
+//  193   // Skip first byte == total length of descriptor.
+//  194   if (ZDO_ParseSimpleDescBuf( data+1, &desc ))  {
+//  195     // malloc failed -- we can't do this...
+//  196     return ZDP_NOT_PERMITTED;
+//  197   }
+//  198 
+//  199   if ( (desc.AppNumInClusters <= CACHE_CR_MAX) &&
+//  200        (desc.AppNumOutClusters <= CACHE_CR_MAX) )
+//  201   {
+//  202     byte epIdx = getIdxEP( idx, desc.EndPoint );
+//  203 
+//  204     if ( epIdx == CACHE_EP_MAX )
+//  205     {
+//  206       rtrn = ZDP_NOT_PERMITTED;
+//  207     }
+//  208     else
+//  209     {
+//  210       SimpleDescriptionFormat_t *pDesc = &(SimpDesc[idx][epIdx]);
+//  211 
+//  212       osal_memcpy( pDesc->pAppInClusterList, desc.pAppInClusterList,
+//  213                                                        desc.AppNumInClusters*sizeof(uint16) );
+//  214       osal_memcpy( pDesc->pAppOutClusterList, desc.pAppOutClusterList,
+//  215                                                       desc.AppNumOutClusters*sizeof(uint16) );
+//  216 
+//  217       pDesc->EndPoint = desc.EndPoint;
+//  218       pDesc->AppProfId = desc.AppProfId;
+//  219       pDesc->AppDeviceId = desc.AppDeviceId;
+//  220       pDesc->AppDevVer = desc.AppDevVer;
+//  221       pDesc->Reserved = desc.Reserved;
+//  222       pDesc->AppNumInClusters = desc.AppNumInClusters;
+//  223       pDesc->AppNumOutClusters = desc.AppNumOutClusters;
+//  224 
+//  225       rtrn = ZDP_SUCCESS;
+//  226     }
+//  227   }
+//  228 
+//  229   // free up the malloc'ed cluster lists
+//  230   if (desc.AppNumInClusters)  {
+//  231     osal_mem_free(desc.pAppInClusterList);
+//  232   }
+//  233   if (desc.AppNumOutClusters)  {
+//  234     osal_mem_free(desc.pAppOutClusterList);
+//  235   }
+//  236 
+//  237   return rtrn;
+//  238 }
+//  239 
+//  240 /*********************************************************************
+//  241  * @fn          processFindNodeCacheReq
+//  242  *
+//  243  * @brief       Process a Find_node_cache_req
+//  244  *
+//  245  * @return      none
+//  246  */
+//  247 static void processFindNodeCacheReq( byte *data )
+//  248 {
+//  249   uint16 aoi = BUILD_UINT16( data[0], data[1] );
+//  250   byte idx = getIdx( aoi );
+//  251 
+//  252   if ( idx == CACHE_DEV_MAX )
+//  253   {
+//  254     idx = getIdxExt ( data+2 );
+//  255   }
+//  256 
+//  257   if ( idx != CACHE_DEV_MAX )
+//  258   {
+//  259     byte buf[2+2+Z_EXTADDR_LEN];
+//  260 
+//  261     buf[0] = LO_UINT16( ZDAppNwkAddr.addr.shortAddr );
+//  262     buf[1] = HI_UINT16( ZDAppNwkAddr.addr.shortAddr );
+//  263     buf[2] = LO_UINT16( NwkAddr[idx] );
+//  264     buf[3] = HI_UINT16( NwkAddr[idx] );
+//  265     osal_cpyExtAddr( buf+4, ExtAddr[idx] );
+//  266 
+//  267     SendMsg( Find_node_cache_rsp, 2+2+Z_EXTADDR_LEN, buf );
+//  268   }
+//  269 }
+//  270 
+//  271 /*********************************************************************
+//  272  * @fn          processMgmtCacheReq
+//  273  *
+//  274  * @brief       Process a Mgmt_cache_req
+//  275  *
+//  276  * @return      none
+//  277  */
+//  278 static void processMgmtCacheReq( byte idx )
+//  279 {
+//  280   const byte max =
+//  281               (((CACHE_DEV_MAX-idx) * (2 + Z_EXTADDR_LEN) + 1) < MAX_PKT_LEN) ?
+//  282                ((CACHE_DEV_MAX-idx) * (2 + Z_EXTADDR_LEN) + 1) : MAX_PKT_LEN;
+//  283   byte *buf = osal_mem_alloc( max );
+//  284   byte status = ZDP_INSUFFICIENT_SPACE;
+//  285   byte cnt = 1;
+//  286 
+//  287   if ( buf == NULL )
+//  288   {
+//  289     buf = &status;
+//  290   }
+//  291   else
+//  292   {
+//  293     byte *ptr = buf;
+//  294     *ptr++ = ZDP_SUCCESS;
+//  295     *ptr++ = getCnt();
+//  296     *ptr++ = idx;
+//  297     *ptr++ = 0;
+//  298 
+//  299     for ( idx = getNth( idx ); idx < CACHE_DEV_MAX; idx++ )
+//  300     {
+//  301       if ( cnt >= (max - (2 + Z_EXTADDR_LEN)) )
+//  302       {
+//  303         break;
+//  304       }
+//  305 
+//  306       if ( NwkAddr[idx] != INVALID_NODE_ADDR )
+//  307       {
+//  308         ptr = osal_cpyExtAddr( ptr, ExtAddr[idx] );
+//  309         *ptr++ = LO_UINT16( NwkAddr[idx] );
+//  310         *ptr++ = HI_UINT16( NwkAddr[idx] );
+//  311         cnt += (2 + Z_EXTADDR_LEN);
+//  312         buf[3]++;
+//  313       }
+//  314     }
+//  315   }
+//  316 
+//  317   SendMsg( Mgmt_Cache_rsp, cnt, buf );
+//  318 
+//  319   if ( buf != NULL )
+//  320   {
+//  321     osal_mem_free( buf );
+//  322   }
+//  323 }
+//  324 
+//  325 /*********************************************************************
+//  326  * @fn      getCnt
+//  327  *
+//  328  * @return  The count of valid cache entries.
+//  329  *
+//  330  */
+//  331 static byte getCnt( void )
+//  332 {
+//  333   byte cnt = 0;
+//  334   byte idx;
+//  335 
+//  336   for ( idx = 0; idx < CACHE_DEV_MAX; idx++ )
+//  337   {
+//  338     if ( NwkAddr[idx] != INVALID_NODE_ADDR )
+//  339     {
+//  340       cnt++;
+//  341     }
+//  342   }
+//  343 
+//  344   return cnt;
+//  345 }
+//  346 
+//  347 /*********************************************************************
+//  348  * @fn      getIdx
+//  349  *
+//  350  * @brief   Find the idx into the Discovery Cache Arrays corresponding to
+//  351  *          the given short address.
+//  352  *
+//  353  * @param   uint16 - a valid 16 bit short address.
+//  354  *
+//  355  * @return  If address found, return the valid index, else CACHE_DEV_MAX.
+//  356  *
+//  357  */
+//  358 static byte getIdx( uint16 addr )
+//  359 {
+//  360   byte idx;
+//  361 
+//  362   for ( idx = 0; idx < CACHE_DEV_MAX; idx++ )
+//  363   {
+//  364     if ( addr == NwkAddr[idx] )
+//  365     {
+//  366       break;
+//  367     }
+//  368   }
+//  369 
+//  370   return idx;
+//  371 }
+//  372 
+//  373 /*********************************************************************
+//  374  * @fn      getNth
+//  375  *
+//  376  * @param   byte - the Nth idx sought.
+//  377  *
+//  378  * @return  If N or more entries exist, return the index of the Nth entry,
+//  379  *          else CACHE_DEV_MAX.
+//  380  *
+//  381  */
+//  382 static byte getNth( byte Nth )
+//  383 {
+//  384   byte cnt = 0;
+//  385   byte idx;
+//  386 
+//  387   for ( idx = 0; idx < CACHE_DEV_MAX; idx++ )
+//  388   {
+//  389     if ( NwkAddr[idx] != INVALID_NODE_ADDR )
+//  390     {
+//  391       if ( cnt++ >= Nth )
+//  392       {
+//  393         break;
+//  394       }
+//  395     }
+//  396   }
+//  397 
+//  398   return idx;
+//  399 }
+//  400 
+//  401 /*********************************************************************
+//  402  * @fn      getIdxExt
+//  403  *
+//  404  * @brief   Find the idx into the Discovery Cache Arrays corresponding to
+//  405  *          the given IEEE address.
+//  406  *
+//  407  * @param   byte * - a valid buffer containing an extended IEEE address.
+//  408  *
+//  409  * @return  If address found, return the valid index, else CACHE_DEV_MAX.
+//  410  *
+//  411  */
+//  412 static byte getIdxExt( byte *ieee )
+//  413 {
+//  414   byte idx;
+//  415 
+//  416   for ( idx = 0; idx < CACHE_DEV_MAX; idx++ )
+//  417   {
+//  418     if ( osal_ExtAddrEqual( ieee, ExtAddr[idx] ) &&
+//  419                                           (NwkAddr[idx] != INVALID_NODE_ADDR) )
+//  420     {
+//  421       break;
+//  422     }
+//  423   }
+//  424 
+//  425   return idx;
+//  426 }
+//  427 
+//  428 /*********************************************************************
+//  429  * @fn      getIdxEP
+//  430  *
+//  431  * @brief   Find the idx into the EndPoint Array corresponding to the idx of a
+//  432  *          cached short address.
+//  433  *
+//  434  * @param   byte - a valid index of a cached 16 bit short address.
+//  435  * @param   byte - the EndPoint of interest.
+//  436  *
+//  437  * @return  If EndPoint found, return the valid index, else CACHE_EP_MAX.
+//  438  *
+//  439  */
+//  440 static byte getIdxEP( byte idx, byte ep )
+//  441 {
+//  442   byte epIdx;
+//  443 
+//  444   for ( epIdx = 0; epIdx < EPCnt[idx]; epIdx++ )
+//  445   {
+//  446     if ( ep == EPArr[idx][epIdx] )
+//  447     {
+//  448       break;
+//  449     }
+//  450   }
+//  451 
+//  452   if ( epIdx == EPCnt[idx] )
+//  453   {
+//  454     epIdx = CACHE_EP_MAX;
+//  455   }
+//  456 
+//  457   return epIdx;
+//  458 }
+//  459 
+//  460 /*********************************************************************
+//  461  * @fn      purgeAddr
+//  462  *
+//  463  * @brief   Purge every instance of given network address from Discovery Cache.
+//  464  *
+//  465  * @param   uint16 - a 16-bit network address.
+//  466  *
+//  467  */
+//  468 static byte purgeAddr( uint16 addr )
+//  469 {
+//  470   byte idx, cnt = 0;
+//  471 
+//  472   for ( idx = 0; idx < CACHE_DEV_MAX; idx++ )
+//  473   {
+//  474     if ( NwkAddr[idx] == addr )
+//  475     {
+//  476       NwkAddr[idx] = INVALID_NODE_ADDR;
+//  477       cnt++;
+//  478     }
+//  479   }
+//  480 
+//  481   return cnt;
+//  482 }
+//  483 
+//  484 /*********************************************************************
+//  485  * @fn      purgeIEEE
+//  486  *
+//  487  * @brief   Purge every instance of given IEEE from Discovery Cache.
+//  488  *
+//  489  * @param   ZLongAddr_t - a valid IEEE address.
+//  490  *
+//  491  */
+//  492 static byte purgeIEEE( byte *ieee )
+//  493 {
+//  494   byte idx, cnt = 0;
+//  495 
+//  496   for ( idx = 0; idx < CACHE_DEV_MAX; idx++ )
+//  497   {
+//  498     if ( osal_ExtAddrEqual( ieee, ExtAddr[idx] ) &&
+//  499                                           (NwkAddr[idx] != INVALID_NODE_ADDR) )
+//  500     {
+//  501       NwkAddr[idx] = INVALID_NODE_ADDR;
+//  502       cnt++;
+//  503     }
+//  504   }
+//  505 
+//  506   return cnt;
+//  507 }
+//  508 #endif
+//  509 
+//  510 /*********************************************************************
+//  511  * @fn          ZDCacheInit
+//  512  *
+//  513  * @brief       Initialize ZDO Cache environment.
+//  514  *
+//  515  */
+//  516 void ZDCacheInit( void )
+//  517 {
+//  518 
+//  519   msgAddr.endPoint = ZDO_EP;
+//  520   msgAddr.addrMode = afAddr16Bit;
+//  521   msgAddr.addr.shortAddr = INVALID_NODE_ADDR;
+//  522   radius = AF_DEFAULT_RADIUS;
+//  523   (void)secUse;
+//  524 
+//  525 #if ( CACHE_DEV_MAX > 0 )
+//  526   byte idx;
+//  527 
+//  528   for ( idx = 0; idx < CACHE_DEV_MAX; idx++ )
+//  529   {
+//  530     byte epIdx;
+//  531     NwkAddr[idx] = INVALID_NODE_ADDR;
+//  532 
+//  533     for ( epIdx = 0; epIdx < CACHE_EP_MAX; epIdx++ )
+//  534     {
+//  535       SimpDesc[idx][epIdx].pAppInClusterList = InClusters[idx][epIdx];
+//  536       SimpDesc[idx][epIdx].pAppOutClusterList= OutClusters[idx][epIdx];
+//  537     }
+//  538   }
+//  539 #elif ( CACHE_DEV_MAX == 0 )
+//  540   // Client cache work done by ZDCacheTimerEvent, driven by NWK_AUTO_POLL_EVT.
+//  541 #endif
+//  542 }
+//  543 
+//  544 /*********************************************************************
+//  545  * @fn          ZDCacheTimerEvent
+//  546  *
+//  547  * @brief       ZDP maintenance, aging discovery cache.
+//  548  *              Invoked at RTG_TIMER_INTERVAL.
+//  549  */
+//  550 void ZDCacheTimerEvent( void )
+//  551 {
+//  552 #if ( CACHE_DEV_MAX > 0 )
+//  553   byte idx;
+//  554 
+//  555   for ( idx = 0; idx < CACHE_DEV_MAX; idx++ )
+//  556   {
+//  557     if ( NwkAddr[idx] != INVALID_NODE_ADDR )
+//  558     {
+//  559       if ( --Expiry[idx] == 0 )
+//  560       {
+//  561         NwkAddr[idx] = INVALID_NODE_ADDR;
+//  562       }
+//  563     }
+//  564   }
+//  565 #elif ( CACHE_DEV_MAX == 0 )
+//  566   static eCacheState state = eCacheWait;
+//  567   static byte reqIdx = 0;
+//  568   static byte wCnt = 0;
+//  569 
+//  570   byte strtFind = FALSE;
+//  571   byte cmd = 0;
+//  572   byte len = 2 + Z_EXTADDR_LEN;
+//  573   byte *msg, *ptr;
+//  574 
+//  575   wCnt++;
+//  576   if ( state == eCacheWait )
+//  577   {
+//  578     if ( wCnt < WAIT_TO_STORE_CACHE )
+//  579     {
+//  580       return;
+//  581     }
+//  582   }
+//  583   else if ( wCnt < WAIT_ON_RESP_CACHE )
+//  584   {
+//  585     return;
+//  586   }
+//  587 
+//  588   msg = osal_mem_alloc( MAX_PKT_LEN );
+//  589   if ( msg == NULL )
+//  590   {
+//  591     return;
+//  592   }
+//  593 
+//  594   msg[0] = LO_UINT16( ZDAppNwkAddr.addr.shortAddr );
+//  595   msg[1] = HI_UINT16( ZDAppNwkAddr.addr.shortAddr );
+//  596   osal_cpyExtAddr( msg+2, saveExtAddr );
+//  597   ptr = msg+2+Z_EXTADDR_LEN;
+//  598 
+//  599   switch ( state )
+//  600   {
+//  601   case eCacheWait:
+//  602     state = eCacheClean;
+//  603     msgAddr.addr.shortAddr = NWK_BROADCAST_SHORTADDR;
+//  604     cmd = Find_node_cache_req;
+//  605     cacheCnt = 0;
+//  606     reqIdx = 0;
+//  607     break;
+//  608 
+//  609   case eCacheClean:
+//  610     if ( reqIdx < cacheCnt )
+//  611     {
+//  612       msgAddr.addr.shortAddr = cacheFindAddr[reqIdx++];
+//  613       cmd = Remove_node_cache_req;
+//  614     }
+//  615     else
+//  616     {
+//  617       strtFind = TRUE;
+//  618       radius = 0;
+//  619     }
+//  620     break;
+//  621 
+//  622   case eCacheFind:
+//  623     if ( cacheCnt != 0 )
+//  624     {
+//  625       state = eCacheRequest;
+//  626       reqIdx = 0;
+//  627     }
+//  628     else
+//  629     {
+//  630       strtFind = TRUE;
+//  631     }
+//  632     break;
+//  633 
+//  634   case eCacheRequest:
+//  635     if ( (cacheRsp == ZDP_SUCCESS) && (reqIdx != 0) )
+//  636     {
+//  637       cmd = Node_Desc_store_req;
+//  638       len += sizeof( NodeDescriptorFormat_t );
+//  639       ptr = osal_memcpy( ptr, &ZDO_Config_Node_Descriptor,
+//  640                                             sizeof( NodeDescriptorFormat_t ) );
+//  641       state = eNodeDescStore;
+//  642     }
+//  643     else if ( reqIdx < cacheCnt )
+//  644     {
+//  645       EPCnt = afNumEndPoints() - 1;  // -1 for ZDO endpoint descriptor.
+//  646 
+//  647       if ( EPCnt < CACHE_EP_MAX )
+//  648       {
+//  649         byte idx;
+//  650         afEndPoints( EPArr, true );
+//  651 
+//  652         msgAddr.addr.shortAddr = cacheFindAddr[reqIdx++];
+//  653 
+//  654         cmd = Discovery_store_req;
+//  655         len += (4 + EPCnt);
+//  656         *ptr++ = sizeof( NodeDescriptorFormat_t );
+//  657         *ptr++ = sizeof( NodePowerDescriptorFormat_t );
+//  658         *ptr++ = EPCnt + 1;  // NOT -1 for size in bytes of EP list.
+//  659         *ptr++ = EPCnt;
+//  660 
+//  661         for ( idx = 0; idx < EPCnt; idx++ )
+//  662         {
+//  663           SimpleDescriptionFormat_t *sDesc;
+//  664           byte free = afFindSimpleDesc( &sDesc, EPArr[idx] );
+//  665 
+//  666           if ( sDesc != NULL )
+//  667           {
+//  668             *ptr++ = 8 + sDesc->AppNumInClusters + sDesc->AppNumOutClusters;
+//  669 
+//  670             if ( free )
+//  671             {
+//  672               osal_mem_free( sDesc );
+//  673             }
+//  674           }
+//  675           else
+//  676           {
+//  677             *ptr++ = 8;
+//  678           }
+//  679         }
+//  680       }
+//  681     }
+//  682     else
+//  683     {
+//  684       strtFind = TRUE;
+//  685     }
+//  686     break;
+//  687 
+//  688   case eNodeDescStore:
+//  689     if ( cacheRsp == ZDP_SUCCESS )
+//  690     {
+//  691       cmd = Power_Desc_store_req;
+//  692       len += sizeof( NodePowerDescriptorFormat_t );
+//  693       ptr = osal_memcpy( ptr, &ZDO_Config_Power_Descriptor,
+//  694                                        sizeof( NodePowerDescriptorFormat_t ) );
+//  695       state = ePwrDescStore;
+//  696     }
+//  697     else
+//  698     {
+//  699       strtFind = TRUE;
+//  700     }
+//  701     break;
+//  702 
+//  703   case ePwrDescStore:
+//  704     if ( cacheRsp == ZDP_SUCCESS )
+//  705     {
+//  706       cmd = Active_EP_store_req;
+//  707       len += EPCnt + 1;
+//  708       *ptr++ = EPCnt;
+//  709       afEndPoints( ptr, true );
+//  710       state = eActiveEPStore;
+//  711     }
+//  712     else
+//  713     {
+//  714       strtFind = TRUE;
+//  715     }
+//  716     break;
+//  717 
+//  718   case eActiveEPStore:
+//  719     if ( cacheRsp == ZDP_SUCCESS )
+//  720     {
+//  721       state = eSimpDescStore;
+//  722       reqIdx = 0;
+//  723     }
+//  724     else
+//  725     {
+//  726       strtFind = TRUE;
+//  727     }
+//  728     break;
+//  729 
+//  730   case eSimpDescStore:
+//  731     if ( (cacheRsp == ZDP_SUCCESS) || (reqIdx == 0) )
+//  732     {
+//  733       if ( reqIdx >= EPCnt )
+//  734       {
+//  735         state = eCacheDone;
+//  736       }
+//  737       else
+//  738       {
+//  739         SimpleDescriptionFormat_t *sDesc;
+//  740         byte free = afFindSimpleDesc( &sDesc, EPArr[reqIdx++] );
+//  741 
+//  742         if ( sDesc != NULL )
+//  743         {
+//  744           cmd = Simple_Desc_store_req;
+//  745           len += 1 + 8 + sDesc->AppNumInClusters + sDesc->AppNumOutClusters;
+//  746           *ptr++ = 8 + sDesc->AppNumInClusters + sDesc->AppNumOutClusters;
+//  747           *ptr++ = sDesc->EndPoint;
+//  748           *ptr++ = LO_UINT16( sDesc->AppProfId );
+//  749           *ptr++ = HI_UINT16( sDesc->AppProfId );
+//  750           *ptr++ = LO_UINT16( sDesc->AppDeviceId );
+//  751           *ptr++ = HI_UINT16( sDesc->AppDeviceId );
+//  752           *ptr++ = (sDesc->Reserved << 4) | sDesc->AppDevVer;
+//  753           *ptr++ = sDesc->AppNumInClusters;
+//  754           ptr = osal_memcpy( ptr, sDesc->pAppInClusterList,
+//  755                                                       sDesc->AppNumInClusters );
+//  756           *ptr++ = sDesc->AppNumOutClusters;
+//  757           osal_memcpy(ptr, sDesc->pAppOutClusterList, sDesc->AppNumOutClusters);
+//  758 
+//  759           if ( free )
+//  760           {
+//  761             osal_mem_free( sDesc );
+//  762           }
+//  763         }
+//  764       }
+//  765     }
+//  766     else
+//  767     {
+//  768       strtFind = TRUE;
+//  769     }
+//  770     break;
+//  771 
+//  772   case eCacheDone:
+//  773 #if !defined( NWK_AUTO_POLL )
+//  774     NLME_SetPollRate( 0 );  // Stop the timer to allow max power savings.
+//  775 #endif
+//  776     break;
+//  777 
+//  778   default:
+//  779     break;
+//  780   }  // switch ( state )
+//  781 
+//  782   if ( strtFind )
+//  783   {
+//  784     if ( state >= eNodeDescStore )
+//  785     {
+//  786       SendMsg( Remove_node_cache_req, 2+Z_EXTADDR_LEN, msg );
+//  787     }
+//  788 
+//  789     state = eCacheFind;
+//  790     if ( ++radius > (2 * _NIB.MaxDepth) )
+//  791     {
+//  792       radius = 1;
+//  793     }
+//  794     msgAddr.addr.shortAddr = NWK_BROADCAST_SHORTADDR;
+//  795     cacheCnt = 0;
+//  796     cmd = Discovery_Register_req;
+//  797   }
+//  798   cacheRsp = ZDP_TIMEOUT;
+//  799   wCnt = 0;
+//  800 
+//  801   if ( cmd != 0 )
+//  802   {
+//  803     SendMsg( cmd, len, msg );
+//  804   }
+//  805   osal_mem_free( msg );
+//  806 #endif
+//  807 }
+//  808 
+//  809 #if ( CACHE_DEV_MAX > 0 )
+//  810 /*********************************************************************
+//  811  * @fn          ZDCacheProcessReq
+//  812  *
+//  813  * @brief       Build and send a response to a Discovery Cache request.
+//  814  *
+//  815  */
+//  816 void ZDCacheProcessReq( zAddrType_t *src, byte *msg, byte len,
+//  817                                                  byte cmd, byte seq, byte sty )
+//  818 {
+//  819   byte status = ZDP_SUCCESS;
+//  820   byte sent = FALSE;
+//  821 
+//  822   msgAddr.addr.shortAddr = src->addr.shortAddr;
+//  823   tranSeq = seq;
+//  824   secUse = sty;
+//  825 
+//  826   if ( !CACHE_SERVER )
+//  827   {
+//  828     // Broadcast reqs without a negative response specified.
+//  829     if ( (cmd == Discovery_Register_req) || (cmd == Find_node_cache_req) )
+//  830     {
+//  831       sent = TRUE;
+//  832     }
+//  833     else
+//  834     {
+//  835       status = ZDP_NOT_SUPPORTED;
+//  836     }
+//  837   }
+//  838   else if ( cmd == Discovery_Register_req )
+//  839   {
+//  840     if ( getIdx( INVALID_NODE_ADDR ) == CACHE_DEV_MAX )
+//  841     {
+//  842       status = ZDP_TABLE_FULL;
+//  843     }
+//  844   }
+//  845   else if ( cmd == Discovery_store_req )
+//  846   {
+//  847     status = processDiscoveryStoreReq( msg );
+//  848   }
+//  849   else if ( cmd == Find_node_cache_req )
+//  850   {
+//  851     processFindNodeCacheReq( msg );
+//  852     sent = TRUE;
+//  853   }
+//  854   else if ( cmd == Mgmt_Cache_req )
+//  855   {
+//  856     processMgmtCacheReq( *msg );
+//  857     sent = TRUE;
+//  858   }
+//  859   else
+//  860   {
+//  861     uint16 aoi = BUILD_UINT16( msg[0], msg[1] );
+//  862     byte idx = getIdx( aoi );
+//  863 
+//  864     if ( cmd == Remove_node_cache_req )
+//  865     {
+//  866       if ( (purgeAddr( aoi ) + purgeIEEE( msg+2 )) == 0 )
+//  867       {
+//  868         status = ZDP_NOT_PERMITTED;
+//  869       }
+//  870     }
+//  871     else if ( idx == CACHE_DEV_MAX )
+//  872     {
+//  873       status = ZDP_NOT_PERMITTED;
+//  874     }
+//  875     else
+//  876     {
+//  877       msg += (2 + Z_EXTADDR_LEN);
+//  878 
+//  879       switch ( cmd )
+//  880       {
+//  881       case Node_Desc_store_req:
+//  882         osal_memcpy( NodeDesc+idx, msg, sizeof( NodeDescriptorFormat_t ) );
+//  883         break;
+//  884 
+//  885       case Power_Desc_store_req:
+//  886         osal_memcpy( NodePwr+idx, msg, sizeof( NodePowerDescriptorFormat_t ) );
+//  887         break;
+//  888 
+//  889       case Active_EP_store_req:
+//  890         if ( *msg < CACHE_EP_MAX )
+//  891         {
+//  892           EPCnt[idx] = *msg++;
+//  893           osal_memcpy( EPArr+idx, msg, EPCnt[idx] );
+//  894         }
+//  895         else
+//  896         {
+//  897           status = ZDP_INSUFFICIENT_SPACE;
+//  898         }
+//  899         break;
+//  900 
+//  901       case Simple_Desc_store_req:
+//  902         status = processSimpleDescStoreReq( msg, idx );
+//  903         break;
+//  904       }
+//  905     }
+//  906   }
+//  907 
+//  908   if ( !sent )
+//  909   {
+//  910     SendMsg( (cmd | ZDO_RESPONSE_BIT ), 1, &status );
+//  911   }
+//  912 }
+//  913 
+//  914 /*********************************************************************
+//  915  * @fn        ZDCacheProcessMatchDescReq
+//  916  *
+//  917  * @brief     Build and send a response to a Broadcast Discovery Cache request.
+//  918  *
+//  919  * @return    None.
+//  920  */
+//  921 void ZDCacheProcessMatchDescReq( byte seq, zAddrType_t *src,
+//  922                  byte inCnt, uint16 *inClusters, byte outCnt, uint16 *outClusters,
+//  923                                        uint16 profileID, uint16 aoi, byte sty )
+//  924 {
+//  925   byte buf[ 1 + 2 + 1 + CACHE_EP_MAX ];  // Status + AOI + Len + EP list.
+//  926   byte aoiMatch = (aoi == NWK_BROADCAST_SHORTADDR) ? TRUE : FALSE;
+//  927   SimpleDescriptionFormat_t *sDesc;
+//  928   byte idx, epIdx, epCnt;
+//  929   secUse = sty;
+//  930 
+//  931   if ( !CACHE_SERVER )
+//  932   {
+//  933     return;
+//  934   }
+//  935 
+//  936   buf[0] = ZDP_SUCCESS;
+//  937   buf[1] = LO_UINT16( aoi );
+//  938   buf[2] = HI_UINT16( aoi );
+//  939   buf[3] = 0;
+//  940 
+//  941   msgAddr.addr.shortAddr = src->addr.shortAddr;
+//  942 
+//  943   // Respond by proxy for all devices that have registered an endpoint.
+//  944   for ( idx = 0; idx < CACHE_DEV_MAX; idx++ )
+//  945   {
+//  946     if ( ((aoi == NWK_BROADCAST_SHORTADDR) &&
+//  947           (NwkAddr[idx] != INVALID_NODE_ADDR)) || (aoi == NwkAddr[idx]) )
+//  948     {
+//  949       sDesc = SimpDesc[idx];
+//  950       epCnt = 4;
+//  951 
+//  952       for ( epIdx = 0; epIdx < EPCnt[idx]; epIdx++, sDesc++ )
+//  953       {
+//  954         if ( sDesc->AppProfId == profileID )
+//  955         {
+//  956           // If there are no search input/ouput clusters - respond.
+//  957           if ( ((inCnt == 0) && (outCnt == 0))                               ||
+//  958                  ZDO_AnyClusterMatches( inCnt, inClusters,
+//  959                          sDesc->AppNumInClusters, sDesc->pAppInClusterList ) ||
+//  960                  ZDO_AnyClusterMatches( outCnt, outClusters,
+//  961                          sDesc->AppNumOutClusters, sDesc->pAppOutClusterList ))
+//  962           {
+//  963             buf[epCnt++] = sDesc->EndPoint;
+//  964           }
+//  965         }
+//  966       }
+//  967 
+//  968       if ( epCnt > 4 )
+//  969       {
+//  970         buf[1] = LO_UINT16( NwkAddr[idx] );
+//  971         buf[2] = HI_UINT16( NwkAddr[idx] );
+//  972         buf[3] = epCnt-4;
+//  973         SendMsg( Match_Desc_rsp, epCnt, buf );
+//  974       }
+//  975 
+//  976       if ( aoi == NwkAddr[idx] )
+//  977       {
+//  978         aoiMatch = TRUE;
+//  979 
+//  980         if ( epCnt == 4 )
+//  981         {
+//  982           buf[0] = ZDP_NO_MATCH;
+//  983           SendMsg( Match_Desc_rsp, 4, buf );
+//  984         }
+//  985         break;
+//  986       }
+//  987     }
+//  988   }
+//  989 
+//  990   if ( !aoiMatch )
+//  991   {
+//  992     buf[0] = ZDP_DEVICE_NOT_FOUND;
+//  993     SendMsg( Match_Desc_rsp, 4, buf );
+//  994   }
+//  995 }
+//  996 
+//  997 /*********************************************************************
+//  998  * @fn          ZDCacheGetDesc
+//  999  *
+// 1000  * @brief       Return the cached descriptor requested.
+// 1001  *
+// 1002  * @param       aoi - NWK AddrOfInterest
+// 1003  *
+// 1004  * @return      The corresponding descriptor *, if the aoi is found,
+// 1005  *              NULL otherwise.
+// 1006  */
+// 1007 void *ZDCacheGetDesc( uint16 aoi, eDesc_t type, byte *stat )
+// 1008 {
+// 1009   byte epIdx, idx = getIdx( aoi );
+// 1010   void *rtrn = NULL;
+// 1011   byte *ptr;
+// 1012 
+// 1013   if ( idx != CACHE_DEV_MAX )
+// 1014   {
+// 1015     byte cnt;
+// 1016 
+// 1017     *stat = ZDP_SUCCESS;
+// 1018 
+// 1019     switch ( type )
+// 1020     {
+// 1021     case eNodeDesc:
+// 1022       rtrn = (void *)(NodeDesc+idx);
+// 1023       break;
+// 1024 
+// 1025     case ePowerDesc:
+// 1026       rtrn = (void *)(NodePwr+idx);
+// 1027       break;
+// 1028 
+// 1029     case eActEPDesc:
+// 1030       /* Tricky overload of return values:
+// 1031        *   if rtrn val is zero (NULL), status is put in stat[0] -
+// 1032        *                            either ZDP_DEVICE_NOT_FOUND or ZDP_SUCCESS.
+// 1033        *   otherwise, w/ rtrn val > 0, stat is loaded byte for byte w/
+// 1034        *     all active endpts other than ZDO. Thus, stat must be pointing to
+// 1035        *     an array of at least CACHE_EP_MAX bytes.
+// 1036        */
+// 1037       ptr = EPArr[ idx ];
+// 1038       for ( cnt = 0, idx = 0; idx < CACHE_EP_MAX; idx++ )
+// 1039       {
+// 1040         if ( ptr[idx] == 0xff )
+// 1041           break;
+// 1042         else if ( ptr[idx] == ZDO_EP )
+// 1043           continue;
+// 1044         else
+// 1045         {
+// 1046           *stat++ = ptr[idx];
+// 1047           cnt++;
+// 1048         }
+// 1049       }
+// 1050       rtrn = (void *)cnt;
+// 1051       break;
+// 1052 
+// 1053     case eSimpDesc:
+// 1054       // Tricky re-use of status parameter as endPoint to find.
+// 1055       epIdx = getIdxEP( idx, *stat );
+// 1056 
+// 1057       if ( epIdx == CACHE_EP_MAX )
+// 1058       {
+// 1059         *stat = ZDP_DEVICE_NOT_FOUND;
+// 1060       }
+// 1061       else
+// 1062       {
+// 1063         rtrn = (void *)(&SimpDesc[idx][epIdx]);
+// 1064       }
+// 1065       break;
+// 1066 
+// 1067     default:
+// 1068       *stat = ZDP_INVALID_REQTYPE;
+// 1069       break;
+// 1070     }
+// 1071   }
+// 1072   else
+// 1073   {
+// 1074     *stat = ZDP_DEVICE_NOT_FOUND;
+// 1075   }
+// 1076 
+// 1077   return rtrn;
+// 1078 }
+// 1079 
+// 1080 /*********************************************************************
+// 1081  * @fn      ZDCacheGetNwkAddr
+// 1082  *
+// 1083  * @brief   Find the Network Address of a discovery cache entry that
+// 1084  *          corresponds to the given IEEE address.
+// 1085  *
+// 1086  * @param   byte * - a valid buffer containing an extended IEEE address.
+// 1087  *
+// 1088  * @return  If address found, return the nwk addr, else INVALIDE_NODE_ADDR.
+// 1089  *
+// 1090  */
+// 1091 uint16 ZDCacheGetNwkAddr( byte *ieee )
+// 1092 {
+// 1093   uint16 addr = INVALID_NODE_ADDR;
+// 1094   byte idx;
+// 1095 
+// 1096   for ( idx = 0; idx < CACHE_DEV_MAX; idx++ )
+// 1097   {
+// 1098     if ( osal_ExtAddrEqual( ieee, ExtAddr[idx] ) &&
+// 1099                                           (NwkAddr[idx] != INVALID_NODE_ADDR) )
+// 1100     {
+// 1101       addr = NwkAddr[idx];
+// 1102       break;
+// 1103     }
+// 1104   }
+// 1105 
+// 1106   return addr;
+// 1107 }
+// 1108 
+// 1109 /*********************************************************************
+// 1110  * @fn      ZDCacheGetExtAddr
+// 1111  *
+// 1112  * @brief   Find the Extended Address of a discovery cache entry that
+// 1113  *          corresponds to the given Network address.
+// 1114  *
+// 1115  * @param   aoi - the Network Address of interest.
+// 1116  *
+// 1117  * @return  If address found, return a ptr to the extended ieee addr, else NULL.
+// 1118  *
+// 1119  */
+// 1120 byte * ZDCacheGetExtAddr( uint16 aoi )
+// 1121 {
+// 1122   byte *ieee = NULL;
+// 1123   byte idx;
+// 1124 
+// 1125   for ( idx = 0; idx < CACHE_DEV_MAX; idx++ )
+// 1126   {
+// 1127     if ( aoi == NwkAddr[idx] )
+// 1128     {
+// 1129       ieee = ExtAddr[idx];
+// 1130       break;
+// 1131     }
+// 1132   }
+// 1133 
+// 1134   return ieee;
+// 1135 }
+// 1136 #endif
+// 1137 
+// 1138 #if ( CACHE_DEV_MAX == 0 )
+// 1139 /*********************************************************************
+// 1140  * @fn          ZDCacheProcessRsp
+// 1141  *
+// 1142  * @brief       Process a response to a Discovery Cache request.
+// 1143  *
+// 1144  * @return      none
+// 1145  */
+// 1146 void ZDCacheProcessRsp(
+// 1147                     zAddrType_t *src, byte *msg, byte len, byte cmd, byte seq )
+// 1148 {
+// 1149   if ( ((cmd==Find_node_cache_rsp) && (*msg==ZDP_NOT_SUPPORTED) && (len==3)) ||
+// 1150        ((cmd!=Find_node_cache_rsp) &&
+// 1151                              ((*msg != ZDP_SUCCESS) || (seq != (tranSeq-1)))) )
+// 1152   {
+// 1153     return;
+// 1154   }
+// 1155 
+// 1156   cacheRsp = ZDP_SUCCESS;
+// 1157 
+// 1158   switch ( cmd )
+// 1159   {
+// 1160   case Discovery_Register_rsp:
+// 1161   case Find_node_cache_rsp:
+// 1162     if ( cacheCnt < FIND_RSP_MAX )
+// 1163     {
+// 1164       byte idx;
+// 1165 
+// 1166       // Only log unique response addresses.
+// 1167       for ( idx = 0; idx < cacheCnt; idx++ )
+// 1168       {
+// 1169         if ( cacheFindAddr[idx] == src->addr.shortAddr )
+// 1170         {
+// 1171           break;
+// 1172         }
+// 1173       }
+// 1174 
+// 1175       if ( idx == cacheCnt )
+// 1176       {
+// 1177         cacheFindAddr[cacheCnt++] = src->addr.shortAddr;
+// 1178       }
+// 1179     }
+// 1180     break;
+// 1181 
+// 1182   default:
+// 1183     break;
+// 1184   }
+// 1185 
+// 1186 }
+// 1187 #endif
+// 1188 
+// 1189 
+// 1190 /*********************************************************************
+// 1191 *********************************************************************/
+// 1192 
+// 1193 #endif  //#if defined( ZDO_CACHE )
+// 
+// 
+// 0 bytes of memory
+//
+//Errors: none
+//Warnings: none

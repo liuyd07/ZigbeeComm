@@ -1,0 +1,1649 @@
+##############################################################################
+#                                                                            #
+# IAR 8051 C/C++ Compiler V7.20H/W32                   24/Jan/2013  14:47:42 #
+# Copyright 2004-2006 IAR Systems. All rights reserved.                      #
+#                                                                            #
+#    Core               =  plain                                             #
+#    Code model         =  banked                                            #
+#    Data model         =  large                                             #
+#    Calling convention =  xdata reentrant                                   #
+#    Constant location  =  data                                              #
+#    Dptr setup         =  1,16                                              #
+#    Source file        =  D:\Texas Instruments\ZStack-1.4.2-1.1.0\Component #
+#                          s\mt\MT_ZDO.c                                     #
+#    Command line       =  -f E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç #
+#                          ¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006 #
+#                          -´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp #
+#                          les\SampleApp\CC2430DB\..\..\..\Tools\CC2430DB\f8 #
+#                          wRouter.cfg (-DCPU32MHZ -DFORCE_MAC_NEAR          #
+#                          -DROOT=__near_func -DMAC_CFG_APP_PENDING_QUEUE=TR #
+#                          UE -DRTR_NWK -DBLINK_LEDS "-DCONST=const __code"  #
+#                          -DGENERIC=__generic) -f                           #
+#                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª· #
+#                          ¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006-´® #
+#                          ¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples #
+#                          \SampleApp\CC2430DB\..\..\..\Tools\CC2430DB\f8wCo #
+#                          nfig.cfg (-DSECURE=0 -DDEFAULT_CHANLIST=0x0000080 #
+#                          0 -DZDAPP_CONFIG_PAN_ID=0xFFFF                    #
+#                          -DNWK_START_DELAY=100 -DEXTENDED_JOINING_RANDOM_M #
+#                          ASK=0x007F -DBEACON_REQUEST_DELAY=100             #
+#                          -DBEACON_REQ_DELAY_MASK=0x00FF                    #
+#                          -DROUTE_EXPIRY_TIME=30 -DAPSC_ACK_WAIT_DURATION_P #
+#                          OLLED=3000 -DNWK_INDIRECT_MSG_TIMEOUT=7           #
+#                          -DMAX_RREQ_ENTRIES=10 -DAPSC_MAX_FRAME_RETRIES=3  #
+#                          -DNWK_MAX_DATA_RETRIES=2                          #
+#                          -DMAX_POLL_FAILURE_RETRIES=2 -DMAX_BCAST=9        #
+#                          -DAPS_MAX_GROUPS=16 -DMAX_RTG_ENTRIES=20          #
+#                          -DNWK_MAX_BINDING_ENTRIES=10                      #
+#                          -DMAX_BINDING_CLUSTER_IDS=5                       #
+#                          "-DDEFAULT_KEY={0x01, 0x03, 0x05, 0x07, 0x09,     #
+#                          0x0B, 0x0D, 0x0F, 0x00, 0x02, 0x04, 0x06, 0x08,   #
+#                          0x0A, 0x0C, 0x0D}" -DRFD_RCVC_ALWAYS_ON=FALSE     #
+#                          -DPOLL_RATE=1000 -DQUEUED_POLL_RATE=100           #
+#                          -DRESPONSE_POLL_RATE=100 -DREJOIN_POLL_RATE=440   #
+#                          -DTOP_BOOT_PAGES=0) -I "D:\Program Files\IAR      #
+#                          Systems\Embedded Workbench 4.05 Evaluation        #
+#                          version\8051\inc\" -I "D:\Program Files\IAR       #
+#                          Systems\Embedded Workbench 4.05 Evaluation        #
+#                          version\8051\inc\clib\" -I                        #
+#                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª· #
+#                          ¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006-´® #
+#                          ¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples #
+#                          \SampleApp\CC2430DB\ -I                           #
+#                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª· #
+#                          ¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006-´® #
+#                          ¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples #
+#                          \SampleApp\CC2430DB\..\Source\ -I                 #
+#                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª· #
+#                          ¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006-´® #
+#                          ¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples #
+#                          \SampleApp\CC2430DB\..\..\..\ZMain\TI2430DB\ -I   #
+#                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª· #
+#                          ¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006-´® #
+#                          ¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples #
+#                          \SampleApp\CC2430DB\..\..\..\..\..\Components\mt\ #
+#                           -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂ #
+#                          ç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee200 #
+#                          6-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Sam #
+#                          ples\SampleApp\CC2430DB\..\..\..\..\..\Components #
+#                          \hal\include\ -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª· #
+#                          ¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2 #
+#                          006\ZigBee2006-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projec #
+#                          ts\zstack\Samples\SampleApp\CC2430DB\..\..\..\..\ #
+#                          ..\Components\hal\target\CC2430EB\ -I             #
+#                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª· #
+#                          ¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006-´® #
+#                          ¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples #
+#                          \SampleApp\CC2430DB\..\..\..\..\..\Components\osa #
+#                          l\mcu\ccsoc\ -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢ #
+#                          ×ÊÁÏ\ÎÞÏßÍøÂç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee20 #
+#                          06\ZigBee2006-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Project #
+#                          s\zstack\Samples\SampleApp\CC2430DB\..\..\..\..\. #
+#                          .\Components\osal\include\ -I                     #
+#                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª· #
+#                          ¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006-´® #
+#                          ¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples #
+#                          \SampleApp\CC2430DB\..\..\..\..\..\Components\sta #
+#                          ck\af\ -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\Î #
+#                          ÞÏßÍøÂç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\Zig #
+#                          Bee2006-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zsta #
+#                          ck\Samples\SampleApp\CC2430DB\..\..\..\..\..\Comp #
+#                          onents\stack\nwk\ -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC243 #
+#                          0¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\Zig #
+#                          Bee2006\ZigBee2006-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Pr #
+#                          ojects\zstack\Samples\SampleApp\CC2430DB\..\..\.. #
+#                          \..\..\Components\stack\sec\ -I                   #
+#                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª· #
+#                          ¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006-´® #
+#                          ¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples #
+#                          \SampleApp\CC2430DB\..\..\..\..\..\Components\sta #
+#                          ck\sys\ -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ #
+#                          ÎÞÏßÍøÂç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\Zi #
+#                          gBee2006-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zst #
+#                          ack\Samples\SampleApp\CC2430DB\..\..\..\..\..\Com #
+#                          ponents\stack\zdo\ -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC24 #
+#                          30¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\Zi #
+#                          gBee2006\ZigBee2006-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\P #
+#                          rojects\zstack\Samples\SampleApp\CC2430DB\..\..\. #
+#                          .\..\..\Components\zmac\f8w\ -I                   #
+#                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª· #
+#                          ¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006-´® #
+#                          ¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples #
+#                          \SampleApp\CC2430DB\..\..\..\..\..\Components\zma #
+#                          c\ -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍ #
+#                          øÂç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2 #
+#                          006-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\S #
+#                          amples\SampleApp\CC2430DB\..\..\..\..\..\Componen #
+#                          ts\services\saddr\ -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC24 #
+#                          30¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\Zi #
+#                          gBee2006\ZigBee2006-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\P #
+#                          rojects\zstack\Samples\SampleApp\CC2430DB\..\..\. #
+#                          .\..\..\Components\services\sdata\ -I             #
+#                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª· #
+#                          ¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006-´® #
+#                          ¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples #
+#                          \SampleApp\CC2430DB\..\..\..\..\..\Components\mac #
+#                          \include\ -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁ #
+#                          Ï\ÎÞÏßÍøÂç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ #
+#                          ZigBee2006-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\z #
+#                          stack\Samples\SampleApp\CC2430DB\..\..\..\..\..\C #
+#                          omponents\mac\high_level\ -I                      #
+#                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª· #
+#                          ¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006-´® #
+#                          ¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples #
+#                          \SampleApp\CC2430DB\..\..\..\..\..\Components\mac #
+#                          \low_level\srf03\ -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC243 #
+#                          0¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\Zig #
+#                          Bee2006\ZigBee2006-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Pr #
+#                          ojects\zstack\Samples\SampleApp\CC2430DB\..\..\.. #
+#                          \..\..\Components\mac\low_level\srf03\single_chip #
+#                          \ -D CC2430EB -D ZTOOL_P1 -D MT_TASK -lC          #
+#                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª· #
+#                          ¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006-´® #
+#                          ¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples #
+#                          \SampleApp\CC2430DB\RouterEB\List\ -lA            #
+#                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª· #
+#                          ¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006-´® #
+#                          ¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples #
+#                          \SampleApp\CC2430DB\RouterEB\List\                #
+#                          --diag_suppress Pe001,Pa010 --diag_remark pe550   #
+#                          -o E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç #
+#                          ¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006 #
+#                          -´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp #
+#                          les\SampleApp\CC2430DB\RouterEB\Obj\ -e           #
+#                          --require_prototypes -z9 --no_code_motion         #
+#                          --debug --core=plain --dptr=16,1                  #
+#                          --data_model=large --code_model=banked            #
+#                          --calling_convention=xdata_reentrant              #
+#                          --place_constants=data --nr_virtual_regs 8        #
+#                          "D:\Texas Instruments\ZStack-1.4.2-1.1.0\Componen #
+#                          ts\mt\MT_ZDO.c"                                   #
+#    List file          =  E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª· #
+#                          ¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006-´® #
+#                          ¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples #
+#                          \SampleApp\CC2430DB\RouterEB\List\MT_ZDO.lst      #
+#    Object file        =  E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª· #
+#                          ¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006-´® #
+#                          ¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples #
+#                          \SampleApp\CC2430DB\RouterEB\Obj\MT_ZDO.r51       #
+#                                                                            #
+#                                                                            #
+##############################################################################
+
+D:\Texas Instruments\ZStack-1.4.2-1.1.0\Components\mt\MT_ZDO.c
+      1          /*********************************************************************
+      2              Filename:       MT_ZDO.c
+      3              Revised:        $Date: 2007-05-14 17:34:18 -0700 (Mon, 14 May 2007) $
+      4              Revision:       $Revision: 14296 $
+      5          
+      6              Description:
+      7          
+      8                  MonitorTest functions for the NWK layer.
+      9          
+     10              Notes:
+     11          
+     12              Copyright (c) 2006 by Texas Instruments, Inc.
+     13              All Rights Reserved.  Permission to use, reproduce, copy, prepare
+     14              derivative works, modify, distribute, perform, display or sell this
+     15              software and/or its documentation for any purpose is prohibited
+     16              without the express written consent of Texas Instruments, Inc.
+     17          *********************************************************************/
+     18          
+     19          #ifdef MT_ZDO_FUNC
+     20          
+     21          
+     22          /*********************************************************************
+     23           * INCLUDES
+     24           */
+     25          #include "ZComDef.h"
+     26          #include "OSAL.h"
+     27          #include "MTEL.h"
+     28          #include "MT_ZDO.h"
+     29          #include "APSMEDE.h"
+     30          #include "ZDConfig.h"
+     31          #include "ZDProfile.h"
+     32          #include "ZDObject.h"
+     33          #include "ZDApp.h"
+     34          
+     35          #if !defined( WIN32 )
+     36            #include "OnBoard.h"
+     37          #endif
+     38          
+     39          #include "nwk_util.h"
+     40          
+     41          /*********************************************************************
+     42           * MACROS
+     43           */
+     44          
+     45          /*********************************************************************
+     46           * CONSTANTS
+     47           */
+     48          
+     49          /*********************************************************************
+     50           * TYPEDEFS
+     51           */
+     52          
+     53          /*********************************************************************
+     54           * GLOBAL VARIABLES
+     55           */
+     56          uint32 _zdoCallbackSub;
+     57          
+     58          /*********************************************************************
+     59           * EXTERNAL VARIABLES
+     60           */
+     61          
+     62          /*********************************************************************
+     63           * EXTERNAL FUNCTIONS
+     64           */
+     65          
+     66          /*********************************************************************
+     67           * LOCAL VARIABLES
+     68           */
+     69          
+     70          /*********************************************************************
+     71           * LOCAL FUNCTIONS
+     72           */
+     73          byte *zdo_MT_MakeExtAddr( zAddrType_t *devAddr, byte *pData );
+     74          byte *zdo_MT_CopyRevExtAddr( byte *dstMsg, byte *addr );
+     75          
+     76          /*********************************************************************
+     77           * @fn      MT_ZdoCommandProcessing
+     78           *
+     79           * @brief
+     80           *
+     81           *   Process all the ZDO commands that are issued by test tool
+     82           *
+     83           * @param   cmd_id - Command ID
+     84           * @param   len    - Length of received SPI data message
+     85           * @param   pData  - pointer to received SPI data message
+     86           *
+     87           * @return  void
+     88           */
+     89          void MT_ZdoCommandProcessing( uint16 cmd_id , byte len , byte *pData )
+     90          {
+     91            byte i;
+     92            byte x;
+     93            byte ret;
+     94            byte attr;
+     95            byte attr1;
+     96            uint16 cID;
+     97            uint16 shortAddr;
+     98            uint16 uAttr;
+     99            byte *ptr;
+    100            byte *ptr1;
+    101            zAddrType_t devAddr;
+    102            zAddrType_t dstAddr;
+    103            byte respLen;
+    104          #if defined ( ZDO_MGMT_NWKDISC_REQUEST )
+    105            uint32 scanChans;
+    106          #endif
+    107          #if defined ( ZDO_USERDESCSET_REQUEST )
+    108            UserDescriptorFormat_t userDesc;
+    109          #endif
+    110          
+    111            ret = UNSUPPORTED_COMMAND;
+    112            len = SPI_0DATA_MSG_LEN + SPI_RESP_LEN_ZDO_DEFAULT;
+    113            respLen = SPI_RESP_LEN_ZDO_DEFAULT;
+    114          
+    115            switch (cmd_id)
+    116            {
+    117              case SPI_CMD_ZDO_AUTO_ENDDEVICEBIND_REQ:
+    118                i = *pData;    // Get the endpoint/interface
+    119                ZDApp_SendEndDeviceBindReq( i );
+    120          
+    121                //Since function type is void, report a succesful operation to the test tool
+    122                ret = ZSUCCESS;
+    123                break;
+    124          
+    125              case SPI_CMD_ZDO_AUTO_FIND_DESTINATION_REQ:
+    126                i = *pData;    // Get the endpoint/interface
+    127                ZDApp_AutoFindDestination( i );
+    128                //Since function type is void, report a succesful operation to the test tool
+    129                ret = ZSUCCESS;
+    130                break;
+    131          
+    132          #if defined ( ZDO_NWKADDR_REQUEST )
+    133              case SPI_CMD_ZDO_NWK_ADDR_REQ:
+    134                // Copy and flip incoming 64-bit address
+    135                pData = zdo_MT_MakeExtAddr( &devAddr, pData );
+    136          
+    137                ptr = (byte*)&devAddr.addr.extAddr;
+    138          
+    139                attr = *pData++;   // RequestType
+    140                attr1 = *pData++;  // StartIndex
+    141                x = *pData;
+    142                ret = (byte)ZDP_NwkAddrReq( ptr, attr, attr1, x );
+    143                break;
+    144          #endif
+    145          
+    146          #if defined ( ZDO_IEEEADDR_REQUEST )
+    147              case SPI_CMD_ZDO_IEEE_ADDR_REQ:
+    148                shortAddr = BUILD_UINT16( pData[1], pData[0] );
+    149                pData += sizeof( shortAddr );
+    150                attr = *pData++;   // RequestType
+    151                attr1 = *pData++;  // StartIndex
+    152                x = *pData;        // SecuritySuite
+    153                ret = (byte)ZDP_IEEEAddrReq( shortAddr, attr, attr1, x );
+    154                break;
+    155          #endif
+    156          
+    157          #if defined ( ZDO_NODEDESC_REQUEST )
+    158              case SPI_CMD_ZDO_NODE_DESC_REQ:
+    159                // destination address
+    160                devAddr.addrMode = Addr16Bit;
+    161                devAddr.addr.shortAddr = BUILD_UINT16( pData[1], pData[0] );
+    162                pData += 2;
+    163          
+    164                // Network address of interest
+    165                shortAddr = BUILD_UINT16( pData[1], pData[0] );
+    166                pData += 2;
+    167          
+    168                attr = *pData;
+    169                ret = (byte)ZDP_NodeDescReq( &devAddr, shortAddr, attr );
+    170                break;
+    171          #endif
+    172          
+    173          #if defined ( ZDO_POWERDESC_REQUEST )
+    174              case SPI_CMD_ZDO_POWER_DESC_REQ:
+    175                // destination address
+    176                devAddr.addrMode = Addr16Bit;
+    177                devAddr.addr.shortAddr = BUILD_UINT16( pData[1], pData[0] );
+    178                pData += 2;
+    179          
+    180                // Network address of interest
+    181                shortAddr = BUILD_UINT16( pData[1], pData[0] );
+    182                pData += 2;
+    183          
+    184                attr = *pData;
+    185                ret = (byte)ZDP_PowerDescReq( &devAddr, shortAddr, attr );
+    186                break;
+    187          #endif
+    188          
+    189          #if defined ( ZDO_SIMPLEDESC_REQUEST )
+    190              case SPI_CMD_ZDO_SIMPLE_DESC_REQ:
+    191                // destination address
+    192                devAddr.addrMode = Addr16Bit;
+    193                devAddr.addr.shortAddr = BUILD_UINT16( pData[1], pData[0] );
+    194                pData += 2;
+    195          
+    196                // Network address of interest
+    197                shortAddr = BUILD_UINT16( pData[1], pData[0] );
+    198                pData += 2;
+    199          
+    200                attr = *pData++;  // endpoint/interface
+    201                attr1 = *pData;   // SecuritySuite
+    202                ret = (byte)ZDP_SimpleDescReq( &devAddr, shortAddr, attr, attr1 );
+    203                break;
+    204          #endif
+    205          
+    206          #if defined ( ZDO_ACTIVEEP_REQUEST )
+    207              case SPI_CMD_ZDO_ACTIVE_EPINT_REQ:
+    208                // destination address
+    209                devAddr.addrMode = Addr16Bit;
+    210                devAddr.addr.shortAddr = BUILD_UINT16( pData[1], pData[0] );
+    211                pData += 2;
+    212          
+    213                // Network address of interest
+    214                shortAddr = BUILD_UINT16( pData[1], pData[0] );
+    215                pData += 2;
+    216          
+    217                attr = *pData;  // SecuritySuite
+    218                ret = (byte)ZDP_ActiveEPReq( &devAddr, shortAddr, attr );
+    219                break;
+    220          #endif
+    221          
+    222          #if defined ( ZDO_MATCH_REQUEST )
+    223              case SPI_CMD_ZDO_MATCH_DESC_REQ:
+    224                {
+    225                  uint16 inC[16], outC[16];
+    226          
+    227                  // destination address
+    228                  devAddr.addrMode = Addr16Bit;
+    229                  devAddr.addr.shortAddr = BUILD_UINT16( pData[1], pData[0] );
+    230                  pData += 2;
+    231          
+    232                  // Network address of interest
+    233                  shortAddr = BUILD_UINT16( pData[1], pData[0] );
+    234                  pData += 2;
+    235          
+    236                  uAttr = BUILD_UINT16( pData[1], pData[0] );   // Profile ID
+    237                  pData += 2;
+    238          
+    239                  attr = *pData++;   // NumInClusters
+    240                  for (i=0; i<16; ++i)  {
+    241                    inC[i] = BUILD_UINT16(pData[1], pData[0]);
+    242                    pData += 2;
+    243                  }
+    244          
+    245                  attr1 = *pData++;  // NumOutClusters
+    246                  for (i=0; i<16; ++i)  {
+    247                    outC[i] = BUILD_UINT16(pData[1], pData[0]);
+    248                    pData += 2;
+    249                  }
+    250          
+    251                  i = *pData;        // SecuritySuite
+    252          
+    253                  ret = (byte)ZDP_MatchDescReq( &devAddr, shortAddr, uAttr,
+    254                                            attr, inC, attr1, outC, i );
+    255                }
+    256                break;
+    257          #endif
+    258          
+    259          #if defined ( ZDO_COMPLEXDESC_REQUEST )
+    260              case SPI_CMD_ZDO_COMPLEX_DESC_REQ:
+    261                // destination address
+    262                devAddr.addrMode = Addr16Bit;
+    263                devAddr.addr.shortAddr = BUILD_UINT16( pData[1], pData[0] );
+    264                pData += 2;
+    265          
+    266                // Network address of interest
+    267                shortAddr = BUILD_UINT16( pData[1], pData[0] );
+    268                pData += 2;
+    269          
+    270                attr = *pData;  // SecuritySuite
+    271                ret = (byte)ZDP_ComplexDescReq( &devAddr, shortAddr, attr );
+    272                break;
+    273          #endif
+    274          
+    275          #if defined ( ZDO_USERDESC_REQUEST )
+    276              case SPI_CMD_ZDO_USER_DESC_REQ:
+    277                // destination address
+    278                devAddr.addrMode = Addr16Bit;
+    279                devAddr.addr.shortAddr = BUILD_UINT16( pData[1], pData[0] );
+    280                pData += 2;
+    281          
+    282                // Network address of interest
+    283                shortAddr = BUILD_UINT16( pData[1], pData[0] );
+    284                pData += 2;
+    285          
+    286                attr = *pData;  // SecuritySuite
+    287                ret = (byte)ZDP_UserDescReq( &devAddr, shortAddr, attr );
+    288                break;
+    289          #endif
+    290          
+    291          #if defined ( ZDO_ENDDEVICEBIND_REQUEST )
+    292              case SPI_CMD_ZDO_END_DEV_BIND_REQ:
+    293                //TODO: When ZTool supports 16 bits the code below will need to take it into account
+    294                {
+    295                  uint16 inC[16], outC[16];
+    296          
+    297                  // destination address
+    298                  devAddr.addrMode = Addr16Bit;
+    299                  devAddr.addr.shortAddr = BUILD_UINT16( pData[1], pData[0] );
+    300                  pData += 2;
+    301          
+    302                  // Network address of interest
+    303                  shortAddr = BUILD_UINT16( pData[1], pData[0] );
+    304                  pData += 2;
+    305          
+    306                  x = *pData++;      // EPInt
+    307          
+    308                  uAttr = BUILD_UINT16( pData[1], pData[0] );   // Profile ID
+    309                  pData += 2;
+    310          
+    311                  attr = *pData++;   // NumInClusters
+    312                  for (i=0; i<16; ++i)  {
+    313                    inC[i] = BUILD_UINT16(pData[1], pData[0]);
+    314                    pData += 2;
+    315                  }
+    316          
+    317                  attr1 = *pData++;  // NumOutClusters
+    318                  for (i=0; i<16; ++i)  {
+    319                    outC[i] = BUILD_UINT16(pData[1], pData[0]);
+    320                    pData += 2;
+    321                  }
+    322          
+    323                  i = *pData;        // SecuritySuite
+    324          
+    325                  ret = (byte)ZDP_EndDeviceBindReq( &devAddr, shortAddr, x, uAttr,
+    326                                          attr, inC, attr1, outC, i );
+    327                }
+    328                break;
+    329          #endif
+    330          
+    331          #if defined ( ZDO_BIND_UNBIND_REQUEST )
+    332              case SPI_CMD_ZDO_BIND_REQ:
+    333                // destination address
+    334                devAddr.addrMode = Addr16Bit;
+    335                devAddr.addr.shortAddr = BUILD_UINT16( pData[1], pData[0] );
+    336                pData += 2;
+    337          
+    338                MT_ReverseBytes( pData, Z_EXTADDR_LEN );
+    339                ptr = pData;       // SrcAddress
+    340                pData += Z_EXTADDR_LEN;
+    341          
+    342                attr = *pData++;   // SrcEPInt
+    343          
+    344                cID = BUILD_UINT16( pData[1], pData[0]);      // ClusterID
+    345                pData += 2;
+    346                
+    347                dstAddr.addrMode = *pData++;
+    348                if ( NLME_GetProtocolVersion() == ZB_PROT_V1_0 )
+    349                  dstAddr.addrMode = Addr64Bit;
+    350                
+    351                MT_ReverseBytes( pData, Z_EXTADDR_LEN );
+    352                if ( dstAddr.addrMode == Addr64Bit )
+    353                {
+    354                  ptr1 = pData;      // DstAddress
+    355                  osal_cpyExtAddr( dstAddr.addr.extAddr, ptr1 );
+    356                }
+    357                else
+    358                {
+    359                  dstAddr.addr.shortAddr = BUILD_UINT16( pData[0], pData[1] ); 
+    360                }
+    361                
+    362                // The short address occupies lsb two bytes
+    363                pData += Z_EXTADDR_LEN;
+    364          
+    365                
+    366                attr1 = *pData++;  // DstEPInt
+    367          
+    368                x = *pData;        // SecuritySuite
+    369               
+    370          #if defined ( REFLECTOR )
+    371                if ( devAddr.addr.shortAddr == _NIB.nwkDevAddress )
+    372                {
+    373          	ZDApp_BindReqCB( 0, &devAddr, ptr, attr, cID, &dstAddr, attr1, x );
+    374                  ret = ZSuccess;
+    375                }
+    376                else
+    377          #endif
+    378                ret = (byte)ZDP_BindReq( &devAddr, ptr, attr, cID, &dstAddr, attr1, x );
+    379                break;
+    380          #endif
+    381          
+    382          #if defined ( ZDO_BIND_UNBIND_REQUEST )
+    383              case SPI_CMD_ZDO_UNBIND_REQ:
+    384                // destination address
+    385                devAddr.addrMode = Addr16Bit;
+    386                devAddr.addr.shortAddr = BUILD_UINT16( pData[1], pData[0] );
+    387                pData += 2;
+    388          
+    389                MT_ReverseBytes( pData, Z_EXTADDR_LEN );
+    390                ptr = pData;       // SrcAddress
+    391                pData += Z_EXTADDR_LEN;
+    392          
+    393                attr = *pData++;   // SrcEPInt
+    394          
+    395                cID = BUILD_UINT16( pData[1], pData[0]);      // ClusterID
+    396                pData += 2;
+    397          
+    398                dstAddr.addrMode = *pData++;
+    399                if ( NLME_GetProtocolVersion() == ZB_PROT_V1_0 )
+    400                  dstAddr.addrMode = Addr64Bit;
+    401                MT_ReverseBytes( pData, Z_EXTADDR_LEN );
+    402                if ( dstAddr.addrMode == Addr64Bit )
+    403                {
+    404                  ptr1 = pData;      // DstAddress
+    405                  osal_cpyExtAddr( dstAddr.addr.extAddr, ptr1 );
+    406                }
+    407                else
+    408                {
+    409                  dstAddr.addr.shortAddr = BUILD_UINT16( pData[0], pData[1] ); 
+    410                }      
+    411                pData += Z_EXTADDR_LEN;
+    412          
+    413                attr1 = *pData++;  // DstEPInt
+    414          
+    415                x = *pData;        // SecuritySuite
+    416          
+    417          #if defined ( REFLECTOR )
+    418                if ( devAddr.addr.shortAddr == _NIB.nwkDevAddress )
+    419                {
+    420                  ZDApp_UnbindReqCB( 0, &devAddr, ptr, attr, cID, &dstAddr, attr1, x );
+    421                  ret = ZSuccess;
+    422                }
+    423                else
+    424          #endif
+    425                {
+    426                  ret = (byte)ZDP_UnbindReq( &devAddr, ptr, attr, cID, &dstAddr, attr1, x );
+    427                }
+    428                break;
+    429          #endif
+    430          
+    431          #if defined ( ZDO_MGMT_NWKDISC_REQUEST )
+    432              case SPI_CMD_ZDO_MGMT_NWKDISC_REQ:
+    433                devAddr.addrMode = Addr16Bit;
+    434                devAddr.addr.shortAddr = BUILD_UINT16( pData[1], pData[0] );
+    435                pData += 2;
+    436                scanChans = BUILD_UINT32( pData[3], pData[2], pData[1], pData[0] );
+    437                ret = (byte)ZDP_MgmtNwkDiscReq( &devAddr, scanChans, pData[4], pData[5], false );
+    438                break;
+    439          #endif
+    440          
+    441          #if defined ( ZDO_MGMT_LQI_REQUEST )
+    442              case SPI_CMD_ZDO_MGMT_LQI_REQ:
+    443                devAddr.addrMode = Addr16Bit;
+    444                devAddr.addr.shortAddr = BUILD_UINT16( pData[1], pData[0] );
+    445                ret = (byte)ZDP_MgmtLqiReq( &devAddr, pData[2], false );
+    446                break;
+    447          #endif
+    448          
+    449          #if defined ( ZDO_MGMT_RTG_REQUEST )
+    450              case SPI_CMD_ZDO_MGMT_RTG_REQ:
+    451                devAddr.addrMode = Addr16Bit;
+    452                devAddr.addr.shortAddr = BUILD_UINT16( pData[1], pData[0] );
+    453                ret = (byte)ZDP_MgmtRtgReq( &devAddr, pData[2], false );
+    454                break;
+    455          #endif
+    456          
+    457          #if defined ( ZDO_MGMT_BIND_REQUEST )
+    458              case SPI_CMD_ZDO_MGMT_BIND_REQ:
+    459                devAddr.addrMode = Addr16Bit;
+    460                devAddr.addr.shortAddr = BUILD_UINT16( pData[1], pData[0] );
+    461                ret = (byte)ZDP_MgmtBindReq( &devAddr, pData[2], false );
+    462                break;
+    463          #endif
+    464          
+    465          #if defined ( ZDO_MGMT_JOINDIRECT_REQUEST )
+    466              case SPI_CMD_ZDO_MGMT_DIRECT_JOIN_REQ:
+    467                devAddr.addrMode = Addr16Bit;
+    468                devAddr.addr.shortAddr = BUILD_UINT16( pData[1], pData[0] );
+    469                MT_ReverseBytes( &pData[2], Z_EXTADDR_LEN );
+    470                ret = (byte)ZDP_MgmtDirectJoinReq( &devAddr,
+    471                                         &pData[2],
+    472                                         pData[2 + Z_EXTADDR_LEN],
+    473                                         false );
+    474                break;
+    475          #endif
+    476          
+    477          #if defined ( ZDO_MGMT_LEAVE_REQUEST )
+    478              case SPI_CMD_ZDO_MGMT_LEAVE_REQ:
+    479                devAddr.addrMode = Addr16Bit;
+    480                devAddr.addr.shortAddr = BUILD_UINT16( pData[1], pData[0] );
+    481                MT_ReverseBytes( &pData[2], Z_EXTADDR_LEN );
+    482                ret = (byte)ZDP_MgmtLeaveReq( &devAddr, &pData[2], false );
+    483                break;
+    484          #endif
+    485          
+    486          #if defined ( ZDO_MGMT_PERMIT_JOIN_REQUEST )
+    487              case SPI_CMD_ZDO_MGMT_PERMIT_JOIN_REQ:
+    488                devAddr.addrMode = Addr16Bit;
+    489                devAddr.addr.shortAddr = BUILD_UINT16( pData[1], pData[0] );
+    490                ret = (byte)ZDP_MgmtPermitJoinReq( &devAddr, pData[2], pData[3], false );
+    491                break;
+    492          #endif
+    493          
+    494          
+    495          #if defined ( ZDO_USERDESCSET_REQUEST )
+    496              case SPI_CMD_ZDO_USER_DESC_SET:
+    497                // destination address
+    498                devAddr.addrMode = Addr16Bit;
+    499                devAddr.addr.shortAddr = BUILD_UINT16( pData[1], pData[0] );
+    500                pData += 2;
+    501          
+    502                // Network address of interest
+    503                shortAddr = BUILD_UINT16( pData[1], pData[0] );
+    504                pData += 2;
+    505          
+    506                // User descriptor
+    507                userDesc.len = *pData++;
+    508                osal_memcpy( userDesc.desc, pData, userDesc.len );
+    509                pData += 16;  // len of user desc
+    510          
+    511                ret =(byte)ZDP_UserDescSet( &devAddr, shortAddr, &userDesc, pData[0] );
+    512                break;
+    513          #endif
+    514          
+    515          #if defined ( ZDO_ENDDEVICE_ANNCE_REQUEST )
+    516              case SPI_CMD_ZDO_END_DEV_ANNCE:
+    517                // network address
+    518                shortAddr = BUILD_UINT16( pData[1], pData[0] );
+    519                pData += 2;
+    520          
+    521                // extended address
+    522                ptr = pData;
+    523                MT_ReverseBytes( ptr, Z_EXTADDR_LEN );
+    524                pData += Z_EXTADDR_LEN;
+    525          
+    526                // security
+    527                attr = *pData++;
+    528          
+    529                ret = (byte)ZDP_EndDeviceAnnce( shortAddr, ptr, *pData, attr );
+    530                break;
+    531          #endif
+    532          
+    533          #if defined (ZDO_SERVERDISC_REQUEST )
+    534              case SPI_CMD_ZDO_SERVERDISC_REQ:
+    535                
+    536                // Service Mask
+    537                uAttr = BUILD_UINT16( pData[1], pData[0] );
+    538                pData += 2;
+    539                attr = *pData++; // Security suite
+    540                
+    541                ret = (byte) ZDP_ServerDiscReq( uAttr, attr );
+    542                break;
+    543          #endif
+    544                
+    545          #if defined (ZDO_NETWORKSTART_REQUEST )
+    546              case SPI_CMD_ZDO_NETWORK_START_REQ:
+    547                ret = ZDApp_StartUpFromApp( ZDAPP_STARTUP_AUTO );
+    548                break;
+    549              
+    550          #endif
+    551              
+    552              default:
+    553                break;
+    554            }
+    555          
+    556            MT_SendSPIRespMsg( ret, cmd_id, len, respLen );
+    557          }
+    558          
+    559          /*********************************************************************
+    560           * Utility FUNCTIONS
+    561           */
+    562          
+    563          /*********************************************************************
+    564           * @fn      zdo_MT_CopyRevExtAddr
+    565           *
+    566           */
+    567          byte *zdo_MT_CopyRevExtAddr( byte *dstMsg, byte *addr )
+    568          {
+    569            // Copy the 64-bit address
+    570            osal_cpyExtAddr( dstMsg, addr );
+    571            // Reverse byte order
+    572            MT_ReverseBytes( dstMsg, Z_EXTADDR_LEN );
+    573            // Return ptr to next destination location
+    574            return ( dstMsg + Z_EXTADDR_LEN );
+    575          }
+    576          
+    577          /*********************************************************************
+    578           * @fn      zdo_MT_MakeExtAddr
+    579           *
+    580           */
+    581          byte *zdo_MT_MakeExtAddr( zAddrType_t *devAddr, byte *pData )
+    582          {
+    583            // Define a 64-bit address
+    584            devAddr->addrMode = Addr64Bit;
+    585            // Copy and reverse the 64-bit address
+    586            zdo_MT_CopyRevExtAddr( devAddr->addr.extAddr, pData );
+    587            // Return ptr to next destination location
+    588            return ( pData + Z_EXTADDR_LEN );
+    589          }
+    590          
+    591          /*********************************************************************
+    592           * CALLBACK FUNCTIONS
+    593           */
+    594          
+    595          #if defined ( ZDO_NWKADDR_REQUEST ) || defined ( ZDO_IEEEADDR_REQUEST )
+    596          /*********************************************************************
+    597           * @fn      zdo_MTCB_NwkIEEEAddrRspCB
+    598           *
+    599           * @brief
+    600           *
+    601           *   Called by ZDO when a NWK_addr_rsp message is received.
+    602           *
+    603           * @param  SrcAddr  - Source address
+    604           * @param  Status - response status
+    605           * @param  IEEEAddr - 64 bit IEEE address of device
+    606           * @param  nwkAddr - 16 bit network address of device
+    607           * @param  NumAssocDev - number of associated devices to reporting device
+    608           * @param  AssocDevList - array short addresses of associated devices
+    609           *
+    610           * @return  none
+    611           */
+    612          void zdo_MTCB_NwkIEEEAddrRspCB( uint16 type, zAddrType_t *SrcAddr, byte Status,
+    613                                         byte *IEEEAddr, uint16 nwkAddr, byte NumAssocDev,
+    614                                         byte StartIndex, uint16 *AssocDevList )
+    615          {
+    616            byte *pBuf;
+    617            byte *msg;
+    618            byte len;
+    619            byte x;
+    620          
+    621            /*Allocate a message of size equivalent to the corresponding SPI message
+    622            (plus a couple of bytes for MT use)so that the same buffer can be sent by
+    623            MT to the test tool by simply setting the header bytes.*/
+    624          
+    625            /*In order to allocate the message , we need to know the length and this
+    626            has to be calculated before we allocate the message*/
+    627          
+    628            if ( type == SPI_CB_ZDO_NWK_ADDR_RSP )
+    629            {
+    630              len = 1 + Z_EXTADDR_LEN +  1 + Z_EXTADDR_LEN + 2 + 1 + 1 + (2*8);
+    631                // Addrmode + SrcAddr + Status + IEEEAddr + nwkAddr + NumAssocDev + StartIndex
+    632            }
+    633            else
+    634            {
+    635              len = 1 + Z_EXTADDR_LEN +  1 + Z_EXTADDR_LEN + 1 + 1 + (2*8);
+    636                // Addrmode + SrcAddr + Status + IEEEAddr + NumAssocDev + StartIndex
+    637            }
+    638          
+    639            pBuf = osal_mem_alloc( len );
+    640          
+    641            if ( pBuf )
+    642            {
+    643              msg = pBuf;
+    644          
+    645              //First fill in details
+    646              if ( SrcAddr->addrMode == Addr16Bit )
+    647              {
+    648                *msg++ = Addr16Bit;
+    649                for ( x = 0; x < (Z_EXTADDR_LEN - 2); x++ )
+    650                  *msg++ = 0;
+    651                *msg++ = HI_UINT16( SrcAddr->addr.shortAddr );
+    652                *msg++ = LO_UINT16( SrcAddr->addr.shortAddr );
+    653              }
+    654              else
+    655              {
+    656                *msg++ = Addr64Bit;
+    657                msg = zdo_MT_CopyRevExtAddr( msg, SrcAddr->addr.extAddr );
+    658              }
+    659          
+    660              *msg++ = Status;
+    661              msg = zdo_MT_CopyRevExtAddr( msg, IEEEAddr );
+    662          
+    663              if ( type == SPI_CB_ZDO_NWK_ADDR_RSP )
+    664              {
+    665                *msg++ = HI_UINT16( nwkAddr );
+    666                *msg++ = LO_UINT16( nwkAddr );
+    667              }
+    668          
+    669              *msg++ = NumAssocDev;
+    670              *msg++ = StartIndex;
+    671              byte cnt = NumAssocDev - StartIndex;
+    672          
+    673              for ( x = 0; x < 8; x++ )
+    674              {
+    675                if ( x < cnt )
+    676                {
+    677                  *msg++ = HI_UINT16( *AssocDevList );
+    678                  *msg++ = LO_UINT16( *AssocDevList );
+    679                  AssocDevList++;
+    680                }
+    681                else
+    682                {
+    683                  *msg++ = 0;
+    684                  *msg++ = 0;
+    685                }
+    686              }
+    687          
+    688              MT_BuildAndSendZToolCB( type, len, pBuf );
+    689          
+    690              osal_mem_free( pBuf );
+    691            }
+    692          }
+    693          #endif // ZDO_NWKADDR_REQUEST || ZDO_IEEEADDR_REQUEST
+    694          
+    695          #if defined ( ZDO_NODEDESC_REQUEST )
+    696          /*********************************************************************
+    697           * @fn      zdo_MTCB_NodeDescRspCB()
+    698           *
+    699           * @brief
+    700           *
+    701           *   Called by ZDO when a Node_Desc_rsp message is received.
+    702           *
+    703           * @param  SrcAddr  - Source address
+    704           * @param  Status - response status
+    705           * @param  nwkAddr - 16 bit network address of device
+    706           * @param  pNodeDesc - pointer to the devices Node Descriptor
+    707           *                     NULL if Status != ZDP_SUCCESS
+    708           *
+    709           * @return  none
+    710           */
+    711          void zdo_MTCB_NodeDescRspCB( zAddrType_t *SrcAddr, byte Status, uint16 nwkAddr,
+    712                                       NodeDescriptorFormat_t *pNodeDesc )
+    713          {
+    714            byte buf[18];
+    715            byte *msg;
+    716          
+    717            msg = buf;
+    718          
+    719            //Fill up the data bytes
+    720            *msg++ = Status;
+    721            *msg++ = HI_UINT16( SrcAddr->addr.shortAddr );
+    722            *msg++ = LO_UINT16( SrcAddr->addr.shortAddr );
+    723          
+    724            *msg++ = HI_UINT16( nwkAddr );
+    725            *msg++ = LO_UINT16( nwkAddr );
+    726          
+    727            *msg++ = (byte)(pNodeDesc->LogicalType);
+    728          
+    729            // Since Z-Tool can't treat V1.0 and V1.1 differently,
+    730            // we just output these two byte in both cases, although
+    731            // in V1.0, they are always zeros.
+    732            *msg++ = (byte) pNodeDesc->ComplexDescAvail;
+    733            *msg++ = (byte) pNodeDesc->UserDescAvail;
+    734          
+    735            *msg++ = pNodeDesc->APSFlags;
+    736            *msg++ = pNodeDesc->FrequencyBand;
+    737            *msg++ = pNodeDesc->CapabilityFlags;
+    738            *msg++ = pNodeDesc->ManufacturerCode[1];
+    739            *msg++ = pNodeDesc->ManufacturerCode[0];
+    740            *msg++ = pNodeDesc->MaxBufferSize;
+    741            *msg++ = pNodeDesc->MaxTransferSize[1];
+    742            *msg++ = pNodeDesc->MaxTransferSize[0];
+    743            *msg++ = HI_UINT16( pNodeDesc->ServerMask);
+    744            *msg++ = LO_UINT16( pNodeDesc->ServerMask);
+    745          
+    746            MT_BuildAndSendZToolCB( SPI_CB_ZDO_NODE_DESC_RSP, 18, buf );
+    747          }
+    748          #endif // ZDO_NODEDESC_REQUEST
+    749          
+    750          #if defined ( ZDO_POWERDESC_REQUEST )
+    751          /*********************************************************************
+    752           * @fn      zdo_MTCB_PowerDescRspCB()
+    753           *
+    754           * @brief
+    755           *
+    756           *   Called by ZDO when a Power_Desc_rsp message is received.
+    757           *
+    758           * @param  SrcAddr  - Source address
+    759           * @param  Status - response status
+    760           * @param  nwkAddr - 16 bit network address of device
+    761           * @param  pPwrDesc - pointer to the devices Power Descriptor
+    762           *                     NULL if Status != ZDP_SUCCESS
+    763           *
+    764           * @return  none
+    765           */
+    766          void zdo_MTCB_PowerDescRspCB( zAddrType_t *SrcAddr, byte Status,
+    767                    uint16 nwkAddr, NodePowerDescriptorFormat_t *pPwrDesc )
+    768          {
+    769            byte buf[9];
+    770            byte *msg;
+    771          
+    772            msg = buf;
+    773          
+    774            //Fill up the data bytes
+    775            *msg++ = Status;
+    776            *msg++ = HI_UINT16( SrcAddr->addr.shortAddr );
+    777            *msg++ = LO_UINT16( SrcAddr->addr.shortAddr );
+    778            *msg++ = HI_UINT16( nwkAddr );
+    779            *msg++ = LO_UINT16( nwkAddr );
+    780          
+    781            *msg++ = pPwrDesc->PowerMode;
+    782            *msg++ = pPwrDesc->AvailablePowerSources;
+    783            *msg++ = pPwrDesc->CurrentPowerSource;
+    784            *msg   = pPwrDesc->CurrentPowerSourceLevel;
+    785          
+    786            MT_BuildAndSendZToolCB( SPI_CB_ZDO_POWER_DESC_RSP, 9, buf );
+    787          }
+    788          #endif // ZDO_POWERDESC_REQUEST
+    789          
+    790          #if defined ( ZDO_SIMPLEDESC_REQUEST )
+    791          #define ZDO_SIMPLE_DESC_CB_LEN  78
+    792          /*********************************************************************
+    793           * @fn      zdo_MTCB_SimpleDescRspCB()
+    794           *
+    795           * @brief
+    796           *
+    797           *   Called by ZDO when a Simple_Desc_rsp message is received.
+    798           *
+    799           * @param  SrcAddr  - Source address
+    800           * @param  Status - response status
+    801           * @param  nwkAddr - 16 bit network address of device
+    802           * @param  EPIntf - Endpoint/Interface for description
+    803           * @param  pSimpleDesc - pointer to the devices Simple Descriptor
+    804           *                     NULL if Status != ZDP_SUCCESS
+    805           *
+    806           * @return  none
+    807           */
+    808          void zdo_MTCB_SimpleDescRspCB( zAddrType_t *SrcAddr, byte Status,
+    809                    uint16 nwkAddr, byte EPIntf, SimpleDescriptionFormat_t *pSimpleDesc )
+    810          {
+    811            byte *msgPtr;
+    812            byte *msg;
+    813            byte x;
+    814          
+    815            msgPtr = osal_mem_alloc( ZDO_SIMPLE_DESC_CB_LEN );
+    816            if ( msgPtr )
+    817            {
+    818              msg = msgPtr;
+    819          
+    820              //Fill up the data bytes
+    821              *msg++ = Status;
+    822              *msg++ = HI_UINT16( SrcAddr->addr.shortAddr );
+    823              *msg++ = LO_UINT16( SrcAddr->addr.shortAddr );
+    824              *msg++ = HI_UINT16( nwkAddr );
+    825              *msg++ = LO_UINT16( nwkAddr );
+    826          
+    827              *msg++ = EPIntf;
+    828          
+    829              *msg++ = HI_UINT16( pSimpleDesc->AppProfId );
+    830              *msg++ = LO_UINT16( pSimpleDesc->AppProfId );
+    831              *msg++ = HI_UINT16( pSimpleDesc->AppDeviceId );
+    832              *msg++ = LO_UINT16( pSimpleDesc->AppDeviceId );
+    833          
+    834              *msg++ = pSimpleDesc->AppDevVer;
+    835              *msg++ = pSimpleDesc->Reserved;
+    836          
+    837              *msg++ = pSimpleDesc->AppNumInClusters;
+    838              // ZTool supports 16 bits the code has taken it into account      
+    839              for ( x = 0; x < 16; x++ )
+    840              {
+    841                if ( x < pSimpleDesc->AppNumInClusters )
+    842                {
+    843                  *msg++ = HI_UINT16( pSimpleDesc->pAppInClusterList[x]);
+    844                  *msg++ = LO_UINT16( pSimpleDesc->pAppInClusterList[x]);
+    845                }
+    846                else
+    847                {
+    848                  *msg++ = 0;
+    849                  *msg++ = 0;
+    850                }
+    851              }
+    852              *msg++ = pSimpleDesc->AppNumOutClusters;
+    853          
+    854              for ( x = 0; x < 16; x++ )
+    855              {
+    856                if ( x < pSimpleDesc->AppNumOutClusters )
+    857                {
+    858                  *msg++ = HI_UINT16( pSimpleDesc->pAppOutClusterList[x]);
+    859                  *msg++ = LO_UINT16( pSimpleDesc->pAppOutClusterList[x]);
+    860                }
+    861                else
+    862                {
+    863                  *msg++ = 0;
+    864                  *msg++ = 0;
+    865                }
+    866              }
+    867          
+    868              MT_BuildAndSendZToolCB( SPI_CB_ZDO_SIMPLE_DESC_RSP, ZDO_SIMPLE_DESC_CB_LEN, msgPtr );
+    869          
+    870              osal_mem_free( msgPtr );
+    871            }
+    872          }
+    873          #endif // ZDO_SIMPLEDESC_REQUEST
+    874          
+    875          #if defined ( ZDO_ACTIVEEP_REQUEST ) || defined ( ZDO_MATCH_REQUEST )
+    876          /*********************************************************************
+    877           * @fn      zdo_MTCB_ActiveEPRspCB()
+    878           *
+    879           * @brief
+    880           *
+    881           *   Called by ZDO when a Active_EP_rsp or Match_Desc_rsp message is received.
+    882           *
+    883           * @param  SrcAddr  - Source address
+    884           * @param  Status - response status
+    885           * @param  nwkAddr - Device's short address that this response describes
+    886           * @param  epIntfCnt - number of epIntfList items
+    887           * @param  epIntfList - array of active endpoint/interfaces.
+    888           *
+    889           * @return  none
+    890           */
+    891          void zdo_MTCB_MatchActiveEPRspCB( uint16 type, zAddrType_t *SrcAddr, byte Status,
+    892                            uint16 nwkAddr, byte epIntfCnt, byte *epIntfList )
+    893          {
+    894            byte buf[22];
+    895            byte *msg;
+    896            byte x;
+    897          
+    898            msg = buf;
+    899          
+    900            //Fill up the data bytes
+    901            *msg++ = Status;
+    902            *msg++ = HI_UINT16( SrcAddr->addr.shortAddr );
+    903            *msg++ = LO_UINT16( SrcAddr->addr.shortAddr );
+    904            *msg++ = HI_UINT16( nwkAddr );
+    905            *msg++ = LO_UINT16( nwkAddr );
+    906          
+    907            *msg++ = epIntfCnt;
+    908          
+    909            for ( x = 0; x < 16; x++ )
+    910            {
+    911              if ( x < epIntfCnt )
+    912                *msg++ = *epIntfList++;
+    913              else
+    914                *msg++ = 0;
+    915            }
+    916          
+    917            MT_BuildAndSendZToolCB( type, 22, buf );
+    918          }
+    919          #endif // ZDO_ACTIVEEP_REQUEST || ZDO_MATCH_REQUEST
+    920          
+    921          #if defined ( ZDO_BIND_UNBIND_REQUEST ) || defined ( ZDO_ENDDEVICEBIND_REQUEST )
+    922          /*********************************************************************
+    923           * @fn      zdo_MTCB_BindRspCB()
+    924           *
+    925           * @brief
+    926           *
+    927           *   Called to send MT callback response for binding responses
+    928           *
+    929           * @param  type - binding type (end device, bind, unbind)
+    930           * @param  SrcAddr  - Source address
+    931           * @param  Status - response status
+    932           *
+    933           * @return  none
+    934           */
+    935          void zdo_MTCB_BindRspCB( uint16 type, zAddrType_t *SrcAddr, byte Status )
+    936          {
+    937            byte buf[3];
+    938            buf[0] = Status;
+    939            buf[1] = HI_UINT16( SrcAddr->addr.shortAddr );
+    940            buf[2] = LO_UINT16( SrcAddr->addr.shortAddr );
+    941            MT_BuildAndSendZToolCB( type, 3, buf );
+    942          }
+    943          #endif // ZDO_BIND_UNBIND_REQUEST || ZDO_ENDDEVICEBIND_REQUEST
+    944          
+    945          #if defined ( ZDO_MGMT_LQI_REQUEST )
+    946          /*********************************************************************
+    947           * @fn      zdo_MTCB_MgmtLqiRspCB()
+    948           *
+    949           * @brief
+    950           *
+    951           *   Called to send MT callback response for Management LQI response
+    952           *
+    953           * @param  type - binding type (end device, bind, unbind)
+    954           * @param  SrcAddr  - Source address
+    955           * @param  Status - response status
+    956           *
+    957           * @return  none
+    958           */
+    959          void zdo_MTCB_MgmtLqiRspCB( uint16 SrcAddr, byte Status, byte NeighborLqiEntries,
+    960                                      byte StartIndex, byte NeighborLqiCount,
+    961                                      neighborLqiItem_t *pList )
+    962          {
+    963            byte *msgPtr;
+    964            byte *msg;
+    965            byte len;
+    966            byte x;
+    967            byte proVer = NLME_GetProtocolVersion();  
+    968            
+    969            /*Allocate a message of size equivalent to the corresponding SPI message
+    970            (plus a couple of bytes for MT use)so that the same buffer can be sent by
+    971            MT to the test tool by simply setting the header bytes.*/
+    972          
+    973            /*In order to allocate the message , we need to know the length and this
+    974            has to be calculated before we allocate the message*/
+    975          
+    976            len = 2 + 1 + 1 + 1 + 1 + (ZDP_NEIGHBORLQI_SIZE * ZDO_MAX_LQI_ITEMS );
+    977              //  SrcAddr + Status + NeighborLqiEntries + StartIndex + NeighborLqiCount
+    978              //     + (maximum entries * size of struct)
+    979           
+    980            msgPtr = osal_mem_alloc( len );
+    981          
+    982            if ( msgPtr )
+    983            {
+    984              msg = msgPtr;
+    985          
+    986              //Fill up the data bytes
+    987              
+    988              *msg++ = HI_UINT16( SrcAddr );
+    989              *msg++ = LO_UINT16( SrcAddr );    
+    990              *msg++ = Status;
+    991              *msg++ = NeighborLqiEntries;
+    992              *msg++ = StartIndex;
+    993              *msg++ = NeighborLqiCount;
+    994          
+    995              osal_memset( msg, 0, (ZDP_NEIGHBORLQI_SIZE * ZDO_MAX_LQI_ITEMS) );
+    996          
+    997              for ( x = 0; x < ZDO_MAX_LQI_ITEMS; x++ )
+    998              {
+    999                if ( x < NeighborLqiCount )
+   1000                {
+   1001                  if ( proVer == ZB_PROT_V1_0 )
+   1002                  {
+   1003                    *msg++ = HI_UINT16( pList->PANId );
+   1004                    *msg++ = LO_UINT16( pList->PANId );
+   1005                  }
+   1006                  else 
+   1007                  {
+   1008                    osal_cpyExtAddr(msg, pList->extPANId);
+   1009                    msg += Z_EXTADDR_LEN;
+   1010                  }
+   1011                  *msg++ = HI_UINT16( pList->nwkAddr );
+   1012                  *msg++ = LO_UINT16( pList->nwkAddr );
+   1013                  *msg++ = pList->rxLqi;
+   1014                  *msg++ = pList->txQuality;
+   1015                  pList++;
+   1016                }
+   1017              }
+   1018          
+   1019              MT_BuildAndSendZToolCB( SPI_CB_ZDO_MGMT_LQI_RSP, len, msgPtr );
+   1020          
+   1021              osal_mem_free( msgPtr );
+   1022            }
+   1023          }
+   1024          #endif // ZDO_MGMT_LQI_REQUEST
+   1025          
+   1026          #if defined ( ZDO_MGMT_NWKDISC_REQUEST )
+   1027          /*********************************************************************
+   1028           * @fn      zdo_MTCB_MgmtNwkDiscRspCB()
+   1029           *
+   1030           * @brief
+   1031           *
+   1032           *   Called to send MT callback response for Management Network
+   1033           *   Discover response
+   1034           *
+   1035           * @param  SrcAddr  - Source address
+   1036           * @param  Status - response status
+   1037           *
+   1038           * @return  none
+   1039           */
+   1040          void zdo_MTCB_MgmtNwkDiscRspCB( uint16 SrcAddr, byte Status,
+   1041                                  byte NetworkCount, byte StartIndex,
+   1042                                  byte networkListCount, mgmtNwkDiscItem_t *pList )
+   1043          {
+   1044            byte *msgPtr;
+   1045            byte *msg;
+   1046            byte len;
+   1047            byte x;
+   1048            byte proVer = NLME_GetProtocolVersion();  
+   1049             
+   1050          
+   1051            /*Allocate a message of size equivalent to the corresponding SPI message
+   1052            (plus a couple of bytes for MT use)so that the same buffer can be sent by
+   1053            MT to the test tool by simply setting the header bytes.*/
+   1054          
+   1055            /*In order to allocate the message , we need to know the length and this
+   1056            has to be calculated before we allocate the message*/
+   1057            if ( proVer == ZB_PROT_V1_0 )
+   1058            {
+   1059              len = 2 + 1 + 1 + 1 + 1 + (ZDP_NETWORK_DISCRIPTOR_SIZE * ZDO_MAX_NWKDISC_ITEMS);
+   1060                //  SrcAddr + Status + NetworkCount + StartIndex + networkListCount
+   1061                //     + (maximum entries * size of struct)
+   1062            }
+   1063            else
+   1064            {
+   1065              len = 2 + 1 + 1 + 1 + 1 + (ZDP_NETWORK_EXTENDED_DISCRIPTOR_SIZE * ZDO_MAX_NWKDISC_ITEMS);
+   1066           
+   1067            }
+   1068          
+   1069            msgPtr = osal_mem_alloc( len );
+   1070          
+   1071            if ( msgPtr )
+   1072            {
+   1073              msg = msgPtr;
+   1074          
+   1075              //Fill up the data bytes
+   1076              *msg++ = HI_UINT16( SrcAddr );
+   1077              *msg++ = LO_UINT16( SrcAddr );
+   1078              *msg++ = Status;
+   1079              *msg++ = NetworkCount;
+   1080              *msg++ = StartIndex;
+   1081              *msg++ = networkListCount;
+   1082          
+   1083              osal_memset( msg, 0, (ZDP_NETWORK_DISCRIPTOR_SIZE * ZDO_MAX_NWKDISC_ITEMS) );
+   1084          
+   1085              for ( x = 0; x < ZDO_MAX_NWKDISC_ITEMS; x++ )
+   1086              {
+   1087                if ( x < networkListCount )
+   1088                {
+   1089                  if ( proVer == ZB_PROT_V1_0 )
+   1090                  {
+   1091                    *msg++ = HI_UINT16( pList->PANId );
+   1092                    *msg++ = LO_UINT16( pList->PANId );
+   1093                  }
+   1094                  else
+   1095                  {
+   1096                    osal_cpyExtAddr( msg, pList->extendedPANID );
+   1097                    msg += Z_EXTADDR_LEN;
+   1098                  }
+   1099                  *msg++ = pList->logicalChannel;
+   1100                  *msg++ = pList->stackProfile;
+   1101                  *msg++ = pList->version;
+   1102                  *msg++ = pList->beaconOrder;
+   1103                  *msg++ = pList->superFrameOrder;
+   1104                  *msg++ = pList->permitJoining;
+   1105                  pList++;
+   1106                }
+   1107              }
+   1108          
+   1109              MT_BuildAndSendZToolCB( SPI_CB_ZDO_MGMT_NWKDISC_RSP, len, msgPtr );
+   1110          
+   1111              osal_mem_free( msgPtr );
+   1112            }
+   1113          }
+   1114          #endif // ZDO_MGMT_NWKDISC_REQUEST
+   1115          
+   1116          #if defined ( ZDO_MGMT_RTG_REQUEST )
+   1117          /*********************************************************************
+   1118           * @fn      zdo_MTCB_MgmtRtgRspCB()
+   1119           *
+   1120           * @brief
+   1121           *
+   1122           *   Called to send MT callback response for Management Network
+   1123           *   Discover response
+   1124           *
+   1125           * @param  SrcAddr  - Source address
+   1126           * @param  Status - response status
+   1127           *
+   1128           * @return  none
+   1129           */
+   1130          void zdo_MTCB_MgmtRtgRspCB( uint16 SrcAddr, byte Status,
+   1131                                  byte RtgCount, byte StartIndex,
+   1132                                  byte RtgListCount, rtgItem_t *pList )
+   1133          {
+   1134            byte *msgPtr;
+   1135            byte *msg;
+   1136            byte len;
+   1137            byte x;
+   1138          
+   1139            /*Allocate a message of size equivalent to the corresponding SPI message
+   1140            (plus a couple of bytes for MT use)so that the same buffer can be sent by
+   1141            MT to the test tool by simply setting the header bytes.*/
+   1142          
+   1143            /*In order to allocate the message , we need to know the length and this
+   1144            has to be calculated before we allocate the message*/
+   1145          
+   1146            len = 2 + 1 + 1 + 1 + 1 + (ZDP_RTG_DISCRIPTOR_SIZE * ZDO_MAX_RTG_ITEMS);
+   1147                //  SrcAddr + Status + RtgCount + StartIndex + RtgListCount
+   1148                //     + (maximum entries * size of struct)
+   1149          
+   1150            msgPtr = osal_mem_alloc( len );
+   1151          
+   1152            if ( msgPtr )
+   1153            {
+   1154              msg = msgPtr;
+   1155          
+   1156              //Fill up the data bytes
+   1157              *msg++ = HI_UINT16( SrcAddr );
+   1158              *msg++ = LO_UINT16( SrcAddr );
+   1159              *msg++ = Status;
+   1160              *msg++ = RtgCount;
+   1161              *msg++ = StartIndex;
+   1162              *msg++ = RtgListCount;
+   1163          
+   1164              osal_memset( msg, 0, (ZDP_RTG_DISCRIPTOR_SIZE * ZDO_MAX_RTG_ITEMS) );
+   1165          
+   1166              for ( x = 0; x < ZDO_MAX_RTG_ITEMS; x++ )
+   1167              {
+   1168                if ( x < RtgListCount )
+   1169                {
+   1170                  *msg++ = HI_UINT16( pList->dstAddress );
+   1171                  *msg++ = LO_UINT16( pList->dstAddress );
+   1172                  *msg++ = HI_UINT16( pList->nextHopAddress );
+   1173                  *msg++ = LO_UINT16( pList->nextHopAddress );
+   1174                  *msg++ = pList->status;
+   1175                  pList++;
+   1176                }
+   1177              }
+   1178          
+   1179              MT_BuildAndSendZToolCB( SPI_CB_ZDO_MGMT_RTG_RSP, len, msgPtr );
+   1180          
+   1181              osal_mem_free( msgPtr );
+   1182            }
+   1183          }
+   1184          #endif // ZDO_MGMT_RTG_REQUEST
+   1185          
+   1186          #if defined ( ZDO_MGMT_BIND_REQUEST )
+   1187          /*********************************************************************
+   1188           * @fn      zdo_MTCB_MgmtBindRspCB()
+   1189           *
+   1190           * @brief
+   1191           *
+   1192           *   Called to send MT callback response for Management Network
+   1193           *   Discover response
+   1194           *
+   1195           * @param  SrcAddr  - Source address
+   1196           * @param  Status - response status
+   1197           *
+   1198           * @return  none
+   1199           */
+   1200          void zdo_MTCB_MgmtBindRspCB( uint16 SrcAddr, byte Status,
+   1201                                  byte BindCount, byte StartIndex,
+   1202                                  byte BindListCount, apsBindingItem_t *pList )
+   1203          {
+   1204            byte *msgPtr;
+   1205            byte *msg;
+   1206            byte len;       
+   1207            byte x;
+   1208            uint8 protoVer = NLME_GetProtocolVersion();
+   1209            
+   1210            /*Allocate a message of size equivalent to the corresponding SPI message
+   1211            (plus a couple of bytes for MT use)so that the same buffer can be sent by
+   1212            MT to the test tool by simply setting the header bytes.*/
+   1213          
+   1214            /*In order to allocate the message , we need to know the length and this
+   1215            has to be calculated before we allocate the message*/
+   1216            
+   1217          
+   1218            // One more byte for clusterID and DstAddrMode 
+   1219            len = 2 + 1 + 1 + 1 + 1 + ( ( ZDP_BIND_DISCRIPTOR_SIZE + 1 + 1 ) * ZDO_MAX_BIND_ITEMS);
+   1220                //  SrcAddr + Status + BindCount + StartIndex + BindListCount
+   1221                //     + (maximum entries * size of struct)
+   1222          
+   1223            msgPtr = osal_mem_alloc( len );
+   1224          
+   1225            if ( msgPtr )
+   1226            {
+   1227              msg = msgPtr;
+   1228          
+   1229              //Fill up the data bytes
+   1230              *msg++ = HI_UINT16( SrcAddr );
+   1231              *msg++ = LO_UINT16( SrcAddr );
+   1232              *msg++ = Status;
+   1233              *msg++ = BindCount;
+   1234              *msg++ = StartIndex;
+   1235              *msg++ = BindListCount;
+   1236          
+   1237              osal_memset( msg, 0, ( ( ZDP_BIND_DISCRIPTOR_SIZE + 1 + 1)  * ZDO_MAX_BIND_ITEMS) );
+   1238              
+   1239              
+   1240              for ( x = 0; x < ZDO_MAX_BIND_ITEMS; x++ )
+   1241              {
+   1242                if ( x < BindListCount )
+   1243                {
+   1244                  msg = zdo_MT_CopyRevExtAddr( msg, pList->srcAddr );
+   1245                  *msg++ = pList->srcEP;
+   1246                  
+   1247                  if ( protoVer == ZB_PROT_V1_0 ) 
+   1248                  {         
+   1249                    *msg++ = LO_UINT16( pList->clusterID);
+   1250                    msg = zdo_MT_CopyRevExtAddr( msg, pList->dstAddr.addr.extAddr );    
+   1251                    *msg++ = pList->dstEP;
+   1252                  }
+   1253                  else
+   1254                  {
+   1255                    *msg++ = HI_UINT16( pList->clusterID);
+   1256                    *msg++ = LO_UINT16( pList->clusterID);
+   1257                    *msg++ = pList->dstAddr.addrMode;
+   1258                  
+   1259                    if ( pList->dstAddr.addrMode == Addr64Bit )
+   1260                    {         
+   1261                      msg = zdo_MT_CopyRevExtAddr( msg, pList->dstAddr.addr.extAddr );
+   1262                      *msg++ = pList->dstEP;           
+   1263                    }
+   1264                    else
+   1265                    {
+   1266                      *msg++ = HI_UINT16( pList->dstAddr.addr.shortAddr );
+   1267                      *msg++ = LO_UINT16( pList->dstAddr.addr.shortAddr );
+   1268                      // DstEndpoint will not present if DstAddrMode is not 64-bit extAddr
+   1269                    }
+   1270                  }
+   1271                  
+   1272                  pList++;
+   1273                }
+   1274              }
+   1275          
+   1276              MT_BuildAndSendZToolCB( SPI_CB_ZDO_MGMT_BIND_RSP, len, msgPtr );
+   1277          
+   1278              osal_mem_free( msgPtr );
+   1279            }
+   1280          }
+   1281          #endif // ZDO_MGMT_RTG_REQUEST
+   1282          
+   1283          #if defined ( ZDO_MGMT_JOINDIRECT_REQUEST )
+   1284          /*********************************************************************
+   1285           * @fn      zdo_MTCB_MgmtDirectJoinRspCB()
+   1286           *
+   1287           * @brief
+   1288           *
+   1289           *   Called to send MT callback response for Management Direct Join
+   1290           *   responses
+   1291           *
+   1292           * @param  SrcAddr  - Source address
+   1293           * @param  Status - response status
+   1294           *
+   1295           * @return  none
+   1296           */
+   1297          void zdo_MTCB_MgmtDirectJoinRspCB( uint16 SrcAddr, byte Status, byte SecurityUse )
+   1298          {
+   1299            byte buf[3];
+   1300          
+   1301            buf[0] = HI_UINT16( SrcAddr );
+   1302            buf[1] = LO_UINT16( SrcAddr );
+   1303            buf[2] = Status;
+   1304          
+   1305            MT_BuildAndSendZToolCB( SPI_CB_ZDO_MGMT_DIRECT_JOIN_RSP, 3, buf );
+   1306          }
+   1307          #endif // ZDO_MGMT_JOINDIRECT_REQUEST
+   1308          
+   1309          #if defined ( ZDO_MGMT_LEAVE_REQUEST )
+   1310          /*********************************************************************
+   1311           * @fn      zdo_MTCB_MgmtLeaveRspCB()
+   1312           *
+   1313           * @brief
+   1314           *
+   1315           *   Called to send MT callback response for Management Leave
+   1316           *   responses
+   1317           *
+   1318           * @param  SrcAddr  - Source address
+   1319           * @param  Status - response status
+   1320           *
+   1321           * @return  none
+   1322           */
+   1323          void zdo_MTCB_MgmtLeaveRspCB( uint16 SrcAddr, byte Status, byte SecurityUse )
+   1324          {
+   1325            byte buf[3];
+   1326          
+   1327            buf[0] = Status;
+   1328            buf[1] = HI_UINT16( SrcAddr );
+   1329            buf[2] = LO_UINT16( SrcAddr );
+   1330          
+   1331            MT_BuildAndSendZToolCB( SPI_CB_ZDO_MGMT_LEAVE_RSP, 3, buf );
+   1332          }
+   1333          #endif // ZDO_MGMT_LEAVE_REQUEST
+   1334          
+   1335          #if defined ( ZDO_MGMT_PERMIT_JOIN_REQUEST )
+   1336          /*********************************************************************
+   1337           * @fn      zdo_MTCB_MgmtPermitJoinRspCB()
+   1338           *
+   1339           * @brief
+   1340           *
+   1341           *   Called to send MT callback response for Management Permit Join
+   1342           *   responses
+   1343           *
+   1344           * @param  SrcAddr  - Source address
+   1345           * @param  Status - response status
+   1346           *
+   1347           * @return  none
+   1348           */
+   1349          void zdo_MTCB_MgmtPermitJoinRspCB( uint16 SrcAddr, byte Status, byte SecurityUse )
+   1350          {
+   1351            byte buf[3];
+   1352          
+   1353            buf[0] = Status;
+   1354            buf[1] = HI_UINT16( SrcAddr );
+   1355            buf[2] = LO_UINT16( SrcAddr );
+   1356          
+   1357            MT_BuildAndSendZToolCB( SPI_CB_ZDO_MGMT_PERMIT_JOIN_RSP, 3, buf );
+   1358          }
+   1359          #endif // ZDO_MGMT_PERMIT_JOIN_REQUEST
+   1360          
+   1361          #if defined ( ZDO_USERDESC_REQUEST )
+   1362          #define USER_DESC_CB_LEN  22
+   1363          /*********************************************************************
+   1364           * @fn      zdo_MTCB_UserDescRspCB()
+   1365           *
+   1366           * @brief
+   1367           *
+   1368           *   Called to send MT callback response for User Descriptor
+   1369           *   responses
+   1370           *
+   1371           * @param  SrcAddr  - Source address
+   1372           * @param  Status - response status
+   1373           * @param  nwkAddrOfInterest -
+   1374           * @param  userDescLen -
+   1375           * @param  userDesc -
+   1376           * @param  SecurityUse -
+   1377           *
+   1378           * @return  none
+   1379           */
+   1380          void zdo_MTCB_UserDescRspCB( uint16 SrcAddr, byte status, uint16 nwkAddrOfInterest,
+   1381                                    byte userDescLen, byte *userDesc, byte SecurityUse )
+   1382          {
+   1383            byte *msgPtr;
+   1384            byte *msg;
+   1385            msgPtr = osal_mem_alloc( USER_DESC_CB_LEN );
+   1386            osal_memset( msgPtr, 0, USER_DESC_CB_LEN );
+   1387            
+   1388            msg = msgPtr;
+   1389            *msg++ = status;
+   1390            *msg++ = HI_UINT16( SrcAddr );
+   1391            *msg++ = LO_UINT16( SrcAddr );
+   1392            *msg++ = HI_UINT16( nwkAddrOfInterest );
+   1393            *msg++ = LO_UINT16( nwkAddrOfInterest );
+   1394            *msg++ = userDescLen;
+   1395            osal_memcpy( msg, userDesc, userDescLen ); 
+   1396            MT_BuildAndSendZToolCB( SPI_CB_ZDO_USER_DESC_RSP, USER_DESC_CB_LEN, msgPtr );
+   1397            
+   1398            osal_mem_free( msgPtr );
+   1399          }
+   1400          #endif // ZDO_USERDESC_REQUEST
+   1401          
+   1402          #if defined ( ZDO_USERDESCSET_REQUEST )
+   1403          /*********************************************************************
+   1404           * @fn      zdo_MTCB_UserDescConfCB()
+   1405           *
+   1406           * @brief
+   1407           *
+   1408           *   Called to send MT callback response for User Descriptor
+   1409           *   confirm
+   1410           *
+   1411           * @param  SrcAddr  - Source address
+   1412           * @param  Status - response status
+   1413           * @param  SecurityUse -
+   1414           *
+   1415           * @return  none
+   1416           */
+   1417          void zdo_MTCB_UserDescConfCB( uint16 SrcAddr, byte status, byte SecurityUse )
+   1418          {
+   1419            byte buf[3];
+   1420          
+   1421            buf[0] = status;
+   1422            buf[1] = HI_UINT16( SrcAddr );
+   1423            buf[2] = LO_UINT16( SrcAddr );
+   1424          
+   1425            MT_BuildAndSendZToolCB( SPI_CB_ZDO_USER_DESC_CNF, 3, buf );
+   1426          }
+   1427          #endif // ZDO_USERDESCSET_REQUEST
+   1428          
+   1429          #if defined ( ZDO_SERVERDISC_REQUEST )
+   1430          /*********************************************************************
+   1431           * @fn     zdo_MTCB_ServerDiscRspCB()
+   1432           *
+   1433           * @brief  Called to send MT callback response for Server_Discovery_rsp responses.
+   1434           *
+   1435           * @param  srcAddr - Source address.
+   1436           * @param  status - Response status.
+   1437           * @param  aoi - Network Address of Interest.
+   1438           * @param  serverMask - Bit mask of services that match request.
+   1439           * @param  SecurityUse -
+   1440           *
+   1441           * @return  none
+   1442           */
+   1443          void zdo_MTCB_ServerDiscRspCB( uint16 srcAddr, byte status, 
+   1444                                         uint16 serverMask, byte SecurityUse )
+   1445          {
+   1446            byte buf[5];
+   1447            byte *pBuf = buf;
+   1448          
+   1449            *pBuf++ = status;
+   1450            *pBuf++ = HI_UINT16( srcAddr );
+   1451            *pBuf++ = LO_UINT16( srcAddr );
+   1452            *pBuf++ = HI_UINT16( serverMask );
+   1453            *pBuf++ = LO_UINT16( serverMask );
+   1454          
+   1455            MT_BuildAndSendZToolCB( SPI_CB_ZDO_SERVERDISC_RSP, 5, buf );
+   1456          #define CB_ID_ZDO_SERVERDISC_RSP             0x00080000
+   1457          }
+   1458          #endif
+   1459          
+   1460          /*********************************************************************
+   1461          *********************************************************************/
+   1462          
+   1463          #endif   /*ZDO Command Processing in MT*/
+
+
+   Segment part sizes:
+
+     Function/Label Bytes
+     -------------- -----
+
+ 
+ 
+ 0 bytes of memory
+
+Errors: none
+Warnings: none

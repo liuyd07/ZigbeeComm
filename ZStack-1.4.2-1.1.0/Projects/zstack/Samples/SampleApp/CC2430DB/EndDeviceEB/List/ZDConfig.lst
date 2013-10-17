@@ -1,0 +1,316 @@
+##############################################################################
+#                                                                            #
+# IAR 8051 C/C++ Compiler V7.20H/W32                   17/Oct/2013  21:52:35 #
+# Copyright 2004-2006 IAR Systems. All rights reserved.                      #
+#                                                                            #
+#    Core               =  plain                                             #
+#    Code model         =  banked                                            #
+#    Data model         =  large                                             #
+#    Calling convention =  xdata reentrant                                   #
+#    Constant location  =  data                                              #
+#    Dptr setup         =  1,16                                              #
+#    Source file        =  D:\Texas Instruments\ZStack-1.4.2-1.1.0\Component #
+#                          s\stack\zdo\ZDConfig.c                            #
+#    Command line       =  -f E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿Ú #
+#                          ÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\S #
+#                          ampleApp\CC2430DB\..\..\..\Tools\CC2430DB\f8wEnde #
+#                          v.cfg (-DCPU32MHZ -DFORCE_MAC_NEAR                #
+#                          -DROOT=__near_func -DMAC_OPT_FFD=0 -DBLINK_LEDS   #
+#                          "-DCONST=const __code" -DGENERIC=__generic) -f    #
+#                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\..\..\..\Tools\CC2430DB\f8wConfig. #
+#                          cfg (-DSECURE=0 -DDEFAULT_CHANLIST=0x00000800     #
+#                          -DZDAPP_CONFIG_PAN_ID=0xFFFF                      #
+#                          -DNWK_START_DELAY=100 -DEXTENDED_JOINING_RANDOM_M #
+#                          ASK=0x007F -DBEACON_REQUEST_DELAY=100             #
+#                          -DBEACON_REQ_DELAY_MASK=0x00FF                    #
+#                          -DROUTE_EXPIRY_TIME=30 -DAPSC_ACK_WAIT_DURATION_P #
+#                          OLLED=3000 -DNWK_INDIRECT_MSG_TIMEOUT=7           #
+#                          -DMAX_RREQ_ENTRIES=10 -DAPSC_MAX_FRAME_RETRIES=3  #
+#                          -DNWK_MAX_DATA_RETRIES=2                          #
+#                          -DMAX_POLL_FAILURE_RETRIES=2 -DMAX_BCAST=9        #
+#                          -DAPS_MAX_GROUPS=16 -DMAX_RTG_ENTRIES=20          #
+#                          -DNWK_MAX_BINDING_ENTRIES=10                      #
+#                          -DMAX_BINDING_CLUSTER_IDS=5                       #
+#                          "-DDEFAULT_KEY={0x01, 0x03, 0x05, 0x07, 0x09,     #
+#                          0x0B, 0x0D, 0x0F, 0x00, 0x02, 0x04, 0x06, 0x08,   #
+#                          0x0A, 0x0C, 0x0D}" -DRFD_RCVC_ALWAYS_ON=FALSE     #
+#                          -DPOLL_RATE=1000 -DQUEUED_POLL_RATE=100           #
+#                          -DRESPONSE_POLL_RATE=100 -DREJOIN_POLL_RATE=440   #
+#                          -DTOP_BOOT_PAGES=0) -I "D:\Program Files\IAR      #
+#                          Systems\Embedded Workbench 4.05 Evaluation        #
+#                          version\8051\inc\" -I "D:\Program Files\IAR       #
+#                          Systems\Embedded Workbench 4.05 Evaluation        #
+#                          version\8051\inc\clib\" -I                        #
+#                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ #
+#                          ¶Æ½Ì¨\CC2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\ #
+#                          zstack\Samples\SampleApp\CC2430DB\..\Source\ -I   #
+#                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\..\..\..\ZMain\TI2430DB\ -I        #
+#                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\..\..\..\..\..\Components\mt\ -I   #
+#                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\..\..\..\..\..\Components\hal\incl #
+#                          ude\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC243 #
+#                          0´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp #
+#                          les\SampleApp\CC2430DB\..\..\..\..\..\Components\ #
+#                          hal\target\CC2430EB\ -I                           #
+#                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\..\..\..\..\..\Components\osal\mcu #
+#                          \ccsoc\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC #
+#                          2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\S #
+#                          amples\SampleApp\CC2430DB\..\..\..\..\..\Componen #
+#                          ts\osal\include\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨ #
+#                          Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects #
+#                          \zstack\Samples\SampleApp\CC2430DB\..\..\..\..\.. #
+#                          \Components\stack\af\ -I                          #
+#                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\..\..\..\..\..\Components\stack\nw #
+#                          k\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´ #
+#                          ®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Sample #
+#                          s\SampleApp\CC2430DB\..\..\..\..\..\Components\st #
+#                          ack\sec\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\C #
+#                          C2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\ #
+#                          Samples\SampleApp\CC2430DB\..\..\..\..\..\Compone #
+#                          nts\stack\sys\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶ #
+#                          Æ½Ì¨\CC2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\z #
+#                          stack\Samples\SampleApp\CC2430DB\..\..\..\..\..\C #
+#                          omponents\stack\zdo\ -I                           #
+#                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\..\..\..\..\..\Components\zmac\f8w #
+#                          \ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´® #
+#                          ¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples #
+#                          \SampleApp\CC2430DB\..\..\..\..\..\Components\zma #
+#                          c\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´ #
+#                          ®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Sample #
+#                          s\SampleApp\CC2430DB\..\..\..\..\..\Components\se #
+#                          rvices\saddr\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ #
+#                          ½Ì¨\CC2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zs #
+#                          tack\Samples\SampleApp\CC2430DB\..\..\..\..\..\Co #
+#                          mponents\services\sdata\ -I                       #
+#                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\..\..\..\..\..\Components\mac\incl #
+#                          ude\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC243 #
+#                          0´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp #
+#                          les\SampleApp\CC2430DB\..\..\..\..\..\Components\ #
+#                          mac\high_level\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ #
+#                          ¶Æ½Ì¨\CC2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\ #
+#                          zstack\Samples\SampleApp\CC2430DB\..\..\..\..\..\ #
+#                          Components\mac\low_level\srf03\ -I                #
+#                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\..\..\..\..\..\Components\mac\low_ #
+#                          level\srf03\single_chip\ -D CC2430EB -D           #
+#                          NWK_AUTO_POLL -D ZTOOL_P1 -D MT_TASK -D           #
+#                          ZG_ENDDEVICE -lC E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ #
+#                          ½Ì¨\CC2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zs #
+#                          tack\Samples\SampleApp\CC2430DB\EndDeviceEB\List\ #
+#                           -lA E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´® #
+#                          ¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples #
+#                          \SampleApp\CC2430DB\EndDeviceEB\List\             #
+#                          --diag_suppress Pe001,Pa010 --diag_remark pe550   #
+#                          -o E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿Ú #
+#                          ÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\S #
+#                          ampleApp\CC2430DB\EndDeviceEB\Obj\ -e             #
+#                          --require_prototypes -z9 --no_code_motion         #
+#                          --debug --core=plain --dptr=16,1                  #
+#                          --data_model=large --code_model=banked            #
+#                          --calling_convention=xdata_reentrant              #
+#                          --place_constants=data --nr_virtual_regs 8        #
+#                          "D:\Texas Instruments\ZStack-1.4.2-1.1.0\Componen #
+#                          ts\stack\zdo\ZDConfig.c"                          #
+#    List file          =  E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\EndDeviceEB\List\ZDConfig.lst      #
+#    Object file        =  E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\EndDeviceEB\Obj\ZDConfig.r51       #
+#                                                                            #
+#                                                                            #
+##############################################################################
+
+D:\Texas Instruments\ZStack-1.4.2-1.1.0\Components\stack\zdo\ZDConfig.c
+      1          /*********************************************************************
+      2              Filename:       ZDConfig.c
+      3              Revised:        $Date: 2006-08-15 10:35:43 -0700 (Tue, 15 Aug 2006) $
+      4              Revision:       $Revision: 11786 $
+      5          
+      6              Description:
+      7          
+      8                This file contains the configuration attributes for the
+      9                Zigbee Device Object.  These are references to Configuration
+     10                items that MUST be defined in ZDApp.c.  The names mustn't
+     11                change.
+     12          
+     13              Notes:
+     14          
+     15              Copyright (c) 2006 by Texas Instruments, Inc.
+     16              All Rights Reserved.  Permission to use, reproduce, copy, prepare
+     17              derivative works, modify, distribute, perform, display or sell this
+     18              software and/or its documentation for any purpose is prohibited
+     19              without the express written consent of Texas Instruments, Inc.
+     20          *********************************************************************/
+     21          
+     22          /*********************************************************************
+     23           * INCLUDES
+     24           */
+     25          #include "ZComdef.h"
+     26          #include "AF.h"
+     27          #include "ZDObject.h"
+     28          #include "ZDConfig.h"
+     29          #include "ZDCache.h"
+     30          
+     31           /*********************************************************************
+     32           * MACROS
+     33           */
+     34          
+     35          /*********************************************************************
+     36           * CONSTANTS
+     37           */
+     38          
+     39          /*********************************************************************
+     40           * TYPEDEFS
+     41           */
+     42          
+     43          /*********************************************************************
+     44           * GLOBAL VARIABLES
+     45           */
+     46          
+     47          /*********************************************************************
+     48           * EXTERNAL VARIABLES
+     49           */
+     50          
+     51          /*********************************************************************
+     52           * EXTERNAL FUNCTIONS
+     53           */
+     54          
+     55          /*********************************************************************
+     56           * LOCAL FUNCTIONS
+     57           */
+     58          
+     59          /*********************************************************************
+     60           * LOCAL VARIABLES
+     61           */
+     62          
+
+   \                                 In segment XDATA_I, align 1, keep-with-next
+     63          NodeDescriptorFormat_t ZDO_Config_Node_Descriptor =
+   \                     ZDO_Config_Node_Descriptor:
+   \   000000                DS 10
+   \   00000A                REQUIRE `?<Initializer for ZDO_Config_Node_Descriptor>`
+   \   00000A                REQUIRE __INIT_XDATA_I
+     64          {
+     65          #if defined( ZDO_COORDINATOR ) && !defined( SOFT_START )
+     66            NODETYPE_COORDINATOR,
+     67          #elif defined (RTR_NWK)
+     68          	NODETYPE_ROUTER,
+     69          #else
+     70            NODETYPE_DEVICE,          // Logical Type
+     71          #endif
+     72            0,                        // User Descriptor Available is set later.
+     73            0,                        // Complex Descriptor Available is set later.
+     74            0,			              		// Reserved
+     75            0,	        	            // NO APS flags
+     76            NODEFREQ_2400,            // Frequency Band
+     77            // MAC Capabilities
+     78          #if defined (RTR_NWK)
+     79            (
+     80            #if defined( ZDO_COORDINATOR ) || defined( SOFT_START )
+     81              CAPINFO_ALTPANCOORD |
+     82            #endif
+     83              CAPINFO_DEVICETYPE_FFD |
+     84              CAPINFO_POWER_AC |
+     85              CAPINFO_RCVR_ON_IDLE ),
+     86          #else
+     87            CAPINFO_DEVICETYPE_RFD
+     88            #if ( RFD_RCVC_ALWAYS_ON == TRUE)
+     89              | CAPINFO_RCVR_ON_IDLE
+     90            #endif
+     91            ,
+     92          #endif
+     93            { 0x00, 0x00 },           // Manfacturer Code - *YOU FILL IN*
+     94            MAX_BUFFER_SIZE,          // Maximum Buffer Size.
+     95            // The maximum transfer size field isn't used and spec says to set to 0.
+     96            {0, 0},
+     97            ( 0
+     98          #if defined( ZDO_COORDINATOR ) && ( SECURE != 0 )    
+     99              | PRIM_TRUST_CENTER
+    100          #endif      
+    101          #if defined( ZDO_CACHE ) && ( CACHE_DEV_MAX > 0 )
+    102              | PRIM_DISC_TABLE
+    103          #endif
+    104            )
+    105          };
+    106          
+
+   \                                 In segment XDATA_I, align 1, keep-with-next
+    107          NodePowerDescriptorFormat_t ZDO_Config_Power_Descriptor =
+   \                     ZDO_Config_Power_Descriptor:
+   \   000000                DS 2
+   \   000002                REQUIRE `?<Initializer for ZDO_Config_Power_Descriptor>`
+   \   000002                REQUIRE __INIT_XDATA_I
+
+   \                                 In segment XDATA_ID, align 1, keep-with-next
+   \                     `?<Initializer for ZDO_Config_Node_Descriptor>`:
+   \   000000   02400000     DB 2, 64, 0, 0, 0, 80, 0, 0
+   \            00500000
+   \   000008   0000         DW 0
+
+   \                                 In segment XDATA_ID, align 1, keep-with-next
+   \                     `?<Initializer for ZDO_Config_Power_Descriptor>`:
+   \   000000   2182         DW 33313
+    108          {
+    109          #if defined ( RTR_NWK )
+    110            NODECURPWR_RCVR_ALWAYS_ON,
+    111            NODEAVAILPWR_MAINS,       // available power sources
+    112            NODEAVAILPWR_MAINS,       // current power source
+    113            NODEPOWER_LEVEL_100       // Power Level
+    114          #else
+    115            // Assume End Device
+    116          #if defined ( NWK_AUTO_POLL )
+    117            NODECURPWR_RCVR_AUTO,
+    118          #else
+    119            NODECURPWR_RCVR_STIM,
+    120          #endif
+    121            NODEAVAILPWR_RECHARGE,    // available power sources
+    122            NODEAVAILPWR_RECHARGE,    // current power source
+    123            NODEPOWER_LEVEL_66        // Power Level
+    124          #endif
+    125          };
+    126          
+    127          /*********************************************************************
+    128          *********************************************************************/
+    129          
+    130          
+
+
+   Segment part sizes:
+
+     Function/Label                 Bytes
+     --------------                 -----
+     ZDO_Config_Node_Descriptor       10
+     ZDO_Config_Power_Descriptor       2
+     ?<Initializer for ZDO_Config_Node_Descriptor>
+                                      10
+     ?<Initializer for ZDO_Config_Power_Descriptor>
+                                       2
+
+ 
+ 12 bytes in segment XDATA_I
+ 12 bytes in segment XDATA_ID
+ 
+ 12 bytes of CODE  memory
+ 12 bytes of XDATA memory
+
+Errors: none
+Warnings: none

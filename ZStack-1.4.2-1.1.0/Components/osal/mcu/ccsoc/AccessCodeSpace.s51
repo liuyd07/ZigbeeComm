@@ -1,0 +1,84 @@
+   NAME  CC2430_READ_ANY_CODE_BYTE
+
+    ; Copyright (c) 2006 by Texas Instruments, Inc.
+    ; All Rights Reserved.  Permission to use, reproduce, copy, prepare
+    ; derivative works, modify, distribute, perform, display or sell this
+    ; software and/or its documentation for any purpose is prohibited
+    ; without the express written consent of Texas Instruments, Inc.
+
+MEMCTR   EQU   0xC7
+
+   RSEG   NEAR_CODE
+   PUBLIC GetCodeByte
+   FUNCTION GetCodeByte, 0203H
+
+   ;
+   ; Get a byte from code space.
+   ;
+   ;    uint8 GetCodeByte(uint32 logical_address)
+   ;
+   ;      Input: the "logical address" is just the offset of the
+   ;             byte assuming a contiguous flat address space.
+   ;
+   ;      Returns: Byte read returned in R1
+   ;
+   ; ***********************************
+   ; ***  Function is a __near_func  ***
+   ; ***********************************
+   ;
+   ; first we have to map the logical address to the linker address. then
+   ; we can populate the MEMCTR register properly.
+   ;
+   ;      logical adr         linker adr     Bank
+   ;    0x00000-0x07FFF -> 0x00000-0x07FFF     0
+   ;    0x08000-0x08FFF -> 0x18000-0x1FFFF     1
+   ;    0x10000-0x17FFF -> 0x28000-0x2FFFF     2
+   ;    0x18000-0x1FFFF -> 0x38000-0x3FFFF     3
+   ;
+   ; the logical address is in R5:R4:R3:R2 (MSB-LSB) but R5 should always be 0.
+   ;
+   ; we can tell the bank by shifting the entire address left 1. after that
+   ; the third byte (R4) will contain the bank number (0-3). awkwardness
+   ; comes in when setting the DPTR. Once the logical address is > 0x7FFF
+   ; the linker address is always begins at 0xb8000 where 'b' is the bank
+   ; number.
+   ;
+   ;
+GetCodeByte:
+                  ; get the bank number
+  MOV A,R4        ; are we past 64K?
+  RL  A           ; shift the bit (if it's there) left
+  MOV B,A         ; save the shifted result in B
+  MOV A,R3        ; now we want to shift in the MSB in r3 to complete the bank number
+  ANL A,#0x80     ; mask off the MSB
+  RL  A           ; shift it into the lsb position.
+  ORL A,B         ; OR bit 0 in A with B to complete the bank number
+  SWAP A          ; swap to get the bank number into the correct place for MEMCTR
+  MOV B,A         ; save it in B
+
+                  ; here's the awkward part. if the bank is 2 we have to add
+                  ; 0x80 to R3.
+  XRL A,#0x20     ; A still has the nibble-swapped bank number. if this resault is 0 it was 2.
+  JNZ _notBank2
+  MOV A,R3        ; it's Bank 2. we need to modify R3 for later use in DPH
+  ORL A,#0x80
+  MOV R3,A
+                  ; prepare MEMCTR and DPTR
+_notBank2:
+  MOV A,MEMCTR    ; get current MEMCTR
+  MOV R4,A        ; save it
+  ANL A,#0xCF     ; mask off bank bits
+  ORL A,B         ; OR in the required bank number
+  MOV MEMCTR,A    ; save the result to MEMCTR
+  CLR A           ; get ready...
+  MOV DPH,R3
+  MOV DPL,R2
+
+  MOVC A,@A+DPTR  ; get byte
+  MOV  R1,A       ; move byte to return register
+  MOV MEMCTR,R4   ; restore MEMCTR
+
+  RET
+
+
+   END

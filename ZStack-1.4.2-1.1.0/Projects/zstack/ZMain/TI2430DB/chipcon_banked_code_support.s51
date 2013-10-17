@@ -1,0 +1,155 @@
+/******************************************************************************
+*                                                                             *
+*        **********                                                           *
+*       ************                                                          *
+*      ***        ***                                                         *
+*     ***    ++    ***                                                        *
+*     ***   +  +   ***                      CHIPCON                           *
+*     ***   +                                                                 *
+*     ***   +  +   ***                                                        *
+*     ***    ++    ***                                                        *
+*      ***        ***                                                         *
+*       ************                                                          *
+*        **********                                                           *
+*                                                                             *
+*******************************************************************************
+
+Filename:     chipcon_banked_code_support.s51
+Author:
+Revised:      28/11-2005
+Revision:     1.0
+
+Description:
+Functions to make banked CALL and RET.
+
+The register holding current code bank:
+?CBANK
+
+Should be defined to IAR XLINK Linker with:
+-D?CBANK=xx
+
+Copyright 2004-2005 IAR Systems. All rights reserved.
+
+******************************************************************************/
+
+
+
+        MODULE  ?BANKED_CODE_SUPPORT
+
+#include "iar_common.h"
+
+        EXTERN  ?CBANK
+        EXTERN  ?RESET_CODE_BANK
+        REQUIRE ?RESET_CODE_BANK
+        RSEG    CSTART
+
+
+
+;-----------------------------------------------------------------------------
+;
+;       Function: ?BCALL
+;
+;       Description: Saves the caller bank on stack, Switches to bank defined
+;                    by A register and jumps to the banked function A:DPTR.
+;
+;       Register input:
+;               DPTR:  16-bit function address
+;               A:     8-bit page address
+;
+;       Stack:
+;
+;           +--------+
+;           | ?CBANK | <-- SP end
+;           + - - - -+
+;           |  retH  | <-- SP begin
+;           + - - - -+
+;           |  retL  |
+;           + - - - -+
+;   CFA --> | xxxxxx |
+;           +--------+
+;
+;               16-bit return address
+;
+;       Register output:
+;               DPTR:  16-bit function-address
+;               A  = 0
+;
+;       Stack usage: 1
+;-----------------------------------------------------------------------------
+   PUBLIC  ?BCALL
+
+   cfi BLOCK ?BCALL USING cfi_common
+   cfi NOFUNCTION
+   cfi A undefined
+   cfi CFA_MACHINE MACHINE_SP - 2
+
+?BCALL:
+   SWAP  A
+   MOV   B, A
+   MOV   A, ?CBANK   ; read current MEMCTR
+   ANL   A, #0x30    ; mask bank bits
+   SWAP  A
+   PUSH  A           ; store return bank (bank number only)
+
+   cfi CFA_MACHINE MACHINE_SP - 3
+
+   MOV   A, ?CBANK   ; read current MEMCTR
+   ANL   A, #0xCF    ; mask bank bits
+   ORL   A, B        ; add new bank number to MEMCTR
+   MOV   ?CBANK, A
+
+   CLR   A
+   JMP   @A+DPTR
+
+
+;-----------------------------------------------------------------------------
+;
+;       Function: ?BRET
+;
+;       Description: Return from banked function.
+;                    Leaves current function, Switched bank and returns to
+;                    function that called ?BCALL.
+;
+;                    NOTE: This function will be jumped to.
+;
+;       Register input:
+;               None
+;
+;       Stack input:
+;
+;               +------------+ <-- SP
+;               |  RET bank  |
+;               + - - - - - -+
+;               |  RET High  |
+;               + - - - - - -+
+;               |  RET Low   |
+;               +------------+
+;
+;               24-bit return address
+;
+;       Register output:
+;               DPTR:  16-bit function-address
+;               A  = 0
+;
+;       Stack usage: 3
+;               Stack: 16-bit return address
+;-----------------------------------------------------------------------------
+   PUBLIC  ?BRET
+
+?BRET:
+   cfi CFA_MACHINE MACHINE_SP - 3
+
+   MOV   B, ?CBANK   ; get current bank
+   ANL   B, #0xCF    ; mask bank bits
+
+   POP   A           ; pop bank number
+   SWAP  A
+   ORL   A, B        ; add the MEMCTR bits
+   MOV   ?CBANK, A   ; set new bank
+   cfi   CFA_MACHINE MACHINE_SP - 2
+
+   RET
+
+   cfi ENDBLOCK ?BCALL
+
+   END

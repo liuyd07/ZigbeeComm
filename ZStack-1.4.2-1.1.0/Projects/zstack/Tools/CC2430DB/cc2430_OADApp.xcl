@@ -1,0 +1,289 @@
+////////////////////////////////////////////////////////////////////////////////
+//
+//  File: cc2430.xcl
+//
+//  Description:
+//    This is an extended command line file for XLINK tool to be used when
+//    developing/debugging applications written for the Chipcon CC2430.
+//    This file was originally created by concatenation of default files
+//    provided by IAR: lnk51ew_cc2430.xcl  and  lnk_base.xcl.
+//
+//  Important:
+//    Data cannot be located at address zero, this address is reserved for
+//    the null pointer.
+//
+////////////////////////////////////////////////////////////////////////////////6
+
+
+////////////////////////////////////////////////////////////////////////////////
+//
+// Variables (used by lnk_base.xcl)
+// ================================
+//
+// Segment limits
+// --------------
+//
+//
+//    IDATA
+//
+-D_IDATA_END=0xFF              // Last address of Idata memory
+//
+//
+//    PDATA
+//
+-D_PDATA_START=0xEF00          // First address for PDATA memory.
+-D_PDATA_END=0xEFFF            // Last address for PDATA memory.
+-D_INTVEC_SIZE=0x93
+-D_CODE_START_OFFSET=0x800     // set code base at page 1
+//    IXDATA
+//
+// These settings are used for devices that don't use PM2/PM3
+-D_IXDATA_START=E000           // The internal IXDATA block is 8K,
+-D_IXDATA_END=FEFF             // End of IXDATA if PM2/PM3 are not used
+//                               FF00-FFFF mapped to IDATA
+//
+// These settings are used for devices that use PM2/PM3,
+// IXDATA_START places most of XSTACK in volatile XDATA block
+//-D_IXDATA_START=EE00         // The internal IXDATA block is 4K+,
+//-D_IXDATA_END=FD55           // FD56-FEFF used for CC2430 reg savings
+//                                FF00-FFFF mapped to IDATA
+//
+//
+//    XDATA
+//
+-D_XDATA_START=_IXDATA_START   // The IXDATA is used as XDATA.
+-D_XDATA_END=_IXDATA_END
+//
+//
+//    PM0_XDATA
+//
+
+-D_PM0_XDATA_START=E000        // This 4K block retains in PM0/PM1,
+-D_PM0_XDATA_END=EFFF          // its contents are lost during PM2/PM3
+//
+//
+//    NEAR CODE
+//
+-D_NEAR_CODE_END=0x7FFF        // Last address for near code, near code segment is 32KB in banked code model.
+//
+//
+//    TINY CODE
+//
+-D_TINY_CODE_END=0x7FF         // Last address for tiny code.
+//
+//
+//    CODE
+//
+// These settings determine the size/location of the ROOT segment.
+// Decrease _CODE_END to decrease ROOT memory and increase BANK1 memory.
+-D_CODE_START=(_CODE_START_OFFSET+_INTVEC_SIZE)
+
+//-D_CODE_START=0x0000         // Code size = 128k for CC2430-F128
+-D_CODE_END=0x2FFF             // Last address for ROOT bank
+//
+-D_BANK1A=(10000+_CODE_END+1)  // First address for BANK1
+//
+//
+//    ZIGBEE NV
+//
+-D_ZNV_SIZE=0x2000             // Size of ZigBee NV (2 pages) + size of boot code at end of flash (2 pages)
+-D_ZIGNVA=(3FFFF-_ZNV_SIZE+1)  // First address for ZigBee NV
+//
+//
+//    HEX FILE GENERATION
+//
+// Include the following line when generating hex file:
+// -M(CODE)_BANK1A-1FFFF,28000-2FFFF,38000-(_ZIGNVA-1)=(_CODE_END+1)-0xFFFF,0x10000-0x17FFF,0x18000-(0x1FFFF-_ZNV_SIZE)
+//
+//
+//
+// Special SFRs
+// ------------
+//
+//
+//    Register bank setup
+//
+-D?REGISTER_BANK=0             // Default register bank (0,1,2,3).
+-D_REGISTER_BANK_START=0       // Start address for default register bank (00,08,10,18).
+-D_FIRST_BANK_ADDR=0x10000
+-D_NR_OF_BANKS=0x03
+//
+//
+//    PDATA bank setup
+//
+-D?PBANK_NUMBER=EF             // High byte of 16-bit address to the PDATA area
+-D?PBANK=93                    // Most significant byte in MOVX A,@R0. (0x93 is sfr MPAGE)
+//
+//
+//    Virtual register setup
+//    ----------------------
+//
+-D_BREG_START=0x00             // The bit address where the BREG segments starts.
+                               // Must be placed on: _BREG_START%8=0 where _BREG_START <= 0x78.
+-D?VB=0x20                     // ?VB is used when referencing BREG as whole byte.
+                               // Must be placed on: ?VB=0x20+_BREG_START/8
+//
+//
+//
+// To the reader: Ignore this section ------------------------------------------
+//
+// Dummy definitions needed to satisfy lnk_base.xcl
+-D_FAR_DATA_NR_OF_BANKS=0x0E   // Number of banks in far data memory.
+-D_FAR_DATA_START=0x010001     // First address of far memory.
+-D_FAR_DATA_END=0xFFFFFF       // Last address of far memory.
+-D_FAR_CODE_START=_CODE_START  // First address for far code.
+-D_FAR_CODE_END=_CODE_END      // Last address for far code.
+// End of the section to ignore ------------------------------------------------
+//
+////////////////////////////////////////////////////////////////////////////////
+
+
+
+////////////////////////////////////////////////////////////////////////////////
+//
+//  File: the following defintions are extracted from the lnkbase.xcl file
+//
+////////////////////////////////////////////////////////////////////////////////
+//
+//
+//    IDATA memory
+//
+// Setup "bit" segments (only for '__no_init bool' variables).
+-Z(BIT)BREG=_BREG_START
+-Z(BIT)BIT_N=0-7F
+//
+-Z(DATA)REGISTERS+8=_REGISTER_BANK_START
+-Z(DATA)BDATA_Z,BDATA_N,BDATA_I=20-2F
+-Z(DATA)VREG+_NR_OF_VIRTUAL_REGISTERS=08-7F
+-Z(DATA)PSP,XSP=08-7F
+-Z(DATA)DOVERLAY=08-7F
+-Z(DATA)DATA_I,DATA_Z,DATA_N=08-7F
+
+//
+-U(IDATA)0-7F=(DATA)0-7F
+-Z(IDATA)IDATA_I,IDATA_Z,IDATA_N=08-_IDATA_END
+-Z(IDATA)ISTACK+_IDATA_STACK_SIZE#08-_IDATA_END
+-Z(IDATA)IOVERLAY=08-FF
+//
+//
+//    ROM memory
+//
+// Note: INTVEC must be placed first.
+// Note: CSTART Must be located in first 64k.
+//
+//    Program memory
+//
+-Z(CODE)INTVEC=0
+-Z(CODE)PREAMBLE,OAD_IMAGE_ID=_CODE_START-_CODE_END   // set preamble to begin right after interrupt vectors
+-Z(CODE)CSTART=_CODE_START-_CODE_END
+-Z(CODE)RCODE=_CODE_START-_CODE_END
+//-Z(CODE)TINY_CODE=_CODE_START-_TINY_CODE_END
+-Z(CODE)NEAR_CODE=_CODE_START-_NEAR_CODE_END
+-Z(CODE)DIFUNCT=_CODE_START-_CODE_END
+-Z(CODE)FAR_CODE=_CODE_START-_CODE_END
+//
+-P(CODE)BANKED_CODE=_BANK1A-1FFFF,28000-2FFFF,38000-(_ZIGNVA-1)
+//
+//
+//    Initializers
+//
+-Z(CODE)BIT_ID,BDATA_ID,DATA_ID,IDATA_ID,IXDATA_ID,PDATA_ID,XDATA_ID=_CODE_START-_CODE_END
+-Z(CODE)HUGE_ID=_FAR_CODE_START-_FAR_CODE_END
+//
+//
+//    Constants located in code memory
+//
+-Z(CODE)CODE_C=_CODE_START-_CODE_END
+-Z(CODE)FAR_CODE_C=_FAR_CODE_START-_FAR_CODE_END
+-Z(CODE)HUGE_CODE_C=_FAR_CODE_START-_FAR_CODE_END
+
+-Z(CODE)CHECKSUM#_CODE_END
+//
+//
+//    XDATA memory
+//
+//    PM0/PM1 data memory - lost during PM2/PM3
+//
+-Z(XDATA)PM0_XDATA=_PM0_XDATA_START-_PM0_XDATA_END
+//
+//
+//    Stacks located in XDATA
+//
+-Z(XDATA)EXT_STACK+_EXTENDED_STACK_SIZE=_EXTENDED_STACK_START-_EXTENDED_STACK_END
+-Z(XDATA)PSTACK+_PDATA_STACK_SIZE=_PDATA_START-_PDATA_END
+-Z(XDATA)XSTACK+_XDATA_STACK_SIZE=_XDATA_START-_XDATA_END
+//
+//
+//    PDATA - data memory
+//
+-Z(XDATA)PDATA_N,PDATA_Z,PDATA_I=_PDATA_START-_PDATA_END
+//
+//
+//    XDATA - data memory
+//
+-Z(XDATA)IXDATA_N,IXDATA_Z,IXDATA_I=_IXDATA_START-_IXDATA_END
+-Z(XDATA)XDATA_N,XDATA_Z,XDATA_I=_XDATA_START-_XDATA_END
+-Z(XDATA)XDATA_HEAP+_XDATA_HEAP_SIZE=_XDATA_START-_XDATA_END
+-Z(CONST)XDATA_ROM_C=_XDATA_START-_XDATA_END
+//
+//
+//    FAR - extended data memory
+//
+// Initialized FAR data
+// Note: The segment FAR_I and FAR_ID must start at the same address within a 64k bank,
+// they must therefore be located first in the FAR data area, and in the xlink linker file
+// Note: *_I segment is located in RAM but *_ID segments is located in ROM
+
+-Z(SPLIT-XDATA)FAR_Z=[_FAR_DATA_START-_FAR_DATA_END]/10000
+-Z(SPLIT-XDATA)FAR_I=[_FAR_DATA_START-_FAR_DATA_END]/10000
+-Z(SPLIT-CODE)FAR_ID=[_FAR_CODE_START-_FAR_CODE_END]/10000
+-Z(SPLIT-XDATA)FAR_HEAP+_FAR_HEAP_SIZE=[_FAR_DATA_START-_FAR_DATA_END]/10000
+-P(XDATA)FAR_N=[_FAR_DATA_START-_FAR_DATA_END]*_FAR_DATA_NR_OF_BANKS+10000
+-P(CONST)FAR_ROM_C=[_FAR_DATA_START-_FAR_DATA_END]*E+10000
+//
+//
+//    HUGE - extended data memory
+//
+-Z(XDATA)HUGE_N,HUGE_Z,HUGE_I=_FAR_DATA_START-_FAR_DATA_END
+-Z(XDATA)HUGE_HEAP+_HUGE_HEAP_SIZE=_FAR_DATA_START-_FAR_DATA_END
+-Z(CONST)HUGE_ROM_C=_FAR_DATA_START-_FAR_DATA_END
+//
+//
+-cx51
+//
+//
+//    CC2430 Device Specific
+//    ======================
+//
+//    Overlayed Code Bank Addresses
+//
+-D_BANK1_START=_BANK1A      // 1st overlayed code bank
+-D_BANK1_END=0x1FFFF
+//
+-D_BANK2_START=0x28000      // 2nd overlayed code bank
+-D_BANK2_END=0x2FFFF
+//
+-D_BANK3_START=0x38000      // 3rd overlayed code bank
+-D_BANK3_END=(_ZIGNVA-1)
+//
+-P(CODE)BANK1=_BANK1_START-_BANK1_END
+-P(CODE)BANK2=_BANK2_START-_BANK2_END
+-P(CODE)BANK3=_BANK3_START-_BANK3_END
+//
+//
+//    ZigBee Stack Non-Volatile Storage
+//
+-D_ZIGNV_START=_ZIGNVA      // 2 pages of flash
+-D_ZIGNV_END=(_ZIGNV_START+0x0FFF)
+//
+-P(CODE)ZIGNV=_ZIGNV_START-_ZIGNV_END
+//
+//
+//    IEEE Address Space
+//
+-D_IEEE_ADDR_START=0x3FFF8  // Last 8 bytes of flash
+-D_IEEE_ADDR_END=0x3FFFF
+//
+-Z(CODE)IEEE_ADDRESS_SPACE=_IEEE_ADDR_START-_IEEE_ADDR_END
+//
+////////////////////////////////////////////////////////////////////////////////

@@ -1,0 +1,552 @@
+//////////////////////////////////////////////////////////////////////////////
+//                                                                           /
+// IAR 8051 C/C++ Compiler V7.20H/W32                  24/Jan/2013  14:47:42 /
+// Copyright 2004-2006 IAR Systems. All rights reserved.                     /
+//                                                                           /
+//    Core               =  plain                                            /
+//    Code model         =  banked                                           /
+//    Data model         =  large                                            /
+//    Calling convention =  xdata reentrant                                  /
+//    Constant location  =  data                                             /
+//    Dptr setup         =  1,16                                             /
+//    Source file        =  D:\Texas Instruments\ZStack-1.4.2-1.1.0\Componen /
+//                          ts\mt\MT_AF.c                                    /
+//    Command line       =  -f E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂ /
+//                          ç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee20 /
+//                          06-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\S /
+//                          amples\SampleApp\CC2430DB\..\..\..\Tools\CC2430D /
+//                          B\f8wRouter.cfg (-DCPU32MHZ -DFORCE_MAC_NEAR     /
+//                          -DROOT=__near_func -DMAC_CFG_APP_PENDING_QUEUE=T /
+//                          RUE -DRTR_NWK -DBLINK_LEDS "-DCONST=const        /
+//                          __code" -DGENERIC=__generic) -f                  /
+//                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª /
+//                          ·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006- /
+//                          ´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp /
+//                          les\SampleApp\CC2430DB\..\..\..\Tools\CC2430DB\f /
+//                          8wConfig.cfg (-DSECURE=0                         /
+//                          -DDEFAULT_CHANLIST=0x00000800                    /
+//                          -DZDAPP_CONFIG_PAN_ID=0xFFFF                     /
+//                          -DNWK_START_DELAY=100 -DEXTENDED_JOINING_RANDOM_ /
+//                          MASK=0x007F -DBEACON_REQUEST_DELAY=100           /
+//                          -DBEACON_REQ_DELAY_MASK=0x00FF                   /
+//                          -DROUTE_EXPIRY_TIME=30 -DAPSC_ACK_WAIT_DURATION_ /
+//                          POLLED=3000 -DNWK_INDIRECT_MSG_TIMEOUT=7         /
+//                          -DMAX_RREQ_ENTRIES=10 -DAPSC_MAX_FRAME_RETRIES=3 /
+//                           -DNWK_MAX_DATA_RETRIES=2                        /
+//                          -DMAX_POLL_FAILURE_RETRIES=2 -DMAX_BCAST=9       /
+//                          -DAPS_MAX_GROUPS=16 -DMAX_RTG_ENTRIES=20         /
+//                          -DNWK_MAX_BINDING_ENTRIES=10                     /
+//                          -DMAX_BINDING_CLUSTER_IDS=5                      /
+//                          "-DDEFAULT_KEY={0x01, 0x03, 0x05, 0x07, 0x09,    /
+//                          0x0B, 0x0D, 0x0F, 0x00, 0x02, 0x04, 0x06, 0x08,  /
+//                          0x0A, 0x0C, 0x0D}" -DRFD_RCVC_ALWAYS_ON=FALSE    /
+//                          -DPOLL_RATE=1000 -DQUEUED_POLL_RATE=100          /
+//                          -DRESPONSE_POLL_RATE=100 -DREJOIN_POLL_RATE=440  /
+//                          -DTOP_BOOT_PAGES=0) -I "D:\Program Files\IAR     /
+//                          Systems\Embedded Workbench 4.05 Evaluation       /
+//                          version\8051\inc\" -I "D:\Program Files\IAR      /
+//                          Systems\Embedded Workbench 4.05 Evaluation       /
+//                          version\8051\inc\clib\" -I                       /
+//                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª /
+//                          ·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006- /
+//                          ´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp /
+//                          les\SampleApp\CC2430DB\ -I                       /
+//                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª /
+//                          ·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006- /
+//                          ´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp /
+//                          les\SampleApp\CC2430DB\..\Source\ -I             /
+//                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª /
+//                          ·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006- /
+//                          ´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp /
+//                          les\SampleApp\CC2430DB\..\..\..\ZMain\TI2430DB\  /
+//                          -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂ /
+//                          ç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee20 /
+//                          06-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\S /
+//                          amples\SampleApp\CC2430DB\..\..\..\..\..\Compone /
+//                          nts\mt\ -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ /
+//                          \ÎÞÏßÍøÂç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ /
+//                          ZigBee2006-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\ /
+//                          zstack\Samples\SampleApp\CC2430DB\..\..\..\..\.. /
+//                          \Components\hal\include\ -I                      /
+//                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª /
+//                          ·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006- /
+//                          ´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp /
+//                          les\SampleApp\CC2430DB\..\..\..\..\..\Components /
+//                          \hal\target\CC2430EB\ -I                         /
+//                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª /
+//                          ·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006- /
+//                          ´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp /
+//                          les\SampleApp\CC2430DB\..\..\..\..\..\Components /
+//                          \osal\mcu\ccsoc\ -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC243 /
+//                          0¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\Zi /
+//                          gBee2006\ZigBee2006-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\ /
+//                          Projects\zstack\Samples\SampleApp\CC2430DB\..\.. /
+//                          \..\..\..\Components\osal\include\ -I            /
+//                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª /
+//                          ·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006- /
+//                          ´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp /
+//                          les\SampleApp\CC2430DB\..\..\..\..\..\Components /
+//                          \stack\af\ -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢× /
+//                          ÊÁÏ\ÎÞÏßÍøÂç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee20 /
+//                          06\ZigBee2006-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projec /
+//                          ts\zstack\Samples\SampleApp\CC2430DB\..\..\..\.. /
+//                          \..\Components\stack\nwk\ -I                     /
+//                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª /
+//                          ·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006- /
+//                          ´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp /
+//                          les\SampleApp\CC2430DB\..\..\..\..\..\Components /
+//                          \stack\sec\ -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢ /
+//                          ×ÊÁÏ\ÎÞÏßÍøÂç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2 /
+//                          006\ZigBee2006-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Proje /
+//                          cts\zstack\Samples\SampleApp\CC2430DB\..\..\..\. /
+//                          .\..\Components\stack\sys\ -I                    /
+//                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª /
+//                          ·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006- /
+//                          ´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp /
+//                          les\SampleApp\CC2430DB\..\..\..\..\..\Components /
+//                          \stack\zdo\ -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢ /
+//                          ×ÊÁÏ\ÎÞÏßÍøÂç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2 /
+//                          006\ZigBee2006-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Proje /
+//                          cts\zstack\Samples\SampleApp\CC2430DB\..\..\..\. /
+//                          .\..\Components\zmac\f8w\ -I                     /
+//                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª /
+//                          ·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006- /
+//                          ´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp /
+//                          les\SampleApp\CC2430DB\..\..\..\..\..\Components /
+//                          \zmac\ -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ /
+//                          ÎÞÏßÍøÂç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\Z /
+//                          igBee2006-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\z /
+//                          stack\Samples\SampleApp\CC2430DB\..\..\..\..\..\ /
+//                          Components\services\saddr\ -I                    /
+//                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª /
+//                          ·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006- /
+//                          ´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp /
+//                          les\SampleApp\CC2430DB\..\..\..\..\..\Components /
+//                          \services\sdata\ -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC243 /
+//                          0¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\Zi /
+//                          gBee2006\ZigBee2006-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\ /
+//                          Projects\zstack\Samples\SampleApp\CC2430DB\..\.. /
+//                          \..\..\..\Components\mac\include\ -I             /
+//                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª /
+//                          ·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006- /
+//                          ´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp /
+//                          les\SampleApp\CC2430DB\..\..\..\..\..\Components /
+//                          \mac\high_level\ -I E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC243 /
+//                          0¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\Zi /
+//                          gBee2006\ZigBee2006-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\ /
+//                          Projects\zstack\Samples\SampleApp\CC2430DB\..\.. /
+//                          \..\..\..\Components\mac\low_level\srf03\ -I     /
+//                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª /
+//                          ·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006- /
+//                          ´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp /
+//                          les\SampleApp\CC2430DB\..\..\..\..\..\Components /
+//                          \mac\low_level\srf03\single_chip\ -D CC2430EB    /
+//                          -D ZTOOL_P1 -D MT_TASK -lC                       /
+//                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª /
+//                          ·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006- /
+//                          ´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp /
+//                          les\SampleApp\CC2430DB\RouterEB\List\ -lA        /
+//                          E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª /
+//                          ·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006- /
+//                          ´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp /
+//                          les\SampleApp\CC2430DB\RouterEB\List\            /
+//                          --diag_suppress Pe001,Pa010 --diag_remark pe550  /
+//                          -o E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂ /
+//                          ç¿ª·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee20 /
+//                          06-´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\S /
+//                          amples\SampleApp\CC2430DB\RouterEB\Obj\ -e       /
+//                          --require_prototypes -z9 --no_code_motion        /
+//                          --debug --core=plain --dptr=16,1                 /
+//                          --data_model=large --code_model=banked           /
+//                          --calling_convention=xdata_reentrant             /
+//                          --place_constants=data --nr_virtual_regs 8       /
+//                          "D:\Texas Instruments\ZStack-1.4.2-1.1.0\Compone /
+//                          nts\mt\MT_AF.c"                                  /
+//    List file          =  E:\ÑÐ¶þÉÏ\CPS\ÊµÑéÆ½Ì¨\CC2430¿ª·¢×ÊÁÏ\ÎÞÏßÍøÂç¿ª /
+//                          ·¢Æ½Ì¨\C51RF-3-PKÑÝÊ¾³ÌÐò\ZigBee2006\ZigBee2006- /
+//                          ´®¿Ú»¥·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp /
+//                          les\SampleApp\CC2430DB\RouterEB\List\MT_AF.s51   /
+//                                                                           /
+//                                                                           /
+//////////////////////////////////////////////////////////////////////////////
+
+        NAME MT_AF
+
+        RTMODEL "__calling_convention", "xdata_reentrant"
+        RTMODEL "__code_model", "banked"
+        RTMODEL "__core", "plain"
+        RTMODEL "__data_model", "large"
+        RTMODEL "__dptr_size", "16"
+        RTMODEL "__extended_stack", "disabled"
+        RTMODEL "__location_for_constants", "data"
+        RTMODEL "__number_of_dptrs", "1"
+        RTMODEL "__rt_version", "1"
+
+        RSEG DOVERLAY:DATA:NOROOT(0)
+        RSEG IOVERLAY:IDATA:NOROOT(0)
+        RSEG ISTACK:IDATA:NOROOT(0)
+        RSEG PSTACK:XDATA:NOROOT(0)
+        RSEG XSTACK:XDATA:NOROOT(0)
+
+
+        END
+// D:\Texas Instruments\ZStack-1.4.2-1.1.0\Components\mt\MT_AF.c
+//    1 /*********************************************************************
+//    2     Filename:       MT_AF.c
+//    3     Revised:        $Date: 2007-04-04 07:38:24 -0700 (Wed, 04 Apr 2007) $
+//    4     Revision:       $Revision: 13958 $
+//    5 
+//    6     Description:
+//    7 
+//    8         MonitorTest functions for the AF layer.
+//    9 
+//   10     Notes:
+//   11 
+//   12     Copyright (c) 2006 by Texas Instruments, Inc.
+//   13     All Rights Reserved.  Permission to use, reproduce, copy, prepare
+//   14     derivative works, modify, distribute, perform, display or sell this
+//   15     software and/or its documentation for any purpose is prohibited
+//   16     without the express written consent of Texas Instruments, Inc.
+//   17 *********************************************************************/
+//   18 
+//   19 
+//   20 /*********************************************************************
+//   21  * INCLUDES
+//   22  */
+//   23 #include "ZComDef.h"
+//   24 #include "OSAL.h"
+//   25 #include "MTEL.h"
+//   26 #include "MT_AF.h"
+//   27 #include "nwk.h"
+//   28 #include "OnBoard.h"
+//   29 #include "SPIMgr.h"
+//   30 
+//   31 /*********************************************************************
+//   32  * MACROS
+//   33  */
+//   34 
+//   35 /*********************************************************************
+//   36  * CONSTANTS
+//   37  */
+//   38 
+//   39 /*********************************************************************
+//   40  * TYPEDEFS
+//   41  */
+//   42 
+//   43 /*********************************************************************
+//   44  * GLOBAL VARIABLES
+//   45  */
+//   46 
+//   47 #if defined ( MT_AF_CB_FUNC )
+//   48 uint16 _afCallbackSub;
+//   49 #endif
+//   50 
+//   51 /*********************************************************************
+//   52  * EXTERNAL VARIABLES
+//   53  */
+//   54 
+//   55 /*********************************************************************
+//   56  * EXTERNAL FUNCTIONS
+//   57  */
+//   58 
+//   59 /*********************************************************************
+//   60  * LOCAL VARIABLES
+//   61  */
+//   62 
+//   63 /*********************************************************************
+//   64  * LOCAL FUNCTIONS
+//   65  */
+//   66 
+//   67 #if defined ( MT_AF_FUNC )
+//   68 /*********************************************************************
+//   69  * @fn      MT_afCommandProcessing
+//   70  *
+//   71  * @brief
+//   72  *
+//   73  *   Process all the AF commands that are issued by test tool
+//   74  *
+//   75  * @param   cmd_id - Command ID
+//   76  * @param   len    - Length of received SPI data message
+//   77  * @param   data   - pointer to received SPI data message
+//   78  *
+//   79  * @return  none
+//   80  */
+//   81 void MT_afCommandProcessing( uint16 cmd_id , byte len , byte *pData )
+//   82 {
+//   83   byte i;
+//   84   endPointDesc_t *epDesc;
+//   85   uint8 af_stat = afStatus_FAILED;
+//   86 
+//   87   switch (cmd_id)
+//   88   {
+//   89     case SPI_CMD_AF_INIT:
+//   90 
+//   91       afInit();
+//   92 
+//   93       //No response for this command
+//   94       break;
+//   95 
+//   96     case SPI_CMD_AF_REGISTER:
+//   97 
+//   98       // First allocate memory for the AF structure epIntDesc
+//   99       epDesc = ( endPointDesc_t * )
+//  100                   osal_mem_alloc( sizeof( endPointDesc_t ) );
+//  101 
+//  102       if ( epDesc )
+//  103       {
+//  104         //Assemble the AF structures with the data received
+//  105         //First the Endpoint
+//  106         epDesc->simpleDesc = ( SimpleDescriptionFormat_t * )
+//  107                     osal_mem_alloc( sizeof( SimpleDescriptionFormat_t ) );
+//  108 
+//  109         if ( epDesc->simpleDesc )
+//  110         {
+//  111           epDesc->endPoint = *pData++;
+//  112           epDesc->simpleDesc->EndPoint = epDesc->endPoint;
+//  113 
+//  114           epDesc->task_id = &MT_TaskID;
+//  115 
+//  116           //Now for the simple description part
+//  117           epDesc->simpleDesc->AppProfId = BUILD_UINT16( pData[1],pData[0]);
+//  118           pData += sizeof( uint16 );
+//  119           epDesc->simpleDesc->AppDeviceId = BUILD_UINT16( pData[1],pData[0]);
+//  120           pData += sizeof( uint16 );
+//  121           epDesc->simpleDesc->AppDevVer = (*pData++) & AF_APP_DEV_VER_MASK ;
+//  122           epDesc->simpleDesc->Reserved = (*pData++) & AF_APP_FLAGS_MASK ;
+//  123 
+//  124           epDesc->simpleDesc->AppNumInClusters = *pData++;
+//  125 
+//  126           if (epDesc->simpleDesc->AppNumInClusters)
+//  127           {
+//  128             epDesc->simpleDesc->pAppInClusterList = (uint16 *)
+//  129             osal_mem_alloc(ZTEST_DEFAULT_PARAM_LEN*sizeof(uint16));
+//  130 
+//  131             for (i=0; i<ZTEST_DEFAULT_PARAM_LEN; i++)  {
+//  132               epDesc->simpleDesc->pAppInClusterList[i] = BUILD_UINT16(*pData, 0);
+//  133               pData++;
+//  134             }
+//  135           }
+//  136           else
+//  137           {
+//  138             pData += ZTEST_DEFAULT_PARAM_LEN;
+//  139           }
+//  140 
+//  141           epDesc->simpleDesc->AppNumOutClusters = *pData++;
+//  142 
+//  143           if (epDesc->simpleDesc->AppNumOutClusters)
+//  144           {
+//  145             epDesc->simpleDesc->pAppOutClusterList = (uint16 *)
+//  146             osal_mem_alloc(ZTEST_DEFAULT_PARAM_LEN*sizeof(uint16));
+//  147 
+//  148             for (i=0; i<ZTEST_DEFAULT_PARAM_LEN; i++)  {
+//  149               epDesc->simpleDesc->pAppOutClusterList[i] = BUILD_UINT16(*pData, 0);
+//  150               pData++;
+//  151             }
+//  152           }
+//  153           else
+//  154           {
+//  155             pData += ZTEST_DEFAULT_PARAM_LEN;
+//  156           }
+//  157 
+//  158           epDesc->latencyReq = (afNetworkLatencyReq_t)*pData;
+//  159 
+//  160           if ( afFindEndPointDesc( epDesc->endPoint ) == NULL )
+//  161           {
+//  162             af_stat = afRegister( epDesc );
+//  163           }
+//  164         }
+//  165         else
+//  166         {
+//  167           osal_mem_free( epDesc );
+//  168           af_stat = afStatus_MEM_FAIL;
+//  169         }
+//  170       }
+//  171 
+//  172       len = SPI_0DATA_MSG_LEN + SPI_RESP_LEN_AF_DEFAULT;
+//  173       MT_SendSPIRespMsg( af_stat, SPI_CMD_AF_REGISTER, len, SPI_RESP_LEN_AF_DEFAULT );
+//  174 
+//  175       break;
+//  176 
+//  177     case SPI_CMD_AF_SENDMSG:
+//  178     {
+//  179 #if ( AF_KVP_SUPPORT )
+//  180       afKVPCommandFormat_t kvp;
+//  181       afAddOrSend_t addOrSend;
+//  182       byte frameType;
+//  183 #else
+//  184       endPointDesc_t *epDesc;
+//  185       byte transId;
+//  186 #endif
+//  187       afAddrType_t dstAddr;
+//  188       cId_t cId;
+//  189       byte txOpts, radius, srcEP;
+//  190 
+//  191 #if ( AF_KVP_SUPPORT )
+//  192       frameType = *pData;
+//  193 #endif
+//  194       pData++;
+//  195       txOpts = *pData++;
+//  196       radius = *pData++;
+//  197 
+//  198       // Fill the AF structures with the data received.
+//  199       dstAddr.addrMode = afAddr16Bit;
+//  200       dstAddr.addr.shortAddr = BUILD_UINT16( pData[1], pData[0] );
+//  201       pData += 2;
+//  202       dstAddr.endPoint = *pData++;
+//  203 
+//  204       srcEP = *pData++;
+//  205       cId = BUILD_UINT16( pData[1], pData[0] );
+//  206       pData += 2;
+//  207 #if ( AF_KVP_SUPPORT )
+//  208       addOrSend = (afAddOrSend_t)(*pData++);
+//  209       kvp.TransSeqNumber = *pData++;
+//  210       kvp.CommandType = *pData++;
+//  211       kvp.AttribDataType = *pData++;
+//  212       kvp.AttribId = BUILD_UINT16( pData[1], pData[0] );
+//  213       pData += 2;
+//  214       kvp.ErrorCode = *pData++;
+//  215       kvp.DataLength = *pData++;
+//  216       kvp.Data = pData;
+//  217 
+//  218       af_stat = afAddOrSendMessage( &dstAddr, srcEP, cId,
+//  219           addOrSend, frameType, &kvp.TransSeqNumber,
+//  220           kvp.CommandType, kvp.AttribDataType, kvp.AttribId, kvp.ErrorCode,
+//  221           kvp.DataLength, kvp.Data, (txOpts & ~AF_DISCV_ROUTE),
+//  222                                     (txOpts &  AF_DISCV_ROUTE), radius );
+//  223 #else
+//  224       pData++;
+//  225       transId = *pData++;
+//  226       pData += 5;
+//  227       len = *pData++;
+//  228       epDesc = afFindEndPointDesc( srcEP );
+//  229       if ( epDesc == NULL )
+//  230       {
+//  231         af_stat = afStatus_INVALID_PARAMETER;
+//  232       }
+//  233       else
+//  234       {
+//  235         af_stat = AF_DataRequest( &dstAddr, epDesc, cId, len, pData,
+//  236                                   &transId, txOpts, radius );
+//  237       }
+//  238 #endif
+//  239 
+//  240       len = SPI_0DATA_MSG_LEN + SPI_RESP_LEN_AF_DEFAULT;
+//  241       MT_SendSPIRespMsg( af_stat, SPI_CMD_AF_SENDMSG,
+//  242                              len, SPI_RESP_LEN_AF_DEFAULT );
+//  243     }
+//  244     break;
+//  245   }
+//  246 }
+//  247 #endif  // #if defined ( MT_AF_FUNC )
+//  248 
+//  249 #if defined ( MT_AF_CB_FUNC )
+//  250 /*********************************************************************
+//  251  * @fn          af_MTCB_IncomingData
+//  252  *
+//  253  * @brief       Process the callback subscription for AF Incoming data.
+//  254  *
+//  255  * @param       pkt - Incoming AF data.
+//  256  *
+//  257  * @return      none
+//  258  */
+//  259 void af_MTCB_IncomingData( void *pkt )
+//  260 {
+//  261   afIncomingMSGPacket_t *MSGpkt = (afIncomingMSGPacket_t *)pkt;
+//  262 #if ( AF_KVP_SUPPORT )
+//  263   afIncomingKVPPacket_t *KVPpkt = (afIncomingKVPPacket_t *)pkt;
+//  264 #endif
+//  265   byte *memPtr, *ptr;
+//  266   /* Frametype, WasBroadcast, LinkQuality, SecurityUse, SrcAddr,
+//  267    * SrcEndpoint, DestEndpoint, ClusterId, TransCnt, TransId, CmdType,
+//  268    * AttribDataType, AttribId, ErrorCode, TransDataLen =
+//  269    * 1+1+1+1+2+1+1+2+1+1+1+2+1+1+1.
+//  270    */
+//  271   const byte len = 18 + ZTEST_DEFAULT_AF_DATA_LEN;
+//  272   byte dataLen;
+//  273 
+//  274   if ( MSGpkt->hdr.event != AF_INCOMING_MSG_CMD )
+//  275   {
+//  276 #if ( AF_KVP_SUPPORT )
+//  277     dataLen = KVPpkt->cmd.DataLength;
+//  278 #else
+//  279     return;
+//  280 #endif
+//  281   }
+//  282   else
+//  283   {
+//  284     dataLen = MSGpkt->cmd.DataLength;
+//  285   }
+//  286 
+//  287   if ( dataLen > ZTEST_DEFAULT_AF_DATA_LEN )
+//  288   {
+//  289     dataLen = ZTEST_DEFAULT_AF_DATA_LEN;
+//  290   }
+//  291 
+//  292   memPtr = osal_mem_alloc( len );
+//  293   if ( !memPtr )
+//  294   {
+//  295     return;
+//  296   }
+//  297   ptr = memPtr;
+//  298 
+//  299 #if ( AF_KVP_SUPPORT )
+//  300   if ( MSGpkt->hdr.event != AF_INCOMING_MSG_CMD )
+//  301   {
+//  302     *ptr++ = KVPpkt->hdr.event;
+//  303     *ptr++ = KVPpkt->wasBroadcast;
+//  304     *ptr++ = KVPpkt->LinkQuality;
+//  305     *ptr++ = KVPpkt->SecurityUse;
+//  306     *ptr++ = HI_UINT16( KVPpkt->srcAddr.addr.shortAddr );
+//  307     *ptr++ = LO_UINT16( KVPpkt->srcAddr.addr.shortAddr );
+//  308     *ptr++ = KVPpkt->srcAddr.endPoint;
+//  309     *ptr++ = KVPpkt->endPoint;
+//  310     *ptr++ = HI_UINT16( KVPpkt->clusterId );
+//  311     *ptr++ = LO_UINT16( KVPpkt->clusterId );
+//  312     *ptr++ = KVPpkt->totalTrans;
+//  313     *ptr++ = KVPpkt->cmd.TransSeqNumber;
+//  314     *ptr++ = KVPpkt->cmd.CommandType;
+//  315     *ptr++ = KVPpkt->cmd.AttribDataType;
+//  316     *ptr++ = HI_UINT16( KVPpkt->cmd.AttribId );
+//  317     *ptr++ = LO_UINT16( KVPpkt->cmd.AttribId );
+//  318     *ptr++ = KVPpkt->cmd.ErrorCode;
+//  319     *ptr++ = KVPpkt->cmd.DataLength;
+//  320     osal_memcpy( ptr, KVPpkt->cmd.Data, dataLen );
+//  321   }
+//  322   else
+//  323 #endif
+//  324   {
+//  325     *ptr++ = MSGpkt->hdr.event;
+//  326     *ptr++ = MSGpkt->wasBroadcast;
+//  327     *ptr++ = MSGpkt->LinkQuality;
+//  328     *ptr++ = MSGpkt->SecurityUse;
+//  329     *ptr++ = HI_UINT16( MSGpkt->srcAddr.addr.shortAddr );
+//  330     *ptr++ = LO_UINT16( MSGpkt->srcAddr.addr.shortAddr );
+//  331     *ptr++ = MSGpkt->srcAddr.endPoint;
+//  332     *ptr++ = MSGpkt->endPoint;
+//  333     *ptr++ = HI_UINT16( MSGpkt->clusterId );
+//  334     *ptr++ = LO_UINT16( MSGpkt->clusterId );
+//  335     osal_memset( ptr, 0, 7 );
+//  336     ptr += 7;
+//  337     osal_memcpy( ptr, MSGpkt->cmd.Data, dataLen );
+//  338   }
+//  339 
+//  340   if ( dataLen < ZTEST_DEFAULT_AF_DATA_LEN )
+//  341   {
+//  342     osal_memset( (ptr + dataLen), 0, (ZTEST_DEFAULT_AF_DATA_LEN - dataLen) );
+//  343   }
+//  344 
+//  345 #if defined (ZTOOL_P1) || defined (ZTOOL_P2)
+//  346   MT_BuildAndSendZToolCB( SPI_CB_AF_DATA_IND, len, memPtr );
+//  347 #endif
+//  348   osal_mem_free( memPtr );
+//  349 }
+//  350 #endif  // #if defined ( MT_AF_CB_FUNC )
+//  351 
+//  352 /*********************************************************************
+//  353 *********************************************************************/
+// 
+// 
+// 0 bytes of memory
+//
+//Errors: none
+//Warnings: none

@@ -1,0 +1,3181 @@
+##############################################################################
+#                                                                            #
+# IAR 8051 C/C++ Compiler V7.20H/W32                   17/Oct/2013  21:26:01 #
+# Copyright 2004-2006 IAR Systems. All rights reserved.                      #
+#                                                                            #
+#    Core               =  plain                                             #
+#    Code model         =  banked                                            #
+#    Data model         =  large                                             #
+#    Calling convention =  xdata reentrant                                   #
+#    Constant location  =  data                                              #
+#    Dptr setup         =  1,16                                              #
+#    Source file        =  D:\Texas Instruments\ZStack-1.4.2-1.1.0\Component #
+#                          s\stack\zdo\ZDSecMgr.c                            #
+#    Command line       =  -f E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿Ú #
+#                          ÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\S #
+#                          ampleApp\CC2430DB\..\..\..\Tools\CC2430DB\f8wCoor #
+#                          d.cfg (-DCPU32MHZ -DFORCE_MAC_NEAR                #
+#                          -DROOT=__near_func -DMAC_CFG_APP_PENDING_QUEUE=TR #
+#                          UE -DZDO_COORDINATOR -DRTR_NWK -DBLINK_LEDS       #
+#                          "-DCONST=const __code" -DGENERIC=__generic) -f    #
+#                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\..\..\..\Tools\CC2430DB\f8wConfig. #
+#                          cfg (-DSECURE=0 -DDEFAULT_CHANLIST=0x00000800     #
+#                          -DZDAPP_CONFIG_PAN_ID=0xFFFF                      #
+#                          -DNWK_START_DELAY=100 -DEXTENDED_JOINING_RANDOM_M #
+#                          ASK=0x007F -DBEACON_REQUEST_DELAY=100             #
+#                          -DBEACON_REQ_DELAY_MASK=0x00FF                    #
+#                          -DROUTE_EXPIRY_TIME=30 -DAPSC_ACK_WAIT_DURATION_P #
+#                          OLLED=3000 -DNWK_INDIRECT_MSG_TIMEOUT=7           #
+#                          -DMAX_RREQ_ENTRIES=10 -DAPSC_MAX_FRAME_RETRIES=3  #
+#                          -DNWK_MAX_DATA_RETRIES=2                          #
+#                          -DMAX_POLL_FAILURE_RETRIES=2 -DMAX_BCAST=9        #
+#                          -DAPS_MAX_GROUPS=16 -DMAX_RTG_ENTRIES=20          #
+#                          -DNWK_MAX_BINDING_ENTRIES=10                      #
+#                          -DMAX_BINDING_CLUSTER_IDS=5                       #
+#                          "-DDEFAULT_KEY={0x01, 0x03, 0x05, 0x07, 0x09,     #
+#                          0x0B, 0x0D, 0x0F, 0x00, 0x02, 0x04, 0x06, 0x08,   #
+#                          0x0A, 0x0C, 0x0D}" -DRFD_RCVC_ALWAYS_ON=FALSE     #
+#                          -DPOLL_RATE=1000 -DQUEUED_POLL_RATE=100           #
+#                          -DRESPONSE_POLL_RATE=100 -DREJOIN_POLL_RATE=440   #
+#                          -DTOP_BOOT_PAGES=0) -I "D:\Program Files\IAR      #
+#                          Systems\Embedded Workbench 4.05 Evaluation        #
+#                          version\8051\inc\" -I "D:\Program Files\IAR       #
+#                          Systems\Embedded Workbench 4.05 Evaluation        #
+#                          version\8051\inc\clib\" -I                        #
+#                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ #
+#                          ¶Æ½Ì¨\CC2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\ #
+#                          zstack\Samples\SampleApp\CC2430DB\..\Source\ -I   #
+#                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\..\..\..\ZMain\TI2430DB\ -I        #
+#                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\..\..\..\..\..\Components\mt\ -I   #
+#                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\..\..\..\..\..\Components\hal\incl #
+#                          ude\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC243 #
+#                          0´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp #
+#                          les\SampleApp\CC2430DB\..\..\..\..\..\Components\ #
+#                          hal\target\CC2430EB\ -I                           #
+#                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\..\..\..\..\..\Components\osal\mcu #
+#                          \ccsoc\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC #
+#                          2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\S #
+#                          amples\SampleApp\CC2430DB\..\..\..\..\..\Componen #
+#                          ts\osal\include\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨ #
+#                          Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects #
+#                          \zstack\Samples\SampleApp\CC2430DB\..\..\..\..\.. #
+#                          \Components\stack\af\ -I                          #
+#                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\..\..\..\..\..\Components\stack\nw #
+#                          k\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´ #
+#                          ®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Sample #
+#                          s\SampleApp\CC2430DB\..\..\..\..\..\Components\st #
+#                          ack\sec\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\C #
+#                          C2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\ #
+#                          Samples\SampleApp\CC2430DB\..\..\..\..\..\Compone #
+#                          nts\stack\sys\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶ #
+#                          Æ½Ì¨\CC2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\z #
+#                          stack\Samples\SampleApp\CC2430DB\..\..\..\..\..\C #
+#                          omponents\stack\zdo\ -I                           #
+#                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\..\..\..\..\..\Components\zmac\f8w #
+#                          \ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´® #
+#                          ¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples #
+#                          \SampleApp\CC2430DB\..\..\..\..\..\Components\zma #
+#                          c\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´ #
+#                          ®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Sample #
+#                          s\SampleApp\CC2430DB\..\..\..\..\..\Components\se #
+#                          rvices\saddr\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ #
+#                          ½Ì¨\CC2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zs #
+#                          tack\Samples\SampleApp\CC2430DB\..\..\..\..\..\Co #
+#                          mponents\services\sdata\ -I                       #
+#                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\..\..\..\..\..\Components\mac\incl #
+#                          ude\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC243 #
+#                          0´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samp #
+#                          les\SampleApp\CC2430DB\..\..\..\..\..\Components\ #
+#                          mac\high_level\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ #
+#                          ¶Æ½Ì¨\CC2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\ #
+#                          zstack\Samples\SampleApp\CC2430DB\..\..\..\..\..\ #
+#                          Components\mac\low_level\srf03\ -I                #
+#                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\..\..\..\..\..\Components\mac\low_ #
+#                          level\srf03\single_chip\ -D CC2430EB -D ZTOOL_P1  #
+#                          -D MT_TASK -D MT_ZDO_FUNC -lC                     #
+#                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\CoordinatorEB\List\ -lA            #
+#                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\CoordinatorEB\List\                #
+#                          --diag_suppress Pe001,Pa010 --diag_remark pe550   #
+#                          -o E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿Ú #
+#                          ÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\S #
+#                          ampleApp\CC2430DB\CoordinatorEB\Obj\ -e           #
+#                          --require_prototypes -z9 --no_code_motion         #
+#                          --debug --core=plain --dptr=16,1                  #
+#                          --data_model=large --code_model=banked            #
+#                          --calling_convention=xdata_reentrant              #
+#                          --place_constants=data --nr_virtual_regs 8        #
+#                          "D:\Texas Instruments\ZStack-1.4.2-1.1.0\Componen #
+#                          ts\stack\zdo\ZDSecMgr.c"                          #
+#    List file          =  E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\CoordinatorEB\List\ZDSecMgr.lst    #
+#    Object file        =  E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ· #
+#                          ¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Samp #
+#                          leApp\CC2430DB\CoordinatorEB\Obj\ZDSecMgr.r51     #
+#                                                                            #
+#                                                                            #
+##############################################################################
+
+D:\Texas Instruments\ZStack-1.4.2-1.1.0\Components\stack\zdo\ZDSecMgr.c
+      1          /******************************************************************************
+      2              Filename:       ZDSecMgr.c
+      3              Revised:        $Date: 2007-03-16 17:30:34 -0700 (Fri, 16 Mar 2007) $
+      4              Revision:       $Revision: 13778 $
+      5          
+      6              Description:
+      7          
+      8                The ZigBee Device Security Manager.
+      9          
+     10              Copyright (c) 2006 by Texas Instruments, Inc.
+     11              All Rights Reserved.  Permission to use, reproduce, copy, prepare
+     12              derivative works, modify, distribute, perform, display or sell this
+     13              software and/or its documentation for any purpose is prohibited
+     14              without the express written consent of Texas Instruments, Inc.
+     15          ******************************************************************************/
+     16          
+     17          #ifdef __cplusplus
+     18          extern "C"
+     19          {
+     20          #endif
+     21          
+     22          /******************************************************************************
+     23           * INCLUDES
+     24           */
+     25          #include "ZComdef.h"
+     26          #include "osal.h"
+     27          #include "ZGlobals.h"
+     28          #include "ssp.h"
+     29          #include "nwk_globals.h"
+     30          #include "nwk.h"
+     31          #include "NLMEDE.h"
+     32          #include "AddrMgr.h"
+     33          #include "AssocList.h"
+     34          #include "APSMEDE.h"
+     35          #include "AF.h"
+     36          #include "ZDConfig.h"
+     37          #include "ZDApp.h"
+     38          #include "ZDSecMgr.h"
+     39          
+     40          /******************************************************************************
+     41           * CONSTANTS
+     42           */
+     43          // maximum number of devices managed by this Security Manager
+     44          #define ZDSECMGR_DEVICE_MAX 3
+     45          
+     46          // total number of preconfigured devices (EXT address, MASTER key)
+     47          #define ZDSECMGR_PRECONFIG_MAX ZDSECMGR_DEVICE_MAX
+     48          
+     49          // maximum number of MASTER keys this device may hold
+     50          #define ZDSECMGR_MASTERKEY_MAX ZDSECMGR_DEVICE_MAX
+     51          
+     52          // maximum number of LINK keys this device may store
+     53          #define ZDSECMGR_ENTRY_MAX ZDSECMGR_DEVICE_MAX
+     54          
+     55          // total number of devices under control - authentication, SKKE, etc.
+     56          #define ZDSECMGR_CTRL_MAX ZDSECMGR_DEVICE_MAX
+     57          
+     58          // total number of restricted devices
+     59          #define ZDSECMGR_RESTRICTED_DEVICES 2
+     60          
+     61          #define ZDSECMGR_CTRL_NONE       0
+     62          #define ZDSECMGR_CTRL_INIT       1
+     63          #define ZDSECMGR_CTRL_TK_MASTER  2
+     64          #define ZDSECMGR_CTRL_SKKE_INIT  3
+     65          #define ZDSECMGR_CTRL_SKKE_WAIT  4
+     66          #define ZDSECMGR_CTRL_SKKE_DONE  5
+     67          #define ZDSECMGR_CTRL_TK_NWK     6
+     68          
+     69          #define ZDSECMGR_CTRL_BASE_CNTR      1
+     70          #define ZDSECMGR_CTRL_SKKE_INIT_CNTR 10
+     71          #define ZDSECMGR_CTRL_SKKE_WAIT_CNTR 100
+     72          #define ZDSECMGR_CTRL_TK_NWK_CNTR    10
+     73          
+     74          // set SKKE slot maximum
+     75          #define ZDSECMGR_SKKE_SLOT_MAX 1
+     76          
+     77          // APSME Stub Implementations
+     78          #define ZDSecMgrMasterKeyGet   APSME_MasterKeyGet
+     79          #define ZDSecMgrLinkKeySet     APSME_LinkKeySet
+     80          #define ZDSecMgrLinkKeyDataGet APSME_LinkKeyDataGet
+     81          #define ZDSecMgrKeyFwdToChild  APSME_KeyFwdToChild
+     82          
+     83          /******************************************************************************
+     84           * TYPEDEFS
+     85           */
+     86          typedef struct
+     87          {
+     88            uint8 extAddr[Z_EXTADDR_LEN];
+     89            uint8 key[SEC_KEY_LEN];
+     90          } ZDSecMgrPreConfigData_t;
+     91          
+     92          typedef struct
+     93          {
+     94            uint16 ami;
+     95            uint8  key[SEC_KEY_LEN];
+     96          } ZDSecMgrMasterKeyData_t;
+     97          
+     98          //should match APSME_LinkKeyData_t;
+     99          typedef struct
+    100          {
+    101            uint8               key[SEC_KEY_LEN];
+    102            APSME_LinkKeyData_t apsmelkd;
+    103          } ZDSecMgrLinkKeyData_t;
+    104          
+    105          typedef struct
+    106          {
+    107            uint16                ami;
+    108            ZDSecMgrLinkKeyData_t lkd;
+    109          } ZDSecMgrEntry_t;
+    110          
+    111          typedef struct
+    112          {
+    113            ZDSecMgrEntry_t* entry;
+    114            uint16           parentAddr;
+    115            uint8            secure;
+    116            uint8            state;
+    117            uint8            cntr;
+    118            //uint8          next;
+    119          } ZDSecMgrCtrl_t;
+    120          
+    121          typedef struct
+    122          {
+    123            uint16          nwkAddr;
+    124            uint8*          extAddr;
+    125            uint16          parentAddr;
+    126            uint8           secure;
+    127            ZDSecMgrCtrl_t* ctrl;
+    128          } ZDSecMgrDevice_t;
+    129          
+    130          /******************************************************************************
+    131           * LOCAL VARIABLES
+    132           */
+    133          #if defined ( ZDSECMGR_SECURE ) && defined ( ZDO_COORDINATOR )
+    134          uint8 ZDSecMgrRestrictedDevices[ZDSECMGR_RESTRICTED_DEVICES][Z_EXTADDR_LEN] =
+    135          {
+    136            { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 },
+    137            { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 },
+    138          };
+    139          #endif // defined ( ZDSECMGR_SECURE ) && defined ( ZDO_COORDINATOR )
+    140          
+    141          #if defined ( ZDSECMGR_COMMERCIAL )
+    142          #if ( ZDSECMGR_PRECONFIG_MAX != 0 )
+    143          const ZDSecMgrPreConfigData_t ZDSecMgrPreConfigData[ZDSECMGR_PRECONFIG_MAX] =
+    144          {
+    145            //---------------------------------------------------------------------------
+    146            // DEVICE A
+    147            //---------------------------------------------------------------------------
+    148            {
+    149              // extAddr
+    150              {0x7C,0x01,0x12,0x13,0x14,0x15,0x16,0x17},
+    151          
+    152              // key
+    153              {0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
+    154               0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00}
+    155            },
+    156            //---------------------------------------------------------------------------
+    157            // DEVICE B
+    158            //---------------------------------------------------------------------------
+    159            {
+    160              // extAddr
+    161              {0x84,0x03,0x00,0x00,0x00,0x4B,0x12,0x00},
+    162          
+    163              // key
+    164              {0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
+    165               0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00}
+    166            },
+    167            //---------------------------------------------------------------------------
+    168            // DEVICE C
+    169            //---------------------------------------------------------------------------
+    170            {
+    171              // extAddr
+    172              {0x3E,0x01,0x12,0x13,0x14,0x15,0x16,0x17},
+    173          
+    174              // key
+    175              {0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
+    176               0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00}
+    177            },
+    178          };
+    179          #endif // ( ZDSECMGR_PRECONFIG_MAX != 0 )
+    180          #endif // defined ( ZDSECMGR_COMMERCIAL )
+    181          
+    182          #if defined ( ZDSECMGR_COMMERCIAL )
+    183          ZDSecMgrMasterKeyData_t* ZDSecMgrMasterKeyData = NULL;
+    184          ZDSecMgrEntry_t*         ZDSecMgrEntries       = NULL;
+    185          ZDSecMgrCtrl_t*          ZDSecMgrCtrlData      = NULL;
+    186          void ZDSecMgrAddrMgrUpdate( uint16 ami, uint16 nwkAddr );
+    187          void ZDSecMgrAddrMgrCB( uint8 update, AddrMgrEntry_t* newEntry, AddrMgrEntry_t* oldEntry );
+    188          #endif // defined ( ZDSECMGR_COMMERCIAL )
+    189          
+    190          #if defined ( ZDSECMGR_SECURE ) && defined ( ZDO_COORDINATOR )
+    191          uint8 ZDSecMgrPermitJoiningEnabled;
+    192          uint8 ZDSecMgrPermitJoiningTimed;
+    193          #endif // defined ( ZDSECMGR_SECURE ) && defined ( ZDO_COORDINATOR )
+    194          
+    195          #if defined ( ZDSECMGR_SECURE )
+    196          /******************************************************************************
+    197           * PRIVATE FUNCTIONS
+    198           *
+    199           *   ZDSecMgrMasterKeyInit
+    200           *   ZDSecMgrExtAddrLookup
+    201           *   ZDSecMgrExtAddrStore
+    202           *   ZDSecMgrMasterKeyLookup
+    203           *   ZDSecMgrMasterKeyStore
+    204           *   ZDSecMgrEntryInit
+    205           *   ZDSecMgrEntryLookup
+    206           *   ZDSecMgrEntryLookupAMI
+    207           *   ZDSecMgrEntryLookupExt
+    208           *   ZDSecMgrEntryFree
+    209           *   ZDSecMgrEntryNew
+    210           *   ZDSecMgrCtrlInit
+    211           *   ZDSecMgrCtrlRelease
+    212           *   ZDSecMgrCtrlLookup
+    213           *   ZDSecMgrCtrlSet
+    214           *   ZDSecMgrCtrlAdd
+    215           *   ZDSecMgrCtrlTerm
+    216           *   ZDSecMgrCtrlReset
+    217           *   ZDSecMgrMasterKeyLoad
+    218           *   ZDSecMgrAppKeyGet
+    219           *   ZDSecMgrAppKeyReq
+    220           *   ZDSecMgrEstablishKey
+    221           *   ZDSecMgrSendMasterKey
+    222           *   ZDSecMgrSendNwkKey
+    223           *   ZDSecMgrDeviceEntryRemove
+    224           *   ZDSecMgrDeviceEntryAdd
+    225           *   ZDSecMgrDeviceCtrlHandler
+    226           *   ZDSecMgrDeviceCtrlSetup
+    227           *   ZDSecMgrDeviceCtrlUpdate
+    228           *   ZDSecMgrDeviceRemove
+    229           *   ZDSecMgrDeviceValidateSKKE
+    230           *   ZDSecMgrDeviceValidateRM
+    231           *   ZDSecMgrDeviceValidateCM
+    232           *   ZDSecMgrDeviceValidate
+    233           *   ZDSecMgrDeviceJoin
+    234           *   ZDSecMgrDeviceJoinDirect
+    235           *   ZDSecMgrDeviceJoinFwd
+    236           *   ZDSecMgrDeviceNew
+    237           *   ZDSecMgrAssocDeviceAuth
+    238           */
+    239          //-----------------------------------------------------------------------------
+    240          // master key data
+    241          //-----------------------------------------------------------------------------
+    242          void ZDSecMgrMasterKeyInit( void );
+    243          
+    244          //-----------------------------------------------------------------------------
+    245          // EXT address management
+    246          //-----------------------------------------------------------------------------
+    247          ZStatus_t ZDSecMgrExtAddrLookup( uint8* extAddr, uint16* ami );
+    248          ZStatus_t ZDSecMgrExtAddrStore( uint8* extAddr, uint16* ami );
+    249          
+    250          //-----------------------------------------------------------------------------
+    251          // MASTER key data
+    252          //-----------------------------------------------------------------------------
+    253          ZStatus_t ZDSecMgrMasterKeyLookup( uint16 ami, uint8** key );
+    254          ZStatus_t ZDSecMgrMasterKeyStore( uint16 ami, uint8* key );
+    255          
+    256          //-----------------------------------------------------------------------------
+    257          // entry data
+    258          //-----------------------------------------------------------------------------
+    259          void ZDSecMgrEntryInit( void );
+    260          ZStatus_t ZDSecMgrEntryLookup( uint16 nwkAddr, ZDSecMgrEntry_t** entry );
+    261          ZStatus_t ZDSecMgrEntryLookupAMI( uint16 ami, ZDSecMgrEntry_t** entry );
+    262          ZStatus_t ZDSecMgrEntryLookupExt( uint8* extAddr, ZDSecMgrEntry_t** entry );
+    263          void ZDSecMgrEntryFree( ZDSecMgrEntry_t* entry );
+    264          ZStatus_t ZDSecMgrEntryNew( ZDSecMgrEntry_t** entry );
+    265          
+    266          //-----------------------------------------------------------------------------
+    267          // control data
+    268          //-----------------------------------------------------------------------------
+    269          void ZDSecMgrCtrlInit( void );
+    270          void ZDSecMgrCtrlRelease( ZDSecMgrCtrl_t* ctrl );
+    271          void ZDSecMgrCtrlLookup( ZDSecMgrEntry_t* entry, ZDSecMgrCtrl_t** ctrl );
+    272          void ZDSecMgrCtrlSet( ZDSecMgrDevice_t* device,
+    273                                ZDSecMgrEntry_t*  entry,
+    274                                ZDSecMgrCtrl_t*   ctrl );
+    275          ZStatus_t ZDSecMgrCtrlAdd( ZDSecMgrDevice_t* device, ZDSecMgrEntry_t*  entry );
+    276          void ZDSecMgrCtrlTerm( ZDSecMgrEntry_t* entry );
+    277          ZStatus_t ZDSecMgrCtrlReset( ZDSecMgrDevice_t* device,
+    278                                       ZDSecMgrEntry_t*  entry );
+    279          
+    280          //-----------------------------------------------------------------------------
+    281          // key support
+    282          //-----------------------------------------------------------------------------
+    283          void ZDSecMgrMasterKeyLoad( uint16 nwkAddr, uint8* extAddr, uint8* key );
+    284          ZStatus_t ZDSecMgrAppKeyGet( uint16  initNwkAddr,
+    285                                       uint8*  initExtAddr,
+    286                                       uint16  partNwkAddr,
+    287                                       uint8*  partExtAddr,
+    288                                       uint8** key,
+    289                                       uint8*  keyType );
+    290          void ZDSecMgrAppKeyReq( ZDO_RequestKeyInd_t* ind );
+    291          ZStatus_t ZDSecMgrEstablishKey( ZDSecMgrDevice_t* device );
+    292          ZStatus_t ZDSecMgrSendMasterKey( ZDSecMgrDevice_t* device );
+    293          ZStatus_t ZDSecMgrSendNwkKey( ZDSecMgrDevice_t* device );
+    294          
+    295          //-----------------------------------------------------------------------------
+    296          // device entry
+    297          //-----------------------------------------------------------------------------
+    298          void ZDSecMgrDeviceEntryRemove( ZDSecMgrEntry_t* entry );
+    299          ZStatus_t ZDSecMgrDeviceEntryAdd( ZDSecMgrDevice_t* device, uint16 ami );
+    300          
+    301          //-----------------------------------------------------------------------------
+    302          // device control
+    303          //-----------------------------------------------------------------------------
+    304          void ZDSecMgrDeviceCtrlHandler( ZDSecMgrDevice_t* device );
+    305          void ZDSecMgrDeviceCtrlSetup( ZDSecMgrDevice_t* device );
+    306          void ZDSecMgrDeviceCtrlUpdate( uint8* extAddr, uint8 state );
+    307          
+    308          //-----------------------------------------------------------------------------
+    309          // device management
+    310          //-----------------------------------------------------------------------------
+    311          void ZDSecMgrDeviceRemove( ZDSecMgrDevice_t* device );
+    312          ZStatus_t ZDSecMgrDeviceValidateSKKE( ZDSecMgrDevice_t* device );
+    313          ZStatus_t ZDSecMgrDeviceValidateRM( ZDSecMgrDevice_t* device );
+    314          ZStatus_t ZDSecMgrDeviceValidateCM( ZDSecMgrDevice_t* device );
+    315          ZStatus_t ZDSecMgrDeviceValidate( ZDSecMgrDevice_t* device );
+    316          ZStatus_t ZDSecMgrDeviceJoin( ZDSecMgrDevice_t* device );
+    317          ZStatus_t ZDSecMgrDeviceJoinDirect( ZDSecMgrDevice_t* device );
+    318          ZStatus_t ZDSecMgrDeviceJoinFwd( ZDSecMgrDevice_t* device );
+    319          ZStatus_t ZDSecMgrDeviceNew( ZDSecMgrDevice_t* device );
+    320          
+    321          //-----------------------------------------------------------------------------
+    322          // association management
+    323          //-----------------------------------------------------------------------------
+    324          void ZDSecMgrAssocDeviceAuth( associated_devices_t* assoc );
+    325          
+    326          #if defined ( ZDSECMGR_COMMERCIAL )
+    327          /******************************************************************************
+    328           * @fn          ZDSecMgrMasterKeyInit                     ]
+    329           *
+    330           * @brief       Initialize master key data.
+    331           *
+    332           * @param       none
+    333           *
+    334           * @return      none
+    335           */
+    336          void ZDSecMgrMasterKeyInit( void )
+    337          {
+    338            uint16         index;
+    339            uint16         size;
+    340            AddrMgrEntry_t entry;
+    341          
+    342          
+    343            // allocate MASTER key data
+    344            size = (short)( sizeof(ZDSecMgrMasterKeyData_t) * ZDSECMGR_MASTERKEY_MAX );
+    345          
+    346            ZDSecMgrMasterKeyData = osal_mem_alloc( size );
+    347          
+    348            // initialize MASTER key data
+    349            if ( ZDSecMgrMasterKeyData != NULL )
+    350            {
+    351              for ( index = 0; index < ZDSECMGR_MASTERKEY_MAX; index++ )
+    352              {
+    353                ZDSecMgrMasterKeyData[index].ami = INVALID_NODE_ADDR;
+    354              }
+    355          
+    356              // check if preconfigured keys are enabled
+    357              //-------------------------------------------------------------------------
+    358              #if ( ZDSECMGR_PRECONFIG_MAX != 0 )
+    359              //-------------------------------------------------------------------------
+    360              if ( zgPreConfigKeys == TRUE )
+    361              {
+    362                // sync configured data
+    363                entry.user = ADDRMGR_USER_SECURITY;
+    364          
+    365                for ( index = 0; index < ZDSECMGR_PRECONFIG_MAX; index++ )
+    366                {
+    367                  // check for Address Manager entry
+    368                  AddrMgrExtAddrSet( entry.extAddr,
+    369                                     (uint8*)ZDSecMgrPreConfigData[index].extAddr );
+    370          
+    371                  if ( AddrMgrEntryLookupExt( &entry ) != TRUE )
+    372                  {
+    373                    // update Address Manager
+    374                    AddrMgrEntryUpdate( &entry );
+    375                  }
+    376          
+    377                  if ( entry.index != INVALID_NODE_ADDR )
+    378                  {
+    379                    // sync MASTER keys with Address Manager index
+    380                    ZDSecMgrMasterKeyData[index].ami = entry.index;
+    381          
+    382                    osal_cpyExtAddr( ZDSecMgrMasterKeyData[index].key,
+    383                                     (void*)ZDSecMgrPreConfigData[index].key );
+    384                  }
+    385                }
+    386              }
+    387              //-------------------------------------------------------------------------
+    388              #endif // ( ZDSECMGR_PRECONFIG_MAX != 0 )
+    389              //-------------------------------------------------------------------------
+    390            }
+    391          }
+    392          #endif // defined ( ZDSECMGR_COMMERCIAL )
+    393          
+    394          #if defined ( ZDSECMGR_COMMERCIAL )
+    395          /******************************************************************************
+    396           * @fn          ZDSecMgrExtAddrLookup
+    397           *
+    398           * @brief       Lookup index for specified EXT address.
+    399           *
+    400           * @param       extAddr - [in] EXT address
+    401           * @param       ami     - [out] Address Manager index
+    402           *
+    403           * @return      ZStatus_t
+    404           */
+    405          ZStatus_t ZDSecMgrExtAddrLookup( uint8* extAddr, uint16* ami )
+    406          {
+    407            ZStatus_t      status;
+    408            AddrMgrEntry_t entry;
+    409          
+    410          
+    411            // lookup entry
+    412            entry.user = ADDRMGR_USER_SECURITY;
+    413            AddrMgrExtAddrSet( entry.extAddr, extAddr );
+    414          
+    415            if ( AddrMgrEntryLookupExt( &entry ) == TRUE )
+    416            {
+    417              // return successful results
+    418              *ami   = entry.index;
+    419              status = ZSuccess;
+    420            }
+    421            else
+    422            {
+    423              // return failed results
+    424              *ami   = entry.index;
+    425              status = ZNwkUnknownDevice;
+    426            }
+    427          
+    428            return status;
+    429          }
+    430          #endif // defined ( ZDSECMGR_COMMERCIAL )
+    431          
+    432          #if defined ( ZDSECMGR_COMMERCIAL )
+    433          /******************************************************************************
+    434           * @fn          ZDSecMgrExtAddrStore
+    435           *
+    436           * @brief       Store EXT address.
+    437           *
+    438           * @param       extAddr - [in] EXT address
+    439           * @param       ami     - [out] Address Manager index
+    440           *
+    441           * @return      ZStatus_t
+    442           */
+    443          ZStatus_t ZDSecMgrExtAddrStore( uint8* extAddr, uint16* ami )
+    444          {
+    445            ZStatus_t      status;
+    446            AddrMgrEntry_t entry;
+    447          
+    448          
+    449            // add entry
+    450            entry.user    = ADDRMGR_USER_SECURITY;
+    451            entry.nwkAddr = INVALID_NODE_ADDR;
+    452            AddrMgrExtAddrSet( entry.extAddr, extAddr );
+    453          
+    454            if ( AddrMgrEntryUpdate( &entry ) == TRUE )
+    455            {
+    456              // return successful results
+    457              *ami   = entry.index;
+    458              status = ZSuccess;
+    459            }
+    460            else
+    461            {
+    462              // return failed results
+    463              *ami   = entry.index;
+    464              status = ZNwkUnknownDevice;
+    465            }
+    466          
+    467            return status;
+    468          }
+    469          #endif // defined ( ZDSECMGR_COMMERCIAL )
+    470          
+    471          #if defined ( ZDSECMGR_COMMERCIAL )
+    472          /******************************************************************************
+    473           * @fn          ZDSecMgrMasterKeyLookup
+    474           *
+    475           * @brief       Lookup MASTER key for specified address index.
+    476           *
+    477           * @param       ami - [in] Address Manager index
+    478           * @param       key - [out] valid MASTER key
+    479           *
+    480           * @return      ZStatus_t
+    481           */
+    482          ZStatus_t ZDSecMgrMasterKeyLookup( uint16 ami, uint8** key )
+    483          {
+    484            ZStatus_t status;
+    485            uint16    index;
+    486          
+    487          
+    488            // initialize results
+    489            *key   = NULL;
+    490            status = ZNwkUnknownDevice;
+    491          
+    492            // verify data is available
+    493            if ( ZDSecMgrMasterKeyData != NULL )
+    494            {
+    495              for ( index = 0; index < ZDSECMGR_MASTERKEY_MAX ; index++ )
+    496              {
+    497                if ( ZDSecMgrMasterKeyData[index].ami == ami )
+    498                {
+    499                  // return successful results
+    500                  *key   = ZDSecMgrMasterKeyData[index].key;
+    501                  status = ZSuccess;
+    502          
+    503                  // break from loop
+    504                  index  = ZDSECMGR_MASTERKEY_MAX;
+    505                }
+    506              }
+    507            }
+    508          
+    509            return status;
+    510          }
+    511          #endif // defined ( ZDSECMGR_COMMERCIAL )
+    512          
+    513          #if defined ( ZDSECMGR_COMMERCIAL )
+    514          /******************************************************************************
+    515           * @fn          ZDSecMgrMasterKeyStore
+    516           *
+    517           * @brief       Store MASTER key for specified address index.
+    518           *
+    519           * @param       ami - [in] Address Manager index
+    520           * @param       key - [in] valid key to store
+    521           *
+    522           * @return      ZStatus_t
+    523           */
+    524          ZStatus_t ZDSecMgrMasterKeyStore( uint16 ami, uint8* key )
+    525          {
+    526            ZStatus_t status;
+    527            uint16    index;
+    528            uint8*    entry;
+    529          
+    530          
+    531            // initialize results
+    532            status = ZNwkUnknownDevice;
+    533          
+    534            // verify data is available
+    535            if ( ZDSecMgrMasterKeyData != NULL )
+    536            {
+    537              for ( index = 0; index < ZDSECMGR_MASTERKEY_MAX ; index++ )
+    538              {
+    539                if ( ZDSecMgrMasterKeyData[index].ami == INVALID_NODE_ADDR )
+    540                {
+    541                  // store EXT address index
+    542                  ZDSecMgrMasterKeyData[index].ami = ami;
+    543          
+    544                  entry = ZDSecMgrMasterKeyData[index].key;
+    545          
+    546                  if ( key != NULL )
+    547                  {
+    548                    osal_cpyExtAddr( entry, key );
+    549                  }
+    550                  else
+    551                  {
+    552                    osal_memset( entry, 0, SEC_KEY_LEN );
+    553                  }
+    554          
+    555                  // return successful results
+    556                  status = ZSuccess;
+    557          
+    558                  // break from loop
+    559                  index  = ZDSECMGR_MASTERKEY_MAX;
+    560                }
+    561              }
+    562            }
+    563          
+    564            return status;
+    565          }
+    566          #endif // !defined ( ZDSECMGR_COMMERCIAL )
+    567          
+    568          #if defined ( ZDSECMGR_COMMERCIAL )
+    569          /******************************************************************************
+    570           * @fn          ZDSecMgrEntryInit
+    571           *
+    572           * @brief       Initialize entry sub module
+    573           *
+    574           * @param       none
+    575           *
+    576           * @return      none
+    577           */
+    578          void ZDSecMgrEntryInit( void )
+    579          {
+    580            uint16 size;
+    581            uint16 index;
+    582          
+    583          
+    584            // allocate entry data
+    585            size = (short)( sizeof(ZDSecMgrEntry_t) * ZDSECMGR_ENTRY_MAX );
+    586          
+    587            ZDSecMgrEntries = osal_mem_alloc( size );
+    588          
+    589            // initialize data
+    590            if ( ZDSecMgrEntries != NULL )
+    591            {
+    592              for( index = 0; index < ZDSECMGR_ENTRY_MAX; index++ )
+    593              {
+    594                ZDSecMgrEntries[index].ami = INVALID_NODE_ADDR;
+    595              }
+    596            }
+    597          }
+    598          #endif // defined ( ZDSECMGR_COMMERCIAL )
+    599          
+    600          #if defined ( ZDSECMGR_COMMERCIAL )
+    601          /******************************************************************************
+    602           * @fn          ZDSecMgrEntryLookup
+    603           *
+    604           * @brief       Lookup entry index using specified NWK address.
+    605           *
+    606           * @param       nwkAddr - [in] NWK address
+    607           * @param       entry   - [out] valid entry
+    608           *
+    609           * @return      ZStatus_t
+    610           */
+    611          ZStatus_t ZDSecMgrEntryLookup( uint16 nwkAddr, ZDSecMgrEntry_t** entry )
+    612          {
+    613            ZStatus_t      status;
+    614            uint16         index;
+    615            AddrMgrEntry_t addrMgrEntry;
+    616          
+    617          
+    618            // initialize results
+    619            *entry = NULL;
+    620            status = ZNwkUnknownDevice;
+    621          
+    622            // verify data is available
+    623            if ( ZDSecMgrEntries != NULL )
+    624            {
+    625              addrMgrEntry.user    = ADDRMGR_USER_SECURITY;
+    626              addrMgrEntry.nwkAddr = nwkAddr;
+    627          
+    628              if ( AddrMgrEntryLookupNwk( &addrMgrEntry ) == TRUE )
+    629              {
+    630                for ( index = 0; index < ZDSECMGR_ENTRY_MAX ; index++ )
+    631                {
+    632                  if ( addrMgrEntry.index == ZDSecMgrEntries[index].ami )
+    633                  {
+    634                    // return successful results
+    635                    *entry = &ZDSecMgrEntries[index];
+    636                    status = ZSuccess;
+    637          
+    638                    // break from loop
+    639                    index = ZDSECMGR_ENTRY_MAX;
+    640                  }
+    641                }
+    642              }
+    643            }
+    644          
+    645            return status;
+    646          }
+    647          #endif // defined ( ZDSECMGR_COMMERCIAL )
+    648          
+    649          #if defined ( ZDSECMGR_COMMERCIAL )
+    650          /******************************************************************************
+    651           * @fn          ZDSecMgrEntryLookupAMI
+    652           *
+    653           * @brief       Lookup entry using specified address index
+    654           *
+    655           * @param       ami   - [in] Address Manager index
+    656           * @param       entry - [out] valid entry
+    657           *
+    658           * @return      ZStatus_t
+    659           */
+    660          ZStatus_t ZDSecMgrEntryLookupAMI( uint16 ami, ZDSecMgrEntry_t** entry )
+    661          {
+    662            ZStatus_t status;
+    663            uint16    index;
+    664          
+    665          
+    666            // initialize results
+    667            *entry = NULL;
+    668            status = ZNwkUnknownDevice;
+    669          
+    670            // verify data is available
+    671            if ( ZDSecMgrEntries != NULL )
+    672            {
+    673              for ( index = 0; index < ZDSECMGR_ENTRY_MAX ; index++ )
+    674              {
+    675                if ( ZDSecMgrEntries[index].ami == ami )
+    676                {
+    677                  // return successful results
+    678                  *entry = &ZDSecMgrEntries[index];
+    679                  status = ZSuccess;
+    680          
+    681                  // break from loop
+    682                  index = ZDSECMGR_ENTRY_MAX;
+    683                }
+    684              }
+    685            }
+    686          
+    687            return status;
+    688          }
+    689          #endif // defined ( ZDSECMGR_COMMERCIAL )
+    690          
+    691          #if defined ( ZDSECMGR_COMMERCIAL )
+    692          /******************************************************************************
+    693           * @fn          ZDSecMgrEntryLookupExt
+    694           *
+    695           * @brief       Lookup entry index using specified EXT address.
+    696           *
+    697           * @param       extAddr - [in] EXT address
+    698           * @param       entry   - [out] valid entry
+    699           *
+    700           * @return      ZStatus_t
+    701           */
+    702          ZStatus_t ZDSecMgrEntryLookupExt( uint8* extAddr, ZDSecMgrEntry_t** entry )
+    703          {
+    704            ZStatus_t status;
+    705            uint16    ami;
+    706          
+    707          
+    708            // initialize results
+    709            *entry = NULL;
+    710            status = ZNwkUnknownDevice;
+    711          
+    712            // lookup address index
+    713            if ( ZDSecMgrExtAddrLookup( extAddr, &ami ) == ZSuccess )
+    714            {
+    715              status = ZDSecMgrEntryLookupAMI( ami, entry );
+    716            }
+    717          
+    718            return status;
+    719          }
+    720          #endif // defined ( ZDSECMGR_COMMERCIAL )
+    721          
+    722          #if defined ( ZDSECMGR_COMMERCIAL )
+    723          /******************************************************************************
+    724           * @fn          ZDSecMgrEntryFree
+    725           *
+    726           * @brief       Free entry.
+    727           *
+    728           * @param       entry - [in] valid entry
+    729           *
+    730           * @return      ZStatus_t
+    731           */
+    732          void ZDSecMgrEntryFree( ZDSecMgrEntry_t* entry )
+    733          {
+    734            entry->ami = INVALID_NODE_ADDR;
+    735          }
+    736          #endif // defined ( ZDSECMGR_COMMERCIAL )
+    737          
+    738          #if defined ( ZDSECMGR_COMMERCIAL )
+    739          /******************************************************************************
+    740           * @fn          ZDSecMgrEntryNew
+    741           *
+    742           * @brief       Get a new entry.
+    743           *
+    744           * @param       entry - [out] valid entry
+    745           *
+    746           * @return      ZStatus_t
+    747           */
+    748          ZStatus_t ZDSecMgrEntryNew( ZDSecMgrEntry_t** entry )
+    749          {
+    750            ZStatus_t status;
+    751            uint16    index;
+    752          
+    753          
+    754            // initialize results
+    755            *entry = NULL;
+    756            status = ZNwkUnknownDevice;
+    757          
+    758            // verify data is available
+    759            if ( ZDSecMgrEntries != NULL )
+    760            {
+    761              // find available entry
+    762              for ( index = 0; index < ZDSECMGR_ENTRY_MAX ; index++ )
+    763              {
+    764                if ( ZDSecMgrEntries[index].ami == INVALID_NODE_ADDR )
+    765                {
+    766                  // return successful result
+    767                  *entry = &ZDSecMgrEntries[index];
+    768                  status = ZSuccess;
+    769          
+    770                  // break from loop
+    771                  index = ZDSECMGR_ENTRY_MAX;
+    772                }
+    773              }
+    774            }
+    775          
+    776            return status;
+    777          }
+    778          #endif // defined ( ZDSECMGR_COMMERCIAL )
+    779          
+    780          #if defined ( ZDSECMGR_COMMERCIAL )
+    781          /******************************************************************************
+    782           * @fn          ZDSecMgrCtrlInit
+    783           *
+    784           * @brief       Initialize control sub module
+    785           *
+    786           * @param       none
+    787           *
+    788           * @return      none
+    789           */
+    790          void ZDSecMgrCtrlInit( void )
+    791          {
+    792            //---------------------------------------------------------------------------
+    793            #if defined ( ZDO_COORDINATOR )
+    794            //---------------------------------------------------------------------------
+    795            uint16 size;
+    796            uint16 index;
+    797          
+    798          
+    799            // allocate entry data
+    800            size = (short)( sizeof(ZDSecMgrCtrl_t) * ZDSECMGR_CTRL_MAX );
+    801          
+    802            ZDSecMgrCtrlData = osal_mem_alloc( size );
+    803          
+    804            // initialize data
+    805            if ( ZDSecMgrCtrlData != NULL )
+    806            {
+    807              for( index = 0; index < ZDSECMGR_CTRL_MAX; index++ )
+    808              {
+    809                ZDSecMgrCtrlData[index].state = ZDSECMGR_CTRL_NONE;
+    810              }
+    811            }
+    812            //---------------------------------------------------------------------------
+    813            #endif // defined ( ZDO_COORDINATOR )
+    814            //---------------------------------------------------------------------------
+    815          }
+    816          #endif // defined ( ZDSECMGR_COMMERCIAL )
+    817          
+    818          #if defined ( ZDSECMGR_COMMERCIAL )
+    819          #if defined ( ZDO_COORDINATOR )
+    820          /******************************************************************************
+    821           * @fn          ZDSecMgrCtrlRelease
+    822           *
+    823           * @brief       Release control data.
+    824           *
+    825           * @param       ctrl - [in] valid control data
+    826           *
+    827           * @return      none
+    828           */
+    829          void ZDSecMgrCtrlRelease( ZDSecMgrCtrl_t* ctrl )
+    830          {
+    831            // should always be enough entry control data
+    832            ctrl->state = ZDSECMGR_CTRL_NONE;
+    833          }
+    834          #endif // defined ( ZDO_COORDINATOR )
+    835          #endif // defined ( ZDSECMGR_COMMERCIAL )
+    836          
+    837          #if defined ( ZDSECMGR_COMMERCIAL )
+    838          #if defined ( ZDO_COORDINATOR )
+    839          /******************************************************************************
+    840           * @fn          ZDSecMgrCtrlLookup
+    841           *
+    842           * @brief       Lookup control data.
+    843           *
+    844           * @param       entry - [in] valid entry data
+    845           * @param       ctrl  - [out] control data - NULL if not found
+    846           *
+    847           * @return      none
+    848           */
+    849          void ZDSecMgrCtrlLookup( ZDSecMgrEntry_t* entry, ZDSecMgrCtrl_t** ctrl )
+    850          {
+    851            uint16 index;
+    852          
+    853          
+    854            // initialize search results
+    855            *ctrl = NULL;
+    856          
+    857            // verify data is available
+    858            if ( ZDSecMgrCtrlData != NULL )
+    859            {
+    860              for ( index = 0; index < ZDSECMGR_CTRL_MAX; index++ )
+    861              {
+    862                // make sure control data is in use
+    863                if ( ZDSecMgrCtrlData[index].state != ZDSECMGR_CTRL_NONE )
+    864                {
+    865                  // check for entry match
+    866                  if ( ZDSecMgrCtrlData[index].entry == entry )
+    867                  {
+    868                    // return this control data
+    869                    *ctrl = &ZDSecMgrCtrlData[index];
+    870          
+    871                    // break from loop
+    872                    index = ZDSECMGR_CTRL_MAX;
+    873                  }
+    874                }
+    875              }
+    876            }
+    877          }
+    878          #endif // defined ( ZDO_COORDINATOR )
+    879          #endif // defined ( ZDSECMGR_COMMERCIAL )
+    880          
+    881          
+    882          #if defined ( ZDSECMGR_COMMERCIAL )
+    883          #if defined ( ZDO_COORDINATOR )
+    884          /******************************************************************************
+    885           * @fn          ZDSecMgrCtrlSet
+    886           *
+    887           * @brief       Set control data.
+    888           *
+    889           * @param       device - [in] valid device data
+    890           * @param       entry  - [in] valid entry data
+    891           * @param       ctrl   - [in] valid control data
+    892           *
+    893           * @return      none
+    894           */
+    895          void ZDSecMgrCtrlSet( ZDSecMgrDevice_t* device,
+    896                                ZDSecMgrEntry_t*  entry,
+    897                                ZDSecMgrCtrl_t*   ctrl )
+    898          {
+    899            // set control date
+    900            ctrl->parentAddr = device->parentAddr;
+    901            ctrl->secure     = device->secure;
+    902            ctrl->entry      = entry;
+    903            ctrl->state      = ZDSECMGR_CTRL_INIT;
+    904            ctrl->cntr       = 0;
+    905          
+    906            // set device pointer
+    907            device->ctrl = ctrl;
+    908          }
+    909          #endif // defined ( ZDO_COORDINATOR )
+    910          #endif // defined ( ZDSECMGR_COMMERCIAL )
+    911          
+    912          #if defined ( ZDSECMGR_COMMERCIAL )
+    913          /******************************************************************************
+    914           * @fn          ZDSecMgrCtrlAdd
+    915           *
+    916           * @brief       Add control data.
+    917           *
+    918           * @param       device - [in] valid device data
+    919           * @param       entry  - [in] valid entry data
+    920           *
+    921           * @return      none
+    922           */
+    923          ZStatus_t ZDSecMgrCtrlAdd( ZDSecMgrDevice_t* device, ZDSecMgrEntry_t*  entry )
+    924          {
+    925            //---------------------------------------------------------------------------
+    926            #if defined ( ZDO_COORDINATOR )
+    927            //---------------------------------------------------------------------------
+    928            ZStatus_t status;
+    929            uint16    index;
+    930          
+    931          
+    932            // initialize results
+    933            status = ZNwkUnknownDevice;
+    934          
+    935            // verify data is available
+    936            if ( ZDSecMgrCtrlData != NULL )
+    937            {
+    938              // look for an empty slot
+    939              for ( index = 0; index < ZDSECMGR_CTRL_MAX; index++ )
+    940              {
+    941                if ( ZDSecMgrCtrlData[index].state == ZDSECMGR_CTRL_NONE )
+    942                {
+    943                  // return successful results
+    944                  ZDSecMgrCtrlSet( device, entry, &ZDSecMgrCtrlData[index] );
+    945          
+    946                  status = ZSuccess;
+    947          
+    948                  // break from loop
+    949                  index = ZDSECMGR_CTRL_MAX;
+    950                }
+    951              }
+    952            }
+    953          
+    954            return status;
+    955            //---------------------------------------------------------------------------
+    956            #else // !defined ( ZDO_COORDINATOR )
+    957            //---------------------------------------------------------------------------
+    958            return ZSuccess;
+    959            //---------------------------------------------------------------------------
+    960            #endif // !defined ( ZDO_COORDINATOR )
+    961            //---------------------------------------------------------------------------
+    962          }
+    963          #endif // defined ( ZDSECMGR_COMMERCIAL )
+    964          
+    965          #if defined ( ZDSECMGR_COMMERCIAL )
+    966          /******************************************************************************
+    967           * @fn          ZDSecMgrCtrlTerm
+    968           *
+    969           * @brief       Terminate device control.
+    970           *
+    971           * @param       entry - [in] valid entry data
+    972           *
+    973           * @return      none
+    974           */
+    975          void ZDSecMgrCtrlTerm( ZDSecMgrEntry_t* entry )
+    976          {
+    977            //---------------------------------------------------------------------------
+    978            #if defined ( ZDO_COORDINATOR )
+    979            //---------------------------------------------------------------------------
+    980            ZDSecMgrCtrl_t* ctrl;
+    981          
+    982          
+    983            // remove device from control data
+    984            ZDSecMgrCtrlLookup ( entry, &ctrl );
+    985          
+    986            if ( ctrl != NULL )
+    987            {
+    988              ZDSecMgrCtrlRelease ( ctrl );
+    989            }
+    990            //---------------------------------------------------------------------------
+    991            #endif // defined ( ZDO_COORDINATOR )
+    992            //---------------------------------------------------------------------------
+    993          }
+    994          #endif // defined ( ZDSECMGR_COMMERCIAL )
+    995          
+    996          #if defined ( ZDSECMGR_COMMERCIAL )
+    997          /******************************************************************************
+    998           * @fn          ZDSecMgrCtrlReset
+    999           *
+   1000           * @brief       Reset control data.
+   1001           *
+   1002           * @param       device - [in] valid device data
+   1003           * @param       entry  - [in] valid entry data
+   1004           *
+   1005           * @return      none
+   1006           */
+   1007          ZStatus_t ZDSecMgrCtrlReset( ZDSecMgrDevice_t* device, ZDSecMgrEntry_t* entry )
+   1008          {
+   1009            //---------------------------------------------------------------------------
+   1010            #if defined ( ZDO_COORDINATOR )
+   1011            //---------------------------------------------------------------------------
+   1012            ZStatus_t       status;
+   1013            ZDSecMgrCtrl_t* ctrl;
+   1014          
+   1015          
+   1016            // initialize results
+   1017            status = ZNwkUnknownDevice;
+   1018          
+   1019            // look for a match for the entry
+   1020            ZDSecMgrCtrlLookup( entry, &ctrl );
+   1021          
+   1022            if ( ctrl != NULL )
+   1023            {
+   1024              ZDSecMgrCtrlSet( device, entry, ctrl );
+   1025          
+   1026              status = ZSuccess;
+   1027            }
+   1028            else
+   1029            {
+   1030              status = ZDSecMgrCtrlAdd( device, entry );
+   1031            }
+   1032          
+   1033            return status;
+   1034            //---------------------------------------------------------------------------
+   1035            #else // !defined ( ZDO_COORDINATOR )
+   1036            //---------------------------------------------------------------------------
+   1037            return ZSuccess;
+   1038            //---------------------------------------------------------------------------
+   1039            #endif // !defined ( ZDO_COORDINATOR )
+   1040            //---------------------------------------------------------------------------
+   1041          }
+   1042          #endif // defined ( ZDSECMGR_COMMERCIAL )
+   1043          
+   1044          #if defined ( ZDSECMGR_COMMERCIAL )
+   1045          /******************************************************************************
+   1046           * @fn          ZDSecMgrMasterKeyLoad
+   1047           *
+   1048           * @brief       Load the MASTER key for device with specified EXT
+   1049           *              address.
+   1050           *
+   1051           * @param       nwkAddr - [in] NWK address of Trust Center
+   1052           * @param       extAddr - [in] EXT address of Trust Center
+   1053           * @param       key     - [in] MASTER key shared with Trust Center
+   1054           *
+   1055           * @return      none
+   1056           */
+   1057          void ZDSecMgrMasterKeyLoad( uint16 nwkAddr, uint8* extAddr, uint8* key )
+   1058          {
+   1059            AddrMgrEntry_t addr;
+   1060            uint8*         loaded;
+   1061          
+   1062          
+   1063            // check if Trust Center address is configured and correct
+   1064            // check if MASTER key has already been sent
+   1065          
+   1066            // add address data
+   1067            addr.user    = ADDRMGR_USER_SECURITY;
+   1068            addr.nwkAddr = nwkAddr;
+   1069            AddrMgrExtAddrSet( addr.extAddr, extAddr );
+   1070          
+   1071            if ( AddrMgrEntryUpdate( &addr ) == TRUE )
+   1072            {
+   1073              if ( ZDSecMgrMasterKeyLookup( addr.index, &loaded ) != ZSuccess )
+   1074              {
+   1075                ZDSecMgrMasterKeyStore( addr.index, key );
+   1076              }
+   1077            }
+   1078          }
+   1079          #endif // defined ( ZDSECMGR_COMMERCIAL )
+   1080          
+   1081          #if defined ( ZDSECMGR_COMMERCIAL )
+   1082          /******************************************************************************
+   1083           * @fn          ZDSecMgrAppKeyGet
+   1084           *
+   1085           * @brief       get an APP key - option APP(MASTER or LINK) key
+   1086           *
+   1087           * @param       initNwkAddr - [in] NWK address of initiator device
+   1088           * @param       initExtAddr - [in] EXT address of initiator device
+   1089           * @param       partNwkAddr - [in] NWK address of partner device
+   1090           * @param       partExtAddr - [in] EXT address of partner device
+   1091           * @param       key         - [out] APP(MASTER or LINK) key
+   1092           * @param       keyType     - [out] APP(MASTER or LINK) key type
+   1093           *
+   1094           * @return      pointer to MASTER key
+   1095           */
+   1096          ZStatus_t ZDSecMgrAppKeyGet( uint16  initNwkAddr,
+   1097                                       uint8*  initExtAddr,
+   1098                                       uint16  partNwkAddr,
+   1099                                       uint8*  partExtAddr,
+   1100                                       uint8** key,
+   1101                                       uint8*  keyType )
+   1102          {
+   1103            //---------------------------------------------------------------------------
+   1104            // note:
+   1105            // should use a robust mechanism to generate keys, for example
+   1106            // combine EXT addresses and call a hash function
+   1107            //---------------------------------------------------------------------------
+   1108            osal_memset( *key, 0, SEC_KEY_LEN );
+   1109          
+   1110            *keyType = KEY_TYPE_APP_LINK;
+   1111            //or       KEY_TYPE_APP_MASTER;
+   1112          
+   1113            return ZSuccess;
+   1114          }
+   1115          #endif // defined ( ZDSECMGR_COMMERCIAL )
+   1116          
+   1117          #if defined ( ZDSECMGR_COMMERCIAL )
+   1118          /******************************************************************************
+   1119           * @fn          ZDSecMgrAppKeyReq
+   1120           *
+   1121           * @brief       Process request for APP key between two devices.
+   1122           *
+   1123           * @param       device - [in] ZDO_RequestKeyInd_t, request info
+   1124           *
+   1125           * @return      none
+   1126           */
+   1127          void ZDSecMgrAppKeyReq( ZDO_RequestKeyInd_t* ind )
+   1128          {
+   1129            APSME_TransportKeyReq_t req;
+   1130            uint8                   initExtAddr[Z_EXTADDR_LEN];
+   1131            uint16                  partNwkAddr;
+   1132            uint8                   key[SEC_KEY_LEN];
+   1133          
+   1134          
+   1135            // validate initiator and partner
+   1136            if ( ( APSME_LookupNwkAddr( ind->partExtAddr, &partNwkAddr ) == TRUE ) &&
+   1137                 ( APSME_LookupExtAddr( ind->srcAddr, initExtAddr ) == TRUE      )   )
+   1138            {
+   1139              // point the key to some memory
+   1140              req.key = key;
+   1141          
+   1142              // get an APP key - option APP (MASTER or LINK) key
+   1143              if ( ZDSecMgrAppKeyGet( ind->srcAddr,
+   1144                                      initExtAddr,
+   1145                                      partNwkAddr,
+   1146                                      ind->partExtAddr,
+   1147                                      &req.key,
+   1148                                      &req.keyType ) == ZSuccess )
+   1149              {
+   1150                // always secure
+   1151                req.secure = TRUE;
+   1152          
+   1153                // send key to initiator device
+   1154                req.dstAddr   = ind->srcAddr;
+   1155                req.extAddr   = ind->partExtAddr;
+   1156                req.initiator = TRUE;
+   1157                APSME_TransportKeyReq( &req );
+   1158          
+   1159                // send key to partner device
+   1160                req.dstAddr   = partNwkAddr;
+   1161                req.extAddr   = initExtAddr;
+   1162                req.initiator = FALSE;
+   1163                APSME_TransportKeyReq( &req );
+   1164              }
+   1165            }
+   1166          }
+   1167          #endif // defined ( ZDSECMGR_COMMERCIAL )
+   1168          
+   1169          #if defined ( ZDSECMGR_COMMERCIAL )
+   1170          /******************************************************************************
+   1171           * @fn          ZDSecMgrEstablishKey
+   1172           *
+   1173           * @brief       Start SKKE with device joining network.
+   1174           *
+   1175           * @param       device - [in] ZDSecMgrDevice_t, device info
+   1176           *
+   1177           * @return      ZStatus_t
+   1178           */
+   1179          ZStatus_t ZDSecMgrEstablishKey( ZDSecMgrDevice_t* device )
+   1180          {
+   1181            ZStatus_t               status;
+   1182            APSME_EstablishKeyReq_t req;
+   1183          
+   1184          
+   1185            req.respExtAddr = device->extAddr;
+   1186            req.method      = APSME_SKKE_METHOD;
+   1187          
+   1188            if ( device->parentAddr == NLME_GetShortAddr() )
+   1189            {
+   1190              req.dstAddr = device->nwkAddr;
+   1191              req.secure  = FALSE;
+   1192            }
+   1193            else
+   1194            {
+   1195              req.dstAddr = device->parentAddr;
+   1196              req.secure  = TRUE;
+   1197            }
+   1198          
+   1199            status = APSME_EstablishKeyReq( &req );
+   1200          
+   1201            return status;
+   1202          }
+   1203          #endif // defined ( ZDSECMGR_COMMERCIAL )
+   1204          
+   1205          #if defined ( ZDSECMGR_COMMERCIAL )
+   1206          /******************************************************************************
+   1207           * @fn          ZDSecMgrSendMasterKey
+   1208           *
+   1209           * @brief       Send MASTER key to device joining network.
+   1210           *
+   1211           * @param       device - [in] ZDSecMgrDevice_t, device info
+   1212           *
+   1213           * @return      ZStatus_t
+   1214           */
+   1215          ZStatus_t ZDSecMgrSendMasterKey( ZDSecMgrDevice_t* device )
+   1216          {
+   1217            ZStatus_t               status;
+   1218            APSME_TransportKeyReq_t req;
+   1219          
+   1220          
+   1221            req.keyType = KEY_TYPE_TC_MASTER;
+   1222            req.extAddr = device->extAddr;
+   1223          
+   1224            ZDSecMgrMasterKeyLookup( device->ctrl->entry->ami, &req.key );
+   1225          
+   1226            //check if using secure hop to to parent
+   1227            if ( device->parentAddr != NLME_GetShortAddr() )
+   1228            {
+   1229              //send to parent with security
+   1230              req.dstAddr = device->parentAddr;
+   1231              req.secure  = TRUE;
+   1232            }
+   1233            else
+   1234            {
+   1235              //direct with no security
+   1236              req.dstAddr = device->nwkAddr;
+   1237              req.secure  = FALSE;
+   1238            }
+   1239          
+   1240            status = APSME_TransportKeyReq( &req );
+   1241          
+   1242            return status;
+   1243          }
+   1244          #endif // defined ( ZDSECMGR_COMMERCIAL )
+   1245          
+   1246          /******************************************************************************
+   1247           * @fn          ZDSecMgrSendNwkKey
+   1248           *
+   1249           * @brief       Send NWK key to device joining network.
+   1250           *
+   1251           * @param       device - [in] ZDSecMgrDevice_t, device info
+   1252           *
+   1253           * @return      ZStatus_t
+   1254           */
+   1255          ZStatus_t ZDSecMgrSendNwkKey( ZDSecMgrDevice_t* device )
+   1256          {
+   1257            ZStatus_t               status;
+   1258            APSME_TransportKeyReq_t req;
+   1259          
+   1260          
+   1261            //---------------------------------------------------------------------------
+   1262            #if defined ( ZDSECMGR_COMMERCIAL )
+   1263            //---------------------------------------------------------------------------
+   1264            {
+   1265              // set values
+   1266              req.extAddr   = device->extAddr;
+   1267              req.keyType   = KEY_TYPE_NWK;
+   1268              req.keySeqNum = _NIB.nwkActiveKey.keySeqNum;
+   1269              req.key       = _NIB.nwkActiveKey.key;
+   1270          
+   1271              // check if using secure hop to to parent
+   1272              if ( device->parentAddr == NLME_GetShortAddr() )
+   1273              {
+   1274                req.dstAddr = device->nwkAddr;
+   1275                req.secure  = FALSE;
+   1276              }
+   1277              else
+   1278              {
+   1279                req.dstAddr = device->parentAddr;
+   1280                req.secure  = TRUE;
+   1281              }
+   1282            }
+   1283            //---------------------------------------------------------------------------
+   1284            #else // defined( ZDSECMGR_RESIDENTIAL )
+   1285            //---------------------------------------------------------------------------
+   1286            {
+   1287              // default values
+   1288              req.dstAddr = device->nwkAddr;
+   1289              req.secure  = device->secure;
+   1290              req.keyType = KEY_TYPE_NWK;
+   1291              req.extAddr = device->extAddr;
+   1292          
+   1293              // special cases
+   1294              if ( device->secure == FALSE )
+   1295              {
+   1296                req.keySeqNum = _NIB.nwkActiveKey.keySeqNum;
+   1297                req.key       = _NIB.nwkActiveKey.key;
+   1298          
+   1299                // check if using secure hop to to parent
+   1300                if ( device->parentAddr != NLME_GetShortAddr() )
+   1301                {
+   1302                  req.dstAddr = device->parentAddr;
+   1303                  req.secure  = TRUE;
+   1304                }
+   1305              }
+   1306              else
+   1307              {
+   1308                req.key       = NULL;
+   1309                req.keySeqNum = 0;
+   1310              }
+   1311            }
+   1312            //-------------------------------------------------------------------------
+   1313            #endif // defined( ZDSECMGR_RESIDENTIAL )
+   1314            //-------------------------------------------------------------------------
+   1315          
+   1316            status = APSME_TransportKeyReq( &req );
+   1317          
+   1318            return status;
+   1319          }
+   1320          
+   1321          #if defined ( ZDSECMGR_COMMERCIAL )
+   1322          /******************************************************************************
+   1323           * @fn          ZDSecMgrDeviceEntryRemove
+   1324           *
+   1325           * @brief       Remove device entry.
+   1326           *
+   1327           * @param       entry - [in] valid entry
+   1328           *
+   1329           * @return      none
+   1330           */
+   1331          void ZDSecMgrDeviceEntryRemove( ZDSecMgrEntry_t* entry )
+   1332          {
+   1333            // terminate device control
+   1334            ZDSecMgrCtrlTerm( entry );
+   1335          
+   1336            // remove device from entry data
+   1337            ZDSecMgrEntryFree( entry );
+   1338          
+   1339            // remove EXT address
+   1340            //ZDSecMgrExtAddrRelease( aiOld );
+   1341          }
+   1342          #endif // defined ( ZDSECMGR_COMMERCIAL )
+   1343          
+   1344          #if defined ( ZDSECMGR_COMMERCIAL )
+   1345          /******************************************************************************
+   1346           * @fn          ZDSecMgrDeviceEntryAdd
+   1347           *
+   1348           * @brief       Add entry.
+   1349           *
+   1350           * @param       device - [in] ZDSecMgrDevice_t, device info
+   1351           * @param       ami    - [in] Address Manager index
+   1352           *
+   1353           * @return      ZStatus_t
+   1354           */
+   1355          void ZDSecMgrAddrMgrUpdate( uint16 ami, uint16 nwkAddr )
+   1356          {
+   1357            AddrMgrEntry_t entry;
+   1358          
+   1359            // get the ami data
+   1360            entry.user  = ADDRMGR_USER_SECURITY;
+   1361            entry.index = ami;
+   1362          
+   1363            AddrMgrEntryGet( &entry );
+   1364          
+   1365            // check if NWK address is same
+   1366            if ( entry.nwkAddr != nwkAddr )
+   1367            {
+   1368              // update NWK address
+   1369              entry.nwkAddr = nwkAddr;
+   1370          
+   1371              AddrMgrEntryUpdate( &entry );
+   1372            }
+   1373          }
+   1374          
+   1375          ZStatus_t ZDSecMgrDeviceEntryAdd( ZDSecMgrDevice_t* device, uint16 ami )
+   1376          {
+   1377            ZStatus_t        status;
+   1378            ZDSecMgrEntry_t* entry;
+   1379          
+   1380          
+   1381            // initialize as unknown until completion
+   1382            status = ZNwkUnknownDevice;
+   1383          
+   1384            device->ctrl = NULL;
+   1385          
+   1386            // make sure not already registered
+   1387            if ( ZDSecMgrEntryLookup( device->nwkAddr, &entry ) == ZSuccess )
+   1388            {
+   1389              // verify that address index is same
+   1390              if ( entry->ami != ami )
+   1391              {
+   1392                // remove conflicting entry
+   1393                ZDSecMgrDeviceEntryRemove( entry );
+   1394          
+   1395                if ( ZDSecMgrEntryLookupAMI( ami, &entry ) == ZSuccess )
+   1396                {
+   1397                  // update NWK address
+   1398                  ZDSecMgrAddrMgrUpdate( ami, device->nwkAddr );
+   1399                }
+   1400              }
+   1401            }
+   1402            else if ( ZDSecMgrEntryLookupAMI( ami, &entry ) == ZSuccess )
+   1403            {
+   1404              // update NWK address
+   1405              ZDSecMgrAddrMgrUpdate( ami, device->nwkAddr );
+   1406            }
+   1407          
+   1408            // check if a new entry needs to be created
+   1409            if ( entry == NULL )
+   1410            {
+   1411              // get new entry
+   1412              if ( ZDSecMgrEntryNew( &entry ) == ZSuccess )
+   1413              {
+   1414                // reset entry lkd
+   1415          
+   1416                // finish setting up entry
+   1417                entry->ami = ami;
+   1418          
+   1419                // update NWK address
+   1420                ZDSecMgrAddrMgrUpdate( ami, device->nwkAddr );
+   1421          
+   1422                // enter new device into device control
+   1423                status = ZDSecMgrCtrlAdd( device, entry );
+   1424              }
+   1425            }
+   1426            else
+   1427            {
+   1428              // reset entry lkd
+   1429          
+   1430              // reset entry in entry control
+   1431              status = ZDSecMgrCtrlReset( device, entry );
+   1432            }
+   1433          
+   1434            return status;
+   1435          }
+   1436          #endif // defined ( ZDSECMGR_COMMERCIAL )
+   1437          
+   1438          #if defined ( ZDSECMGR_COMMERCIAL )
+   1439          #if defined ( ZDO_COORDINATOR )
+   1440          /******************************************************************************
+   1441           * @fn          ZDSecMgrDeviceCtrlHandler
+   1442           *
+   1443           * @brief       Device control handler.
+   1444           *
+   1445           * @param       device - [in] ZDSecMgrDevice_t, device info
+   1446           *
+   1447           * @return      none
+   1448           */
+   1449          void ZDSecMgrDeviceCtrlHandler( ZDSecMgrDevice_t* device )
+   1450          {
+   1451            uint8 state;
+   1452            uint8 cntr;
+   1453          
+   1454          
+   1455            state = device->ctrl->state;
+   1456            cntr  = ZDSECMGR_CTRL_BASE_CNTR;
+   1457          
+   1458            switch ( state )
+   1459            {
+   1460              case ZDSECMGR_CTRL_TK_MASTER:
+   1461                if ( ZDSecMgrSendMasterKey( device ) == ZSuccess )
+   1462                {
+   1463                  state = ZDSECMGR_CTRL_SKKE_INIT;
+   1464                  cntr  = ZDSECMGR_CTRL_SKKE_INIT_CNTR;
+   1465                }
+   1466                break;
+   1467          
+   1468              case ZDSECMGR_CTRL_SKKE_INIT:
+   1469                if ( ZDSecMgrEstablishKey( device ) == ZSuccess )
+   1470                {
+   1471                  state = ZDSECMGR_CTRL_SKKE_WAIT;
+   1472                  cntr  = ZDSECMGR_CTRL_SKKE_WAIT_CNTR;
+   1473                }
+   1474                break;
+   1475          
+   1476              case ZDSECMGR_CTRL_SKKE_WAIT:
+   1477                state = ZDSECMGR_CTRL_NONE;
+   1478                // timeout error - cleanup SKKE slot and entry
+   1479                break;
+   1480          
+   1481              case ZDSECMGR_CTRL_TK_NWK:
+   1482                if ( ZDSecMgrSendNwkKey( device ) == ZSuccess )
+   1483                {
+   1484                  state = ZDSECMGR_CTRL_NONE;
+   1485                }
+   1486                break;
+   1487          
+   1488              default:
+   1489                state = ZDSECMGR_CTRL_NONE;
+   1490                break;
+   1491            }
+   1492          
+   1493            if ( state != ZDSECMGR_CTRL_NONE )
+   1494            {
+   1495              device->ctrl->state = state;
+   1496              device->ctrl->cntr  = cntr;
+   1497          
+   1498              osal_start_timer( ZDO_SECMGR_EVENT, 100 );
+   1499            }
+   1500            else
+   1501            {
+   1502              ZDSecMgrCtrlRelease( device->ctrl );
+   1503            }
+   1504          }
+   1505          #endif // defined ( ZDO_COORDINATOR )
+   1506          #endif // defined ( ZDSECMGR_COMMERCIAL )
+   1507          
+   1508          #if defined ( ZDO_COORDINATOR )
+   1509          #if defined ( ZDSECMGR_COMMERCIAL )
+   1510          /******************************************************************************
+   1511           * @fn          ZDSecMgrDeviceCtrlSetup
+   1512           *
+   1513           * @brief       Setup device control.
+   1514           *
+   1515           * @param       device - [in] ZDSecMgrDevice_t, device info
+   1516           *
+   1517           * @return      ZStatus_t
+   1518           */
+   1519          void ZDSecMgrDeviceCtrlSetup( ZDSecMgrDevice_t* device )
+   1520          {
+   1521            if ( device->ctrl != NULL )
+   1522            {
+   1523              if ( device->secure == FALSE )
+   1524              {
+   1525                // send the master key data to the joining device
+   1526                device->ctrl->state = ZDSECMGR_CTRL_TK_MASTER;
+   1527              }
+   1528              else
+   1529              {
+   1530                // start SKKE
+   1531                device->ctrl->state = ZDSECMGR_CTRL_SKKE_INIT;
+   1532              }
+   1533          
+   1534              ZDSecMgrDeviceCtrlHandler( device );
+   1535            }
+   1536          }
+   1537          #endif // defined ( ZDO_COORDINATOR )
+   1538          #endif // defined ( ZDSECMGR_COMMERCIAL )
+   1539          
+   1540          #if defined ( ZDSECMGR_COMMERCIAL )
+   1541          /******************************************************************************
+   1542           * @fn          ZDSecMgrDeviceCtrlUpdate
+   1543           *
+   1544           * @brief       Update control data.
+   1545           *
+   1546           * @param       extAddr - [in] EXT address
+   1547           * @param       state   - [in] new control state
+   1548           *
+   1549           * @return      none
+   1550           */
+   1551          void ZDSecMgrDeviceCtrlUpdate( uint8* extAddr, uint8 state )
+   1552          {
+   1553            //---------------------------------------------------------------------------
+   1554            #if defined ( ZDO_COORDINATOR )
+   1555            //---------------------------------------------------------------------------
+   1556            ZDSecMgrEntry_t* entry;
+   1557            ZDSecMgrCtrl_t*  ctrl;
+   1558          
+   1559          
+   1560            // lookup device entry data
+   1561            ZDSecMgrEntryLookupExt( extAddr, &entry );
+   1562          
+   1563            if ( entry != NULL )
+   1564            {
+   1565              // lookup device control data
+   1566              ZDSecMgrCtrlLookup( entry, &ctrl );
+   1567          
+   1568              // make sure control data is valid
+   1569              if ( ctrl != NULL )
+   1570              {
+   1571                // possible state transitions
+   1572                if ( ( state == ZDSECMGR_CTRL_SKKE_DONE       ) &&
+   1573                     ( ctrl->state == ZDSECMGR_CTRL_SKKE_WAIT )    )
+   1574                {
+   1575                  ctrl->state = ZDSECMGR_CTRL_TK_NWK;
+   1576                  ctrl->cntr  = ZDSECMGR_CTRL_TK_NWK_CNTR;
+   1577                }
+   1578          
+   1579                // timer should be active
+   1580              }
+   1581            }
+   1582            //---------------------------------------------------------------------------
+   1583            #endif // defined ( ZDO_COORDINATOR )
+   1584            //---------------------------------------------------------------------------
+   1585          }
+   1586          #endif // defined ( ZDSECMGR_COMMERCIAL )
+   1587          
+   1588          #if defined ( RTR_NWK )
+   1589          /******************************************************************************
+   1590           * @fn          ZDSecMgrDeviceRemove
+   1591           *
+   1592           * @brief       Remove device from network.
+   1593           *
+   1594           * @param       device - [in] ZDSecMgrDevice_t, device info
+   1595           *
+   1596           * @return      none
+   1597           */
+   1598          void ZDSecMgrDeviceRemove( ZDSecMgrDevice_t* device )
+   1599          {
+   1600            APSME_RemoveDeviceReq_t remDevReq;
+   1601            NLME_LeaveReq_t         leaveReq;
+   1602            associated_devices_t*   assoc;
+   1603          
+   1604          
+   1605            // check if parent, remove the device
+   1606            if ( device->parentAddr == NLME_GetShortAddr() )
+   1607            {
+   1608              // this is the parent of the device
+   1609              leaveReq.extAddr        = device->extAddr;
+   1610              leaveReq.removeChildren = FALSE;
+   1611              leaveReq.rejoin         = FALSE;
+   1612          
+   1613              // find child association
+   1614              assoc = AssocGetWithExt( device->extAddr );
+   1615          
+   1616              if ( ( assoc != NULL                            ) &&
+   1617                   ( assoc->nodeRelation >= CHILD_RFD         ) &&
+   1618                   ( assoc->nodeRelation <= CHILD_FFD_RX_IDLE )    )
+   1619              {
+   1620                // check if associated device is authenticated
+   1621                if ( assoc->devStatus & DEV_SEC_AUTH_STATUS )
+   1622                {
+   1623                  leaveReq.silent = FALSE;
+   1624                }
+   1625                else
+   1626                {
+   1627                  leaveReq.silent = TRUE;
+   1628                }
+   1629          
+   1630                NLME_LeaveReq( &leaveReq );
+   1631              }
+   1632            }
+   1633            else
+   1634            {
+   1635              // this is not the parent of the device
+   1636              remDevReq.parentAddr   = device->parentAddr;
+   1637              remDevReq.childExtAddr = device->extAddr;
+   1638          
+   1639              APSME_RemoveDeviceReq( &remDevReq );
+   1640            }
+   1641          }
+   1642          #endif // defined( RTR_NWK )
+   1643          
+   1644          #if defined ( ZDSECMGR_COMMERCIAL )
+   1645          #if !defined ( ZDO_COORDINATOR ) || defined( SOFT_START )
+   1646          /******************************************************************************
+   1647           * @fn          ZDSecMgrDeviceValidateSKKE
+   1648           *
+   1649           * @brief       Decide whether device is allowed for SKKE.
+   1650           *
+   1651           * @param       device - [in] ZDSecMgrDevice_t, device info
+   1652           *
+   1653           * @return      ZStatus_t
+   1654           */
+   1655          ZStatus_t ZDSecMgrDeviceValidateSKKE( ZDSecMgrDevice_t* device )
+   1656          {
+   1657            ZStatus_t status;
+   1658            uint16    ami;
+   1659            uint8*    key;
+   1660          
+   1661          
+   1662            // get EXT address
+   1663            status = ZDSecMgrExtAddrLookup( device->extAddr, &ami );
+   1664          
+   1665            if ( status == ZSuccess )
+   1666            {
+   1667              // get MASTER key
+   1668              status = ZDSecMgrMasterKeyLookup( ami, &key );
+   1669          
+   1670              if ( status == ZSuccess )
+   1671              {
+   1672              //  // check if initiator is Trust Center
+   1673              //  if ( device->nwkAddr == APSME_TRUSTCENTER_NWKADDR )
+   1674              //  {
+   1675              //    // verify NWK key not sent
+   1676              //    // devtag.todo
+   1677              //    // temporary - add device to internal data
+   1678              //    status = ZDSecMgrDeviceEntryAdd( device, ami );
+   1679              //  }
+   1680              //  else
+   1681              //  {
+   1682              //    // initiator not Trust Center - End to End SKKE - set policy
+   1683              //    // for accepting an SKKE initiation
+   1684              //    // temporary - add device to internal data
+   1685              //    status = ZDSecMgrDeviceEntryAdd( device, ami );
+   1686              //  }
+   1687                  status = ZDSecMgrDeviceEntryAdd( device, ami );
+   1688              }
+   1689            }
+   1690          
+   1691            return status;
+   1692          }
+   1693          #endif // !defined ( ZDO_COORDINATOR ) || defined ( SOFT_START )
+   1694          #endif // defined ( ZDSECMGR_COMMERCIAL )
+   1695          
+   1696          #if defined ( ZDSECMGR_RESIDENTIAL )
+   1697          #if defined ( ZDO_COORDINATOR )
+   1698          /******************************************************************************
+   1699           * @fn          ZDSecMgrDeviceValidateRM (RESIDENTIAL MODE)
+   1700           *
+   1701           * @brief       Decide whether device is allowed.
+   1702           *
+   1703           * @param       device - [in] ZDSecMgrDevice_t, device info
+   1704           *
+   1705           * @return      ZStatus_t
+   1706           */
+   1707          ZStatus_t ZDSecMgrDeviceValidateRM( ZDSecMgrDevice_t* device )
+   1708          {
+   1709            ZStatus_t status;
+   1710            uint8     index;
+   1711            uint8*    restricted;
+   1712          
+   1713            status = ZSuccess;
+   1714          
+   1715            // Look through the restricted device list
+   1716            for ( index = 0; index < ZDSECMGR_RESTRICTED_DEVICES; index++ )
+   1717            {
+   1718              restricted = ZDSecMgrRestrictedDevices[index];
+   1719          
+   1720              if ( AddrMgrExtAddrEqual( restricted, device->extAddr )  == TRUE )
+   1721              {
+   1722                // return as unknown device in regards to validation
+   1723                status = ZNwkUnknownDevice;
+   1724          
+   1725                // break from loop
+   1726                index = ZDSECMGR_RESTRICTED_DEVICES;
+   1727              }
+   1728            }
+   1729          
+   1730            return status;
+   1731          }
+   1732          #endif // defined ( ZDO_COORDINATOR )
+   1733          #endif // defined ( ZDSECMGR_RESIDENTIAL )
+   1734          
+   1735          #if defined ( ZDSECMGR_COMMERCIAL )
+   1736          #if defined ( ZDO_COORDINATOR )
+   1737          /******************************************************************************
+   1738           * @fn          ZDSecMgrDeviceValidateCM (COMMERCIAL MODE)
+   1739           *
+   1740           * @brief       Decide whether device is allowed.
+   1741           *
+   1742           * @param       device - [in] ZDSecMgrDevice_t, device info
+   1743           *
+   1744           * @return      ZStatus_t
+   1745           */
+   1746          ZStatus_t ZDSecMgrDeviceValidateCM( ZDSecMgrDevice_t* device )
+   1747          {
+   1748            ZStatus_t status;
+   1749            uint16    ami;
+   1750            uint8*    key;
+   1751          
+   1752          
+   1753            // check for pre configured setting
+   1754            if ( device->secure == TRUE )
+   1755            {
+   1756              // get EXT address and MASTER key
+   1757              status = ZDSecMgrExtAddrLookup( device->extAddr, &ami );
+   1758          
+   1759              if ( status == ZSuccess )
+   1760              {
+   1761                status = ZDSecMgrMasterKeyLookup( ami, &key );
+   1762              }
+   1763            }
+   1764            else
+   1765            {
+   1766              // implement EXT address and MASTER key policy here -- the total number of
+   1767              // Security Manager entries should never exceed the number of EXT addresses
+   1768              // and MASTER keys available
+   1769          
+   1770              // set status based on policy
+   1771              status = ZSuccess; // ZNwkUnknownDevice;
+   1772          
+   1773              // get the address index
+   1774              if ( ZDSecMgrExtAddrLookup( device->extAddr, &ami ) != ZSuccess )
+   1775              {
+   1776                // if policy, store new EXT address
+   1777                status = ZDSecMgrExtAddrStore( device->extAddr, &ami );
+   1778              }
+   1779          
+   1780              // get the address index
+   1781              if ( ZDSecMgrMasterKeyLookup( ami, &key ) != ZSuccess )
+   1782              {
+   1783                // if policy, store new key -- NULL will zero key
+   1784                status = ZDSecMgrMasterKeyStore( ami, NULL );
+   1785              }
+   1786            }
+   1787          
+   1788            // if EXT address and MASTER key available -- add device
+   1789            if ( status == ZSuccess )
+   1790            {
+   1791              // add device to internal data - with control
+   1792              status = ZDSecMgrDeviceEntryAdd( device, ami );
+   1793            }
+   1794          
+   1795            return status;
+   1796          }
+   1797          #endif // defined ( ZDO_COORDINATOR )
+   1798          #endif // defined ( ZDSECMGR_COMMERCIAL )
+   1799          
+   1800          #if defined ( ZDO_COORDINATOR )
+   1801          /******************************************************************************
+   1802           * @fn          ZDSecMgrDeviceValidate
+   1803           *
+   1804           * @brief       Decide whether device is allowed.
+   1805           *
+   1806           * @param       device - [in] ZDSecMgrDevice_t, device info
+   1807           *
+   1808           * @return      ZStatus_t
+   1809           */
+   1810          ZStatus_t ZDSecMgrDeviceValidate( ZDSecMgrDevice_t* device )
+   1811          {
+   1812            ZStatus_t status;
+   1813          
+   1814          
+   1815            if ( ZDSecMgrPermitJoiningEnabled == TRUE )
+   1816            {
+   1817              // device may be joining with a secure flag but it is ultimately the Trust
+   1818              // Center that decides -- check if expected pre configured device --
+   1819              // override settings
+   1820              if ( zgPreConfigKeys == TRUE )
+   1821              {
+   1822                  device->secure = TRUE;
+   1823              }
+   1824              else
+   1825              {
+   1826                  device->secure = FALSE;
+   1827              }
+   1828          
+   1829              //-------------------------------------------------------------------------
+   1830              #if defined ( ZDSECMGR_COMMERCIAL )
+   1831              //-------------------------------------------------------------------------
+   1832              status = ZDSecMgrDeviceValidateCM( device );
+   1833              //-------------------------------------------------------------------------
+   1834              #else // defined( ZDSECMGR_RESIDENTIAL )
+   1835              //-------------------------------------------------------------------------
+   1836              status = ZDSecMgrDeviceValidateRM( device );
+   1837              //-------------------------------------------------------------------------
+   1838              #endif // defined( ZDSECMGR_RESIDENTIAL )
+   1839              //-------------------------------------------------------------------------
+   1840            }
+   1841            else
+   1842            {
+   1843              status = ZNwkUnknownDevice;
+   1844            }
+   1845          
+   1846            return status;
+   1847          }
+   1848          #endif // defined ( ZDO_COORDINATOR )
+   1849          
+   1850          #if defined ( ZDO_COORDINATOR )
+   1851          /******************************************************************************
+   1852           * @fn          ZDSecMgrDeviceJoin
+   1853           *
+   1854           * @brief       Try to join this device.
+   1855           *
+   1856           * @param       device - [in] ZDSecMgrDevice_t, device info
+   1857           *
+   1858           * @return      ZStatus_t
+   1859           */
+   1860          ZStatus_t ZDSecMgrDeviceJoin( ZDSecMgrDevice_t* device )
+   1861          {
+   1862            ZStatus_t status;
+   1863          
+   1864          
+   1865            // attempt to validate device
+   1866            status = ZDSecMgrDeviceValidate( device );
+   1867          
+   1868            if ( status == ZSuccess )
+   1869            {
+   1870              //-------------------------------------------------------------------------
+   1871              #if defined ( ZDSECMGR_COMMERCIAL )
+   1872              //-------------------------------------------------------------------------
+   1873              ZDSecMgrDeviceCtrlSetup( device );
+   1874              //-------------------------------------------------------------------------
+   1875              #else // defined( ZDSECMGR_RESIDENTIAL )
+   1876              //-------------------------------------------------------------------------
+   1877              //send the nwk key data to the joining device
+   1878              status = ZDSecMgrSendNwkKey( device );
+   1879              //-------------------------------------------------------------------------
+   1880              #endif // defined( ZDSECMGR_RESIDENTIAL )
+   1881              //-------------------------------------------------------------------------
+   1882            }
+   1883            else
+   1884            {
+   1885              // not allowed, remove the device
+   1886              ZDSecMgrDeviceRemove( device );
+   1887            }
+   1888          
+   1889            return status;
+   1890          }
+   1891          #endif // defined ( ZDO_COORDINATOR )
+   1892          
+   1893          #if defined ( ZDO_COORDINATOR )
+   1894          /******************************************************************************
+   1895           * @fn          ZDSecMgrDeviceJoinDirect
+   1896           *
+   1897           * @brief       Try to join this device as a direct child.
+   1898           *
+   1899           * @param       device - [in] ZDSecMgrDevice_t, device info
+   1900           *
+   1901           * @return      ZStatus_t
+   1902           */
+   1903          ZStatus_t ZDSecMgrDeviceJoinDirect( ZDSecMgrDevice_t* device )
+   1904          {
+   1905            ZStatus_t status;
+   1906          
+   1907            status = ZDSecMgrDeviceJoin( device );
+   1908          
+   1909            if ( status == ZSuccess )
+   1910            {
+   1911              // set association status to authenticated
+   1912              ZDSecMgrAssocDeviceAuth( AssocGetWithShort( device->nwkAddr ) );
+   1913            }
+   1914          
+   1915            return status;
+   1916          }
+   1917          #endif // defined ( ZDO_COORDINATOR )
+   1918          
+   1919          #if !defined ( ZDO_COORDINATOR ) || defined( SOFT_START )
+   1920          /******************************************************************************
+   1921           * @fn          ZDSecMgrDeviceJoinFwd
+   1922           *
+   1923           * @brief       Forward join to Trust Center.
+   1924           *
+   1925           * @param       device - [in] ZDSecMgrDevice_t, device info
+   1926           *
+   1927           * @return      ZStatus_t
+   1928           */
+   1929          ZStatus_t ZDSecMgrDeviceJoinFwd( ZDSecMgrDevice_t* device )
+   1930          {
+   1931            ZStatus_t               status;
+   1932            APSME_UpdateDeviceReq_t req;
+   1933          
+   1934          
+   1935            // forward any joining device to the Trust Center -- the Trust Center will
+   1936            // decide if the device is allowed to join
+   1937            status = ZSuccess;
+   1938          
+   1939            //if ( status == ZSuccess )
+   1940            //{
+   1941              // forward authorization to the Trust Center
+   1942              req.dstAddr    = APSME_TRUSTCENTER_NWKADDR;
+   1943              req.devAddr    = device->nwkAddr;
+   1944              req.devExtAddr = device->extAddr;
+   1945          
+   1946              // set security status, option for router to reject if policy set
+   1947              if ( device->secure == TRUE )
+   1948              {
+   1949                  req.status = APSME_UD_SECURED_JOIN;
+   1950              }
+   1951              else
+   1952              {
+   1953                  req.status = APSME_UD_UNSECURED_JOIN;
+   1954              }
+   1955          
+   1956              // send and APSME_UPDATE_DEVICE request to the trust center
+   1957              status = APSME_UpdateDeviceReq( &req );
+   1958            //}
+   1959            //else
+   1960            //{
+   1961            //  // not allowed, remove the device
+   1962            //  ZDSecMgrDeviceRemove( device );
+   1963            //}
+   1964          
+   1965            return status;
+   1966          }
+   1967          #endif // !defined ( ZDO_COORDINATOR ) || defined ( SOFT_START )
+   1968          
+   1969          #if defined ( RTR_NWK )
+   1970          /******************************************************************************
+   1971           * @fn          ZDSecMgrDeviceNew
+   1972           *
+   1973           * @brief       Process a new device.
+   1974           *
+   1975           * @param       device - [in] ZDSecMgrDevice_t, device info
+   1976           *
+   1977           * @return      ZStatus_t
+   1978           */
+   1979          ZStatus_t ZDSecMgrDeviceNew( ZDSecMgrDevice_t* joiner )
+   1980          {
+   1981            ZStatus_t status;
+   1982          
+   1983            //---------------------------------------------------------------------------
+   1984            #if defined ( ZDO_COORDINATOR ) && !defined ( SOFT_START )
+   1985            //---------------------------------------------------------------------------
+   1986            // try to join this device
+   1987            status = ZDSecMgrDeviceJoinDirect( joiner );
+   1988            //---------------------------------------------------------------------------
+   1989            #elif defined ( ZDO_COORDINATOR ) && defined ( SOFT_START )
+   1990            //---------------------------------------------------------------------------
+   1991            // which mode -- COORD or ROUTER
+   1992            if ( ZDO_Config_Node_Descriptor.LogicalType == NODETYPE_COORDINATOR )
+   1993            {
+   1994              // try to join this device
+   1995              status = ZDSecMgrDeviceJoinDirect( joiner );
+   1996            }
+   1997            else
+   1998            {
+   1999              // forward join to Trust Center
+   2000              status = ZDSecMgrDeviceJoinFwd( joiner );
+   2001            }
+   2002            //---------------------------------------------------------------------------
+   2003            #else // !ZDO_COORDINATOR
+   2004            //---------------------------------------------------------------------------
+   2005            // forward join to Trust Center
+   2006            status = ZDSecMgrDeviceJoinFwd( joiner );
+   2007            //---------------------------------------------------------------------------
+   2008            #endif // !ZDO_COORDINATOR
+   2009            //---------------------------------------------------------------------------
+   2010          
+   2011            return status;
+   2012          }
+   2013          #endif // defined ( RTR_NWK )
+   2014          
+   2015          #if defined ( RTR_NWK )
+   2016          /******************************************************************************
+   2017           * @fn          ZDSecMgrAssocDeviceAuth
+   2018           *
+   2019           * @brief       Set associated device status to authenticated
+   2020           *
+   2021           * @param       assoc - [in, out] associated_devices_t
+   2022           *
+   2023           * @return      none
+   2024           */
+   2025          void ZDSecMgrAssocDeviceAuth( associated_devices_t* assoc )
+   2026          {
+   2027            if ( assoc != NULL )
+   2028            {
+   2029              assoc->devStatus |= DEV_SEC_AUTH_STATUS;
+   2030            }
+   2031          }
+   2032          #endif // defined ( RTR_NWK )
+   2033          #endif // defined ( ZDSECMGR_SECURE )
+   2034          
+   2035          /******************************************************************************
+   2036           * PUBLIC FUNCTIONS
+   2037           */
+   2038          /******************************************************************************
+   2039           * @fn          ZDSecMgrInit
+   2040           *
+   2041           * @brief       Initialize ZigBee Device Security Manager.
+   2042           *
+   2043           * @param       none
+   2044           *
+   2045           * @return      none
+   2046           */
+   2047          #if defined ( ZDSECMGR_COMMERCIAL )
+   2048          #if ( ADDRMGR_CALLBACK_ENABLED == 1 )
+   2049          void ZDSecMgrAddrMgrCB( uint8           update,
+   2050                                  AddrMgrEntry_t* newEntry,
+   2051                                  AddrMgrEntry_t* oldEntry )
+   2052          {
+   2053            (void)update;
+   2054            (void)newEntry;
+   2055            (void)oldEntry;
+   2056          }
+   2057          #endif // ( ADDRMGR_CALLBACK_ENABLED == 1 )
+   2058          #endif // defined ( ZDSECMGR_COMMERCIAL )
+   2059          
+
+   \                                 In segment BANKED_CODE, align 1, keep-with-next
+   2060          void ZDSecMgrInit( void )
+   \                     ZDSecMgrInit:
+   \   000000                REQUIRE ?Subroutine0
+   \   000000                ; // Fall through to label ?Subroutine0
+
+   \                                 In segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine0:
+   \   000000   C082         PUSH    DPL
+   \   000002   C083         PUSH    DPH
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 0
+   \   000004                ; Setup parameters for call to function APSME_SecurityNM
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 0
+   \   000004                ; Setup parameters for call to function APSME_SecurityNM
+   \   000004   90....       MOV     DPTR,#(APSME_SecurityNM & 0xffff)
+   \   000007   74..         MOV     A,#((APSME_SecurityNM >> 16) & 0xff)
+   \   000009   12....       LCALL   ?BCALL               ; Banked call to: DPTR()
+   \   00000C   D083         POP     DPH
+   \   00000E   D082         POP     DPL
+   \   000010   02....       LJMP    ?BRET
+   2061          {
+   2062            //---------------------------------------------------------------------------
+   2063            #if defined ( ZDSECMGR_COMMERCIAL )
+   2064            //---------------------------------------------------------------------------
+   2065            // initialize sub modules
+   2066            ZDSecMgrMasterKeyInit();
+   2067            ZDSecMgrEntryInit();
+   2068            ZDSecMgrCtrlInit();
+   2069          
+   2070            // configure SKKE slot data
+   2071            APSME_SKKE_SlotInit( ZDSECMGR_SKKE_SLOT_MAX );
+   2072          
+   2073            // register with Address Manager
+   2074            #if ( ADDRMGR_CALLBACK_ENABLED == 1 )
+   2075            AddrMgrRegister( ADDRMGR_REG_SECURITY, ZDSecMgrAddrMgrCB );
+   2076            #endif
+   2077            //---------------------------------------------------------------------------
+   2078            #endif // defined ( ZDSECMGR_COMMERCIAL )
+   2079            //---------------------------------------------------------------------------
+   2080          
+   2081            //---------------------------------------------------------------------------
+   2082            #if defined ( ZDSECMGR_SECURE ) && defined ( ZDO_COORDINATOR )
+   2083            //---------------------------------------------------------------------------
+   2084            // setup joining permissions
+   2085            ZDSecMgrPermitJoiningEnabled = TRUE;
+   2086            ZDSecMgrPermitJoiningTimed   = FALSE;
+   2087            //---------------------------------------------------------------------------
+   2088            #endif // defined ( ZDSECMGR_SECURE ) && defined ( ZDO_COORDINATOR )
+   2089            //---------------------------------------------------------------------------
+   2090          
+   2091            // configure security based on security mode and type of device
+   2092            ZDSecMgrConfig();
+   2093          }
+   2094          
+   2095          /******************************************************************************
+   2096           * @fn          ZDSecMgrConfig
+   2097           *
+   2098           * @brief       Configure ZigBee Device Security Manager.
+   2099           *
+   2100           * @param       none
+   2101           *
+   2102           * @return      none
+   2103           */
+
+   \                                 In segment BANKED_CODE, align 1, keep-with-next
+   2104          void ZDSecMgrConfig( void )
+   \                     ZDSecMgrConfig:
+   \   000000   80..         SJMP    ?Subroutine0
+   2105          {
+   2106            #if defined ( ZDSECMGR_SECURE )
+   2107            SSP_Init();
+   2108            #endif
+   2109          
+   2110            //---------------------------------------------------------------------------
+   2111            #if defined ( ZDSECMGR_COMMERCIAL )
+   2112            //---------------------------------------------------------------------------
+   2113            {
+   2114              #if defined ( ZDO_COORDINATOR )
+   2115              {
+   2116                #if defined ( SOFT_START )
+   2117                {
+   2118                  //switch here
+   2119                  if ( ZDO_Config_Node_Descriptor.LogicalType == NODETYPE_COORDINATOR )
+   2120                  {
+   2121                    // COMMERCIAL MODE - COORDINATOR DEVICE
+   2122                    APSME_SecurityCM_CD();
+   2123                  }
+   2124                  else
+   2125                  {
+   2126                    // COMMERCIAL MODE - ROUTER DEVICE
+   2127                    APSME_SecurityCM_RD();
+   2128                  }
+   2129                }
+   2130                #else
+   2131                {
+   2132                  // COMMERCIAL MODE - COORDINATOR DEVICE
+   2133                  APSME_SecurityCM_CD();
+   2134                }
+   2135                #endif
+   2136              }
+   2137              #elif defined ( RTR_NWK )
+   2138              {
+   2139                // COMMERCIAL MODE - ROUTER DEVICE
+   2140                APSME_SecurityCM_RD();
+   2141              }
+   2142              #else
+   2143              {
+   2144                // COMMERCIAL MODE - END DEVICE
+   2145                APSME_SecurityCM_ED();
+   2146              }
+   2147              #endif
+   2148            }
+   2149            //---------------------------------------------------------------------------
+   2150            #elif defined (ZDSECMGR_RESIDENTIAL )
+   2151            //---------------------------------------------------------------------------
+   2152            {
+   2153              #if defined ( ZDO_COORDINATOR )
+   2154              {
+   2155                #if defined ( SOFT_START )
+   2156                {
+   2157                  //switch here
+   2158                  if ( ZDO_Config_Node_Descriptor.LogicalType == NODETYPE_COORDINATOR )
+   2159                  {
+   2160                    // RESIDENTIAL MODE - COORDINATOR DEVICE
+   2161                    APSME_SecurityRM_CD();
+   2162                  }
+   2163                  else
+   2164                  {
+   2165                    // RESIDENTIAL MODE - ROUTER DEVICE
+   2166                    APSME_SecurityRM_RD();
+   2167                  }
+   2168                }
+   2169                #else
+   2170                {
+   2171                  // RESIDENTIAL MODE - COORDINATOR DEVICE
+   2172                  APSME_SecurityRM_CD();
+   2173                }
+   2174                #endif
+   2175              }
+   2176              #elif defined ( RTR_NWK )
+   2177              {
+   2178                // RESIDENTIAL MODE - ROUTER DEVICE
+   2179                APSME_SecurityRM_RD();
+   2180              }
+   2181              #else
+   2182              {
+   2183                // RESIDENTIAL MODE - END DEVICE
+   2184                APSME_SecurityRM_ED();
+   2185              }
+   2186              #endif
+   2187            }
+   2188            //---------------------------------------------------------------------------
+   2189            #else
+   2190            //---------------------------------------------------------------------------
+   2191            {
+   2192              // NO SECURITY
+   2193              APSME_SecurityNM();
+   2194            }
+   2195            //---------------------------------------------------------------------------
+   2196            #endif
+   2197            //---------------------------------------------------------------------------
+   2198          }
+   2199          
+   2200          #if defined( ZDO_MGMT_PERMIT_JOIN_RESPONSE ) && defined( RTR_NWK )
+   2201          /******************************************************************************
+   2202           * @fn          ZDSecMgrPermitJoining
+   2203           *
+   2204           * @brief       Process request to change joining permissions.
+   2205           *
+   2206           * @param       duration - [in] timed duration for join in seconds
+   2207           *                         - 0x00 not allowed
+   2208           *                         - 0xFF allowed without timeout
+   2209           *
+   2210           * @return      uint8 - success(TRUE:FALSE)
+   2211           */
+   2212          uint8 ZDSecMgrPermitJoining( uint8 duration )
+   2213          {
+   2214            //---------------------------------------------------------------------------
+   2215            #if defined ( ZDSECMGR_SECURE ) && defined ( ZDO_COORDINATOR )
+   2216            //---------------------------------------------------------------------------
+   2217            uint8 accept;
+   2218          
+   2219          
+   2220            ZDSecMgrPermitJoiningTimed = FALSE;
+   2221          
+   2222            if ( duration > 0 )
+   2223            {
+   2224              ZDSecMgrPermitJoiningEnabled = TRUE;
+   2225          
+   2226              if ( duration != 0xFF )
+   2227              {
+   2228                ZDSecMgrPermitJoiningTimed = TRUE;
+   2229              }
+   2230            }
+   2231            else
+   2232            {
+   2233              ZDSecMgrPermitJoiningEnabled = FALSE;
+   2234            }
+   2235          
+   2236            accept = TRUE;
+   2237          
+   2238            return accept;
+   2239            //---------------------------------------------------------------------------
+   2240            #else // !defined ( ZDSECMGR_SECURE ) || !defined ( ZDO_COORDINATOR )
+   2241            //---------------------------------------------------------------------------
+   2242            return FALSE;
+   2243            //---------------------------------------------------------------------------
+   2244            #endif // !defined ( ZDSECMGR_SECURE ) || !defined ( ZDO_COORDINATOR )
+   2245            //---------------------------------------------------------------------------
+   2246          }
+   2247          #endif // defined( ZDO_MGMT_PERMIT_JOIN_RESPONSE ) && defined( RTR_NWK )
+   2248          
+   2249          #if defined( ZDO_MGMT_PERMIT_JOIN_RESPONSE ) && defined( RTR_NWK )
+   2250          /******************************************************************************
+   2251           * @fn          ZDSecMgrPermitJoiningTimeout
+   2252           *
+   2253           * @brief       Process permit joining timeout
+   2254           *
+   2255           * @param       none
+   2256           *
+   2257           * @return      none
+   2258           */
+   2259          void ZDSecMgrPermitJoiningTimeout( void )
+   2260          {
+   2261            //---------------------------------------------------------------------------
+   2262            #if defined ( ZDSECMGR_SECURE ) && defined ( ZDO_COORDINATOR )
+   2263            //---------------------------------------------------------------------------
+   2264            if ( ZDSecMgrPermitJoiningTimed == TRUE )
+   2265            {
+   2266              ZDSecMgrPermitJoiningEnabled = FALSE;
+   2267              ZDSecMgrPermitJoiningTimed   = FALSE;
+   2268            }
+   2269            //---------------------------------------------------------------------------
+   2270            #endif // defined ( ZDSECMGR_SECURE ) && defined ( ZDO_COORDINATOR )
+   2271            //---------------------------------------------------------------------------
+   2272          }
+   2273          #endif // defined( ZDO_MGMT_PERMIT_JOIN_RESPONSE ) && defined( RTR_NWK )
+   2274          
+   2275          #if defined ( ZDSECMGR_SECURE )
+   2276          #if defined ( RTR_NWK )
+   2277          /******************************************************************************
+   2278           * @fn          ZDSecMgrNewDeviceEvent
+   2279           *
+   2280           * @brief       Process a the new device event, if found reset new device
+   2281           *              event/timer.
+   2282           *
+   2283           * @param       none
+   2284           *
+   2285           * @return      uint8 - found(TRUE:FALSE)
+   2286           */
+   2287          uint8 ZDSecMgrNewDeviceEvent( void )
+   2288          {
+   2289            uint8                 found;
+   2290            ZDSecMgrDevice_t      device;
+   2291            AddrMgrEntry_t        addrEntry;
+   2292            associated_devices_t* assoc;
+   2293            ZStatus_t             status;
+   2294          
+   2295            // initialize return results
+   2296            found = FALSE;
+   2297          
+   2298            // look for device in the security init state
+   2299            assoc = AssocMatchDeviceStatus( DEV_SEC_INIT_STATUS );
+   2300          
+   2301            if ( assoc != NULL )
+   2302            {
+   2303              // device found
+   2304              found = TRUE;
+   2305          
+   2306              // check for preconfigured security
+   2307              if ( zgPreConfigKeys == TRUE )
+   2308              {
+   2309                // set association status to authenticated
+   2310                ZDSecMgrAssocDeviceAuth( assoc );
+   2311              }
+   2312          
+   2313              // set up device info
+   2314              addrEntry.user  = ADDRMGR_USER_DEFAULT;
+   2315              addrEntry.index = assoc->addrIdx;
+   2316              AddrMgrEntryGet( &addrEntry );
+   2317          
+   2318              device.nwkAddr    = assoc->shortAddr;
+   2319              device.extAddr    = addrEntry.extAddr;
+   2320              device.parentAddr = NLME_GetShortAddr();
+   2321              device.secure     = FALSE;
+   2322          
+   2323              // process new device
+   2324              status = ZDSecMgrDeviceNew( &device );
+   2325          
+   2326              if ( status == ZSuccess )
+   2327              {
+   2328                assoc->devStatus &= ~DEV_SEC_INIT_STATUS;
+   2329              }
+   2330              else if ( status == ZNwkUnknownDevice )
+   2331              {
+   2332                AssocRemove( addrEntry.extAddr );
+   2333              }
+   2334            }
+   2335          
+   2336            return found;
+   2337          }
+   2338          #endif // defined ( RTR_NWK )
+   2339          #endif // defined ( ZDSECMGR_SECURE )
+   2340          
+   2341          #if defined( ZDSECMGR_COMMERCIAL )
+   2342          /******************************************************************************
+   2343           * @fn          ZDSecMgrEvent
+   2344           *
+   2345           * @brief       Handle ZDO Security Manager event/timer(ZDO_SECMGR_EVENT).
+   2346           *
+   2347           * @param       none
+   2348           *
+   2349           * @return      none
+   2350           */
+   2351          void ZDSecMgrEvent( void )
+   2352          {
+   2353            //---------------------------------------------------------------------------
+   2354            #if defined ( ZDO_COORDINATOR )
+   2355            //---------------------------------------------------------------------------
+   2356            uint8            action;
+   2357            uint8            restart;
+   2358            uint16           index;
+   2359            AddrMgrEntry_t   entry;
+   2360            ZDSecMgrDevice_t device;
+   2361          
+   2362          
+   2363            // verify data is available
+   2364            if ( ZDSecMgrCtrlData != NULL )
+   2365            {
+   2366              action  = FALSE;
+   2367              restart = FALSE;
+   2368          
+   2369              // update all the counters
+   2370              for ( index = 0; index < ZDSECMGR_ENTRY_MAX; index++ )
+   2371              {
+   2372                if ( ZDSecMgrCtrlData[index].state !=  ZDSECMGR_CTRL_NONE )
+   2373                {
+   2374                  if ( ZDSecMgrCtrlData[index].cntr != 0 )
+   2375                  {
+   2376                    ZDSecMgrCtrlData[index].cntr--;
+   2377                  }
+   2378          
+   2379                  if ( ( action == FALSE ) && ( ZDSecMgrCtrlData[index].cntr == 0 ) )
+   2380                  {
+   2381                    action = TRUE;
+   2382          
+   2383                    // update from control data
+   2384                    device.parentAddr = ZDSecMgrCtrlData[index].parentAddr;
+   2385                    device.secure     = ZDSecMgrCtrlData[index].secure;
+   2386                    device.ctrl       = &ZDSecMgrCtrlData[index];
+   2387          
+   2388                    // set the user and address index
+   2389                    entry.user  = ADDRMGR_USER_SECURITY;
+   2390                    entry.index = ZDSecMgrCtrlData[index].entry->ami;
+   2391          
+   2392                    // get the address data
+   2393                    AddrMgrEntryGet( &entry );
+   2394          
+   2395                    // set device address data
+   2396                    device.nwkAddr = entry.nwkAddr;
+   2397                    device.extAddr = entry.extAddr;
+   2398          
+   2399                    // update from entry data
+   2400                    ZDSecMgrDeviceCtrlHandler( &device );
+   2401                  }
+   2402                  else
+   2403                  {
+   2404                    restart = TRUE;
+   2405                  }
+   2406                }
+   2407              }
+   2408          
+   2409              // check for timer restart
+   2410              if ( restart == TRUE )
+   2411              {
+   2412                osal_start_timer( ZDO_SECMGR_EVENT, 100 );
+   2413              }
+   2414            }
+   2415            //---------------------------------------------------------------------------
+   2416            #endif // defined ( ZDO_COORDINATOR )
+   2417            //---------------------------------------------------------------------------
+   2418          }
+   2419          #endif // defined ( ZDSECMGR_COMMERCIAL )
+   2420          
+   2421          #if defined ( ZDSECMGR_COMMERCIAL )
+   2422          /******************************************************************************
+   2423           * @fn          ZDSecMgrEstablishKeyCfm
+   2424           *
+   2425           * @brief       Process the ZDO_EstablishKeyCfm_t message.
+   2426           *
+   2427           * @param       cfm - [in] ZDO_EstablishKeyCfm_t confirmation
+   2428           *
+   2429           * @return      none
+   2430           */
+   2431          void ZDSecMgrEstablishKeyCfm( ZDO_EstablishKeyCfm_t* cfm )
+   2432          {
+   2433            // send the NWK key
+   2434            if ( ZDO_Config_Node_Descriptor.LogicalType == NODETYPE_COORDINATOR )
+   2435            {
+   2436              // update control for specified EXT address
+   2437              ZDSecMgrDeviceCtrlUpdate( cfm->partExtAddr, ZDSECMGR_CTRL_SKKE_DONE );
+   2438            }
+   2439            else
+   2440            {
+   2441              // this should be done when receiving the NWK key
+   2442              // if devState ==
+   2443              //if ( devState == DEV_END_DEVICE_UNAUTH )
+   2444                  //osal_set_event( ZDAppTaskID, ZDO_DEVICE_AUTH );
+   2445          
+   2446              // if not in joining state -- this should trigger an event for an
+   2447              // end point that requested SKKE
+   2448              // if ( devState == DEV_END_DEVICE )
+   2449             //       devState == DEV_ROUTER;
+   2450          
+   2451            }
+   2452          }
+   2453          #endif // defined ( ZDSECMGR_COMMERCIAL )
+   2454          
+   2455          #if defined ( ZDSECMGR_COMMERCIAL )
+   2456          #if !defined ( ZDO_COORDINATOR ) || defined ( SOFT_START )
+   2457          /******************************************************************************
+   2458           * @fn          ZDSecMgrEstablishKeyInd
+   2459           *
+   2460           * @brief       Process the ZDO_EstablishKeyInd_t message.
+   2461           *
+   2462           * @param       ind - [in] ZDO_EstablishKeyInd_t indication
+   2463           *
+   2464           * @return      none
+   2465           */
+   2466          void ZDSecMgrEstablishKeyInd( ZDO_EstablishKeyInd_t* ind )
+   2467          {
+   2468            ZDSecMgrDevice_t        device;
+   2469            APSME_EstablishKeyRsp_t rsp;
+   2470          
+   2471          
+   2472            device.extAddr = ind->initExtAddr;
+   2473            device.secure  = ind->secure;
+   2474          
+   2475            if ( ind->secure == FALSE )
+   2476            {
+   2477              // SKKE from Trust Center is not secured between child and parent
+   2478              device.nwkAddr    = APSME_TRUSTCENTER_NWKADDR;
+   2479              device.parentAddr = ind->srcAddr;
+   2480            }
+   2481            else
+   2482            {
+   2483              // SKKE from initiator should be secured
+   2484              device.nwkAddr    = ind->srcAddr;
+   2485              device.parentAddr = INVALID_NODE_ADDR;
+   2486            }
+   2487          
+   2488            rsp.dstAddr     = ind->srcAddr;
+   2489            rsp.initExtAddr = &ind->initExtAddr[0];
+   2490            rsp.secure      = ind->secure;
+   2491          
+   2492            // validate device for SKKE
+   2493            if ( ZDSecMgrDeviceValidateSKKE( &device ) == ZSuccess )
+   2494            {
+   2495              rsp.accept = TRUE;
+   2496            }
+   2497            else
+   2498            {
+   2499              rsp.accept = FALSE;
+   2500            }
+   2501          
+   2502            APSME_EstablishKeyRsp( &rsp );
+   2503          }
+   2504          #endif // !defined ( ZDO_COORDINATOR ) || defined ( SOFT_START )
+   2505          #endif // defined ( ZDSECMGR_COMMERCIAL )
+   2506          
+   2507          #if defined ( ZDSECMGR_SECURE )
+   2508          #if !defined ( ZDO_COORDINATOR ) || defined( SOFT_START )
+   2509          /******************************************************************************
+   2510           * @fn          ZDSecMgrTransportKeyInd
+   2511           *
+   2512           * @brief       Process the ZDO_TransportKeyInd_t message.
+   2513           *
+   2514           * @param       ind - [in] ZDO_TransportKeyInd_t indication
+   2515           *
+   2516           * @return      none
+   2517           */
+   2518          void ZDSecMgrTransportKeyInd( ZDO_TransportKeyInd_t* ind )
+   2519          {
+   2520            uint8 index;
+   2521          
+   2522          
+   2523            if ( ind->keyType == KEY_TYPE_TC_MASTER )
+   2524            {
+   2525              #if defined ( ZDSECMGR_COMMERCIAL )
+   2526              {
+   2527                if ( zgPreConfigKeys != TRUE )
+   2528                {
+   2529                  ZDSecMgrMasterKeyLoad( ind->srcAddr, ind->srcExtAddr, ind->key );
+   2530                }
+   2531                else
+   2532                {
+   2533                  // error condition - reject key
+   2534                }
+   2535              }
+   2536              #endif // defined ( ZDSECMGR_COMMERCIAL )
+   2537            }
+   2538            else if ( ind->keyType == KEY_TYPE_NWK )
+   2539            {
+   2540              // check for dummy NWK key (all zeros)
+   2541              for ( index = 0;
+   2542                    ( (index < SEC_KEY_LEN) && (ind->key[index] == 0) );
+   2543                    index++ );
+   2544          
+   2545              if ( index == SEC_KEY_LEN )
+   2546              {
+   2547                // load preconfigured key
+   2548                SSP_UpdateNwkKey( (byte*)zgPreConfigKey, 0 );
+   2549                SSP_SwitchNwkKey( 0 );
+   2550              }
+   2551              else
+   2552              {
+   2553                SSP_UpdateNwkKey( ind->key, ind->keySeqNum );
+   2554                if ( !_NIB.nwkKeyLoaded )
+   2555                {
+   2556                  SSP_SwitchNwkKey( ind->keySeqNum );
+   2557                }
+   2558              }
+   2559          
+   2560              // inform ZDO that NWK key was received
+   2561              osal_set_event ( ZDAppTaskID, ZDO_DEVICE_AUTH );
+   2562            }
+   2563            else if ( ind->keyType == KEY_TYPE_APP_MASTER )
+   2564            {
+   2565              #if defined ( ZDSECMGR_COMMERCIAL )
+   2566              #endif
+   2567            }
+   2568            else // (ind->keyType==KEY_TYPE_APP_LINK)
+   2569            {
+   2570              #if defined ( ZDSECMGR_COMMERCIAL )
+   2571                ZDSecMgrLinkKeySet( ind->srcExtAddr, ind->key );
+   2572              #endif
+   2573            }
+   2574          }
+   2575          #endif // !defined ( ZDO_COORDINATOR ) || defined ( SOFT_START )
+   2576          #endif // defined ( ZDSECMGR_SECURE )
+   2577          
+   2578          #if defined ( ZDSECMGR_SECURE )
+   2579          #if defined ( ZDO_COORDINATOR )
+   2580          /******************************************************************************
+   2581           * @fn          ZDSecMgrUpdateDeviceInd
+   2582           *
+   2583           * @brief       Process the ZDO_UpdateDeviceInd_t message.
+   2584           *
+   2585           * @param       ind - [in] ZDO_UpdateDeviceInd_t indication
+   2586           *
+   2587           * @return      none
+   2588           */
+   2589          void ZDSecMgrUpdateDeviceInd( ZDO_UpdateDeviceInd_t* ind )
+   2590          {
+   2591            ZDSecMgrDevice_t device;
+   2592          
+   2593          
+   2594            device.nwkAddr    = ind->devAddr;
+   2595            device.extAddr    = ind->devExtAddr;
+   2596            device.parentAddr = ind->srcAddr;
+   2597          
+   2598            if ( ( ind->status == APSME_UD_SECURED_JOIN   ) ||
+   2599                 ( ind->status == APSME_UD_UNSECURED_JOIN )   )
+   2600            {
+   2601              if ( ind->status == APSME_UD_SECURED_JOIN )
+   2602              {
+   2603                device.secure = TRUE;
+   2604              }
+   2605              else
+   2606              {
+   2607                device.secure = FALSE;
+   2608              }
+   2609          
+   2610              // try to join this device
+   2611              ZDSecMgrDeviceJoin( &device );
+   2612            }
+   2613          }
+   2614          #endif // defined ( ZDO_COORDINATOR )
+   2615          #endif // defined ( ZDSECMGR_SECURE )
+   2616          
+   2617          #if defined ( ZDSECMGR_SECURE )
+   2618          #if defined ( RTR_NWK )
+   2619          #if !defined ( ZDO_COORDINATOR ) || defined( SOFT_START )
+   2620          /******************************************************************************
+   2621           * @fn          ZDSecMgrRemoveDeviceInd
+   2622           *
+   2623           * @brief       Process the ZDO_RemoveDeviceInd_t message.
+   2624           *
+   2625           * @param       ind - [in] ZDO_RemoveDeviceInd_t indication
+   2626           *
+   2627           * @return      none
+   2628           */
+   2629          void ZDSecMgrRemoveDeviceInd( ZDO_RemoveDeviceInd_t* ind )
+   2630          {
+   2631            ZDSecMgrDevice_t device;
+   2632          
+   2633          
+   2634            // only accept from Trust Center
+   2635            if ( ind->srcAddr == APSME_TRUSTCENTER_NWKADDR )
+   2636            {
+   2637              // look up NWK address
+   2638              if ( APSME_LookupNwkAddr( ind->childExtAddr, &device.nwkAddr ) == TRUE )
+   2639              {
+   2640                device.parentAddr = NLME_GetShortAddr();
+   2641                device.extAddr    = ind->childExtAddr;
+   2642          
+   2643                // remove device
+   2644                ZDSecMgrDeviceRemove( &device );
+   2645              }
+   2646            }
+   2647          }
+   2648          #endif // !defined ( ZDO_COORDINATOR ) || defined ( SOFT_START )
+   2649          #endif // defined( RTR_NWK )
+   2650          #endif // defined ( ZDSECMGR_SECURE )
+   2651          
+   2652          #if defined ( ZDSECMGR_COMMERCIAL )
+   2653          #if defined ( ZDO_COORDINATOR )
+   2654          /******************************************************************************
+   2655           * @fn          ZDSecMgrRequestKeyInd
+   2656           *
+   2657           * @brief       Process the ZDO_RequestKeyInd_t message.
+   2658           *
+   2659           * @param       ind - [in] ZDO_RequestKeyInd_t indication
+   2660           *
+   2661           * @return      none
+   2662           */
+   2663          void ZDSecMgrRequestKeyInd( ZDO_RequestKeyInd_t* ind )
+   2664          {
+   2665            if ( ind->keyType == KEY_TYPE_NWK )
+   2666            {
+   2667            }
+   2668            else if ( ind->keyType == KEY_TYPE_APP_MASTER )
+   2669            {
+   2670              ZDSecMgrAppKeyReq( ind );
+   2671            }
+   2672            //else ignore
+   2673          }
+   2674          #endif // defined ( ZDO_COORDINATOR )
+   2675          #endif // defined ( ZDSECMGR_COMMERCIAL )
+   2676          
+   2677          #if defined ( ZDSECMGR_SECURE )
+   2678          #if !defined ( ZDO_COORDINATOR ) || defined( SOFT_START )
+   2679          /******************************************************************************
+   2680           * @fn          ZDSecMgrSwitchKeyInd
+   2681           *
+   2682           * @brief       Process the ZDO_SwitchKeyInd_t message.
+   2683           *
+   2684           * @param       ind - [in] ZDO_SwitchKeyInd_t indication
+   2685           *
+   2686           * @return      none
+   2687           */
+   2688          void ZDSecMgrSwitchKeyInd( ZDO_SwitchKeyInd_t* ind )
+   2689          {
+   2690            SSP_SwitchNwkKey( ind->keySeqNum );
+   2691          
+   2692            // Save if nv
+   2693            osal_start_timerEx( ZDAppTaskID, ZDO_NWK_UPDATE_NV, 250 );
+   2694          }
+   2695          #endif // !defined ( ZDO_COORDINATOR ) || defined ( SOFT_START )
+   2696          #endif // defined ( ZDSECMGR_SECURE )
+   2697          
+   2698          #if defined ( ZDSECMGR_SECURE )
+   2699          #if defined ( ZDO_COORDINATOR )
+   2700          /******************************************************************************
+   2701           * @fn          ZDSecMgrUpdateNwkKey
+   2702           *
+   2703           * @brief       Load a new NWK key and trigger a network wide update.
+   2704           *
+   2705           * @param       key       - [in] new NWK key
+   2706           * @param       keySeqNum - [in] new NWK key sequence number
+   2707           *
+   2708           * @return      ZStatus_t
+   2709           */
+   2710          ZStatus_t ZDSecMgrUpdateNwkKey( uint8* key, uint8 keySeqNum )
+   2711          {
+   2712            ZStatus_t               status;
+   2713            APSME_TransportKeyReq_t req;
+   2714          
+   2715          
+   2716            req.keyType   = KEY_TYPE_NWK;
+   2717            req.keySeqNum = keySeqNum;
+   2718            req.key       = key;
+   2719            req.dstAddr   = NWK_BROADCAST_SHORTADDR;
+   2720            req.extAddr   = NULL;
+   2721            req.secure    = TRUE;
+   2722          
+   2723            status = APSME_TransportKeyReq( &req );
+   2724          
+   2725            SSP_UpdateNwkKey( key, keySeqNum );
+   2726          
+   2727            // Save if nv
+   2728            osal_start_timerEx( ZDAppTaskID, ZDO_NWK_UPDATE_NV, 250 );
+   2729          
+   2730            return status;
+   2731          }
+   2732          #endif // defined ( ZDO_COORDINATOR )
+   2733          #endif // defined ( ZDSECMGR_SECURE )
+   2734          
+   2735          #if defined ( ZDSECMGR_SECURE )
+   2736          #if defined ( ZDO_COORDINATOR )
+   2737          /******************************************************************************
+   2738           * @fn          ZDSecMgrSwitchNwkKey
+   2739           *
+   2740           * @brief       Causes the NWK key to switch via a network wide command.
+   2741           *
+   2742           * @param       keySeqNum - [in] new NWK key sequence number
+   2743           *
+   2744           * @return      ZStatus_t
+   2745           */
+   2746          ZStatus_t ZDSecMgrSwitchNwkKey( uint8 keySeqNum )
+   2747          {
+   2748            ZStatus_t            status;
+   2749            APSME_SwitchKeyReq_t req;
+   2750          
+   2751          
+   2752            req.dstAddr   = NWK_BROADCAST_SHORTADDR;
+   2753            req.keySeqNum = keySeqNum;
+   2754          
+   2755            status = APSME_SwitchKeyReq( &req );
+   2756          
+   2757            SSP_SwitchNwkKey( keySeqNum );
+   2758          
+   2759            // Save if nv
+   2760            osal_start_timerEx( ZDAppTaskID, ZDO_NWK_UPDATE_NV, 250 );
+   2761          
+   2762            return status;
+   2763          }
+   2764          #endif // defined ( ZDO_COORDINATOR )
+   2765          #endif // defined ( ZDSECMGR_SECURE )
+   2766          
+   2767          /******************************************************************************
+   2768           * ZigBee Device Security Manager - Stub Implementations
+   2769           */
+   2770          /******************************************************************************
+   2771           * @fn          ZDSecMgrMasterKeyGet (stubs APSME_MasterKeyGet)
+   2772           *
+   2773           * @brief       Get MASTER key for specified EXT address.
+   2774           *
+   2775           * @param       extAddr - [in] EXT address
+   2776           * @param       key     - [out] MASTER key
+   2777           *
+   2778           * @return      ZStatus_t
+   2779           */
+
+   \                                 In segment BANKED_CODE, align 1, keep-with-next
+   2780          ZStatus_t ZDSecMgrMasterKeyGet( uint8* extAddr, uint8** key )
+   \                     APSME_MasterKeyGet:
+   2781          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+   2782            //---------------------------------------------------------------------------
+   2783            #if defined ( ZDSECMGR_COMMERCIAL )
+   2784            //---------------------------------------------------------------------------
+   2785            {
+   2786              ZStatus_t        status;
+   2787              ZDSecMgrEntry_t* entry;
+   2788          
+   2789          
+   2790              // lookup entry for specified EXT address
+   2791              status = ZDSecMgrEntryLookupExt( extAddr, &entry );
+   2792          
+   2793              if ( status == ZSuccess )
+   2794              {
+   2795                ZDSecMgrMasterKeyLookup( entry->ami, key );
+   2796              }
+   2797              else
+   2798              {
+   2799                *key = NULL;
+   2800              }
+   2801          
+   2802              return status;
+   2803            }
+   2804            //---------------------------------------------------------------------------
+   2805            #else // !defined ( ZDSECMGR_COMMERCIAL )
+   2806            //---------------------------------------------------------------------------
+   2807            {
+   2808              return ZNwkUnknownDevice;
+   \   000000                REQUIRE ?Subroutine1
+   \   000000                ; // Fall through to label ?Subroutine1
+
+   \                                 In segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine1:
+   \   000000   79C8         MOV     R1,#-0x38
+   \   000002   02....       LJMP    ?BRET
+   2809            }
+   2810            //---------------------------------------------------------------------------
+   2811            #endif
+   2812            //---------------------------------------------------------------------------
+   2813          }
+   2814          
+   2815          /******************************************************************************
+   2816           * @fn          ZDSecMgrLinkKeySet (stubs APSME_LinkKeyExtSet)
+   2817           *
+   2818           * @brief       Set <APSME_LinkKeyData_t> for specified NWK address.
+   2819           *
+   2820           * @param       extAddr - [in] EXT address
+   2821           * @param       data    - [in] APSME_LinkKeyData_t
+   2822           *
+   2823           * @return      ZStatus_t
+   2824           */
+
+   \                                 In segment BANKED_CODE, align 1, keep-with-next
+   2825          ZStatus_t ZDSecMgrLinkKeySet( uint8* extAddr, uint8* key )
+   \                     APSME_LinkKeySet:
+   2826          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+   2827            //---------------------------------------------------------------------------
+   2828            #if defined ( ZDSECMGR_COMMERCIAL )
+   2829            //---------------------------------------------------------------------------
+   2830            {
+   2831              ZStatus_t        status;
+   2832              ZDSecMgrEntry_t* entry;
+   2833          
+   2834          
+   2835              // lookup entry index for specified EXT address
+   2836              status = ZDSecMgrEntryLookupExt( extAddr, &entry );
+   2837          
+   2838              if ( status == ZSuccess )
+   2839              {
+   2840                // setup the link key data reference
+   2841                osal_memcpy( entry->lkd.key, key, SEC_KEY_LEN );
+   2842          
+   2843                entry->lkd.apsmelkd.rxFrmCntr = 0;
+   2844                entry->lkd.apsmelkd.txFrmCntr = 0;
+   2845              }
+   2846          
+   2847              return status;
+   2848            }
+   2849            //---------------------------------------------------------------------------
+   2850            #else // !defined ( ZDSECMGR_COMMERCIAL )
+   2851            //---------------------------------------------------------------------------
+   2852            {
+   2853              return ZNwkUnknownDevice;
+   \   000000   80..         SJMP    ?Subroutine1
+   2854            }
+   2855            //---------------------------------------------------------------------------
+   2856            #endif
+   2857            //---------------------------------------------------------------------------
+   2858          }
+   2859          
+   2860          /******************************************************************************
+   2861           * @fn          ZDSecMgrLinkKeyDataGet (stubs APSME_LinkKeyDataGet)
+   2862           *
+   2863           * @brief       Get <APSME_LinkKeyData_t> for specified NWK address.
+   2864           *
+   2865           * @param       nwkAddr - [in] NWK address
+   2866           * @param       data    - [out] APSME_LinkKeyData_t
+   2867           *
+   2868           * @return      ZStatus_t
+   2869           */
+
+   \                                 In segment BANKED_CODE, align 1, keep-with-next
+   2870          ZStatus_t ZDSecMgrLinkKeyDataGet(uint16 nwkAddr, APSME_LinkKeyData_t** data)
+   \                     APSME_LinkKeyDataGet:
+   2871          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+   2872            //---------------------------------------------------------------------------
+   2873            #if defined ( ZDSECMGR_COMMERCIAL )
+   2874            //---------------------------------------------------------------------------
+   2875            {
+   2876              ZStatus_t        status;
+   2877              ZDSecMgrEntry_t* entry;
+   2878          
+   2879          
+   2880              // lookup entry index for specified NWK address
+   2881              status = ZDSecMgrEntryLookup( nwkAddr, &entry );
+   2882          
+   2883              if ( status == ZSuccess )
+   2884              {
+   2885                // setup the link key data reference
+   2886                (*data) = &entry->lkd.apsmelkd;
+   2887                (*data)->key = entry->lkd.key;
+   2888              }
+   2889              else
+   2890              {
+   2891                *data = NULL;
+   2892              }
+   2893          
+   2894              return status;
+   2895            }
+   2896            //---------------------------------------------------------------------------
+   2897            #else // !defined ( ZDSECMGR_COMMERCIAL )
+   2898            //---------------------------------------------------------------------------
+   2899            {
+   2900              return ZNwkUnknownDevice;
+   \   000000   80..         SJMP    ?Subroutine1
+   2901            }
+   2902            //---------------------------------------------------------------------------
+   2903            #endif
+   2904            //---------------------------------------------------------------------------
+   2905          }
+   2906          
+   2907          /******************************************************************************
+   2908           * @fn          ZDSecMgrKeyFwdToChild (stubs APSME_KeyFwdToChild)
+   2909           *
+   2910           * @brief       Verify and process key transportation to child.
+   2911           *
+   2912           * @param       ind - [in] APSME_TransportKeyInd_t
+   2913           *
+   2914           * @return      uint8 - success(TRUE:FALSE)
+   2915           */
+
+   \                                 In segment BANKED_CODE, align 1, keep-with-next
+   2916          uint8 ZDSecMgrKeyFwdToChild( APSME_TransportKeyInd_t* ind )
+   \                     APSME_KeyFwdToChild:
+   2917          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+   2918            uint8 success;
+   2919          
+   2920            success = FALSE;
+   2921          
+   2922            //---------------------------------------------------------------------------
+   2923            #if defined ( ZDSECMGR_SECURE ) && defined ( RTR_NWK )
+   2924            //---------------------------------------------------------------------------
+   2925            // verify from Trust Center
+   2926            if ( ind->srcAddr == APSME_TRUSTCENTER_NWKADDR )
+   2927            {
+   2928              success = TRUE;
+   2929          
+   2930              // check for initial NWK key
+   2931              if ( ind->keyType == KEY_TYPE_NWK )
+   2932              {
+   2933                // set association status to authenticated
+   2934                ZDSecMgrAssocDeviceAuth( AssocGetWithExt( ind->dstExtAddr ) );
+   2935              }
+   2936            }
+   2937            //---------------------------------------------------------------------------
+   2938            #endif // defined ( ZDSECMGR_SECURE ) && defined ( RTR_NWK )
+   2939            //---------------------------------------------------------------------------
+   2940          
+   2941            return success;
+   \   000000   7900         MOV     R1,#0x0
+   \   000002   02....       LJMP    ?BRET
+   2942          }
+   2943          
+   2944          /******************************************************************************
+   2945          ******************************************************************************/
+   2946          
+
+   Maximum stack usage in bytes:
+
+     Function              ISTACK PSTACK XSTACK
+     --------              ------ ------ ------
+     APSME_KeyFwdToChild       0      0      0
+     APSME_LinkKeyDataGet      0      0      0
+     APSME_LinkKeySet          0      0      0
+     APSME_MasterKeyGet        0      0      0
+     ZDSecMgrConfig            2      0      0
+       -> APSME_SecurityNM     4      0      0
+     ZDSecMgrInit              2      0      0
+       -> APSME_SecurityNM     4      0      0
+
+
+   Segment part sizes:
+
+     Function/Label       Bytes
+     --------------       -----
+     ZDSecMgrInit            0
+     ?Subroutine0           19
+     ZDSecMgrConfig          2
+     APSME_MasterKeyGet      0
+     ?Subroutine1            5
+     APSME_LinkKeySet        2
+     APSME_LinkKeyDataGet    2
+     APSME_KeyFwdToChild     5
+
+ 
+ 35 bytes in segment BANKED_CODE
+ 
+ 35 bytes of CODE memory
+
+Errors: none
+Warnings: none

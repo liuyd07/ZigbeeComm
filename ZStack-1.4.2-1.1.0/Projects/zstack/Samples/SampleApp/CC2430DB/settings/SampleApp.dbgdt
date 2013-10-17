@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<Project>
+  <Desktop>
+    <Static>
+      <Workspace>
+        <ColumnWidths>
+          
+          
+          
+          
+        <Column0>187</Column0><Column1>27</Column1><Column2>27</Column2><Column3>27</Column3></ColumnWidths>
+      </Workspace>
+      <Disassembly>
+        
+        
+        
+      <MixedMode>1</MixedMode><CodeCovEnabled>0</CodeCovEnabled><CodeCovShow>0</CodeCovShow></Disassembly>
+      <Debug-Log/>
+      <Build>
+        
+        
+        
+        
+      <ColumnWidth0>20</ColumnWidth0><ColumnWidth1>1035</ColumnWidth1><ColumnWidth2>276</ColumnWidth2><ColumnWidth3>69</ColumnWidth3></Build>
+    <Watch><Format><struct_types><Fmt><Key>struct RFTXBUF-Saddr</Key><Value>4</Value></Fmt><Fmt><Key>zAddrType_t-addrMode</Key><Value>4</Value></Fmt></struct_types><watch_formats><Fmt><Key>{W}Watch-0:JoinNode.RouterCount</Key><Value>4</Value></Fmt><Fmt><Key>{W}Watch-0:Short_Add</Key><Value>4</Value></Fmt></watch_formats></Format><Column0>100</Column0><Column1>100</Column1><Column2>100</Column2><Column3>100</Column3></Watch><Find-in-Files><ColumnWidth0>496</ColumnWidth0><ColumnWidth1>70</ColumnWidth1><ColumnWidth2>850</ColumnWidth2></Find-in-Files></Static>
+    <Windows>
+      
+      
+      
+    <Wnd0>
+        <Tabs>
+          <Tab>
+            <Identity>TabID-11407-22487</Identity>
+            <TabName>Workspace</TabName>
+            <Factory>Workspace</Factory>
+            <Session>
+              
+            <NodeDict><ExpandedNode>SampleApp</ExpandedNode><ExpandedNode>SampleApp/App</ExpandedNode><ExpandedNode>SampleApp/ZDO</ExpandedNode></NodeDict></Session>
+          </Tab>
+        </Tabs>
+        
+      <SelectedTab>0</SelectedTab></Wnd0><Wnd3>
+        <Tabs>
+          <Tab>
+            <Identity>TabID-22156-22490</Identity>
+            <TabName>Disassembly</TabName>
+            <Factory>Disassembly</Factory>
+            <Session/>
+          </Tab>
+        </Tabs>
+        
+      <SelectedTab>0</SelectedTab></Wnd3><Wnd4>
+        <Tabs>
+          <Tab>
+            <Identity>TabID-136-22493</Identity>
+            <TabName>Debug Log</TabName>
+            <Factory>Debug-Log</Factory>
+            <Session/>
+          </Tab>
+          <Tab>
+            <Identity>TabID-21633-22500</Identity>
+            <TabName>Build</TabName>
+            <Factory>Build</Factory>
+            <Session/>
+          </Tab>
+        <Tab><Identity>TabID-11779-5924</Identity><TabName>Find in Files</TabName><Factory>Find-in-Files</Factory><Session/></Tab></Tabs>
+        
+      <SelectedTab>2</SelectedTab></Wnd4><Wnd5><Tabs><Tab><Identity>TabID-11423-5317</Identity><TabName>Watch</TabName><Factory>Watch</Factory><Session><Expressions><Expression><Expression>msgPtr</Expression></Expression><Expression><Expression>msgPtr->event</Expression></Expression><Expression><Expression>osal_event_hdr_t</Expression></Expression><Expression><Expression>ZDO_STATE_CHANGE</Expression></Expression><Expression><Expression>NLME_GetExtAddr</Expression></Expression><Expression><Expression>NLME_GetShortAddr</Expression></Expression><Expression><Expression>ZDAppNwkAddr</Expression></Expression><Expression><Expression>Uart_Rx_Data</Expression></Expression><Expression><Expression>JoinNode</Expression></Expression><Expression><Expression>s</Expression></Expression><Expression><Expression>a</Expression></Expression><Expression><Expression>b</Expression></Expression></Expressions><TabId>0</TabId><Column0>100</Column0><Column1>100</Column1><Column2>100</Column2><Column3>100</Column3></Session></Tab></Tabs><SelectedTab>0</SelectedTab></Wnd5></Windows>
+    <Editor>
+      
+      
+      
+      
+    <Pane><Tab><Factory>TextEditor</Factory><Filename>E:\&#x7814;&#x4e8C;&#x4e0A;\CPS\&#x5B9e;&#x9A8C;&#x5e73;&#x53F0;\CC2430&#x5F00;&#x53D1;&#x8D44;&#x6599;\&#x65e0;&#x7eBF;&#x7F51;&#x7eDC;&#x5F00;&#x53D1;&#x5e73;&#x53F0;\C51RF-3-PK&#x6F14;&#x793A;&#x7A0B;&#x5e8F;\ZigBee2006\ZigBee2006-&#x4e32;&#x53e3;&#x4e92;&#x53D1;\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\SampleApp\Source\SampleApp.c</Filename><XPos>0</XPos><YPos>170</YPos><SelStart>5564</SelStart><SelEnd>5564</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>E:\&#x7814;&#x4e8C;&#x4e0A;\CPS\&#x5B9e;&#x9A8C;&#x5e73;&#x53F0;\CC2430&#x5F00;&#x53D1;&#x8D44;&#x6599;\&#x65e0;&#x7eBF;&#x7F51;&#x7eDC;&#x5F00;&#x53D1;&#x5e73;&#x53F0;\C51RF-3-PK&#x6F14;&#x793A;&#x7A0B;&#x5e8F;\ZigBee2006\ZigBee2006-&#x4e32;&#x53e3;&#x4e92;&#x53D1;\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\SampleApp\CC2430DB\CoordinatorEB\List\SampleApp.map</Filename><XPos>0</XPos><YPos>26014</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>E:\&#x7814;&#x4e8C;&#x4e0A;\CPS\&#x5B9e;&#x9A8C;&#x5e73;&#x53F0;\CC2430&#x5F00;&#x53D1;&#x8D44;&#x6599;\&#x65e0;&#x7eBF;&#x7F51;&#x7eDC;&#x5F00;&#x53D1;&#x5e73;&#x53F0;\C51RF-3-PK&#x6F14;&#x793A;&#x7A0B;&#x5e8F;\ZigBee2006\ZigBee2006-&#x4e32;&#x53e3;&#x4e92;&#x53D1;\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\SampleApp\Source\OSAL_SampleApp.c</Filename><XPos>0</XPos><YPos>96</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>E:\&#x7814;&#x4e8C;&#x4e0A;\CPS\&#x5B9e;&#x9A8C;&#x5e73;&#x53F0;\CC2430&#x5F00;&#x53D1;&#x8D44;&#x6599;\&#x65e0;&#x7eBF;&#x7F51;&#x7eDC;&#x5F00;&#x53D1;&#x5e73;&#x53F0;\C51RF-3-PK&#x6F14;&#x793A;&#x7A0B;&#x5e8F;\ZigBee2006\ZigBee2006-&#x4e32;&#x53e3;&#x4e92;&#x53D1;\ZStack-1.4.2-1.1.0\Projects\zstack\ZMain\TI2430DB\OnBoard.c</Filename><XPos>0</XPos><YPos>389</YPos><SelStart>10405</SelStart><SelEnd>10405</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>E:\&#x7814;&#x4e8C;&#x4e0A;\CPS\&#x5B9e;&#x9A8C;&#x5e73;&#x53F0;\CC2430&#x5F00;&#x53D1;&#x8D44;&#x6599;\&#x65e0;&#x7eBF;&#x7F51;&#x7eDC;&#x5F00;&#x53D1;&#x5e73;&#x53F0;\C51RF-3-PK&#x6F14;&#x793A;&#x7A0B;&#x5e8F;\ZigBee2006\ZigBee2006-&#x4e32;&#x53e3;&#x4e92;&#x53D1;\ZStack-1.4.2-1.1.0\Projects\zstack\ZMain\TI2430DB\ZMain.c</Filename><XPos>0</XPos><YPos>255</YPos><SelStart>7190</SelStart><SelEnd>7190</SelEnd></Tab><ActiveTab>4</ActiveTab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
+    <Positions>
+      
+      
+      
+      
+      
+    <Top><Row0><Sizes><Toolbar-0142ff28><key>iaridepm1</key></Toolbar-0142ff28></Sizes></Row0><Row1><Sizes><Toolbar-07b40120><key>debuggergui1</key></Toolbar-07b40120></Sizes></Row1></Top><Left><Row0><Sizes><Wnd0><Rect><Top>-2</Top><Left>-2</Left><Bottom>597</Bottom><Right>278</Right><x>-2</x><y>-2</y><xscreen>101</xscreen><yscreen>99</yscreen><sizeHorzCX>70138</sizeHorzCX><sizeHorzCY>121026</sizeHorzCY><sizeVertCX>194444</sizeVertCX><sizeVertCY>732273</sizeVertCY></Rect></Wnd0></Sizes></Row0></Left><Right><Row0><Sizes><Wnd3><Rect><Top>-2</Top><Left>-2</Left><Bottom>597</Bottom><Right>381</Right><x>-2</x><y>-2</y><xscreen>101</xscreen><yscreen>99</yscreen><sizeHorzCX>70138</sizeHorzCX><sizeHorzCY>121026</sizeHorzCY><sizeVertCX>265972</sizeVertCX><sizeVertCY>732273</sizeVertCY></Rect></Wnd3></Sizes></Row0><Row1><Sizes><Wnd5><Rect><Top>-2</Top><Left>379</Left><Bottom>597</Bottom><Right>601</Right><x>379</x><y>-2</y><xscreen>109</xscreen><yscreen>106</yscreen><sizeHorzCX>75694</sizeHorzCX><sizeHorzCY>129584</sizeHorzCY><sizeVertCX>154166</sizeVertCX><sizeVertCY>732273</sizeVertCY></Rect></Wnd5></Sizes></Row1></Right><Bottom><Row0><Sizes><Wnd4><Rect><Top>-2</Top><Left>-2</Left><Bottom>152</Bottom><Right>1442</Right><x>-2</x><y>-2</y><xscreen>1444</xscreen><yscreen>154</yscreen><sizeHorzCX>1002777</sizeHorzCX><sizeHorzCY>188264</sizeHorzCY><sizeVertCX>70138</sizeVertCX><sizeVertCY>121026</sizeVertCY></Rect></Wnd4></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
+  </Desktop>
+</Project>
+
+

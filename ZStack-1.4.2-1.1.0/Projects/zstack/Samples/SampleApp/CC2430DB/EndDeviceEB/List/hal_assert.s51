@@ -1,0 +1,990 @@
+//////////////////////////////////////////////////////////////////////////////
+//                                                                           /
+// IAR 8051 C/C++ Compiler V7.20H/W32                  17/Oct/2013  21:52:37 /
+// Copyright 2004-2006 IAR Systems. All rights reserved.                     /
+//                                                                           /
+//    Core               =  plain                                            /
+//    Code model         =  banked                                           /
+//    Data model         =  large                                            /
+//    Calling convention =  xdata reentrant                                  /
+//    Constant location  =  data                                             /
+//    Dptr setup         =  1,16                                             /
+//    Source file        =  E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ /
+//                          ·¢\ZStack-1.4.2-1.1.0\Components\hal\common\hal_ /
+//                          assert.c                                         /
+//    Command line       =  -f E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ /
+//                          ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples /
+//                          \SampleApp\CC2430DB\..\..\..\Tools\CC2430DB\f8wE /
+//                          ndev.cfg (-DCPU32MHZ -DFORCE_MAC_NEAR            /
+//                          -DROOT=__near_func -DMAC_OPT_FFD=0 -DBLINK_LEDS  /
+//                          "-DCONST=const __code" -DGENERIC=__generic) -f   /
+//                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ /
+//                          ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Sa /
+//                          mpleApp\CC2430DB\..\..\..\Tools\CC2430DB\f8wConf /
+//                          ig.cfg (-DSECURE=0 -DDEFAULT_CHANLIST=0x00000800 /
+//                           -DZDAPP_CONFIG_PAN_ID=0xFFFF                    /
+//                          -DNWK_START_DELAY=100 -DEXTENDED_JOINING_RANDOM_ /
+//                          MASK=0x007F -DBEACON_REQUEST_DELAY=100           /
+//                          -DBEACON_REQ_DELAY_MASK=0x00FF                   /
+//                          -DROUTE_EXPIRY_TIME=30 -DAPSC_ACK_WAIT_DURATION_ /
+//                          POLLED=3000 -DNWK_INDIRECT_MSG_TIMEOUT=7         /
+//                          -DMAX_RREQ_ENTRIES=10 -DAPSC_MAX_FRAME_RETRIES=3 /
+//                           -DNWK_MAX_DATA_RETRIES=2                        /
+//                          -DMAX_POLL_FAILURE_RETRIES=2 -DMAX_BCAST=9       /
+//                          -DAPS_MAX_GROUPS=16 -DMAX_RTG_ENTRIES=20         /
+//                          -DNWK_MAX_BINDING_ENTRIES=10                     /
+//                          -DMAX_BINDING_CLUSTER_IDS=5                      /
+//                          "-DDEFAULT_KEY={0x01, 0x03, 0x05, 0x07, 0x09,    /
+//                          0x0B, 0x0D, 0x0F, 0x00, 0x02, 0x04, 0x06, 0x08,  /
+//                          0x0A, 0x0C, 0x0D}" -DRFD_RCVC_ALWAYS_ON=FALSE    /
+//                          -DPOLL_RATE=1000 -DQUEUED_POLL_RATE=100          /
+//                          -DRESPONSE_POLL_RATE=100 -DREJOIN_POLL_RATE=440  /
+//                          -DTOP_BOOT_PAGES=0) -I "D:\Program Files\IAR     /
+//                          Systems\Embedded Workbench 4.05 Evaluation       /
+//                          version\8051\inc\" -I "D:\Program Files\IAR      /
+//                          Systems\Embedded Workbench 4.05 Evaluation       /
+//                          version\8051\inc\clib\" -I                       /
+//                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ /
+//                          ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Sa /
+//                          mpleApp\CC2430DB\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430 /
+//                          Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Proje /
+//                          cts\zstack\Samples\SampleApp\CC2430DB\..\Source\ /
+//                           -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´® /
+//                          ¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Sample /
+//                          s\SampleApp\CC2430DB\..\..\..\ZMain\TI2430DB\    /
+//                          -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ /
+//                          ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples /
+//                          \SampleApp\CC2430DB\..\..\..\..\..\Components\mt /
+//                          \ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´ /
+//                          ®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Sampl /
+//                          es\SampleApp\CC2430DB\..\..\..\..\..\Components\ /
+//                          hal\include\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ /
+//                          ½Ì¨\CC2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\z /
+//                          stack\Samples\SampleApp\CC2430DB\..\..\..\..\..\ /
+//                          Components\hal\target\CC2430EB\ -I               /
+//                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ /
+//                          ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Sa /
+//                          mpleApp\CC2430DB\..\..\..\..\..\Components\osal\ /
+//                          mcu\ccsoc\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì /
+//                          ¨\CC2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zst /
+//                          ack\Samples\SampleApp\CC2430DB\..\..\..\..\..\Co /
+//                          mponents\osal\include\ -I                        /
+//                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ /
+//                          ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Sa /
+//                          mpleApp\CC2430DB\..\..\..\..\..\Components\stack /
+//                          \af\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC24 /
+//                          30´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Sa /
+//                          mples\SampleApp\CC2430DB\..\..\..\..\..\Componen /
+//                          ts\stack\nwk\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶ /
+//                          Æ½Ì¨\CC2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\ /
+//                          zstack\Samples\SampleApp\CC2430DB\..\..\..\..\.. /
+//                          \Components\stack\sec\ -I                        /
+//                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ /
+//                          ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Sa /
+//                          mpleApp\CC2430DB\..\..\..\..\..\Components\stack /
+//                          \sys\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2 /
+//                          430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\S /
+//                          amples\SampleApp\CC2430DB\..\..\..\..\..\Compone /
+//                          nts\stack\zdo\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ /
+//                          ¶Æ½Ì¨\CC2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects /
+//                          \zstack\Samples\SampleApp\CC2430DB\..\..\..\..\. /
+//                          .\Components\zmac\f8w\ -I                        /
+//                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ /
+//                          ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Sa /
+//                          mpleApp\CC2430DB\..\..\..\..\..\Components\zmac\ /
+//                           -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´® /
+//                          ¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Sample /
+//                          s\SampleApp\CC2430DB\..\..\..\..\..\Components\s /
+//                          ervices\saddr\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ /
+//                          ¶Æ½Ì¨\CC2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects /
+//                          \zstack\Samples\SampleApp\CC2430DB\..\..\..\..\. /
+//                          .\Components\services\sdata\ -I                  /
+//                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ /
+//                          ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Sa /
+//                          mpleApp\CC2430DB\..\..\..\..\..\Components\mac\i /
+//                          nclude\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\C /
+//                          C2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack /
+//                          \Samples\SampleApp\CC2430DB\..\..\..\..\..\Compo /
+//                          nents\mac\high_level\ -I                         /
+//                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ /
+//                          ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Sa /
+//                          mpleApp\CC2430DB\..\..\..\..\..\Components\mac\l /
+//                          ow_level\srf03\ -I E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨ /
+//                          Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Project /
+//                          s\zstack\Samples\SampleApp\CC2430DB\..\..\..\..\ /
+//                          ..\Components\mac\low_level\srf03\single_chip\   /
+//                          -D CC2430EB -D NWK_AUTO_POLL -D ZTOOL_P1 -D      /
+//                          MT_TASK -D ZG_ENDDEVICE -lC                      /
+//                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ /
+//                          ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Sa /
+//                          mpleApp\CC2430DB\EndDeviceEB\List\ -lA           /
+//                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ /
+//                          ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Sa /
+//                          mpleApp\CC2430DB\EndDeviceEB\List\               /
+//                          --diag_suppress Pe001,Pa010 --diag_remark pe550  /
+//                          -o E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ /
+//                          ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples /
+//                          \SampleApp\CC2430DB\EndDeviceEB\Obj\ -e          /
+//                          --require_prototypes -z9 --no_code_motion        /
+//                          --debug --core=plain --dptr=16,1                 /
+//                          --data_model=large --code_model=banked           /
+//                          --calling_convention=xdata_reentrant             /
+//                          --place_constants=data --nr_virtual_regs 8       /
+//                          E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ /
+//                          ·¢\ZStack-1.4.2-1.1.0\Components\hal\common\hal_ /
+//                          assert.c                                         /
+//    List file          =  E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ /
+//                          ·¢\ZStack-1.4.2-1.1.0\Projects\zstack\Samples\Sa /
+//                          mpleApp\CC2430DB\EndDeviceEB\List\hal_assert.s51 /
+//                                                                           /
+//                                                                           /
+//////////////////////////////////////////////////////////////////////////////
+
+        NAME hal_assert
+
+        RTMODEL "__calling_convention", "xdata_reentrant"
+        RTMODEL "__code_model", "banked"
+        RTMODEL "__core", "plain"
+        RTMODEL "__data_model", "large"
+        RTMODEL "__dptr_size", "16"
+        RTMODEL "__extended_stack", "disabled"
+        RTMODEL "__location_for_constants", "data"
+        RTMODEL "__number_of_dptrs", "1"
+        RTMODEL "__rt_version", "1"
+
+        RSEG DOVERLAY:DATA:NOROOT(0)
+        RSEG IOVERLAY:IDATA:NOROOT(0)
+        RSEG ISTACK:IDATA:NOROOT(0)
+        RSEG PSTACK:XDATA:NOROOT(0)
+        RSEG XSTACK:XDATA:NOROOT(0)
+
+        EXTERN ?ALLOC_XSTACK8
+        EXTERN ?BANKED_ENTER_XDATA
+        EXTERN ?BANKED_LEAVE_XDATA
+        EXTERN ?BCALL
+        EXTERN ?BRET
+        EXTERN ?DEALLOC_XSTACK8
+        EXTERN ?L_ADD_TO_X
+        EXTERN ?L_MOV_TO_X
+        EXTERN ?L_MOV_X
+        EXTERN ?S_SHL
+        EXTERN ?UL_GT_X
+        EXTERN ?V0
+        EXTERN ?XSP
+        EXTERN ?XSTACK_DISP0_8
+        EXTERN __INIT_XDATA_I
+        EXTERN __INIT_XDATA_Z
+
+        PUBWEAK P0INP
+        PUBWEAK P1DIR
+        PUBWEAK RFIM
+        PUBWEAK _A_IEN0
+        PUBWEAK _A_P0
+        PUBWEAK _A_P1
+        PUBWEAK __Constant_0
+        PUBWEAK __Constant_1
+        PUBWEAK __Constant_5800
+        PUBLIC halAssertHandler
+        FUNCTION halAssertHandler,021203H
+        LOCFRAME ISTACK, 2, STACK
+        PUBLIC halAssertHazardLights
+        FUNCTION halAssertHazardLights,0203H
+        ARGFRAME ISTACK, 2, STACK
+        LOCFRAME ISTACK, 2, STACK
+        LOCFRAME XSTACK, 21, STACK
+        
+        CFI Names cfiNames0
+        CFI StackFrame CFA_SP SP DATA
+        CFI StackFrame CFA_PSP16 PSP16 XDATA
+        CFI StackFrame CFA_XSP16 XSP16 XDATA
+        CFI StaticOverlayFrame CFA_IOVERLAY IOVERLAY
+        CFI StaticOverlayFrame CFA_DOVERLAY DOVERLAY
+        CFI Resource `PSW.CY`:1, `B.BR0`:1, `B.BR1`:1, `B.BR2`:1, `B.BR3`:1
+        CFI Resource `B.BR4`:1, `B.BR5`:1, `B.BR6`:1, `B.BR7`:1, `VB.BR8`:1
+        CFI Resource `VB.BR9`:1, `VB.BR10`:1, `VB.BR11`:1, `VB.BR12`:1
+        CFI Resource `VB.BR13`:1, `VB.BR14`:1, `VB.BR15`:1, VB:8, B:8, A:8
+        CFI Resource PSW:8, DPL0:8, DPH0:8, R0:8, R1:8, R2:8, R3:8, R4:8, R5:8
+        CFI Resource R6:8, R7:8, V0:8, V1:8, V2:8, V3:8, V4:8, V5:8, V6:8, V7:8
+        CFI Resource SP:8, PSPH:8, PSPL:8, PSP16:16, XSPH:8, XSPL:8, XSP16:16
+        CFI VirtualResource ?RET:24
+        CFI Resource ?BRET_EXT:8
+        CFI VirtualResource ?RET_HIGH:8, ?RET_LOW:8
+        CFI ResourceParts PSP16 PSPH, PSPL
+        CFI ResourceParts XSP16 XSPH, XSPL
+        CFI ResourceParts ?RET ?BRET_EXT, ?RET_HIGH, ?RET_LOW
+        CFI EndNames cfiNames0
+        
+        CFI Common cfiCommon0 Using cfiNames0
+        CFI CodeAlign 1
+        CFI DataAlign -1
+        CFI ReturnAddress ?RET CODE
+        CFI CFA_DOVERLAY Used
+        CFI CFA_IOVERLAY Used
+        CFI CFA_SP SP+-3
+        CFI CFA_PSP16 PSP16+0
+        CFI CFA_XSP16 XSP16+0
+        CFI `PSW.CY` SameValue
+        CFI `B.BR0` SameValue
+        CFI `B.BR1` SameValue
+        CFI `B.BR2` SameValue
+        CFI `B.BR3` SameValue
+        CFI `B.BR4` SameValue
+        CFI `B.BR5` SameValue
+        CFI `B.BR6` SameValue
+        CFI `B.BR7` SameValue
+        CFI `VB.BR8` SameValue
+        CFI `VB.BR9` SameValue
+        CFI `VB.BR10` SameValue
+        CFI `VB.BR11` SameValue
+        CFI `VB.BR12` SameValue
+        CFI `VB.BR13` SameValue
+        CFI `VB.BR14` SameValue
+        CFI `VB.BR15` SameValue
+        CFI VB SameValue
+        CFI B Undefined
+        CFI A Undefined
+        CFI PSW SameValue
+        CFI DPL0 SameValue
+        CFI DPH0 SameValue
+        CFI R0 Undefined
+        CFI R1 Undefined
+        CFI R2 Undefined
+        CFI R3 Undefined
+        CFI R4 Undefined
+        CFI R5 Undefined
+        CFI R6 SameValue
+        CFI R7 SameValue
+        CFI V0 SameValue
+        CFI V1 SameValue
+        CFI V2 SameValue
+        CFI V3 SameValue
+        CFI V4 SameValue
+        CFI V5 SameValue
+        CFI V6 SameValue
+        CFI V7 SameValue
+        CFI PSPH Undefined
+        CFI PSPL Undefined
+        CFI XSPH Undefined
+        CFI XSPL Undefined
+        CFI ?RET Concat
+        CFI ?BRET_EXT Frame(CFA_SP, 3)
+        CFI ?RET_HIGH Frame(CFA_SP, 2)
+        CFI ?RET_LOW Frame(CFA_SP, 1)
+        CFI EndCommon cfiCommon0
+        
+        
+        CFI Common cfiCommon1 Using cfiNames0
+        CFI CodeAlign 1
+        CFI DataAlign -1
+        CFI ReturnAddress ?RET CODE
+        CFI CFA_DOVERLAY Used
+        CFI CFA_IOVERLAY Used
+        CFI CFA_SP SP+-2
+        CFI CFA_PSP16 PSP16+0
+        CFI CFA_XSP16 XSP16+0
+        CFI `PSW.CY` SameValue
+        CFI `B.BR0` SameValue
+        CFI `B.BR1` SameValue
+        CFI `B.BR2` SameValue
+        CFI `B.BR3` SameValue
+        CFI `B.BR4` SameValue
+        CFI `B.BR5` SameValue
+        CFI `B.BR6` SameValue
+        CFI `B.BR7` SameValue
+        CFI `VB.BR8` SameValue
+        CFI `VB.BR9` SameValue
+        CFI `VB.BR10` SameValue
+        CFI `VB.BR11` SameValue
+        CFI `VB.BR12` SameValue
+        CFI `VB.BR13` SameValue
+        CFI `VB.BR14` SameValue
+        CFI `VB.BR15` SameValue
+        CFI VB SameValue
+        CFI B SameValue
+        CFI A SameValue
+        CFI PSW SameValue
+        CFI DPL0 SameValue
+        CFI DPH0 SameValue
+        CFI R0 SameValue
+        CFI R1 SameValue
+        CFI R2 SameValue
+        CFI R3 SameValue
+        CFI R4 SameValue
+        CFI R5 SameValue
+        CFI R6 SameValue
+        CFI R7 SameValue
+        CFI V0 SameValue
+        CFI V1 SameValue
+        CFI V2 SameValue
+        CFI V3 SameValue
+        CFI V4 SameValue
+        CFI V5 SameValue
+        CFI V6 SameValue
+        CFI V7 SameValue
+        CFI PSPH Undefined
+        CFI PSPL Undefined
+        CFI XSPH Undefined
+        CFI XSPL Undefined
+        CFI ?RET Concat
+        CFI ?BRET_EXT SameValue
+        CFI ?RET_HIGH Frame(CFA_SP, 2)
+        CFI ?RET_LOW Frame(CFA_SP, 1)
+        CFI EndCommon cfiCommon1
+        
+        EXTERN macRxActive
+        EXTERN macTxActive
+
+// E:\CPESÆ½Ì¨\Ó²¼þÆ½Ì¨\CC2430Í¨Ñ¶Æ½Ì¨\CC2430´®¿ÚÊÕ·¢\ZStack-1.4.2-1.1.0\Components\hal\common\hal_assert.c
+//    1 /**************************************************************************************************
+//    2     Filename:
+//    3     Revised:        $Date: 2007-03-29 11:10:56 -0700 (Thu, 29 Mar 2007) $
+//    4     Revision:       $Revision: 13891 $
+//    5 
+//    6     Description:
+//    7 
+//    8     Describe the purpose and contents of the file.
+//    9 
+//   10   Copyright (c) 2006 by Texas Instruments, Inc.
+//   11   All Rights Reserved.  Permission to use, reproduce, copy, prepare
+//   12   derivative works, modify, distribute, perform, display or sell this
+//   13   software and/or its documentation for any purpose is prohibited
+//   14   without the express written consent of Texas Instruments, Inc.
+//   15 **************************************************************************************************/
+//   16 
+//   17 
+//   18 /* ------------------------------------------------------------------------------------------------
+//   19  *                                          Includes
+//   20  * ------------------------------------------------------------------------------------------------
+//   21  */
+//   22 #include "hal_assert.h"
+//   23 #include "hal_types.h"
+//   24 #include "hal_board.h"
+
+        ASEGN SFR_AN:DATA:NOROOT,08fH
+// unsigned char volatile __sfr P0INP
+P0INP:
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,091H
+// unsigned char volatile __sfr RFIM
+RFIM:
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0feH
+// unsigned char volatile __sfr P1DIR
+P1DIR:
+        DS 1
+//   25 #include "hal_defs.h"
+//   26 #include "hal_mcu.h"
+//   27 
+//   28 /* for access to debug data */
+//   29 #include "mac_rx.h"
+//   30 #include "mac_tx.h"
+//   31 
+//   32 
+//   33 /* ------------------------------------------------------------------------------------------------
+//   34  *                                       Local Prototypes
+//   35  * ------------------------------------------------------------------------------------------------
+//   36  */
+//   37 void halAssertHazardLights(void);
+//   38 
+//   39 
+//   40 /**************************************************************************************************
+//   41  * @fn          halAssertHandler
+//   42  *
+//   43  * @brief       Logic to handle an assert.
+//   44  *
+//   45  * @param       none
+//   46  *
+//   47  * @return      none
+//   48  **************************************************************************************************
+//   49  */
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//   50 void halAssertHandler(void)
+halAssertHandler:
+        CFI Block cfiBlock0 Using cfiCommon0
+        CFI Function halAssertHandler
+//   51 {
+        FUNCALL halAssertHandler, halAssertHazardLights
+        LOCFRAME ISTACK, 2, STACK
+        ARGFRAME ISTACK, 2, STACK
+        PUSH	DPL
+        CFI DPL0 Frame(CFA_SP, 4)
+        CFI CFA_SP SP+-4
+        PUSH	DPH
+        CFI DPH0 Frame(CFA_SP, 5)
+        CFI CFA_SP SP+-5
+        ; Saved register size: 2
+        ; Auto size: 0
+//   52   /* execute code that handles asserts */
+//   53 #ifdef ASSERT_RESET
+//   54   HAL_SYSTEM_RESET();
+//   55 #else
+//   56   halAssertHazardLights();
+        ; Setup parameters for call to function halAssertHazardLights
+        MOV	DPTR,#(halAssertHazardLights & 0xffff)
+        MOV	A,#((halAssertHazardLights >> 16) & 0xff)
+        LCALL	?BCALL               ; Banked call to: DPTR()
+//   57 #endif
+//   58   
+//   59 }
+        POP	DPH
+        CFI DPH0 SameValue
+        CFI CFA_SP SP+-4
+        POP	DPL
+        CFI DPL0 SameValue
+        CFI CFA_SP SP+-3
+        LJMP	?BRET
+        CFI EndBlock cfiBlock0
+//   60 
+//   61 
+//   62 /**************************************************************************************************
+//   63  * @fn          halAssertHazardLights
+//   64  *
+//   65  * @brief       Blink LEDs to indicate an error.
+//   66  *
+//   67  * @param       none
+//   68  *
+//   69  * @return      none
+//   70  **************************************************************************************************
+//   71  */
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//   72 void halAssertHazardLights(void)
+halAssertHazardLights:
+        CFI Block cfiBlock1 Using cfiCommon0
+        CFI Function halAssertHazardLights
+//   73 {
+        MOV	A,#-0xc
+        LCALL	?BANKED_ENTER_XDATA
+        CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+        CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+        CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+        CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+        CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+        CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+        CFI V3 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+        CFI V2 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+        CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+        CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+        CFI VB load(1, XDATA, add(CFA_XSP16, literal(-11)))
+        CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+        CFI CFA_SP SP+0
+        CFI CFA_XSP16 add(XSP16, 12)
+        ; Saved register size: 12
+        ; Auto size: 9
+        MOV	A,#-0x9
+        LCALL	?ALLOC_XSTACK8
+        CFI CFA_XSP16 add(XSP16, 21)
+//   74   enum
+//   75   {
+//   76     DEBUG_DATA_RSTACK_HIGH_OFS,
+//   77     DEBUG_DATA_RSTACK_LOW_OFS,
+//   78     DEBUG_DATA_TX_ACTIVE_OFS,
+//   79     DEBUG_DATA_RX_ACTIVE_OFS,
+//   80     DEBUG_DATA_INT_MASK_OFS,
+//   81     DEBUG_DATA_SIZE
+//   82   };
+//   83 
+//   84   uint8 buttonHeld;
+//   85   uint8 debugData[DEBUG_DATA_SIZE];
+//   86 
+//   87   /* disable all interrupts before anything else */
+//   88   HAL_DISABLE_INTERRUPTS();
+        CLR	0xa8.7
+//   89     
+//   90   /*-------------------------------------------------------------------------------
+//   91    *  Initialize LEDs and turn them off.
+//   92    */
+//   93   HAL_BOARD_INIT();
+        ORL	0xfe,#0x2
+        ORL	0xfe,#0x1
+        ORL	0x8f,#0x20
+//   94 
+//   95   HAL_TURN_OFF_LED1();
+        SETB	0x90.1
+//   96   HAL_TURN_OFF_LED2();
+        SETB	0x90.0
+//   97   HAL_TURN_OFF_LED3();
+        SETB	0x90.0
+        LJMP	??halAssertHazardLights_0 & 0xFFFF
+//   98   HAL_TURN_OFF_LED4();
+//   99 
+//  100   /*-------------------------------------------------------------------------------
+//  101    *  Master infinite loop.
+//  102    */
+//  103   for (;;)
+//  104   {
+//  105     buttonHeld = 0;
+//  106 
+//  107     /*-------------------------------------------------------------------------------
+//  108      *  "Hazard lights" loop.  A held keypress will exit this loop.
+//  109      */
+//  110     do
+//  111     {
+//  112       HAL_LED_BLINK_DELAY();
+//  113 
+//  114       /* toggle LEDS, the #ifdefs are in case HAL has logically remapped non-existent LEDs */
+//  115 #if (HAL_NUM_LEDS >= 1)
+//  116       HAL_TOGGLE_LED1();
+//  117 #if (HAL_NUM_LEDS >= 2)
+//  118       HAL_TOGGLE_LED2();
+//  119 #if (HAL_NUM_LEDS >= 3)
+//  120       HAL_TOGGLE_LED3();
+//  121 #if (HAL_NUM_LEDS >= 4)
+//  122       HAL_TOGGLE_LED4();
+//  123 #endif
+//  124 #endif
+//  125 #endif
+//  126 #endif
+//  127 
+//  128       /* escape hatch to continue execution, set escape to '1' to continue execution */
+//  129       {
+//  130         static uint8 escape = 0;
+//  131         if (escape)
+//  132         {
+//  133           escape = 0;
+//  134           return;
+//  135         }
+//  136       }
+//  137 
+//  138       /* break out of loop if button is held long enough */
+//  139       if (HAL_PUSH_BUTTON1())
+//  140       {
+//  141         buttonHeld++;
+??halAssertHazardLights_1:
+        INC	R2
+//  142       }
+//  143       else
+//  144       {
+//  145         buttonHeld = 0;
+//  146       }
+//  147     }
+//  148     while (buttonHeld != 10);  /* loop until button is held specified number of loops */
+        MOV	A,#0xa
+        XRL	A,R2
+        JZ	??halAssertHazardLights_2
+??halAssertHazardLights_3:
+        MOV	DPTR,#__Constant_0
+        MOV	R0,#?V0 + 0
+        LCALL	?L_MOV_X
+        MOV	A,#0x5
+        LCALL	?XSTACK_DISP0_8
+        MOV	R0,#?V0 + 0
+        LCALL	?L_MOV_TO_X
+        SJMP	??halAssertHazardLights_4
+??halAssertHazardLights_5:
+        MOV	DPTR,#__Constant_1
+        MOV	R0,#?V0 + 0
+        LCALL	?L_MOV_X
+        MOV	A,#0x5
+        LCALL	?XSTACK_DISP0_8
+        MOV	R0,#?V0 + 0
+        LCALL	?L_ADD_TO_X
+??halAssertHazardLights_4:
+        MOV	A,#0x5
+        LCALL	?XSTACK_DISP0_8
+        PUSH	DPL
+        CFI CFA_SP SP+-1
+        PUSH	DPH
+        CFI CFA_SP SP+-2
+        MOV	DPTR,#__Constant_5800
+        MOV	R0,#?V0 + 0
+        LCALL	?L_MOV_X
+        POP	DPH
+        CFI CFA_SP SP+-1
+        POP	DPL
+        CFI CFA_SP SP+0
+        MOV	R0,#?V0 + 0
+        LCALL	?UL_GT_X
+        JC	??halAssertHazardLights_5
+        MOV	C,0x90.1
+        JNC	??halAssertHazardLights_6
+        CLR	0x90.1
+        SJMP	??halAssertHazardLights_7
+??halAssertHazardLights_6:
+        SETB	0x90.1
+??halAssertHazardLights_7:
+        MOV	C,0x90.0
+        JNC	??halAssertHazardLights_8
+        CLR	0x90.0
+        SJMP	??halAssertHazardLights_9
+??halAssertHazardLights_8:
+        SETB	0x90.0
+??halAssertHazardLights_9:
+        MOV	DPTR,#??escape
+        MOVX	A,@DPTR
+        JZ	??halAssertHazardLights_10
+        CLR	A
+        MOVX	@DPTR,A
+        MOV	A,#0x9
+        LCALL	?DEALLOC_XSTACK8
+        CFI CFA_XSP16 add(XSP16, 12)
+        MOV	R7,#0x4
+        LJMP	?BANKED_LEAVE_XDATA
+        CFI CFA_XSP16 add(XSP16, 21)
+??halAssertHazardLights_10:
+        MOV	C,0x80.1
+        JNC	??halAssertHazardLights_1
+??halAssertHazardLights_11:
+        MOV	R2,#0x0
+        SJMP	??halAssertHazardLights_3
+//  149 
+//  150     /*-------------------------------------------------------------------------------
+//  151      *  Just exited from "hazard lights" loop.
+//  152      */
+//  153 
+//  154     /* turn off all LEDs */
+//  155     HAL_TURN_OFF_LED1();
+??halAssertHazardLights_2:
+        SETB	0x90.1
+//  156     HAL_TURN_OFF_LED2();
+        SETB	0x90.0
+//  157     HAL_TURN_OFF_LED3();
+        SETB	0x90.0
+//  158     HAL_TURN_OFF_LED4();
+        SETB	0x90.1
+//  159 
+//  160     /* wait for button release */
+//  161     HAL_DEBOUNCE(!HAL_PUSH_BUTTON1());
+        MOV	R0,#0x0
+        MOV	R1,#0x0
+??halAssertHazardLights_12:
+        MOV	C,0x80.1
+        JC	??halAssertHazardLights_13
+        MOV	R0,#0x0
+        MOV	R1,#0x0
+??halAssertHazardLights_13:
+        LCALL	?Subroutine0 & 0xFFFF
+??CrossCallReturnLabel_0:
+        JC	??halAssertHazardLights_12
+//  162 
+//  163     /*-------------------------------------------------------------------------------
+//  164      *  Load debug data into memory.
+//  165      */
+//  166 #ifdef HAL_MCU_AVR
+//  167     {
+//  168       uint8 * pStack;
+//  169       pStack = (uint8 *) SP;
+//  170       pStack++; /* point to return address on stack */
+//  171       debugData[DEBUG_DATA_RSTACK_HIGH_OFS] = *pStack;
+//  172       pStack++;
+//  173       debugData[DEBUG_DATA_RSTACK_LOW_OFS] = *pStack;
+//  174     }
+//  175     debugData[DEBUG_DATA_INT_MASK_OFS] = EIMSK;
+//  176 #endif
+//  177 
+//  178 #ifdef HAL_MCU_CC2430
+//  179     debugData[DEBUG_DATA_INT_MASK_OFS] = RFIM;
+        MOV	A,0x91
+        PUSH	A
+        CFI CFA_SP SP+-1
+        MOV	A,#0x4
+        LCALL	?XSTACK_DISP0_8
+        POP	A
+        CFI CFA_SP SP+0
+        MOVX	@DPTR,A
+//  180 #endif
+//  181 
+//  182     debugData[DEBUG_DATA_TX_ACTIVE_OFS] = macTxActive;
+        MOV	DPTR,#macTxActive
+        MOVX	A,@DPTR
+        PUSH	A
+        CFI CFA_SP SP+-1
+        MOV	A,#0x2
+        LCALL	?XSTACK_DISP0_8
+        POP	A
+        CFI CFA_SP SP+0
+        MOVX	@DPTR,A
+//  183     debugData[DEBUG_DATA_RX_ACTIVE_OFS] = macRxActive;
+        MOV	DPTR,#macRxActive
+        MOVX	A,@DPTR
+        PUSH	A
+        CFI CFA_SP SP+-1
+        MOV	A,#0x3
+        LCALL	?XSTACK_DISP0_8
+        POP	A
+        CFI CFA_SP SP+0
+        MOVX	@DPTR,A
+//  184 
+//  185    /* initialize for data dump loop */
+//  186     {
+//  187       uint8 iBit;
+//  188       uint8 iByte;
+//  189 
+//  190       iBit  = 0;
+        MOV	R4,#0x0
+//  191       iByte = 0;
+        MOV	R3,#0x0
+//  192 
+//  193       /*-------------------------------------------------------------------------------
+//  194        *  Data dump loop.  A button press cycles data bits to an LED.
+//  195        */
+//  196       while (iByte < DEBUG_DATA_SIZE)
+//  197       {
+//  198         /* wait for key press */
+//  199         while(!HAL_PUSH_BUTTON1());
+??halAssertHazardLights_14:
+        MOV	C,0x80.1
+        JC	??halAssertHazardLights_14
+//  200 
+//  201         /* turn on all LEDs for first bit of byte, turn on three LEDs if not first bit */
+//  202         HAL_TURN_ON_LED1();
+        CLR	0x90.1
+//  203         HAL_TURN_ON_LED2();
+        CLR	0x90.0
+//  204         HAL_TURN_ON_LED3();
+        CLR	0x90.0
+//  205         if (iBit == 0)
+        MOV	A,R4
+        JNZ	??halAssertHazardLights_15
+//  206         {
+//  207           HAL_TURN_ON_LED4();
+        CLR	0x90.1
+        SJMP	??halAssertHazardLights_16
+//  208         }
+//  209         else
+//  210         {
+//  211           HAL_TURN_OFF_LED4();
+??halAssertHazardLights_15:
+        SETB	0x90.1
+//  212         }
+//  213 
+//  214         /* wait for debounced key release */
+//  215         HAL_DEBOUNCE(!HAL_PUSH_BUTTON1());
+??halAssertHazardLights_16:
+        MOV	R0,#0x0
+        MOV	R1,#0x0
+??halAssertHazardLights_17:
+        MOV	C,0x80.1
+        JC	??halAssertHazardLights_18
+        MOV	R0,#0x0
+        MOV	R1,#0x0
+??halAssertHazardLights_18:
+        LCALL	?Subroutine0 & 0xFFFF
+??CrossCallReturnLabel_1:
+        JC	??halAssertHazardLights_17
+//  216 
+//  217         /* turn off all LEDs */
+//  218         HAL_TURN_OFF_LED1();
+        SETB	0x90.1
+//  219         HAL_TURN_OFF_LED2();
+        SETB	0x90.0
+//  220         HAL_TURN_OFF_LED3();
+        SETB	0x90.0
+//  221         HAL_TURN_OFF_LED4();
+        SETB	0x90.1
+//  222 
+//  223         /* output value of data bit to LED1 */
+//  224         if (debugData[iByte] & (1 << (7 - iBit)))
+        MOV	?V0 + 0,#0x1
+        MOV	?V0 + 1,#0x0
+        MOV	A,#0x7
+        CLR	C
+        SUBB	A,R4
+        MOV	R0,#?V0 + 0
+        LCALL	?S_SHL
+        PUSH	?V0 + 0
+        CFI CFA_SP SP+-1
+        MOV	?V0 + 0,R3
+        MOV	DPL,?XSP + 0
+        MOV	DPH,?XSP + 1
+        MOV	A,DPL
+        ADD	A,?V0 + 0
+        MOV	DPL,A
+        MOV	A,DPH
+        ADDC	A,#0x0
+        MOV	DPH,A
+        POP	A
+        CFI CFA_SP SP+0
+        MOV	R2,A
+        MOVX	A,@DPTR
+        ANL	A,R2
+        JZ	??halAssertHazardLights_19
+//  225         {
+//  226           HAL_TURN_ON_LED1();
+        CLR	0x90.1
+        SJMP	??halAssertHazardLights_20
+//  227         }
+//  228         else
+//  229         {
+//  230           HAL_TURN_OFF_LED1();
+??halAssertHazardLights_19:
+        SETB	0x90.1
+//  231         }
+//  232 
+//  233         /* advance to next bit */
+//  234         iBit++;
+??halAssertHazardLights_20:
+        INC	R4
+//  235         if (iBit == 8)
+        MOV	A,#0x8
+        XRL	A,R4
+        JNZ	??halAssertHazardLights_14
+//  236         {
+//  237           iBit = 0;
+        MOV	R4,#0x0
+//  238           iByte++;
+        INC	R3
+//  239         }
+//  240       }
+        MOV	A,R3
+        CLR	C
+        SUBB	A,#0x5
+        JC	??halAssertHazardLights_14
+//  241     }
+//  242 
+//  243     /*
+//  244      *  About to enter "hazard lights" loop again.  Turn off LED1 in case the last bit
+//  245      *  displayed happened to be one.  This guarantees all LEDs are off at the start of
+//  246      *  the flashing loop which uses a toggle operation to change LED states.
+//  247      */
+//  248     HAL_TURN_OFF_LED1();
+??halAssertHazardLights_0:
+        SETB	0x90.1
+        LJMP	??halAssertHazardLights_11 & 0xFFFF
+        CFI EndBlock cfiBlock1
+//  249   }
+//  250 }
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+?Subroutine0:
+        CFI Block cfiCond2 Using cfiCommon0
+        CFI NoFunction
+        CFI Conditional ??CrossCallReturnLabel_1
+        CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+        CFI VB load(1, XDATA, add(CFA_XSP16, literal(-11)))
+        CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+        CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+        CFI V2 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+        CFI V3 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+        CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+        CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+        CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+        CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+        CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+        CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+        CFI CFA_SP SP+0
+        CFI CFA_XSP16 add(XSP16, 21)
+        CFI Block cfiCond3 Using cfiCommon0
+        CFI (cfiCond3) NoFunction
+        CFI (cfiCond3) Conditional ??CrossCallReturnLabel_0
+        CFI (cfiCond3) R6 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+        CFI (cfiCond3) VB load(1, XDATA, add(CFA_XSP16, literal(-11)))
+        CFI (cfiCond3) V0 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+        CFI (cfiCond3) V1 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+        CFI (cfiCond3) V2 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+        CFI (cfiCond3) V3 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+        CFI (cfiCond3) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+        CFI (cfiCond3) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+        CFI (cfiCond3) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+        CFI (cfiCond3) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+        CFI (cfiCond3) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+        CFI (cfiCond3) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+        CFI (cfiCond3) CFA_SP SP+0
+        CFI (cfiCond3) CFA_XSP16 add(XSP16, 21)
+        CFI Block cfiPicker4 Using cfiCommon1
+        CFI (cfiPicker4) NoFunction
+        CFI (cfiPicker4) Picker
+        MOV	A,R0
+        ADD	A,#0x1
+        INC	R0
+        MOV	A,R1
+        ADDC	A,#0x0
+        MOV	R1,A
+        CLR	C
+        MOV	A,R0
+        SUBB	A,#-0xc
+        MOV	A,R1
+        SUBB	A,#0x1
+        MOV	C,0xD0 /* PSW */.2
+        XRL	A,PSW
+        RLC	A
+        RET
+        CFI EndBlock cfiCond2
+        CFI EndBlock cfiCond3
+        CFI EndBlock cfiPicker4
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        REQUIRE __INIT_XDATA_Z
+??escape:
+        DS 1
+
+        RSEG XDATA_I:XDATA:NOROOT(0)
+__Constant_0:
+        DS 4
+        REQUIRE `?<Initializer for __Constant_0>`
+        REQUIRE __INIT_XDATA_I
+
+        RSEG XDATA_ID:CODE:NOROOT(0)
+`?<Initializer for __Constant_0>`:
+        DD 0
+
+        RSEG XDATA_I:XDATA:NOROOT(0)
+__Constant_1:
+        DS 4
+        REQUIRE `?<Initializer for __Constant_1>`
+        REQUIRE __INIT_XDATA_I
+
+        RSEG XDATA_ID:CODE:NOROOT(0)
+`?<Initializer for __Constant_1>`:
+        DD 1
+
+        RSEG XDATA_I:XDATA:NOROOT(0)
+__Constant_5800:
+        DS 4
+        REQUIRE `?<Initializer for __Constant_5800>`
+        REQUIRE __INIT_XDATA_I
+
+        RSEG XDATA_ID:CODE:NOROOT(0)
+`?<Initializer for __Constant_5800>`:
+        DD 22528
+
+        ASEGN SFR_AN:DATA:NOROOT,080H
+// union <unnamed> volatile __sfr _A_P0
+_A_P0:
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,090H
+// union <unnamed> volatile __sfr _A_P1
+_A_P1:
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0a8H
+// union <unnamed> volatile __sfr _A_IEN0
+_A_IEN0:
+        DS 1
+
+        END
+//  251 
+//  252 
+//  253 /* ------------------------------------------------------------------------------------------------
+//  254  *                                    Compile Time Assertions
+//  255  * ------------------------------------------------------------------------------------------------
+//  256  */
+//  257 
+//  258 /* integrity check of type sizes */
+//  259 HAL_ASSERT_SIZE(  int8, 1);
+//  260 HAL_ASSERT_SIZE( uint8, 1);
+//  261 HAL_ASSERT_SIZE( int16, 2);
+//  262 HAL_ASSERT_SIZE(uint16, 2);
+//  263 HAL_ASSERT_SIZE( int32, 4);
+//  264 HAL_ASSERT_SIZE(uint32, 4);
+//  265 
+//  266 
+//  267 /**************************************************************************************************
+//  268 */
+// 
+// 371 bytes in segment BANKED_CODE
+//   6 bytes in segment SFR_AN
+//  12 bytes in segment XDATA_I
+//  12 bytes in segment XDATA_ID
+//   1 byte  in segment XDATA_Z
+// 
+// 371 bytes of CODE  memory (+ 12 bytes shared)
+//   0 bytes of DATA  memory (+  6 bytes shared)
+//   1 byte  of XDATA memory (+ 12 bytes shared)
+//
+//Errors: none
+//Warnings: none

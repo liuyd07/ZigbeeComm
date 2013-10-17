@@ -1,0 +1,33 @@
+/******************************************************************************
+*
+*   Filename:     flashDmaTrigger.s51
+*   Target:       cc2430
+*   Author:       KJA
+*   Revised:      10/3-2006
+*   Revision:     1.0
+*
+*   Copyright (c) 2006 by Texas Instruments, Inc.
+*   All Rights Reserved.  Permission to use, reproduce, copy, prepare
+*   derivative works, modify, distribute, perform, display or sell this
+*   software and/or its documentation for any purpose is prohibited
+*   without the express written consent of Texas Instruments, Inc.
+*
+******************************************************************************/
+;;-----------------------------------------------------------------------------
+;; This function write 0x02 to FCTL, the reason for doing
+;; this in assembly is that the instruction most be aligned
+;; to 4.
+;; The aligment is done with "RSEG RCODE (2)"
+;;-----------------------------------------------------------------------------
+#include "ioCC2430.h"
+
+                 MODULE  flashDmaTrigger.s51
+                 RSEG RCODE (2)
+                 PUBLIC halFlashDmaTrigger
+                 FUNCTION halFlashDmaTrigger, 0203H
+
+halFlashDmaTrigger:
+                 ORL FCTL, #0x02;
+                 RET;
+
+                 END;
